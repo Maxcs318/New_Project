@@ -43,12 +43,12 @@ const store = new Vuex.Store({
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
-                axios.post("http://zproject.vue.com/api/loadLogin", JSON.stringify(user))
+                axios.post("http://gamaproject.vue.com/api/loadLogin", JSON.stringify(user))
                 .then(response => {
                     // console.log(response)
                     context.commit("Log_On",response.data)
                 })
-                axios.get("http://zproject.vue.com/api/get_all_data")
+                axios.get("http://gamaproject.vue.com/api/get_all_data")
                 .then(response => {
                     console.log(response.data)
                     context.commit("initMembers",response.data)
@@ -60,7 +60,7 @@ const store = new Vuex.Store({
         // login
         Logining_in(context,user){
             // console.log(user)            
-            axios.post("http://zproject.vue.com/api/checkLogin", JSON.stringify(user))
+            axios.post("http://gamaproject.vue.com/api/checkLogin", JSON.stringify(user))
             .then(response => {
                 // console.log(response)
                     if(response.data != '' && response.data != null){
@@ -73,7 +73,7 @@ const store = new Vuex.Store({
         },
         Log_Out(context){
             var user_logout = { token : this.state.log_on}
-            axios.post("http://zproject.vue.com/api/log_out", JSON.stringify(user_logout))
+            axios.post("http://gamaproject.vue.com/api/log_out", JSON.stringify(user_logout))
             .then(response => {
                 localStorage.removeItem('The_User')
                 context.commit("Log_Out")
@@ -81,20 +81,20 @@ const store = new Vuex.Store({
             })
         },
         Register(context,newuser){
-            axios.post("http://zproject.vue.com/api/save", JSON.stringify(newuser))
+            axios.post("http://gamaproject.vue.com/api/save", JSON.stringify(newuser))
             .then(response => {
                 // console.log(response)
             })
         },
         updateMember(context,member){
             // console.log(member)
-            return axios.post("http://zproject.vue.com/api/update", JSON.stringify(member))
+            return axios.post("http://gamaproject.vue.com/api/update", JSON.stringify(member))
             .then(response => {
                 context.commit("updateMember",member)
             })
         },
         deleteMember(context,memberID){
-            return axios.post("http://zproject.vue.com/api/delete", JSON.stringify({m_id : memberID}))
+            return axios.post("http://gamaproject.vue.com/api/delete", JSON.stringify({m_id : memberID}))
             .then(response => {
                 context.commit("deleteMember",memberID)
             })

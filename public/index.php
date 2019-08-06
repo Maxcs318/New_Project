@@ -6,8 +6,8 @@ date_default_timezone_set('Asia/Bangkok');
 // define('APP_BACKEND', 'backend');
 define('APP_VUE', 'application');
 
-//http://zproject.vue.com/
-if(FALSE !== strpos($_SERVER['HTTP_HOST'], 'zproject.')){
+//http://gamaproject.vue.com/
+if(FALSE !== strpos($_SERVER['HTTP_HOST'], 'gamaproject.')){
 	define('ENVIRONMENT', 'development');
 	define('SYSTEM_NAME', 'vue');
 }else{

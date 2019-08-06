@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['base_url'] = 'http://zproject.vue.com/';
+$config['base_url'] = 'http://gamaproject.vue.com/';
 
 $config['index_page'] = '';
 
