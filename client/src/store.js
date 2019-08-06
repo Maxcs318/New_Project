@@ -6,12 +6,13 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state : {
+        members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
     },
     mutations : {
-        initMembers(state,user){
-            state.log_on = user
+        initMembers(state,members){
+            state.members = members
         },
         Logining_in(state,now_user){
             state.log_on = now_user
@@ -22,7 +23,19 @@ const store = new Vuex.Store({
         },
         Log_On(state,user){
             state.the_user = user
-        }
+        },
+        updateMember(state,member){
+            let index = state.members.findIndex(m => m.m_id == member.m_id)
+            if(index > -1){
+                state.members[index] = member
+            }
+        },
+        deleteMember(state,memberID){
+            let index = state.members.findIndex(m => m.m_id == memberID)
+            if(index > -1){
+                state.members.splice(index,1)
+            }
+        },
 
     },
     actions : {
@@ -35,6 +48,11 @@ const store = new Vuex.Store({
                     // console.log(response)
                     context.commit("Log_On",response.data)
                 })
+                axios.get("http://zproject.vue.com/api/get_all_data")
+                .then(response => {
+                    console.log(response.data)
+                    context.commit("initMembers",response.data)
+            })
             }else{
                 this.state.the_user=''
             }
@@ -67,13 +85,28 @@ const store = new Vuex.Store({
             .then(response => {
                 // console.log(response)
             })
-        }
+        },
+        updateMember(context,member){
+            // console.log(member)
+            return axios.post("http://zproject.vue.com/api/update", JSON.stringify(member))
+            .then(response => {
+                context.commit("updateMember",member)
+            })
+        },
+        deleteMember(context,memberID){
+            return axios.post("http://zproject.vue.com/api/delete", JSON.stringify({m_id : memberID}))
+            .then(response => {
+                context.commit("deleteMember",memberID)
+            })
+            // console.log(memberID)
+        },
         
     },
     getters : {
-        // getMembers(state){
-        //     return state.members
-        // },
+        getMembers(state){
+            return state.members
+        },
+        
     }
 
 })

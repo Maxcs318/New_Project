@@ -18,11 +18,37 @@
             $this->load->library('form_validation');//
 
         }
+        // all members
+        public function get_all_data()
+        {
+            echo $this->api_model->get_all();
+        }
         // register
         public function save()
         {
             echo $this->api_model->save($this->JSON_DATA);
         }
+        // update member
+        public function update()
+        {
+            $id = $this->JSON_DATA["m_id"];
+            unset($this->JSON_DATA["m_id"]);
+            echo $this->api_model->update(
+                 $this->JSON_DATA,
+                array(
+                    "m_id"=>$id
+                )
+            );
+        }
+        // delete member
+        public function delete()
+        {
+            echo $this->api_model->delete(
+                 $this->JSON_DATA
+            );
+        }
+        // -------------------------------------------------------------------------------------------
+        
         // Login 
         public function checkLogin()
         {	

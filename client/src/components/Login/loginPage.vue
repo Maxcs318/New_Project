@@ -10,7 +10,7 @@
                 <input type="text" v-model="user.m_username" class="form-control" required>
                 <br>
                 <h5>Password</h5>
-                <input type="password" v-model="user.m_password" class="form-control" required>
+                <input type="password" v-model="password_normal" class="form-control" required>
                 <br>
                 <br>
                 <div class="row">
@@ -82,6 +82,7 @@ export default {
                 m_username:'',
                 m_password:''
             },
+            password_normal:'',
             newuser:{
                 m_firstname:'',
                 m_lastname:'',
@@ -96,9 +97,9 @@ export default {
     methods:{
         onSubmitLogin(){
             // console.log(this.user)
-            this.user.m_password = md5(this.user.m_password);
+            this.user.m_password = md5(this.password_normal);
             this.$store.dispatch("Logining_in",this.user)
-            .then(() => {
+            .then( response => {
                 //
             })
         },
@@ -114,7 +115,7 @@ export default {
                 this.newuser.m_phone =''
                 this.newuser.m_email =''
                 this.newuser.m_password =''
-            })
+            })            
         },
         //
         testx(){

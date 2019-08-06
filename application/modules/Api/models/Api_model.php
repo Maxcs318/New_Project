@@ -13,6 +13,11 @@
             $this->load->library('session');//
 
         }
+        // all member
+        public function get_all()
+        {
+            return json_encode($this->db->get($this->tableName)->result());
+        }
         // register
         public function save($data = array())
         {
@@ -23,6 +28,19 @@
                 );
             }
         }
+        // update member
+        public function update($data = array(),$where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->tableName,$data));
+        }
+        // delete member
+        public function delete($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->tableName));
+        }
+
+        // ----------------------------------------------------------------------------------------
+
         // login 
         public function checkLogin($where = array())
         {	

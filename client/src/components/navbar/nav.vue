@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" variant="dark">
-            <router-link to="/abc">
+            <router-link to="/">
                 <b-navbar-brand> Home </b-navbar-brand>
             </router-link>
 
@@ -9,11 +9,11 @@
 
             <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-                <router-link to="/">
-                <b-navbar-brand> A </b-navbar-brand>
+                <router-link to="/member">
+                <b-navbar-brand> Member </b-navbar-brand>
                 </router-link>
                 <router-link to="/">
-                <b-navbar-brand> B </b-navbar-brand>
+                <b-navbar-brand> ... </b-navbar-brand>
                 </router-link>
             </b-navbar-nav>
             <!-- Right aligned nav items -->
