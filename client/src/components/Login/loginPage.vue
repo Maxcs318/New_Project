@@ -38,11 +38,11 @@
                 <h5>Lastname</h5>
                 <input type="text" v-model="newuser.m_lastname" class="form-control" required>
                 <br>
-                <h5>E-mail</h5>
-                <input type="email" v-model="newuser.m_email" class="form-control" >
+                <!-- <h5>E-mail</h5>
+                <input type="email" v-model="newuser.m_email" class="form-control" required>
                 <br>
-                <!-- <h5>Phone</h5>
-                <input type="text" v-model="newuser.m_phone" class="form-control" >
+                <h5>Phone</h5>
+                <input type="text" v-model="newuser.m_phone" class="form-control" required>
                 <br> -->
                 <h5>Username</h5>
                 <input type="text" v-model="newuser.m_username" class="form-control" required>
@@ -91,7 +91,8 @@ export default {
                 m_phone:'',
                 m_email:'',
                 m_password:''
-            }
+            },
+            register_user:''
         }
     },
     methods:{
@@ -105,17 +106,21 @@ export default {
         },
         onSubmitRegister(){
             this.newuser.m_password = md5(this.newuser.m_password);
+            this.register_user = this.newuser
             // console.log(this.newuser)
-            this.$store.dispatch("Register",this.newuser)
+            this.$store.dispatch("Register",this.register_user)
             .then(() => {
                 this.todo = 'login'  
-                this.newuser.m_firstname =''
-                this.newuser.m_lastname =''
-                this.newuser.m_username =''
-                this.newuser.m_phone =''
-                this.newuser.m_email =''
-                this.newuser.m_password =''
+                setTimeout(() => {
+                    this.newuser.m_firstname =''
+                    this.newuser.m_lastname =''
+                    this.newuser.m_username =''
+                    this.newuser.m_phone =''
+                    this.newuser.m_email =''
+                    this.newuser.m_password =''
+                }, 500)
             })            
+                
         },
         //
         testx(){

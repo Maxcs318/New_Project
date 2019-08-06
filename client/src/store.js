@@ -24,6 +24,10 @@ const store = new Vuex.Store({
         Log_On(state,user){
             state.the_user = user
         },
+        addMember(state,member){
+            // console.log(member)
+            state.members.push(member)
+        },
         updateMember(state,member){
             let index = state.members.findIndex(m => m.m_id == member.m_id)
             if(index > -1){
@@ -50,7 +54,7 @@ const store = new Vuex.Store({
                 })
                 axios.get("http://gamaproject.vue.com/api/get_all_data")
                 .then(response => {
-                    console.log(response.data)
+                    // console.log(response.data)
                     context.commit("initMembers",response.data)
             })
             }else{
@@ -83,7 +87,8 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post("http://gamaproject.vue.com/api/save", JSON.stringify(newuser))
             .then(response => {
-                // console.log(response)
+                console.log(newuser)
+                context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
             })
         },
         updateMember(context,member){
