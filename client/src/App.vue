@@ -1,30 +1,41 @@
 <template>
   <div>
-    <navbar v-if="this.$store.state.the_user != '' "></navbar>
-    <div class="container">
-
+    <div v-if="this.$store.state.statusPage == 'none' ">
+      <center><loadingpage2></loadingpage2></center>
+      <loadingpage></loadingpage>          
+    </div>
+    <div v-else>
+      <navbar></navbar>
+      <div class="container">
+        
+        <transition name="page" mode="out-in">
+          <div>
+            <router-view ></router-view>
+          </div>
+        </transition>
       
-      <transition name="page" mode="out-in">
-        <div>
-          <login-page v-if="this.$store.state.the_user == '' "></login-page>
-          <router-view v-else></router-view>
-        </div>
-      </transition>
-    
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import Nav from './components/navbar/nav';
-  import Login from './components/Login/loginPage';
+  import Loadingpage from './components/loadingpage/loadingData';
+  import Loadingpage2 from './components/loadingpage/loading';
 
   export default {
     components :{
       navbar : Nav,
-      loginPage : Login
+      loadingpage : Loadingpage,
+      loadingpage2 : Loadingpage2
     },
     created(){
+      // this.$store.commit('LoadingPage','none')
+      // setTimeout(() => {
+      //   this.$store.commit('LoadingPage','show')
+      // }, 5000)
+
       this.$store.dispatch("initApp")
     }
     

@@ -19,7 +19,10 @@
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
 
-                <button class="form-control btn-dark" @click="Log_Out"> Logout </button>
+                <button class="form-control btn-dark" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
+                <button v-if="this.$store.state.the_user == '' " class="form-control btn-dark" @click="Log_in"> Log in </button>
+                <button v-if="this.$store.state.the_user != '' " class="form-control btn-dark" @click="Log_Out"> Logout </button>
+
                 <!-- <b-nav-item-dropdown right>
                 <template slot="button-content"><em>User</em></template>
                 <b-dropdown-item href="#">Profile</b-dropdown-item>
@@ -30,26 +33,6 @@
         </b-navbar>
     </div>
     
-    
-    
-    
-    <!-- // Navbar -->
-    <!-- <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <ul class="nav">
-                <li>
-                    <router-link to="/"><h4>Home</h4></router-link>
-                </li>
-                <li>
-                    <button class="form-control btn-dark" @click="Log_Out">
-                        Exit
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
- -->
-
 </template>
 <script>
 export default {
@@ -59,6 +42,12 @@ export default {
             .then(() => {
                 // this.$router.go()
             })
+        },
+        Log_in(){
+            this.$router.push('/login')
+        },
+        register(){
+            this.$router.push('/register')
         }
     }
 }

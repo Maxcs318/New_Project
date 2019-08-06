@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state : {
+        statusPage:'',
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -14,12 +15,16 @@ const store = new Vuex.Store({
         initMembers(state,members){
             state.members = members
         },
+        LoadingPage(state,statusP){
+            state.statusPage = statusP
+        },
         Logining_in(state,now_user){
             state.log_on = now_user
         },
         Log_Out(state){
             state.log_on = null
             state.the_user = ''
+            state.members = ''
         },
         Log_On(state,user){
             state.the_user = user
@@ -51,15 +56,19 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("Log_On",response.data)
-                })
+                }),
                 axios.get("http://gamaproject.vue.com/api/get_all_data")
                 .then(response => {
                     // console.log(response.data)
                     context.commit("initMembers",response.data)
-            })
+                })
             }else{
                 this.state.the_user=''
             }
+        },
+        // load page
+        LoadingPage(context,statusPage){
+            context.commit('LoadingPage',statusPage)
         },
         // login
         Logining_in(context,user){
