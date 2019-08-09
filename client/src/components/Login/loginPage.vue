@@ -47,22 +47,17 @@ export default {
     },
     methods:{
         onSubmitLogin(){
-            // console.log(this.user)
             this.user.m_password = md5(this.password_normal);
             this.$store.dispatch("Logining_in",this.user)
             .then( response => {
-                // this.$router.go()
-                // this.$router.push("/")
                 this.$store.commit('LoadingPage','none')
                 setTimeout(() => {
-                    // this.$router.go()
                     this.$router.push("/")
                     this.$store.commit('LoadingPage','show')
                 }, 5000)
                 this.$store.dispatch("initApp")
             })
-        },
-        
+        },        
         back_register(){
             this.$router.push("/register")
         }

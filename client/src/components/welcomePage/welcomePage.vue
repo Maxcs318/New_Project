@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <!-- <carousel></carousel> -->
+                <carousel></carousel>
             </div>
         </div>
         <div class="row">

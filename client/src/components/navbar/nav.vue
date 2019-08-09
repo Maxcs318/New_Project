@@ -5,7 +5,7 @@
         </b-navbar> -->
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <router-link to="/">
-                <b-navbar-brand> หน้าแรก </b-navbar-brand>
+                <b-navbar-brand> <h2>GAMA</h2> </b-navbar-brand>
             </router-link>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
