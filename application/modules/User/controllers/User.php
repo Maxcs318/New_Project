@@ -1,12 +1,12 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
-    class Api extends CI_Controller
+    class User extends CI_Controller
     {
         public $JSON_DATA;
         public function __construct()
         {
             parent::__construct();
-            $this->load->model("api_model");
+            $this->load->model("user_model");
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
@@ -21,19 +21,19 @@
         // all members
         public function get_all_datamember()
         {
-            echo $this->api_model->get_all_datamember();
+            echo $this->user_model->get_all_datamember();
         }
         // register
         public function save()
         {
-            echo $this->api_model->save($this->JSON_DATA);
+            echo $this->user_model->save($this->JSON_DATA);
         }
         // update member
         public function update()
         {
             $id = $this->JSON_DATA["m_id"];
             unset($this->JSON_DATA["m_id"]);
-            echo $this->api_model->update(
+            echo $this->user_model->update(
                  $this->JSON_DATA,
                 array(
                     "m_id"=>$id
@@ -43,7 +43,7 @@
         // delete member
         public function delete()
         {
-            echo $this->api_model->delete(
+            echo $this->user_model->delete(
                  $this->JSON_DATA
             );
         }
@@ -52,18 +52,18 @@
         // Login 
         public function checkLogin()
         {	
-            $the_user = $this->api_model->checkLogin($this->JSON_DATA);
+            $the_user = $this->user_model->checkLogin($this->JSON_DATA);
             echo $the_user;
         }
         
         public function loadLogin(){
-            $the_userold = $this->api_model->loadLogin($this->JSON_DATA);
+            $the_userold = $this->user_model->loadLogin($this->JSON_DATA);
             echo $the_userold;
         }
         //call by vue 
         public function log_out()
         {
-            $the_userLogout = $this->api_model->log_out($this->JSON_DATA);
+            $the_userLogout = $this->user_model->log_out($this->JSON_DATA);
             echo $the_userLogout;
         }
 

@@ -81,6 +81,7 @@ export default {
             this.register_user = this.newuser
             // console.log(this.newuser)
             this.$store.dispatch("Register",this.register_user)
+            this.$router.push('/login')
             .then(() => {
                 setTimeout(() => {
                     this.newuser.m_firstname =''

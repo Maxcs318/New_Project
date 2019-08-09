@@ -4,7 +4,7 @@
             <div class="container mt-3">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4><center>เพิ่ม ข่าวสาร & กิจกรรม</center></h4>
+                        <h4><center>เพิ่ม หนังสือ</center></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -19,10 +19,10 @@
                             <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
                             <br>
                             หัวเรื่อง
-                            <input type="text" v-model="news.n_title" class="form-control" required>
+                            <input type="text" v-model="news.a_title" class="form-control" required>
                             <br>
                             รายระเอียด
-                            <textarea v-model="news.n_detail" class="form-control" rows="6" ></textarea>
+                            <textarea v-model="news.a_detail" class="form-control" rows="6" ></textarea>
                             <br>
                             <div class="row">
                                 <div class="col-lg-6"></div>
@@ -44,10 +44,10 @@ export default {
     data(){
         return{
             news:{
-                n_title:'',
-                n_detail:'',
-                n_image:'',
-                n_date:''
+                a_title:'',
+                a_detail:'',
+                a_image:'',
+                a_date:''
             },
             url: null,
             fileimage:''
@@ -74,11 +74,11 @@ export default {
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
                     FD.append('news',jsonNews)
-                    this.$store.dispatch("Add_News",FD)
+                    this.$store.dispatch("Add_Book",FD)
                     setTimeout(()=>{
                         this.$router.push('/')
-                    },1000)  
-                this.$swal("Save News Success .", "", "success")
+                    },500)  
+                this.$swal("Save Book Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")
             }

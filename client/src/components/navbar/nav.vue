@@ -60,7 +60,8 @@
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user.m_status == 'admin' ">
                     <template slot="button-content"> Admin </template>
                         <b-dropdown-item @click="addnews">Add News</b-dropdown-item>
-                        
+                        <b-dropdown-item @click="addarticle">Add Article</b-dropdown-item>
+                        <b-dropdown-item @click="addbook">Add Book</b-dropdown-item>
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
@@ -96,7 +97,14 @@ export default {
         },
         addnews(){
             this.$router.push('/addnews')
+        },
+        addarticle(){
+            this.$router.push('/addarticle')
+        },
+        addbook(){
+            this.$router.push('/addbook')
         }
+
     }
 }
 </script>

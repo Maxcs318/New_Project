@@ -1,6 +1,6 @@
 <?php
 
-    Class Api_model extends CI_Model{
+    Class User_model extends CI_Model{
 
         public $tableName;
 

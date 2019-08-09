@@ -1,12 +1,12 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
-    class News extends CI_Controller
+    class Article extends CI_Controller
     {
         // public $JSON_DATA;
         public function __construct()
         {
             parent::__construct();
-            $this->load->model("news_model");
+            $this->load->model("article_model");
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
@@ -16,28 +16,29 @@
             $this->load->library('form_validation');//
 
         }
-        // get all News
-        public function get_all_news()
+        // get all Article
+        public function get_all_article()
         {
-            echo $this->news_model->get_all_news();
+            echo $this->article_model->get_all_article();
         }
-        // insert News
-        public function insert_news()
+        // insert Article
+        public function insert_article()
         {
-            $news = (array)json_decode($this->input->post('news'));
+            $article = (array)json_decode($this->input->post('article'));
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'      => './../client/src/assets/News/',
+                    'upload_path'      => './../client/src/assets/Article/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('userfile')){
                     $data = array('upload_data' => $this->upload->data());
-                    $news['n_image'] = $_FILES['userfile']['name'];
+                    
+                    $article['a_image'] = $_FILES['userfile']['name'];
                     $createM ;
                         if(date('m')==1){
                             $createM = 'มกราคม';
@@ -65,10 +66,10 @@
                             $createM = 'ธันวาคม';                            
                         }
                     $createY = date('Y')+543;
-                    $news['n_date'] = date('d').' '.$createM.' '.$createY;
-                    $thisID = $this->news_model->insert_news($news);
-                    $news['n_id']=$thisID;
-                    echo json_encode($news);
+                    $article['a_date'] = date('d').' '.$createM.' '.$createY;
+                    $thisID = $this->article_model->insert_article($article);
+                    $article['a_id']=$thisID;
+                    echo json_encode($article);
 
                 }else{
                     $error = array('error' => $this->upload->display_errors());

@@ -34,8 +34,8 @@
       loadingpage2 : Loadingpage2
     },
     created(){
-      this.$store.dispatch("initNews")
       this.$store.dispatch("initApp")
+      this.$store.dispatch("initData")
     }
     
   }

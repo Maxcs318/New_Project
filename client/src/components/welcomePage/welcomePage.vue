@@ -36,7 +36,8 @@ export default {
         book : Book
     },
     created(){
-      this.$store.dispatch("initNews")
+      this.$store.dispatch("initApp")
+      this.$store.dispatch("initData")
     }
 }
 </script>

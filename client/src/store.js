@@ -8,6 +8,7 @@ const store = new Vuex.Store({
     state : {
         statusPage:'',
         news:[],
+        article:[],
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -18,6 +19,9 @@ const store = new Vuex.Store({
         },
         NewsAll(state,news){
             state.news = news
+        },
+        ArticleAll(state,article){
+            state.article = article
         },
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -39,6 +43,9 @@ const store = new Vuex.Store({
         Add_News(state,Newnews){
             state.news.pop(Newnews)
         },
+        Add_Article(state,Newarticle){
+            state.article.pop(Newarticle)
+        }
 
     },
     actions : {
@@ -47,7 +54,7 @@ const store = new Vuex.Store({
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
-                axios.post("http://gamaproject.vue.com/api/loadLogin", JSON.stringify(user))
+                axios.post("http://gamaproject.vue.com/user/loadLogin", JSON.stringify(user))
                 .then(response => {
                     // console.log(response)
                     context.commit("Log_On",response.data)
@@ -56,11 +63,17 @@ const store = new Vuex.Store({
                 this.state.the_user=''
             }
         },
-        initNews(context){
+        initData(context){
             axios.get("http://gamaproject.vue.com/news/get_all_news")
                 .then(response => {
                     // console.log(response)
                     context.commit("NewsAll",response.data)
+            })
+            ,
+            axios.get("http://gamaproject.vue.com/article/get_all_article")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("ArticleAll",response.data)
             })
         },
         // load page
@@ -70,7 +83,7 @@ const store = new Vuex.Store({
         // login
         Logining_in(context,user){
             // console.log(user)            
-            axios.post("http://gamaproject.vue.com/api/checkLogin", JSON.stringify(user))
+            axios.post("http://gamaproject.vue.com/user/checkLogin", JSON.stringify(user))
             .then(response => {
                 // console.log(response)
                     if(response.data != '' && response.data != null){
@@ -83,7 +96,7 @@ const store = new Vuex.Store({
         },
         Log_Out(context){
             var user_logout = { token : this.state.log_on}
-            axios.post("http://gamaproject.vue.com/api/log_out", JSON.stringify(user_logout))
+            axios.post("http://gamaproject.vue.com/user/log_out", JSON.stringify(user_logout))
             .then(response => {
                 localStorage.removeItem('The_User')
                 context.commit("Log_Out")
@@ -91,7 +104,7 @@ const store = new Vuex.Store({
             })
         },
         Register(context,newuser){
-            axios.post("http://gamaproject.vue.com/api/save", JSON.stringify(newuser))
+            axios.post("http://gamaproject.vue.com/user/save", JSON.stringify(newuser))
             .then(response => {
                 // console.log(newuser)
                 context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
@@ -103,6 +116,13 @@ const store = new Vuex.Store({
             .then(response =>{
                 // console.log('Response Data',response.data)
                 context.commit("Add_News",response.data)
+            })
+        },
+        Add_Article(context,article){
+            axios.post('http://gamaproject.vue.com/article/insert_article',article)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                context.commit("Add_Article",response.data)
             })
         },
         
