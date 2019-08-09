@@ -14,7 +14,7 @@
 
         }
         // all member
-        public function get_all()
+        public function get_all_datamember()
         {
             return json_encode($this->db->get($this->tableName)->result());
         }

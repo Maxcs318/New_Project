@@ -19,9 +19,9 @@
 
         }
         // all members
-        public function get_all_data()
+        public function get_all_datamember()
         {
-            echo $this->api_model->get_all();
+            echo $this->api_model->get_all_datamember();
         }
         // register
         public function save()

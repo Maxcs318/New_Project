@@ -7,6 +7,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state : {
         statusPage:'',
+        news:[],
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -14,6 +15,9 @@ const store = new Vuex.Store({
     mutations : {
         initMembers(state,members){
             state.members = members
+        },
+        NewsAll(state,news){
+            state.news = news
         },
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -30,25 +34,16 @@ const store = new Vuex.Store({
             state.the_user = user
         },
         addMember(state,member){
-            // console.log(member)
             state.members.push(member)
         },
-        updateMember(state,member){
-            let index = state.members.findIndex(m => m.m_id == member.m_id)
-            if(index > -1){
-                state.members[index] = member
-            }
-        },
-        deleteMember(state,memberID){
-            let index = state.members.findIndex(m => m.m_id == memberID)
-            if(index > -1){
-                state.members.splice(index,1)
-            }
+        Add_News(state,Newnews){
+            state.news.pop(Newnews)
         },
 
     },
     actions : {
         initApp(context){
+            // check login
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
@@ -56,15 +51,17 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("Log_On",response.data)
-                }),
-                axios.get("http://gamaproject.vue.com/api/get_all_data")
-                .then(response => {
-                    // console.log(response.data)
-                    context.commit("initMembers",response.data)
                 })
             }else{
                 this.state.the_user=''
             }
+        },
+        initNews(context){
+            axios.get("http://gamaproject.vue.com/news/get_all_news")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("NewsAll",response.data)
+            })
         },
         // load page
         LoadingPage(context,statusPage){
@@ -96,31 +93,28 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post("http://gamaproject.vue.com/api/save", JSON.stringify(newuser))
             .then(response => {
-                console.log(newuser)
+                // console.log(newuser)
                 context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
             })
         },
-        updateMember(context,member){
-            // console.log(member)
-            return axios.post("http://gamaproject.vue.com/api/update", JSON.stringify(member))
-            .then(response => {
-                context.commit("updateMember",member)
+        //add news
+        Add_News(context,news){
+            axios.post('http://gamaproject.vue.com/news/insert_news',news)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                context.commit("Add_News",response.data)
             })
         },
-        deleteMember(context,memberID){
-            return axios.post("http://gamaproject.vue.com/api/delete", JSON.stringify({m_id : memberID}))
-            .then(response => {
-                context.commit("deleteMember",memberID)
-            })
-            // console.log(memberID)
-        },
+        
         
     },
     getters : {
         getMembers(state){
             return state.members
         },
-        
+        getNews(state){
+            return state.news
+        }
     }
 
 })

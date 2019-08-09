@@ -15,27 +15,26 @@
         </transition>
       
       </div>
+      <foot></foot>
     </div>
   </div>
 </template>
 
 <script>
   import Nav from './components/navbar/nav';
+  import Footer from './components/footer/foot.vue';
   import Loadingpage from './components/loadingpage/loadingData';
   import Loadingpage2 from './components/loadingpage/loading';
 
   export default {
     components :{
       navbar : Nav,
+      foot : Footer,
       loadingpage : Loadingpage,
       loadingpage2 : Loadingpage2
     },
     created(){
-      // this.$store.commit('LoadingPage','none')
-      // setTimeout(() => {
-      //   this.$store.commit('LoadingPage','show')
-      // }, 5000)
-
+      this.$store.dispatch("initNews")
       this.$store.dispatch("initApp")
     }
     

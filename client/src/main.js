@@ -2,11 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import { router } from "./router";
 import store from "./store"
-import VueSession from 'vue-session'
+import VueSwal from 'vue-swal'
+
 
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
-Vue.use(VueSession)
+Vue.use(VueSwal)
 
 
 new Vue({

@@ -59,7 +59,6 @@ export default {
                     this.$router.push("/")
                     this.$store.commit('LoadingPage','show')
                 }, 5000)
-
                 this.$store.dispatch("initApp")
             })
         },
