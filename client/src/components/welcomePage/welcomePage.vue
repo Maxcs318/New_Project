@@ -20,20 +20,27 @@
                 <book></book>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <training-course></training-course>
+            </div>
+        </div>
         <br>
     </div>
 </template>
 <script>
 import Carousel from './homepage/Carousel'
 import News from './homepage/News'
-import Article from './homepage/article'
-import Book from './homepage/book'
+import Article from './homepage/Article'
+import Book from './homepage/Book'
+import TrainingCourse from './homepage/TrainingCourse'
 export default {
     components:{
         carousel : Carousel,
         news : News,
         thearticle : Article,
-        book : Book
+        book : Book,
+        trainingCourse:TrainingCourse
     },
     created(){
       this.$store.dispatch("initApp")

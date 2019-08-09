@@ -9,6 +9,7 @@ const store = new Vuex.Store({
         statusPage:'',
         news:[],
         article:[],
+        product:[],
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -22,6 +23,9 @@ const store = new Vuex.Store({
         },
         ArticleAll(state,article){
             state.article = article
+        },
+        ProductAll(state,product){
+            state.product = product
         },
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -45,6 +49,9 @@ const store = new Vuex.Store({
         },
         Add_Article(state,Newarticle){
             state.article.pop(Newarticle)
+        },
+        Add_Product(state,Newproduct){
+            state.product.pop(Newproduct)
         }
 
     },
@@ -56,7 +63,6 @@ const store = new Vuex.Store({
                 // console.log(user)
                 axios.post("http://gamaproject.vue.com/user/loadLogin", JSON.stringify(user))
                 .then(response => {
-                    // console.log(response)
                     context.commit("Log_On",response.data)
                 })
             }else{
@@ -74,6 +80,11 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("ArticleAll",response.data)
+            }),
+            axios.get("http://gamaproject.vue.com/product/get_all_product")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("ProductAll",response.data)
             })
         },
         // load page
@@ -125,6 +136,13 @@ const store = new Vuex.Store({
                 context.commit("Add_Article",response.data)
             })
         },
+        Add_Product(context,product){
+            axios.post('http://gamaproject.vue.com/product/insert_product',product)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                context.commit("Add_Product",response.data)
+            })
+        },
         
         
     },
@@ -134,6 +152,26 @@ const store = new Vuex.Store({
         },
         getNews(state){
             return state.news
+        },
+        getArticle(state){
+            return state.article
+        },
+        getBook(state){
+            var book 
+            var coppyB
+            for(var i = 0; i < state.product.length; i++){
+                coppyB = state.product[i]
+                if(coppyB['p_type'] == 'book'){
+                    book = coppyB
+                    // book.pop(coppyB);
+                }
+            }
+            return book
+        },
+        getTrainingCourse(state){
+            var trainingC = state.product
+
+            return trainingC
         }
     }
 

@@ -6,7 +6,7 @@ import Register from "./components/Login/registerPage.vue"
 import WelcomePage from "./components/welcomePage/welcomePage.vue"
 import addNews from "./components/AddData/addNews.vue"
 import addArticle from "./components/AddData/addArticle.vue"
-import addBook from "./components/AddData/addBook.vue"
+import addProduct from "./components/AddData/addProduct.vue"
 
 Vue.use(VueRouter)
 
@@ -17,7 +17,7 @@ export const router = new VueRouter({
         { path : "/register",component : Register },
         { path : "/addnews",component : addNews },
         { path : "/addarticle",component : addArticle },
-        { path : "/addbook",component : addBook },
+        { path : "/addproduct",component : addProduct },
         
         
         
