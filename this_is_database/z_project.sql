@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2019 at 09:14 AM
+-- Generation Time: Aug 09, 2019 at 10:19 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,6 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `article`
+--
+
+CREATE TABLE `article` (
+  `a_id` int(11) NOT NULL,
+  `a_title` text NOT NULL,
+  `a_detail` text NOT NULL,
+  `a_date` text NOT NULL,
+  `a_image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `article`
+--
+
+INSERT INTO `article` (`a_id`, `a_title`, `a_detail`, `a_date`, `a_image`) VALUES
+(1, 'Iron-cat 4', 'Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4Iron-cat 4', '09 สิงหาคม 2562', '09082019150155PXzaYKlybN.jpg'),
+(2, 'Iron-cat 5', 'ต่อจาก 4 นั่นแหละ', '09 สิงหาคม 2562', '09082019151749TOkyl2rIYq.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logged`
 --
 
@@ -40,7 +62,8 @@ CREATE TABLE `logged` (
 --
 
 INSERT INTO `logged` (`l_id`, `time`, `l_id_m_id`, `token`) VALUES
-(16, '2019-08-09 06:18:18', '1', '090820191318181');
+(21, '2019-08-09 07:36:40', '1', '090820191436401'),
+(22, '2019-08-09 07:45:56', '1', '090820191445561');
 
 -- --------------------------------------------------------
 
@@ -72,7 +95,9 @@ INSERT INTO `member` (`m_id`, `m_firstname`, `m_lastname`, `m_username`, `m_stat
 (5, 'kkk', 'kkk', 'kkk', 'user', '', '', 'cb42e130d1471239a27fca6228094f0e', ''),
 (6, 'ooo', 'ooo', 'ooo', 'user', '', '', '7f94dd413148ff9ac9e9e4b6ff2b6ca9', ''),
 (7, 'aaa', 'aaa', 'aaa', 'user', '', '', '47bce5c74f589f4867dbd57e9ca9f808', ''),
-(8, 'ttt', 'ttt', 'ttt', 'user', '', '', '9990775155c3518a0d7917f7780b24aa', '');
+(8, 'ttt', 'ttt', 'ttt', 'user', '', '', '9990775155c3518a0d7917f7780b24aa', ''),
+(9, 'xyz', 'cb', 'asd', 'user', '', '', '7815696ecbf1c96e6894b779456d330e', ''),
+(10, 'max', 'max', 'max2', 'user', '', '', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', '');
 
 -- --------------------------------------------------------
 
@@ -93,46 +118,26 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`n_id`, `n_title`, `n_detail`, `n_date`, `n_image`) VALUES
-(1, 'head', 'detail', '08 สิงหาคม 2562', '080820191614203rwQgd8hOb.png'),
-(2, 'a', 'asd', '09 สิงหาคม 2562', '090820191048527tlpEQYqJx.jpg'),
-(3, 'g', 'ghj', '09 สิงหาคม 2562', '09082019104907rqH2omBRdF.jpg'),
-(4, 'u', 'rty', '09 สิงหาคม 2562', '09082019104930Zah1Rg5hSk.png'),
-(5, 'SS', 'asdf sdfsad fasdfs dgfasd gsda gasd gsd g asg sad gads g sd gsa dg sda gas dg rd hrt jytk yiu ui yl yiul o . io. ip /ui . u, y jm gd ms fmn gf sn gn g nfg jn yt kj krutk  ytuk yu k edgtk  edk ed k r uk ruk r uk edt gk et ks t k tu kr t kty k r tk ur k d k  tuk  rfdt k gtkm gh dm yeke yke k e', '09 สิงหาคม 2562', '090820191111303AVLAcr1Er.jpg'),
-(6, 'S15', 'asd\nsgsg\nsdfgsadg\nsadgsa\ngasd\ngasdg\n', '09 สิงหาคม 2562', '09082019111416Io9txSMInj.jpg'),
-(7, 'cat', 'cat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcatcat catcat', '09 สิงหาคม 2562', '09082019111629Dhw8AcBZJQ.jpg'),
-(8, 'JPG', 'a', '09 สิงหาคม 2562', '09082019111855u1biSHzBJX.png'),
-(9, 'SS44', 'a', '09 สิงหาคม 2562', '090820191122210CpMQx4tMy.jpg'),
-(10, 'ad', 'gg\n5\n4', '09 สิงหาคม 2562', '090820191123599TxW5eMjS0.jpg'),
-(11, 'ka', 'asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.asd l \'; m,.\n5\n', '09 สิงหาคม 2562', '09082019113436T6ecLIzun6.jpg'),
-(12, 'Cattwo', 'cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two cat two ', '09 สิงหาคม 2562', '09082019114256ZbAj7LcSuu.jpg'),
-(13, 'cat t', 'cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t cat t t t \n', '09 สิงหาคม 2562', '09082019115238ucmjxdcSA2.jpg'),
-(14, 'cat fool', 'cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l cat f o o l ', '09 สิงหาคม 2562', '09082019115523YTE0KOzkk8.jpg'),
-(15, 'cat fi', 'cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi cat fi ', '09 สิงหาคม 2562', '09082019115722W4dpDep9cj.jpg'),
-(16, 'cat sig', 'cat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sigcat sig cat sig', '09 สิงหาคม 2562', '09082019115809ZCwG02akr6.jpg'),
-(17, 'cat savn', 'cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn cat savn ', '09 สิงหาคม 2562', '090820191201201o3eaGvLX6.jpg'),
-(18, 'cat e g g', 'cat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g gcat e g g', '09 สิงหาคม 2562', '0908201912040020JT7b1dim.jpg'),
-(19, 'cat ni', ' n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i n  i i i i i i', '09 สิงหาคม 2562', '090820191206369jqbfQrGsd.jpg'),
-(20, 'cat ten', 'cat ten cat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat tencat ten', '09 สิงหาคม 2562', '09082019120902Wfhel33P7A.jpg'),
-(21, 'cat ele', 'cat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat elecat ele', '09 สิงหาคม 2562', '09082019121247Sy4d6NQrHj.jpg'),
-(22, 'cat twe', 'cat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twecat twe', '09 สิงหาคม 2562', '090820191226160lKrhlenfS.jpg'),
-(23, 'cat th', 'cat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat thcat th', '09 สิงหาคม 2562', '090820191227551cOZzaQMym.jpg'),
-(24, 'cat ft', 'cat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ftcat ft', '09 สิงหาคม 2562', '09082019122832n6aWsFqGEu.jpg'),
-(25, 'cat fit', 'cat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fitcat fit', '09 สิงหาคม 2562', '0908201912314209k5VsotJp.jpg'),
-(26, 'cat st', 'cat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat stcat st', '09 สิงหาคม 2562', '09082019123232IjKbqlYkX7.jpg'),
-(27, 'cat set', 'cat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat setcat set\n', '09 สิงหาคม 2562', '09082019123444jaA0WER4Uy.jpg'),
-(28, 'cat et', 'cat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat etcat et', '09 สิงหาคม 2562', '09082019123611QHPE4oYeSt.jpg'),
-(29, 'cat null', 'cat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat nullcat null', '09 สิงหาคม 2562', '09082019124513FgaIbxwQX7.jpg'),
-(30, 'cat null 2', 'cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2cat null 2', '09 สิงหาคม 2562', '09082019124800mnkLNb6wSJ.jpg'),
-(31, 'cat null 3', 'cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3cat null 3', '09 สิงหาคม 2562', '09082019124947AY4AngQvTz.jpg'),
-(32, 'S222', ' S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3 S 3', '09 สิงหาคม 2562', '09082019125137FB9tcOKPcr.jpg'),
-(33, 'JPG', 'ag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h jag h j\n\n', '09 สิงหาคม 2562', '09082019125244fsLD93iI3W.png'),
-(34, 'Cat', 'cat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat againcat again\n', '09 สิงหาคม 2562', '09082019125357PHI6FDxVET.jpg'),
-(35, 'ah', 'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'a h j k l  ; \'\n', '09 สิงหาคม 2562', '09082019125457EGDXs0mgbx.png'),
-(36, 'Ironแมว มหาปะลัยแมวเกราะเหล็ก', 'ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat ironcat \n', '09 สิงหาคม 2562', '09082019141111QvMPMpyMS0.jpg');
+(1, 'First News', 'First NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst NewsFirst News', '09 สิงหาคม 2562', '09082019150024t7cOlWKSAM.png'),
+(2, 'Second News', 'Second NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond NewsSecond News', '09 สิงหาคม 2562', '09082019150413rZqDvFddML.png'),
+(3, 'Third News', 'Third NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird NewsThird News', '09 สิงหาคม 2562', '09082019150538dqEi1JDxud.png'),
+(4, '4', '4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 ', '09 สิงหาคม 2562', '090820191506457UZem5eaDf.png'),
+(5, '5 ', '5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 \n', '09 สิงหาคม 2562', '09082019150809lZFJ5K9hOQ.png'),
+(6, '6', 'six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six six ', '09 สิงหาคม 2562', '09082019150930c2a0LEweth.png'),
+(7, 'seven', 'seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven seven ', '09 สิงหาคม 2562', '09082019151042et3bMGNViA.png'),
+(8, '8 ', '8 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 88 8 8 8\n', '09 สิงหาคม 2562', '09082019151447qBnbBdOqZQ.png'),
+(9, '9', '9 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 99 9 99 9', '09 สิงหาคม 2562', '09082019151537mANNBpVkt6.png'),
+(10, '10', 'ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten ten \n', '09 สิงหาคม 2562', '090820191516536Kv48Z9xTO.png');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `article`
+--
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- Indexes for table `logged`
@@ -157,22 +162,28 @@ ALTER TABLE `news`
 --
 
 --
+-- AUTO_INCREMENT for table `article`
+--
+ALTER TABLE `article`
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `logged`
 --
 ALTER TABLE `logged`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `n_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `n_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
