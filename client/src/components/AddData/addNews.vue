@@ -25,18 +25,6 @@
                             <textarea v-model="news.n_detail" class="form-control" rows="6" ></textarea>
                             <br>
                             <div class="row">
-                                <div class="col-lg-6 col-xs-6">
-                                    ราคา
-                                    <input type="text" v-model="news.n_price" class="form-control" required>
-                                    <br>
-                                </div>
-                                <div class="col-lg-6 col-xs-6">
-                                    จำนวนที่จำกัดไว้
-                                    <input type="text" v-model="news.n_quantity" class="form-control" required>
-                                    <br>
-                                </div>                                 
-                            </div>
-                            <div class="row">
                                 <div class="col-lg-6"></div>
                                 <div class="col-lg-6">
                                     <button type="submit" class="form-control btn-primary col-12"> Save </button>
@@ -59,8 +47,6 @@ export default {
                 n_title:'',
                 n_detail:'',
                 n_image:'',
-                n_price:'',
-                n_quantity:'',
                 n_date:''
             },
             url: null,
