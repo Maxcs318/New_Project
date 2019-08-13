@@ -7,6 +7,7 @@ import WelcomePage from "./components/welcomePage/welcomePage.vue"
 import addNews from "./components/AddData/addNews.vue"
 import addArticle from "./components/AddData/addArticle.vue"
 import addProduct from "./components/AddData/addProduct.vue"
+import News from "./components/News_Activities/News_Activities.vue"
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,8 @@ export const router = new VueRouter({
         { path : "/addnews",component : addNews },
         { path : "/addarticle",component : addArticle },
         { path : "/addproduct",component : addProduct },
+        { path : "/newsandactivities",component : News },
+
         
         
         

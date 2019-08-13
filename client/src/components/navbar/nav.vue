@@ -5,12 +5,43 @@
         </b-navbar> -->
         <b-navbar toggleable="lg" type="dark" variant="dark">
             <router-link to="/">
-                <b-navbar-brand> <h2>GAMA</h2> </b-navbar-brand>
+                <b-navbar-brand> <h2>GAMA Thailand</h2> </b-navbar-brand>
             </router-link>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav>
+                    <router-link to="/aboutus">
+                        <b-navbar-brand> <h5>เกี่ยวกับสมาชิก</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/newsandactivities">
+                        <b-navbar-brand> <h5>ข่าสารกิจกรรม</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/articles">
+                        <b-navbar-brand> <h5>บทความ</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/training_courses">
+                        <b-navbar-brand> <h5>หลักสูตร & อบรม</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/books">
+                        <b-navbar-brand> <h5>หนังสือ</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/contac">
+                        <b-navbar-brand> <h5>ติดต่อเรา</h5> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+            
             <b-navbar-nav>
                 <!-- <b-nav-item-dropdown right>
                     <template slot="button-content"> 
@@ -26,6 +57,7 @@
                     <b-dropdown-item href="#">Profile</b-dropdown-item>
                     <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                 </b-nav-item-dropdown>
+
                 <b-nav-item-dropdown >
                     <template slot="button-content">
                         <b-navbar-brand> บทความ </b-navbar-brand>

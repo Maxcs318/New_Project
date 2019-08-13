@@ -18,11 +18,6 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            count:0
-        }
-    },
     methods:{
         getImgUrlProduct(picP) {
             return require('../../../assets/Product/'+picP)

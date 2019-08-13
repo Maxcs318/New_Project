@@ -4,7 +4,7 @@
         <h5>ข่าวและกิจกรรมล่าสุด</h5>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6" v-for="(news,index) in this.$store.state.news.slice(0,4)" :key="index" >
+                <div class="col-lg-3 col-md-6" v-for="(news,index) in the_news.slice(0,4)" :key="index" >
                     <img :src="getImgUrl(news.n_image)" width="100%">
                     <h5>{{news.n_title}}</h5>
                     <p style="text-align: right;">{{news.n_date}}</p>
@@ -21,6 +21,12 @@ export default {
         getImgUrl(pic) {
             return require('../../../assets/News/'+pic)
         }
+    },
+    computed:{
+        the_news(){
+            return this.$store.getters.getNews
+        }
     }
+    
 }
 </script>
