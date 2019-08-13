@@ -12,7 +12,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <router-link to="/aboutus">
+                    <router-link to="/aboutmember">
                         <b-navbar-brand> <h5>เกี่ยวกับสมาชิก</h5> </b-navbar-brand>
                     </router-link>
                 </b-navbar-nav>
@@ -37,7 +37,7 @@
                     </router-link>
                 </b-navbar-nav>
                 <b-navbar-nav>
-                    <router-link to="/contac">
+                    <router-link to="/contact">
                         <b-navbar-brand> <h5>ติดต่อเรา</h5> </b-navbar-brand>
                     </router-link>
                 </b-navbar-nav>
