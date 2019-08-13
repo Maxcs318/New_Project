@@ -157,20 +157,25 @@ const store = new Vuex.Store({
             return state.article
         },
         getBook(state){
-            var book 
-            var coppyB
-            for(var i = 0; i < state.product.length; i++){
-                coppyB = state.product[i]
-                if(coppyB['p_type'] == 'book'){
-                    book = coppyB
-                    // book.pop(coppyB);
+            var product = state.product
+            var booklist =[]
+            // = this.book
+                for(var i=0; i<product.length; i++){
+                    if(product[i].p_type == 'book'){
+                        booklist.push(product[i])
+                    }
                 }
-            }
-            return book
+            return booklist
         },
         getTrainingCourse(state){
-            var trainingC = state.product
-
+            var product = state.product
+            var trainingC =[]
+            // = this.book
+                for(var i=0; i<product.length; i++){
+                    if(product[i].p_type == 'training_course'){
+                        trainingC.push(product[i])
+                    }
+                }
             return trainingC
         }
     }
