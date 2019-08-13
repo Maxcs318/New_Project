@@ -21,8 +21,8 @@
 </template>
 
 <script>
-  import Nav from './components/navbar/nav';
-  import Footer from './components/footer/foot.vue';
+  import Nav from './components/Navbar/nav';
+  import Footer from './components/Footer/foot.vue';
   import Loadingpage from './components/loadingpage/loadingData';
   import Loadingpage2 from './components/loadingpage/loading';
 

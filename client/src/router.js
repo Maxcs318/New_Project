@@ -3,11 +3,11 @@ import VueRouter from "vue-router"
 
 import Login from "./components/Login/loginPage.vue"
 import Register from "./components/Login/registerPage.vue"
-import WelcomePage from "./components/welcomePage/welcomePage.vue"
+import WelcomePage from "./components/WelcomePage/welcomePage.vue"
 import addNews from "./components/AddData/addNews.vue"
 import addArticle from "./components/AddData/addArticle.vue"
 import addProduct from "./components/AddData/addProduct.vue"
-import News from "./components/News_Activities/News_Activities.vue"
+import News from "./components/News_Activities/news_activities.vue"
 
 Vue.use(VueRouter)
 

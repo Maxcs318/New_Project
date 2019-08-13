@@ -1,7 +1,7 @@
 <template>
     <div>
         <br>
-        <h5>Training Course</h5>
+        <h5>หลักสูตรอบรม</h5>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6" v-for="(product,index) in trainingCourse.slice(0,4)" :key="index">
