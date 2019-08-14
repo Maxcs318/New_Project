@@ -1,9 +1,6 @@
 <template>
     <div> 
-        <!-- <b-navbar toggleable="lg" type="dark" variant="dark">
-
-        </b-navbar> -->
-        <b-navbar toggleable="lg" type="dark" variant="dark">
+        <b-navbar toggleable="lg" type="dark" variant="primary">
             <router-link to="/">
                 <b-navbar-brand> <h2>GAMA Thailand</h2> </b-navbar-brand>
             </router-link>
@@ -42,52 +39,9 @@
                     </router-link>
                 </b-navbar-nav>
             
-            <b-navbar-nav>
-                <!-- <b-nav-item-dropdown right>
-                    <template slot="button-content"> 
-                        <b-navbar-brand> เกี่ยวกับสมาชิก </b-navbar-brand>
-                    </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                </b-nav-item-dropdown>
-                <b-nav-item-dropdown right>
-                    <template slot="button-content">
-                        <b-navbar-brand> ข่าวกิจกรรม </b-navbar-brand>
-                    </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                </b-nav-item-dropdown>
-
-                <b-nav-item-dropdown >
-                    <template slot="button-content">
-                        <b-navbar-brand> บทความ </b-navbar-brand>
-                    </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                </b-nav-item-dropdown>
-                    
-                <router-link to="/">
-                    <b-navbar-brand> หลักสูตร&อบรม </b-navbar-brand>
-                </router-link>
-                <router-link to="/">
-                    <b-navbar-brand> หนังสือ </b-navbar-brand>
-                </router-link>
-                <b-nav-item-dropdown >
-                    <template slot="button-content">
-                        <b-navbar-brand> ติดต่อเรา </b-navbar-brand>
-                    </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                </b-nav-item-dropdown> -->
-            
-            </b-navbar-nav>
-            
-            <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
-
-                <button class="form-control btn-dark" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
-                <button v-if="this.$store.state.the_user == '' " class="form-control btn-dark" @click="Log_in"> Log in </button>
-                
+                <button class="form-control btn-primary" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
+                <button v-if="this.$store.state.the_user == '' " class="form-control btn-primary" @click="Log_in"> Log in </button>
 
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user.m_status == 'admin' ">
                     <template slot="button-content"> Admin </template>
@@ -98,20 +52,29 @@
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
                         <b-dropdown-item @click="profile">Profile</b-dropdown-item>
+                        <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="Log_Out">
                             Log Out
-                            <!-- <button class="form-control btn-dark" > Logout </button> -->
                         </b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
         </b-navbar>
     </div>
-    
 </template>
 <script>
+
 export default {
+    data(){
+        return {
+            active : false
+        }  
+    },
     methods:{
+        mouseOver: function(){
+            this.active = !this.active;   
+        }
+        ,
         Log_Out(){
             this.$store.dispatch("Log_Out")
             .then(() => {
@@ -140,4 +103,3 @@ export default {
     }
 }
 </script>
-

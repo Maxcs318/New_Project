@@ -13,7 +13,7 @@ import Articles from "./components/Articles/articles.vue"
 import TrainingCourses from "./components/Training_Courses/training_courses.vue"
 import Books from "./components/Books/books.vue"
 import Contact from "./components/Contact/contact.vue"
-
+import thisNews from './components/News_Activities/news_activity.vue';
 Vue.use(VueRouter)
 
 export const router = new VueRouter({
@@ -32,6 +32,8 @@ export const router = new VueRouter({
         { path : "/books",component : Books },
         { path : "/contact",component : Contact },
         // end router in navbar
+        { path : "/newsandactivity/:NewsID",name:"newsandactivity",component : thisNews },
+
 
 
         
