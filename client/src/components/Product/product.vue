@@ -57,7 +57,12 @@ export default {
                 if(this.amount==''||this.amount==null){
                     this.amount = 0
                 }
-                this.total = this.amount*this.thisProduct.p_price
+
+                if(this.$store.state.the_user.m_status == 'admin'){
+                    this.total = this.amount*this.thisProduct.p_price2
+                }else{
+                    this.total = this.amount*this.thisProduct.p_price
+                }
             }else{
                 this.total = 0
             }
