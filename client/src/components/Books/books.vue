@@ -2,13 +2,14 @@
     <div class="container">
         <h4 class="mt-3">หนังสือ</h4> <br>
         <div class="row">
-            <div class="col-lg-3 col-md-6" v-for="(product,index) in book.slice(0,4)" :key="index">
+            <div class="col-lg-3 col-md-6" v-for="(product,index) in book" :key="index">
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPage(product.p_id)">
                 <h5>{{product.p_title}}</h5>
-                <p style="text-align: right;">{{product.p_date}}</p>
-                <!-- <p style="text-align: right;">{{product.p_type}}</p> -->
-                <p style="text-indent: 2em;">{{product.p_detail.slice(0,60)}}</p>
-                <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
+                <!-- <p style="text-align: right;">{{product.p_date}}</p> -->
+                <p style="text-align: center;">{{product.p_price}} ฿</p>
+                <!-- <p style="text-indent: 2em;">{{product.p_detail.slice(0,60)}}</p> -->
+                <button class="form-control btn-primary"> สั่งซื้อ </button>
+                <br>
             </div>
         </div>
     </div>
