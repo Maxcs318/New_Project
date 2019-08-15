@@ -3,7 +3,7 @@
         <h4 class="mt-3">หนังสือ</h4> <br>
         <div class="row">
             <div class="col-lg-3 col-md-6" v-for="(product,index) in book.slice(0,4)" :key="index">
-                    <img :src="getImgUrlProduct(product.p_image)" width="100%">
+                    <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPage(product.p_id)">
                     <h5>{{product.p_title}}</h5>
                     <p style="text-align: right;">{{product.p_date}}</p>
                     <!-- <p style="text-align: right;">{{product.p_type}}</p> -->
@@ -18,6 +18,9 @@ export default {
     methods:{
         getImgUrlProduct(pic) {
             return require('../../assets/Product/'+pic)
+        },
+        seethisPage(thisproduct){
+            this.$router.push({name:'product',params:{ProductID:thisproduct}});
         }
     },
     computed:{

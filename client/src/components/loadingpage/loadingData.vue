@@ -4,7 +4,7 @@
             <div class="col-lg-12 col-xs-12">
                 <svg viewBox="0 0 960 300">
                     <symbol id="s-text">
-                        <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'none'">Loading . . .</text>
+                        <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'none'">GAMA </text>
                         <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'save'">Saving . . .</text>
                     </symbol>
                     <g class = "g-ants">

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="this.$store.state.statusPage == 'none' ">
-      <center><loadingpage2></loadingpage2></center>
+    <div class="container" v-if="this.$store.state.statusPage == 'none' ">
+      <!-- <center><loadingpage2></loadingpage2></center> -->
       <loadingpage></loadingpage>          
     </div>
     <div v-else>

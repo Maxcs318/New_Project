@@ -156,6 +156,9 @@ const store = new Vuex.Store({
         getArticle(state){
             return state.article
         },
+        getProduct(state){
+            return state.product
+        },
         getBook(state){
             var product = state.product
             var booklist =[]

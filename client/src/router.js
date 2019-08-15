@@ -15,6 +15,7 @@ import Books from "./components/Books/books.vue"
 import Contact from "./components/Contact/contact.vue"
 import thisNews from './components/News_Activities/news_activity.vue';
 import thisArticle from './components/Articles/article.vue';
+import product from './components/Product/product.vue';
 Vue.use(VueRouter)
 
 export const router = new VueRouter({
@@ -35,6 +36,8 @@ export const router = new VueRouter({
         // end router in navbar
         { path : "/newsandactivity/:NewsID",name:"newsandactivity",component : thisNews },
         { path : "/article/:ArticleID",name:"article",component : thisArticle },
+
+        { path : "/product/:ProductID",name:"product",component : product },
 
 
 

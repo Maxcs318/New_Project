@@ -17,7 +17,8 @@ export default {
     methods:{
         getImgUrlArticle(pic) {
             return require('../../assets/Article/'+pic)
-        },seethisPage(thisarticle){
+        },
+        seethisPage(thisarticle){
             this.$router.push({name:'article',params:{ArticleID:thisarticle}});
         }
     },
