@@ -25,6 +25,13 @@
                 <training-course></training-course>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><br>
+                <button class="form-control btn-primary" @click="scrollToTop">Top</button>
+            </div>
+        </div>
         <br>
     </div>
 </template>
@@ -35,6 +42,11 @@ import Article from './homepage/Article'
 import Book from './homepage/Book'
 import TrainingCourse from './homepage/TrainingCourse'
 export default {
+    methods:{
+        scrollToTop() {
+            window.scrollTo(0,0)
+        }
+    },
     components:{
         carousel : Carousel,
         news : News,
