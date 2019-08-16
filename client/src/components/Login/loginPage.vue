@@ -67,7 +67,7 @@ export default {
                         this.UserLogin = 'User or Password incorrect'
                         // this.$router.push("/login")
                     }
-                }, 200)
+                }, 400)
                 this.$store.dispatch("initApp")
             })
         },        
