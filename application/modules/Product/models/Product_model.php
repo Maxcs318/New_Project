@@ -12,7 +12,7 @@
         // get all Product
         public function get_all_product()
         {
-            $this->db->order_by('p_id', 'DESC');
+            // $this->db->order_by('p_id', 'DESC');
             $productAll = $this->db->get($this->product)->result(); 
             return json_encode($productAll);  
             

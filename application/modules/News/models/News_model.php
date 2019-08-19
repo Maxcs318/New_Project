@@ -12,7 +12,7 @@
         // get all News
         public function get_all_news()
         {
-            $this->db->order_by('n_id', 'DESC');
+            // $this->db->order_by('n_id', 'DESC');
             $newsAll = $this->db->get($this->news)->result(); 
             return json_encode($newsAll);  
             

@@ -7,7 +7,7 @@
                     <b-embed type="iframe" aspect="16by9" :src="video.v_link" allowfullscreen ></b-embed>
                 </div>
                 <div v-else>
-                    <center><h4> Video Coming Soon </h4></center>
+                    <center><h4> {{video.v_link}} </h4></center>
                 </div>
                 <h5>{{video.v_description}}</h5>
             </div>

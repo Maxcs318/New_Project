@@ -14,7 +14,7 @@ const store = new Vuex.Store({
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
         videos:[],
-        video_room:[],
+        video_room:[]
     },
     mutations : {
         initMembers(state,members){
@@ -47,19 +47,23 @@ const store = new Vuex.Store({
             state.members.push(member)
         },
         Add_News(state,Newnews){
-            state.news.pop(Newnews)
+            state.news.push(Newnews)
         },
         Add_Article(state,Newarticle){
-            state.article.pop(Newarticle)
+            state.article.push(Newarticle)
         },
         Add_Product(state,Newproduct){
-            state.product.pop(Newproduct)
+            state.product.push(Newproduct)
         },
         VideosAll(state,videosall){
             state.videos = videosall
         },
         Video_Room(state,video_room){
             state.video_room = video_room
+        },
+        CreateRoom(state,NRoom){
+            // console.log(NRoom)
+            state.video_room.push(NRoom)
         }
 
 
@@ -164,6 +168,17 @@ const store = new Vuex.Store({
                 context.commit("Add_Product",response.data)
             })
         },
+        CreateRoom(context,newRoom){
+            axios.post('http://gamaproject.vue.com/Videos_Room/insert_room',newRoom)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data == 'fail'){
+                    
+                }else{
+                    context.commit("CreateRoom",response.data)
+                }
+            })
+        }
         
         
     },
@@ -172,16 +187,16 @@ const store = new Vuex.Store({
             return state.members
         },
         getNews(state){
-            return state.news
+            return state.news.reverse()
         },
         getArticle(state){
-            return state.article
+            return state.article.reverse()
         },
         getProduct(state){
-            return state.product
+            return state.product.reverse()
         },
         getBook(state){
-            var product = state.product
+            let product = state.product.reverse()
             var booklist =[]
             // = this.book
                 for(var i=0; i<product.length; i++){
@@ -192,12 +207,12 @@ const store = new Vuex.Store({
             return booklist
         },
         getTrainingCourse(state){
-            var product = state.product
+            let productall = state.product
             var trainingC =[]
             // = this.book
-                for(var i=0; i<product.length; i++){
-                    if(product[i].p_type == 'training_course'){
-                        trainingC.push(product[i])
+                for(var i=0; i<productall.length; i++){
+                    if(productall[i].p_type == 'training_course'){
+                        trainingC.push(productall[i])
                     }
                 }
             return trainingC
@@ -206,7 +221,7 @@ const store = new Vuex.Store({
             return state.videos
         },
         getVideo_Room(state){
-            return state.video_room
+            return state.video_room.reverse()
         }
     }
 

@@ -12,7 +12,7 @@
         // get all Article
         public function get_all_article()
         {
-            $this->db->order_by('a_id', 'DESC');
+            // $this->db->order_by('a_id', 'DESC');
             $articleAll = $this->db->get($this->article)->result(); 
             return json_encode($articleAll);  
             
