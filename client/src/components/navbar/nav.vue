@@ -68,6 +68,7 @@
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
                         <b-dropdown-item @click="profile">Profile</b-dropdown-item>
+                        <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="Log_Out">
                             Log Out
@@ -102,6 +103,9 @@ export default {
         },
         profile(){
             this.$router.push('/profile')
+        },
+        videosroom(){
+            this.$router.push('/listroom')
         },
         addnews(){
             this.$router.push('/addnews')

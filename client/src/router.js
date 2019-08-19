@@ -17,7 +17,9 @@ import Contact from "./components/Contact/contact.vue"
 import thisNews from './components/News_Activities/news_activity.vue';
 import thisArticle from './components/Articles/article.vue';
 import product from './components/Product/product.vue';
-import VideosRoom from './components/Videos_Room/listRooms.vue';
+import ListRoom from './components/Videos_Room/listRooms.vue';
+import ListVideos from './components/Videos_Room/listVideos.vue';
+import RoomVideo from './components/Videos_Room/roomVideo.vue';
 Vue.use(VueRouter)
 
 export const router = new VueRouter({
@@ -43,8 +45,9 @@ export const router = new VueRouter({
 
         { path : "/product/:ProductID",name:"product",component : product },
 
-        { path : "/videosroom",component : VideosRoom },
-
+        { path : "/listroom",component : ListRoom },
+        { path : "/listvideos/:RoomID",name:"listvideos",component : ListVideos },
+        { path : "/roomvideo/:VideoID",name:"roomvideo",component : RoomVideo },
         
         
         

@@ -13,6 +13,8 @@ const store = new Vuex.Store({
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
+        videos:[],
+        video_room:[],
     },
     mutations : {
         initMembers(state,members){
@@ -52,7 +54,14 @@ const store = new Vuex.Store({
         },
         Add_Product(state,Newproduct){
             state.product.pop(Newproduct)
+        },
+        VideosAll(state,videosall){
+            state.videos = videosall
+        },
+        Video_Room(state,video_room){
+            state.video_room = video_room
         }
+
 
     },
     actions : {
@@ -85,6 +94,18 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("ProductAll",response.data)
+            }),
+            // videos
+            axios.get("http://gamaproject.vue.com/Videos_Room/get_all_videos")
+                .then(response => {
+                    // console.log(response.data)
+                    context.commit("VideosAll",response.data)
+            }),
+            // video room
+            axios.get("http://gamaproject.vue.com/Videos_Room/get_all_video_room")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Video_Room",response.data)
             })
         },
         // load page
@@ -180,6 +201,12 @@ const store = new Vuex.Store({
                     }
                 }
             return trainingC
+        },
+        getVideos(state){
+            return state.videos
+        },
+        getVideo_Room(state){
+            return state.video_room
         }
     }
 
