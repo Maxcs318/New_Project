@@ -31,7 +31,10 @@
         {
             $newRoom = (array)json_decode($this->input->post('room'));
             $creater = json_decode($this->input->post('creater'));
-
+            if($creater==null || $creater==''){
+                echo 'fail';
+                exit;
+            }
             $createrID  = $this->Videos_Room_model->chk_token($creater);
             $statusUser = $this->Videos_Room_model->chk_status($createrID);
 
