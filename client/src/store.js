@@ -172,9 +172,7 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/Videos_Room/insert_room',newRoom)
             .then(response =>{
                 // console.log('Response Data',response.data)
-                if(response.data == 'fail'){
-                    
-                }else{
+                if(response.data != 'fail'){
                     context.commit("CreateRoom",response.data)
                 }
             })
