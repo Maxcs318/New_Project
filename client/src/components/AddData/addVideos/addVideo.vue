@@ -26,7 +26,7 @@
                         <br>
                         <div class="row">
                             <div class="col-lg-6 col-xs-6">
-                                <button class="form-control btn-danger" type="button" @click="btn_remove(index)"> Remove </button>
+                                <button v-if="addVideos.length > 1" class="form-control btn-danger" type="button" @click="btn_remove(index)"> Remove </button>
                             </div>
                             <div class="col-lg-6 col-xs-6"></div>
                         </div>
