@@ -64,6 +64,12 @@ const store = new Vuex.Store({
         CreateRoom(state,NRoom){
             // console.log(NRoom)
             state.video_room.push(NRoom)
+        },
+        AddVideos(state,NVideos){
+            for(var i=0; i<NVideos.length; i++){
+                console.log(NVideos[i])
+                state.videos.push(NVideos[i])
+            }
         }
 
 
@@ -174,6 +180,15 @@ const store = new Vuex.Store({
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
                     context.commit("CreateRoom",response.data)
+                }
+            })
+        },
+        AddVideos(context,newvideos){
+            axios.post('http://gamaproject.vue.com/Videos_Room/insert_videos',newvideos)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("AddVideos",response.data)
                 }
             })
         }

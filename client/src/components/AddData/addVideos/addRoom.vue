@@ -46,8 +46,6 @@ export default {
             this.$swal("Create Room Success .", "", "success")
         }
     },
-    computed:{
 
-    }
 }
 </script>

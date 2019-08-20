@@ -74,11 +74,35 @@
             $newRoom['vr_owner'] = $createrID;
             $thisID = $this->Videos_Room_model->insert_room($newRoom);
             $newRoom['vr_id'] = $thisID;
-            echo json_encode($newRoom);
+            echo json_encode($newRoom);       
+        }
+        // insert Videos
+        public function insert_videos()
+        {
+            $newVideos = (array)json_decode($this->input->post('videos'));
+            // print_r($newVideos);
+            // exit;
+            $creater = json_decode($this->input->post('creater'));
+            if($creater==null || $creater==''){
+                echo 'fail';
+                exit;
+            }
+            $createrID  = $this->Videos_Room_model->chk_token($creater);
+            $statusUser = $this->Videos_Room_model->chk_status($createrID);
 
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            
+            $thisID = $this->Videos_Room_model->insert_videos($newVideos);
+            // $newVideos['v_id'] = $thisID;
+            for($i=0; $i<sizeof($newVideos); $i++){
+                $newVideos[$i]->v_id = $thisID[$i] ;
+            }
+            echo json_encode($newVideos);
                 
         }
-
 
 
 
