@@ -215,7 +215,7 @@ const store = new Vuex.Store({
             return state.product.reverse()
         },
         getBook(state){
-            let product = state.product.reverse()
+            let product = state.product
             var booklist =[]
             // = this.book
                 for(var i=0; i<product.length; i++){
@@ -223,7 +223,7 @@ const store = new Vuex.Store({
                         booklist.push(product[i])
                     }
                 }
-            return booklist
+            return booklist.reverse()
         },
         getTrainingCourse(state){
             let productall = state.product
@@ -234,7 +234,7 @@ const store = new Vuex.Store({
                         trainingC.push(productall[i])
                     }
                 }
-            return trainingC
+            return trainingC.reverse()
         },
         getVideos(state){
             return state.videos

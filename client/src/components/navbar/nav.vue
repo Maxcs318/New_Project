@@ -69,6 +69,7 @@
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
                         <b-dropdown-item @click="profile">Profile</b-dropdown-item>
                         <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
+                        <b-dropdown-item @click="productall">Product All</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="Log_Out">
                             Log Out
@@ -106,6 +107,9 @@ export default {
         },
         videosroom(){
             this.$router.push('/listroom')
+        },
+        productall(){
+            this.$router.push('/productall')
         },
         addnews(){
             this.$router.push('/addnews')
