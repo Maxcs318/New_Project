@@ -98,10 +98,11 @@ export default {
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
                     FD.append('product',jsonProduct)
+                    FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Product",FD)
                     setTimeout(()=>{
                         this.$router.push('/')
-                    },500)  
+                    },2000)  
                 this.$swal("Save Product Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")

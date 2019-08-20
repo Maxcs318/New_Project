@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12" v-for="(list,index) in ListRoom" :key="index">
                 <div @click="seethisRoom(list.vr_id)">
-                {{list.vr_id}} <br>
-                {{list.vr_name}} <br>
-                {{list.vr_description}} <br>
-                {{list.vr_create_date}} <br>
-                {{list.vr_owner}} <br>
+                <!-- {{list.vr_id}} <br> -->
+                Room Name: <b>{{list.vr_name}}</b> <br>
+                Description: {{list.vr_description}} <br>
+                Create Date: {{list.vr_create_date}} <br>
+                <!-- {{list.vr_owner}} <br> -->
                 </div>
                 <hr>
             </div>

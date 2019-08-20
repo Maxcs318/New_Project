@@ -7,6 +7,7 @@
         {
             parent::__construct();
             $this->load->model("news_model");
+            $this->load->model('../../Check_/models/Check__model');
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
@@ -24,6 +25,19 @@
         // insert News
         public function insert_news()
         {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            // insert
             $news = (array)json_decode($this->input->post('news'));
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));

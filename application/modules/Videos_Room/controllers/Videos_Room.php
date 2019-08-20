@@ -30,13 +30,13 @@
         public function insert_room()
         {
             $newRoom = (array)json_decode($this->input->post('room'));
-            $creater = json_decode($this->input->post('creater'));
-            if($creater==null || $creater==''){
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
                 echo 'fail';
                 exit;
             }
-            $createrID  = $this->Videos_Room_model->chk_token($creater);
-            $statusUser = $this->Videos_Room_model->chk_status($createrID);
+            $creatorID  = $this->Videos_Room_model->chk_token($creator);
+            $statusUser = $this->Videos_Room_model->chk_status($creatorID);
 
             if( $statusUser != 'admin' ){
                 echo 'fail';
@@ -71,7 +71,7 @@
                 }
             $createY = date('Y')+543;
             $newRoom['vr_create_date'] = date('d').' '.$createM.' '.$createY;
-            $newRoom['vr_owner'] = $createrID;
+            $newRoom['vr_owner'] = $creatorID;
             $thisID = $this->Videos_Room_model->insert_room($newRoom);
             $newRoom['vr_id'] = $thisID;
             echo json_encode($newRoom);       
@@ -82,13 +82,13 @@
             $newVideos = (array)json_decode($this->input->post('videos'));
             // print_r($newVideos);
             // exit;
-            $creater = json_decode($this->input->post('creater'));
-            if($creater==null || $creater==''){
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
                 echo 'fail';
                 exit;
             }
-            $createrID  = $this->Videos_Room_model->chk_token($creater);
-            $statusUser = $this->Videos_Room_model->chk_status($createrID);
+            $creatorID  = $this->Videos_Room_model->chk_token($creator);
+            $statusUser = $this->Videos_Room_model->chk_status($creatorID);
 
             if( $statusUser != 'admin' ){
                 echo 'fail';

@@ -73,11 +73,12 @@ export default {
                 var jsonNews = JSON.stringify(this.news)
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
-                    FD.append('news',jsonNews)
+                    FD.append('news',jsonNews)            
+                    FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_News",FD)
                     setTimeout(()=>{
                         this.$router.push('/')
-                    },1000)  
+                    },2000)  
                 this.$swal("Save News Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")

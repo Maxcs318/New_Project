@@ -74,10 +74,11 @@ export default {
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
                     FD.append('article',jsonArticle)
+                    FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Article",FD)
                     setTimeout(()=>{
                         this.$router.push('/')
-                    },1000)  
+                    },2000)  
                 this.$swal("Save Article Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")

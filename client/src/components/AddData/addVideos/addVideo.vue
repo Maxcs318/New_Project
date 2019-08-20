@@ -75,7 +75,7 @@ export default {
             // console.log(this.addVideos)
             var FD  = new FormData()
             FD.append('videos',JSON.stringify(this.addVideos))
-            FD.append('creater',JSON.stringify(this.$store.state.log_on))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("AddVideos",FD)
             this.$swal("Add Videos Success .", "", "success")
         }

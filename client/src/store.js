@@ -156,22 +156,28 @@ const store = new Vuex.Store({
         Add_News(context,news){
             axios.post('http://gamaproject.vue.com/news/insert_news',news)
             .then(response =>{
-                // console.log('Response Data',response.data)
-                context.commit("Add_News",response.data)
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_News",response.data)
+                }
             })
         },
         Add_Article(context,article){
             axios.post('http://gamaproject.vue.com/article/insert_article',article)
             .then(response =>{
-                // console.log('Response Data',response.data)
-                context.commit("Add_Article",response.data)
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Article",response.data)
+                }
             })
         },
         Add_Product(context,product){
             axios.post('http://gamaproject.vue.com/product/insert_product',product)
             .then(response =>{
-                // console.log('Response Data',response.data)
-                context.commit("Add_Product",response.data)
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Product",response.data)
+                }
             })
         },
         CreateRoom(context,newRoom){

@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-3">
-        <center><h4>Add Room</h4></center>
+        <center><h4>Create Room</h4></center>
         <div class="row">
             <div class="col-lg-3 col-xs-12"></div>
             <div class="col-lg-6 col-xs-12">
@@ -38,7 +38,7 @@ export default {
         submitCreateRoom(){
             var FD  = new FormData()
             FD.append('room',JSON.stringify(this.createR))
-            FD.append('creater',JSON.stringify(this.$store.state.log_on))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("CreateRoom",FD)
             // setTimeout(()=>{
                 // this.$router.push('/addvideosandroom')
