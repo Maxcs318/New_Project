@@ -6,8 +6,16 @@
                 <img :src="getImgUrl(news.n_image)" width="100%"  @click="seethisPage(news.n_id)">
                 <h5>{{news.n_title}}</h5>
                 <p style="text-align: right;">{{news.n_date}}</p>
-                <p style="text-indent: 2em;">{{news.n_detail.slice(0,60)}}</p>
+                <p style="text-indent: 2em;">{{news.n_detail.slice(0,55)}}</p>
                 <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
+                <div class="row">
+                    <div class="col-lg-6 col-lg-xs-12">
+                        <button class="form-control btn-success" @click="editNews(news.n_id)"> Edit </button> <br>
+                    </div>
+                    <div class="col-lg-6 col-lg-xs-12">
+                        <button class="form-control btn-danger"> Delete </button> <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -20,6 +28,9 @@ export default {
         },
         seethisPage(thisnews){
             this.$router.push({name:'newsandactivity',params:{NewsID:thisnews}});
+        },
+        editNews(thisnews){
+            this.$router.push({name:'editnewsandactivity',params:{NewsID:thisnews}});
         }
     },
     computed:{

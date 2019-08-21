@@ -21,6 +21,10 @@ import product from './components/Product/product.vue';
 import ListRoom from './components/Videos_Room/listRooms.vue';
 import ListVideos from './components/Videos_Room/listVideos.vue';
 import RoomVideo from './components/Videos_Room/roomVideo.vue';
+
+import EditNewsandActivity from './components/EditData/editNews.vue';
+
+
 Vue.use(VueRouter)
 
 export const router = new VueRouter({
@@ -50,6 +54,9 @@ export const router = new VueRouter({
         { path : "/listroom",component : ListRoom },
         { path : "/listvideos/:RoomID",name:"listvideos",component : ListVideos },
         { path : "/roomvideo/:VideoID",name:"roomvideo",component : RoomVideo },
+
+        { path : "/editnewsandactivity/:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
+
         
         
         

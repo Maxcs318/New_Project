@@ -69,7 +69,13 @@ const store = new Vuex.Store({
                 // console.log(NVideos[i])
                 state.videos.push(NVideos[i])
             }
-        }
+        },
+        Edit_News(state,Newnews){
+            let index = state.news.findIndex(n => n.n_id == Newnews.n_id)
+            if(index > -1){
+                state.news[index] = Newnews
+            }
+        },
 
 
     },
@@ -151,7 +157,6 @@ const store = new Vuex.Store({
                 context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
             })
         },
-        //add news
         Add_News(context,news){
             axios.post('http://gamaproject.vue.com/news/insert_news',news)
             .then(response =>{
@@ -196,7 +201,17 @@ const store = new Vuex.Store({
                     context.commit("AddVideos",response.data)
                 }
             })
-        }
+        },
+        //add news
+        Edit_News(context,news){
+            axios.post('http://gamaproject.vue.com/news/update_news',news)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Edit_News",response.data)
+                }
+            })
+        },
         
         
     },
