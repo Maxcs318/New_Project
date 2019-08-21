@@ -6,7 +6,7 @@
     </div>
     <div v-else>
       <navbar></navbar>
-      <div class="container">
+      <div class="">
         
         <transition name="page" mode="out-in">
           <div>

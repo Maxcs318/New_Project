@@ -1,34 +1,32 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <carousel></carousel>
+    <div class="">
+        <carousel></carousel>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <news></news>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <news></news>
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <thearticle></thearticle>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <thearticle></thearticle>
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <book></book>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <book></book>
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <training-course></training-course>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <training-course></training-course>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9"></div>
-            <div class="col-lg-3"><br><br>
-                <button class="form-control btn-primary" @click="scrollToTop">Top</button>
+            <div class="row">
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3"><br><br>
+                    <button class="form-control btn-primary" @click="scrollToTop">Top</button>
+                </div>
             </div>
         </div>
     </div>
