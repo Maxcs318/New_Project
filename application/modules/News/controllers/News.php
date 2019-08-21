@@ -128,6 +128,7 @@
             }
                 $newsEditID['n_id'] = $news['n_id'];
                 unset($news['n_id']); 
+                $news['n_update_date'] = null; 
                 $thisUpdate = $this->news_model->update_news($news,$newsEditID);
                 if($thisUpdate == true){
                     $news['n_id'] = $newsEditID['n_id'];
