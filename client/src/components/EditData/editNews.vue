@@ -11,10 +11,10 @@
                     <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
 
                     หัวเรื่อง
-                    <input type="text" v-model="news.n_title" class="form-control" required>
+                    <input type="text" v-model="newsE.n_title" class="form-control" required>
                     <br>
                     รายระเอียด
-                    <textarea v-model="news.n_detail" class="form-control" rows="6" ></textarea>
+                    <textarea v-model="newsE.n_detail" class="form-control" rows="6" ></textarea>
                     <br>
                     <div class="row">
                         <div class="col-lg-6">
@@ -26,9 +26,7 @@
                             <br>
                         </div>
                     </div>
-                </form>
-                {{thisNews.n_image}}
-                
+                </form>                
             </div> 
         </div>
     </div>
@@ -37,7 +35,7 @@
 export default {
     data(){
         return{
-            news:'',
+            newsE:'',
             url: null,
             fileimage:''
         }
@@ -61,7 +59,7 @@ export default {
             }
         },
         submitNews(){
-                var jsonNews = JSON.stringify(this.news)
+                var jsonNews = JSON.stringify(this.newsE)
                 var FD  = new FormData()
                     if(this.url != null || this.url!= ''){
                         FD.append('userfile',this.fileimage)
@@ -70,7 +68,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Edit_News",FD)
                     setTimeout(()=>{
-                        this.$router.go(-1)
+                        this.$router.push('/')
                     },2000)  
                 this.$swal("Save News Success .", "", "success")
         }
@@ -84,7 +82,7 @@ export default {
                     news = newsAll[i]
                 }
             }
-            this.news = news 
+            this.newsE = news 
             return news
         }
     }
