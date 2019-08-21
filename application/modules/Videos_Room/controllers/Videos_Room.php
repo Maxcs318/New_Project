@@ -7,6 +7,7 @@
         {
             parent::__construct();
             $this->load->model("Videos_Room_model");
+            $this->load->model('../../Check_/models/Check__model');
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
@@ -79,22 +80,20 @@
         // insert Videos
         public function insert_videos()
         {
-            $newVideos = (array)json_decode($this->input->post('videos'));
-            // print_r($newVideos);
-            // exit;
+            // check status for insert
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
                 echo 'fail';
                 exit;
             }
-            $creatorID  = $this->Videos_Room_model->chk_token($creator);
-            $statusUser = $this->Videos_Room_model->chk_status($creatorID);
-
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
             if( $statusUser != 'admin' ){
                 echo 'fail';
                 exit ;
             }
-            
+            // insert
+            $newVideos = (array)json_decode($this->input->post('videos'));            
             $thisID = $this->Videos_Room_model->insert_videos($newVideos);
             // $newVideos['v_id'] = $thisID;
             for($i=0; $i<sizeof($newVideos); $i++){

@@ -62,12 +62,11 @@ const store = new Vuex.Store({
             state.video_room = video_room
         },
         CreateRoom(state,NRoom){
-            // console.log(NRoom)
             state.video_room.push(NRoom)
         },
         AddVideos(state,NVideos){
             for(var i=0; i<NVideos.length; i++){
-                console.log(NVideos[i])
+                // console.log(NVideos[i])
                 state.videos.push(NVideos[i])
             }
         }
