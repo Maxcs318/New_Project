@@ -30,20 +30,19 @@
         // insert Room
         public function insert_room()
         {
-            $newRoom = (array)json_decode($this->input->post('room'));
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
                 echo 'fail';
                 exit;
             }
-            $creatorID  = $this->Videos_Room_model->chk_token($creator);
-            $statusUser = $this->Videos_Room_model->chk_status($creatorID);
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
 
             if( $statusUser != 'admin' ){
                 echo 'fail';
                 exit ;
             }
-             
+            $newRoom = (array)json_decode($this->input->post('room'));             
             $createM ;
                 if(date('m')==1){
                     $createM = 'มกราคม';

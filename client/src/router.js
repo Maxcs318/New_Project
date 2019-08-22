@@ -1,28 +1,28 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 
-import Login from "./components/Login/loginPage.vue"
-import Register from "./components/Login/registerPage.vue"
-import WelcomePage from "./components/WelcomePage/welcomePage.vue"
-import addNews from "./components/AddData/addNews.vue"
-import addArticle from "./components/AddData/addArticle.vue"
-import addProduct from "./components/AddData/addProduct.vue"
-import addVideos_Room from "./components/AddData/addVideos/addVideos_Room.vue"
-import AboutMember from "./components/AboutMember/aboutmember.vue"
-import News from "./components/News_Activities/news_activities.vue"
-import Articles from "./components/Articles/articles.vue"
-import TrainingCourses from "./components/Training_Courses/training_courses.vue"
-import Books from "./components/Books/books.vue"
-import Contact from "./components/Contact/contact.vue"
-import thisNews from './components/News_Activities/news_activity.vue';
-import thisArticle from './components/Articles/article.vue';
-import productall from './components/Product/products.vue';
-import product from './components/Product/product.vue';
-import ListRoom from './components/Videos_Room/listRooms.vue';
-import ListVideos from './components/Videos_Room/listVideos.vue';
-import RoomVideo from './components/Videos_Room/roomVideo.vue';
+import Login from "./components/Login_Register/loginPage.vue"
+import Register from "./components/Login_Register/registerPage.vue"
+import WelcomePage from "./view/welcomePage.vue"
+import addNews from "./view/AddData/addNews.vue"
+import addArticle from "./view/AddData/addArticle.vue"
+import addProduct from "./view/AddData/addProduct.vue"
+import addVideos_Room from "./view/AddData/addVideos/addVideos_Room.vue"
+import AboutMember from "./view/aboutmember.vue"
+import News from "./view/News_Activities/news_activities.vue"
+import Articles from "./view/Articles/articles.vue"
+import TrainingCourses from "./view/Training_Courses/training_courses.vue"
+import Books from "./view/Books/books.vue"
+import Contact from "./view/contact.vue"
+import thisNews from './view/News_Activities/news_activity.vue';
+import thisArticle from './view/Articles/article.vue';
+import productall from './view/Product/products.vue';
+import product from './view/Product/product.vue';
+import ListRoom from './view/Videos_Room/listRooms.vue';
+import ListVideos from './view/Videos_Room/listVideos.vue';
+import RoomVideo from './view/Videos_Room/roomVideo.vue';
 
-import EditNewsandActivity from './components/EditData/editNews.vue';
+import EditNewsandActivity from './view/EditData/editNews.vue';
 
 
 Vue.use(VueRouter)

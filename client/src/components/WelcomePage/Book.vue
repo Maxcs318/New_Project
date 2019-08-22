@@ -20,7 +20,7 @@
 export default {
     methods:{
         getImgUrlProduct(picP) {
-            return require('../../../assets/Product/'+picP)
+            return require('../../assets/Product/'+picP)
         },
         seethisPageBook(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});

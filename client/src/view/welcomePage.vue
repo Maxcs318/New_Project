@@ -32,11 +32,11 @@
     </div>
 </template>
 <script>
-import Carousel from './homepage/Carousel'
-import News from './homepage/News'
-import Article from './homepage/Article'
-import Book from './homepage/Book'
-import TrainingCourse from './homepage/TrainingCourse'
+import Carousel from '../components/WelcomePage/Carousel'
+import News from '../components/WelcomePage/News'
+import Article from '../components/WelcomePage/Article'
+import Book from '../components/WelcomePage/Book'
+import TrainingCourse from '../components/WelcomePage/TrainingCourse'
 export default {
     methods:{
         scrollToTop() {

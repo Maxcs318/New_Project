@@ -19,7 +19,7 @@
 export default {
     methods:{
         getImgUrl(pic) {
-            return require('../../../assets/News/'+pic)
+            return require('../../assets/News/'+pic)
         },
         seethisPageNews(thisnews){
             this.$router.push({name:'newsandactivity',params:{NewsID:thisnews}});
