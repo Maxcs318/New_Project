@@ -40,7 +40,6 @@
             for($i=0; $i<sizeof($data); $i++){
             $ins = $this->db->insert($this->videos,$data[$i]);
                 if($ins){
-                    // $lastID = $this->db->insert_id();
                     array_push($lastID,$this->db->insert_id());
                 }
             }

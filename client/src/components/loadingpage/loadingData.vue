@@ -4,7 +4,7 @@
             <div class="col-lg-12 col-xs-12">
                 <svg viewBox="0 0 960 300">
                     <symbol id="s-text">
-                        <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'none'">GAMA </text>
+                        <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'none'"> G A M A </text>
                         <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'save'">Saving . . .</text>
                     </symbol>
                     <g class = "g-ants">
@@ -21,7 +21,7 @@
 </template>
 
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+    /* @import url(https://fonts.googleapis.com/css?family=Montserrat); */
 
     .x{
         height: 100%;
@@ -39,7 +39,7 @@
 
     .text-copy {
         fill: none;
-        stroke: rgb(255, 255, 255);
+        stroke: rgb(0, 44, 189);
         stroke-dasharray: 6% 29%;
         stroke-width: 5px;
         stroke-dashoffset: 0%;
@@ -47,17 +47,17 @@
     }
 
     .text-copy:nth-child(1){
-        stroke: rgb(30, 22, 77);
+        stroke: rgb(0, 44, 189);
         animation-delay: -1;
     }
 
     .text-copy:nth-child(2){
-        stroke: rgb(14, 00, 84);
+        stroke: rgb(0, 44, 189);
         animation-delay: -2s;
     }
 
     .text-copy:nth-child(3){
-        stroke: rgb(35, 0, 189);
+        stroke: rgb(0, 44, 189);
         animation-delay: -3s;
     }
 
@@ -67,7 +67,7 @@
     }
 
     .text-copy:nth-child(5){
-        stroke: rgb(49, 137, 253);
+        stroke: rgb(0, 44, 189);
         animation-delay: -5s;
     }
 

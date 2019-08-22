@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="container" v-if="this.$store.state.statusPage == 'none' ">
-      <!-- <center><loadingpage2></loadingpage2></center> -->
       <loadingpage></loadingpage>          
     </div>
     <div v-else>
@@ -24,14 +23,12 @@
   import Nav from './components/Navbar/nav';
   import Footer from './components/Footer/foot.vue';
   import Loadingpage from './components/loadingpage/loadingData';
-  import Loadingpage2 from './components/loadingpage/loading';
 
   export default {
     components :{
       navbar : Nav,
       foot : Footer,
       loadingpage : Loadingpage,
-      loadingpage2 : Loadingpage2
     },
     created(){
       this.$store.dispatch("initApp")
