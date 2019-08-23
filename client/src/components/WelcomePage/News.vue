@@ -29,6 +29,9 @@ export default {
         the_news(){
             return this.$store.getters.getNews
         }
+    },
+    created(){
+        this.$store.dispatch("initDataNews")
     }
     
 }

@@ -1,4 +1,5 @@
 <template>
+<div class="container">
     <div class="row mt-5">
         <div class="col-lg-4 col-xs-12"></div>
         <div class="col-lg-4 col-xs-12" >
@@ -42,6 +43,7 @@
 
         <div class="col-lg-4 col-xs-12"></div>
     </div>
+</div>
 </template>
 
 <script>

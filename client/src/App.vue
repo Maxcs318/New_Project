@@ -32,7 +32,12 @@
     },
     created(){
       this.$store.dispatch("initApp")
-      this.$store.dispatch("initData")
+      this.$store.dispatch("initApp")
+      this.$store.dispatch("initDataNews")
+      this.$store.dispatch("initDataArticle")
+      this.$store.dispatch("initDataProduct")
+      this.$store.dispatch("initDataVideos")
+      this.$store.dispatch("initDataVideo_Room")    
     }
     
   }

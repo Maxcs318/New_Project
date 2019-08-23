@@ -66,20 +66,26 @@ const store = new Vuex.Store({
         },
         AddVideos(state,NVideos){
             for(var i=0; i<NVideos.length; i++){
-                // console.log(NVideos[i])
                 state.videos.push(NVideos[i])
             }
         },
-        MEdit_News(state,Editnews){
+        Edit_News(state,Editnews){
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
             if(index > -1){
                 state.news[index] = Editnews
+            }
+        },
+        Edit_Article(state,Editarticle){
+            let index = state.article.findIndex(a => a.a_id == Editarticle.a_id)
+            if(index > -1){
+                state.article[index] = Editarticle
             }
         },
 
 
     },
     actions : {
+        // Start Load Data
         initApp(context){
             // check login
             if(this.state.log_on !== null){
@@ -93,36 +99,42 @@ const store = new Vuex.Store({
                 this.state.the_user=''
             }
         },
-        initData(context){
+        initDataNews(context){
             axios.get("http://gamaproject.vue.com/news/get_all_news")
                 .then(response => {
                     // console.log(response)
                     context.commit("NewsAll",response.data)
             })
-            ,
+        },
+        initDataArticle(context){
             axios.get("http://gamaproject.vue.com/article/get_all_article")
                 .then(response => {
                     // console.log(response)
                     context.commit("ArticleAll",response.data)
-            }),
+            })
+        },
+        initDataProduct(context){
             axios.get("http://gamaproject.vue.com/product/get_all_product")
                 .then(response => {
                     // console.log(response)
                     context.commit("ProductAll",response.data)
-            }),
-            // videos
+            })
+        },
+        initDataVideos(context){
             axios.get("http://gamaproject.vue.com/Videos_Room/get_all_videos")
                 .then(response => {
                     // console.log(response.data)
                     context.commit("VideosAll",response.data)
-            }),
-            // video room
+            })
+        },
+        initDataVideo_Room(context){
             axios.get("http://gamaproject.vue.com/Videos_Room/get_all_video_room")
                 .then(response => {
                     // console.log(response)
                     context.commit("Video_Room",response.data)
             })
         },
+        // End Load Data
         // load page
         LoadingPage(context,statusPage){
             context.commit('LoadingPage',statusPage)
@@ -157,6 +169,7 @@ const store = new Vuex.Store({
                 context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
             })
         },
+        // Start Add data
         Add_News(context,news){
             axios.post('http://gamaproject.vue.com/news/insert_news',news)
             .then(response =>{
@@ -202,22 +215,36 @@ const store = new Vuex.Store({
                 }
             })
         },
-        //add news
+        // End Add Data
+        // Start Edit Data
         Edit_News(context,news){
             axios.post('http://gamaproject.vue.com/news/update_news',news)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
-                    context.commit("MEdit_News",response.data)
+                    context.commit("Edit_News",response.data)
                 }
             })
         },
+        Edit_Article(context,article){
+            axios.post('http://gamaproject.vue.com/article/update_article',article)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Edit_Article",response.data)
+                }
+            })
+        },
+        
         
         
     },
     getters : {
         getMembers(state){
             return state.members
+        },
+        getThe_User(state){
+            return state.the_user
         },
         getNews(state){
             return state.news.reverse()

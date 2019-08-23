@@ -30,6 +30,9 @@ export default {
         trainingCourse(){
             return this.$store.getters.getTrainingCourse
         }
+    },
+    created(){
+        this.$store.dispatch("initDataProduct")
     }
     
 }

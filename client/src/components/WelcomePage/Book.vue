@@ -30,6 +30,9 @@ export default {
         book(){
             return this.$store.getters.getBook
         }
+    },
+    created(){
+        this.$store.dispatch("initDataProduct")
     }
     
 }

@@ -4,10 +4,10 @@ import VueRouter from "vue-router"
 import Login from "./components/Login_Register/loginPage.vue"
 import Register from "./components/Login_Register/registerPage.vue"
 import WelcomePage from "./view/welcomePage.vue"
-import addNews from "./view/AddData/addNews.vue"
-import addArticle from "./view/AddData/addArticle.vue"
-import addProduct from "./view/AddData/addProduct.vue"
-import addVideos_Room from "./view/AddData/addVideos/addVideos_Room.vue"
+import addNews from "./view/News_Activities/news_activity_insert.vue"
+import addArticle from "./view/Articles/article_insert.vue"
+import addProduct from "./view/Product/product_insert.vue"
+import addVideos_Room from "./view/Videos_Room/videos_videoroom_insert/addVideos_Room.vue"
 import AboutMember from "./view/aboutmember.vue"
 import News from "./view/News_Activities/news_activities.vue"
 import Articles from "./view/Articles/articles.vue"
@@ -22,7 +22,8 @@ import ListRoom from './view/Videos_Room/listRooms.vue';
 import ListVideos from './view/Videos_Room/listVideos.vue';
 import RoomVideo from './view/Videos_Room/roomVideo.vue';
 
-import EditNewsandActivity from './view/EditData/editNews.vue';
+import EditNewsandActivity from './view/News_Activities/news_activity_edit.vue';
+import EditArticle from './view/Articles/article_edit.vue';
 
 
 Vue.use(VueRouter)
@@ -55,7 +56,9 @@ export const router = new VueRouter({
         { path : "/listvideos/:RoomID",name:"listvideos",component : ListVideos },
         { path : "/roomvideo/:VideoID",name:"roomvideo",component : RoomVideo },
 
+        //edit data
         { path : "/editnewsandactivity/:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
+        { path : "/editarticle/:ArticleID",name:"editarticle",component : EditArticle },
 
         
         

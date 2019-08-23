@@ -27,6 +27,11 @@
                 }
             return json_encode($lastID);
         }
+        // update Article
+        public function update_article($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->article,$data));
+        }
         
 
 

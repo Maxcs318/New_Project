@@ -8,7 +8,7 @@
                 <p style="text-align: right;">{{news.n_date}}</p>
                 <p style="text-indent: 2em;">{{news.n_detail.slice(0,55)}}</p>
                 <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
-                <div class="row">
+                <div class="row" v-if="the_user.m_status == 'admin'">
                     <div class="col-lg-6 col-lg-xs-12">
                         <button class="form-control btn-success" @click="editNews(news.n_id)"> Edit </button> <br>
                     </div>
@@ -36,6 +36,9 @@ export default {
     computed:{
         the_news(){
             return this.$store.getters.getNews
+        },
+        the_user(){
+            return this.$store.getters.getThe_User
         }
     }
 }

@@ -29,6 +29,9 @@ export default {
         the_article(){
             return this.$store.getters.getArticle
         }
+    },
+    created(){
+        this.$store.dispatch("initDataArticle")
     }
 }
 </script>
