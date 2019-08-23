@@ -15,8 +15,8 @@
     </div>
 </template>
 <script>
-import addRoom from './addRoom';
-import addVideo from './addVideo';
+import addRoom from './Room_insert';
+import addVideo from './Videos_insert';
 export default {
     data(){
         return {

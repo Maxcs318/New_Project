@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-3">
         <center><h4>Edit Article</h4></center>
-        <div class="row mt-5" v-if="thisArticle">
+        <div class="row mt-5" v-if="thisArticle && the_user">
             <div class="col-lg-5 col-xs-12">
                 <img v-if="url"  :src="url" width="100%"/>
                 <img v-else :src="getImgUrl(thisArticle.a_image)" width="100%">
@@ -85,6 +85,13 @@ export default {
             }
             this.articleE = article 
             return article
+        },
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.push('/')
+            }
+            return user
         }
     }
 }

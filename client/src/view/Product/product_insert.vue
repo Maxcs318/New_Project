@@ -18,7 +18,7 @@
                             <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFiles"> Choose Image </button>
                             <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
                             <br>
-                            หัวเรื่อง
+                            ชื่อสินค้า
                             <input type="text" v-model="product.p_title" class="form-control" required>
                             <br>
                             รายระเอียด

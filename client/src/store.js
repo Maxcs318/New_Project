@@ -81,6 +81,12 @@ const store = new Vuex.Store({
                 state.article[index] = Editarticle
             }
         },
+        Edit_Product(state,Editproduct){
+            let index = state.product.findIndex(p => p.p_id == Editproduct.p_id)
+            if(index > -1){
+                state.product[index] = Editproduct
+            }
+        },
 
 
     },
@@ -232,6 +238,15 @@ const store = new Vuex.Store({
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
                     context.commit("Edit_Article",response.data)
+                }
+            })
+        },
+        Edit_Product(context,article){
+            axios.post('http://gamaproject.vue.com/product/update_product',article)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Edit_Product",response.data)
                 }
             })
         },

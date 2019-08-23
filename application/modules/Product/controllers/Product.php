@@ -89,7 +89,51 @@
                     $error = array('error' => $this->upload->display_errors());
                     print_r($error);
                 }
-            
+        }
+        // update Product
+        public function update_product(){
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //update
+            $product = (array)json_decode($this->input->post('product'));
+            if($_FILES['userfile']){
+                $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                $typeF = strrev($nameF);
+                $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+                $config = array(
+                    'upload_path'      => './../client/src/assets/Product/',
+                    'allowed_types' => '*',
+                    'max_size'      => '0',
+                );
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('userfile')){
+                    $data = array('upload_data' => $this->upload->data());
+                    $product['p_image'] = $_FILES['userfile']['name'];
+                }else{
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                    exit;
+                }
+            }
+                $productEditID['p_id'] = $product['p_id'];
+                unset($product['p_id']); 
+                $product['p_update_date'] = null; 
+                $thisUpdate = $this->product_model->update_product($product,$productEditID);
+                if($thisUpdate == true){
+                    $product['p_id'] = $productEditID['p_id'];
+                    echo json_encode($product);
+                }
         }
 
 

@@ -27,7 +27,11 @@
                 }
             return json_encode($lastID);
         }
-        
+        // update Product
+        public function update_product($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->product,$data));
+        }
 
 
 

@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="container mt-3">
         <div class="row" v-if="thisProduct">
             <div class="col-lg-12 col-xs-12" >
-                <center><h3 class="mt-3">{{thisProduct.p_title}}</h3></center>
+                <center><h3>{{thisProduct.p_title}}</h3></center>
             </div>
         </div>
         <div class="row mt-3" v-if="thisProduct">
