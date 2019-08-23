@@ -40,6 +40,9 @@ export default {
         the_user(){
             return this.$store.getters.getThe_User
         }
+    },
+    created(){
+        this.$store.dispatch("initDataNews")
     }
 }
 </script>

@@ -28,6 +28,9 @@ export default {
         trainingC(){
             return this.$store.getters.getTrainingCourse
         }
+    },
+    created(){
+        this.$store.dispatch("initDataProduct")
     }
 }
 </script>
