@@ -2,7 +2,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 col-xs-12" v-for="(video,index) in thisVideo" :key="index">
-                <h4>{{video.v_name}}</h4>    
+                <h4>{{video.v_title}}</h4>    
                 <div v-if="video.v_link.slice(0,23) == 'https://www.youtube.com'">
                     <b-embed type="iframe" aspect="16by9" :src="video.v_link" allowfullscreen ></b-embed>
                 </div>

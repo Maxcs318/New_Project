@@ -10,13 +10,13 @@
                     <select class="form-control" v-model="selectRoom" required>
                         <option disabled selected value=""> Select Room </option>
                         <option v-for="(room,index) in ListRoom" :key="index" :value="room.vr_id">
-                            {{room.vr_name}}
+                            {{room.vr_title}}
                         </option>
                     </select>
                     <hr>
                     <div v-for="(addV,index) in addVideos" :key="index">
                         <h5>Video Name</h5>
-                        <input v-model="addVideos[index].v_name" type="text" class="form-control" required>
+                        <input v-model="addVideos[index].v_title" type="text" class="form-control" required>
                         <br>
                         <h5>Video Link ( Embed )</h5>
                         <input v-model="addVideos[index].v_link" type="text" class="form-control" required>
@@ -52,7 +52,7 @@ export default {
         return{
             selectRoom:'',
             addVideos:[{
-                v_name:'',
+                v_title:'',
                 v_description:'',
                 v_link:'',
                 v_room:''
@@ -61,7 +61,7 @@ export default {
     },
     methods:{
         btn_addmore(){
-                this.addVideos.push({v_name:'',v_description:'',v_link:'',v_room:''})
+                this.addVideos.push({v_title:'',v_description:'',v_link:'',v_room:''})
         },
         btn_remove(index){
             if(this.addVideos.length >1){

@@ -6,7 +6,7 @@
             <div class="col-lg-6 col-xs-12">
                 <form @submit.prevent="submitCreateRoom">
                     <h5>Room Name</h5>
-                    <input v-model="createR.vr_name" type="text" class="form-control">
+                    <input v-model="createR.vr_title" type="text" class="form-control">
                     <br>
                     <h5>Description</h5>
                     <textarea v-model="createR.vr_description" class="form-control" rows="6" ></textarea>
@@ -20,7 +20,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-xs-12"></div>
-            <!-- Name : {{createR.vr_name}} <br> Des  : {{createR.vr_description}} <br> -->
+            <!-- Name : {{createR.vr_title}} <br> Des  : {{createR.vr_description}} <br> -->
         </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     data(){
         return {
             createR:{
-                vr_name:'',
+                vr_title:'',
                 vr_description:''
             }
         }

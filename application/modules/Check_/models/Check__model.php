@@ -25,6 +25,7 @@
             $userS = $this->db->get($this->member)->result();                      
             return $userS[0]->m_status;
         }
+        
 
 
 

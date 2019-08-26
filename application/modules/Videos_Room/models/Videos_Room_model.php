@@ -45,7 +45,11 @@
             }
             return $lastID;
         }
-        
+        // update Room
+        public function update_video_room($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->video_room,$data));
+        }
 
 
 

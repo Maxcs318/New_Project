@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12" v-for="( listv,index ) in ListVideos" :key="index">
                 <div @click="seethisVideo(listv.v_id)">
-                    Video Name: <b> {{listv.v_name}} </b> <br>
+                    Video Name: <b> {{listv.v_title}} </b> <br>
                     Description: {{listv.v_description}}
                     <hr>
                 </div>

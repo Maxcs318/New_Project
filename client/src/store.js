@@ -241,8 +241,8 @@ const store = new Vuex.Store({
                 }
             })
         },
-        Edit_Product(context,article){
-            axios.post('http://gamaproject.vue.com/product/update_product',article)
+        Edit_Product(context,product){
+            axios.post('http://gamaproject.vue.com/product/update_product',product)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -250,6 +250,16 @@ const store = new Vuex.Store({
                 }
             })
         },
+        Edit_Video_Room(context,video_room){
+            axios.post('http://gamaproject.vue.com/Videos_Room/update_video_room',video_room)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    console.log(response.data)
+                    // context.commit("Edit_Product",response.data)
+                }
+            })
+        }
         
         
         
@@ -273,7 +283,6 @@ const store = new Vuex.Store({
         getBook(state){
             let product = state.product
             var booklist =[]
-            // = this.book
                 for(var i=0; i<product.length; i++){
                     if(product[i].p_type == 'book'){
                         booklist.push(product[i])
@@ -284,7 +293,6 @@ const store = new Vuex.Store({
         getTrainingCourse(state){
             let productall = state.product
             var trainingC =[]
-            // = this.book
                 for(var i=0; i<productall.length; i++){
                     if(productall[i].p_type == 'training_course'){
                         trainingC.push(productall[i])

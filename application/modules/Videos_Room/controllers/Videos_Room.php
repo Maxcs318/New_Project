@@ -101,7 +101,32 @@
             echo json_encode($newVideos);
                 
         }
-
+        // update Room
+        public function update_video_room()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            // update
+            $Room = (array)json_decode($this->input->post('room'));  
+            $RoomID['vr_id'] = $Room['vr_id'];
+            unset($Room['vr_id']);
+            $Room['vr_update_date'] = null;
+            $thisUpdate = $this->Videos_Room_model->update_video_room($Room,$RoomID);
+                if($thisUpdate == true){
+                    $Room['vr_id'] = $RoomID['vr_id'];
+                    echo json_encode($Room);
+                }      
+        }
 
 
 

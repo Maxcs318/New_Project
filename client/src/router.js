@@ -28,6 +28,7 @@ import RoomVideo from './view/Videos_Room/roomVideo.vue';
 import EditNewsandActivity from './view/News_Activities/news_activity_edit.vue';
 import EditArticle from './view/Articles/article_edit.vue';
 import EditProduct from './view/Product/product_edit.vue';
+import EditVideo_room from './view/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 // end edit page
 
 Vue.use(VueRouter)
@@ -64,6 +65,7 @@ export const router = new VueRouter({
         { path : "/editnewsandactivity/:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
         { path : "/editarticle/:ArticleID",name:"editarticle",component : EditArticle },
         { path : "/editproduct/:ProductID",name:"editproduct",component : EditProduct },
+        { path : "/editvideoroom/:RoomID",name:"editvideoroom",component : EditVideo_room },
 
         
         
