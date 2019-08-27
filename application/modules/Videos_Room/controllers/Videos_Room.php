@@ -88,7 +88,7 @@
                 echo 'fail';
                 exit ;
             }
-            // update Room
+            //do update Room
             $Room = (array)json_decode($this->input->post('room'));  
             $RoomID['vr_id'] = $Room['vr_id'];
             unset($Room['vr_id']);
@@ -97,6 +97,32 @@
                 if($thisUpdate == true){
                     $Room['vr_id'] = $RoomID['vr_id'];
                     echo json_encode($Room);
+                }      
+        }
+        // update Video
+        public function update_video()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //do update Video
+            $Video = (array)json_decode($this->input->post('video'));  
+            $VideoID['v_id'] = $Video['v_id'];
+            unset($Video['v_id']);
+            $Video['v_update_date'] = $this->Check__model->date_time_now();
+            $thisUpdate = $this->Videos_Room_model->update_video($Video,$VideoID);
+                if($thisUpdate == true){
+                    $Video['v_id'] = $VideoID['v_id'];
+                    echo json_encode($Video);
                 }      
         }
 

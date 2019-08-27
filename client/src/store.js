@@ -87,6 +87,18 @@ const store = new Vuex.Store({
                 state.product[index] = Editproduct
             }
         },
+        Edit_Video_Room(state,Editvideo_room){
+            let index = state.video_room.findIndex(vr => vr.vr_id == Editvideo_room.vr_id)
+            if(index > -1){
+                state.video_room[index] = Editvideo_room
+            }
+        },
+        Edit_Video(state,Editvideo){
+            let index = state.videos.findIndex(v => v.v_id == Editvideo.v_id)
+            if(index > -1){
+                state.videos[index] = Editvideo
+            }
+        }
 
 
     },
@@ -255,7 +267,16 @@ const store = new Vuex.Store({
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
-                    // context.commit("Edit_Product",response.data)
+                    context.commit("Edit_Video_Room",response.data)
+                }
+            })
+        },
+        Edit_Video(context,video){
+            axios.post('http://gamaproject.vue.com/Videos_Room/update_video',video)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Edit_Video",response.data)
                 }
             })
         }

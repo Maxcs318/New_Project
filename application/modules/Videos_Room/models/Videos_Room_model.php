@@ -52,6 +52,11 @@
         {
             return json_encode($this->db->where($where)->update($this->video_room,$data));
         }
+        // update Video
+        public function update_video($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->videos,$data));
+        }
         
 
 

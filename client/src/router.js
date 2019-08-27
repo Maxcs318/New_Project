@@ -89,7 +89,6 @@ export const router = new VueRouter({
         { path : "/editproduct/:ProductID",name:"editproduct",component : EditProduct },
         { path : "/editvideoroom/:RoomID",name:"editvideoroom",component : EditVideo_room },
         { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
-
         // stop edit
         
         

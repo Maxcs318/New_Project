@@ -35,12 +35,12 @@ export default {
     },
     methods:{
         submitEditVideo(){
-            console.log(this.thisvideo)
+            // console.log(this.thisvideo)
             var jsonV = JSON.stringify(this.thisvideo)
                 var FD  = new FormData()
                     FD.append('video',jsonV)            
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
-                    // this.$store.dispatch("Edit_Video",FD)
+                    this.$store.dispatch("Edit_Video",FD)
                     setTimeout(()=>{
                         this.$router.go(-1)
                     },2000)  
