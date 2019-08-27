@@ -105,7 +105,7 @@ export default {
             this.$router.push('/productall')
         },
         admin(){
-            this.$router.push('/admin')
+            this.$router.push('/Admin')
         },
         
         newsandactivities(){
