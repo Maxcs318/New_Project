@@ -12,6 +12,14 @@
                 <!-- {{list.vr_owner}} <br> -->
                 </div>
                 <br>
+                <div class="row" v-if="the_user.m_status == 'admin'">
+                    <div class="col-lg-6 col-lg-xs-12">
+                        <button class="form-control btn-success" @click="editRoom(list.vr_id)"> Edit </button> <br>
+                    </div>
+                    <div class="col-lg-6 col-lg-xs-12">
+                        <button class="form-control btn-danger"> Delete </button> <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -22,11 +30,18 @@ export default {
         seethisRoom(thisroom){
             this.$router.push({name:'listvideos',params:{RoomID:thisroom}});
         },
+        editRoom(thisroom){
+            this.$router.push({name:'editvideoroom',params:{RoomID:thisroom}});
+
+        }
     },
     computed:{
         ListRoom(){
             return this.$store.getters.getVideo_Room
         },
+        the_user(){
+            return this.$store.getters.getThe_User
+        }
     },
     created(){
         this.$store.dispatch("initDataVideo_Room")

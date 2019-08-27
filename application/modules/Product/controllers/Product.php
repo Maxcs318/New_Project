@@ -80,7 +80,7 @@
                             $createM = 'ธันวาคม';                            
                         }
                     $createY = date('Y')+543;
-                    $product['p_date'] = date('d').' '.$createM.' '.$createY;
+                    $product['p_create_date'] = date('d').' '.$createM.' '.$createY;
                     $thisID = $this->product_model->insert_product($product);
                     $product['p_id']=$thisID;
                     echo json_encode($product);

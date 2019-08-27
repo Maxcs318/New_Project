@@ -79,7 +79,7 @@
                             $createM = 'ธันวาคม';                            
                         }
                     $createY = date('Y')+543;
-                    $news['n_date'] = date('d').' '.$createM.' '.$createY;
+                    $news['n_create_date'] = date('d').' '.$createM.' '.$createY;
                     $thisID = $this->news_model->insert_news($news);
                     $news['n_id']=$thisID;
                     echo json_encode($news);

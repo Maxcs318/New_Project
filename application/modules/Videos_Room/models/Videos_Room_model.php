@@ -50,7 +50,7 @@
         {
             return json_encode($this->db->where($where)->update($this->video_room,$data));
         }
-
+        
 
 
 

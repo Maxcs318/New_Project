@@ -57,16 +57,9 @@
             <b-navbar-nav class="ml-auto">
                 <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
                 <button v-if="this.$store.state.the_user == '' " class="form-control btn-light" @click="Log_in"> Log in </button>
-
-                <b-nav-item-dropdown right v-if="this.$store.state.the_user.m_status == 'admin' ">
-                    <template slot="button-content"> Admin </template>
-                        <b-dropdown-item @click="addnews">Add News</b-dropdown-item>
-                        <b-dropdown-item @click="addarticle">Add Article</b-dropdown-item>
-                        <b-dropdown-item @click="addproduct">Add Product</b-dropdown-item>
-                        <b-dropdown-item @click="addvideosandroom">Add Videos&Room</b-dropdown-item>
-                </b-nav-item-dropdown>
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
+                        <b-dropdown-item @click="admin" v-if="this.$store.state.the_user.m_status == 'admin' ">Admin</b-dropdown-item>
                         <b-dropdown-item @click="profile">Profile</b-dropdown-item>
                         <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
                         <b-dropdown-item @click="productall">Product All</b-dropdown-item>
@@ -111,18 +104,10 @@ export default {
         productall(){
             this.$router.push('/productall')
         },
-        addnews(){
-            this.$router.push('/addnews')
+        admin(){
+            this.$router.push('/admin')
         },
-        addarticle(){
-            this.$router.push('/addarticle')
-        },
-        addproduct(){
-            this.$router.push('/addproduct')
-        },
-        addvideosandroom(){
-            this.$router.push('/addvideosandroom')
-        },
+        
         newsandactivities(){
             this.$router.push('/newsandactivities')
         },

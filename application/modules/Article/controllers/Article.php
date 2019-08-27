@@ -80,7 +80,7 @@
                             $createM = 'ธันวาคม';                            
                         }
                     $createY = date('Y')+543;
-                    $article['a_date'] = date('d').' '.$createM.' '.$createY;
+                    $article['a_create_date'] = date('d').' '.$createM.' '.$createY;
                     $thisID = $this->article_model->insert_article($article);
                     $article['a_id']=$thisID;
                     echo json_encode($article);

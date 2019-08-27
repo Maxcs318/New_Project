@@ -255,7 +255,6 @@ const store = new Vuex.Store({
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
-                    console.log(response.data)
                     // context.commit("Edit_Product",response.data)
                 }
             })

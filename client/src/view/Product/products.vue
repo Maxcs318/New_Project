@@ -10,14 +10,6 @@
                 <!-- <p style="text-indent: 2em;">{{product.p_detail.slice(0,60)}}</p> -->
                 <button class="form-control btn-primary"> สั่งซื้อ </button>
                 <br>
-                <div class="row" v-if="the_user.m_status == 'admin'">
-                    <div class="col-lg-6 col-lg-xs-12">
-                        <button class="form-control btn-success" @click="editProduct(product.p_id)"> Edit </button> <br>
-                    </div>
-                    <div class="col-lg-6 col-lg-xs-12">
-                        <button class="form-control btn-danger"> Delete </button> <br>
-                    </div>
-                </div>
             </div>
         </div>
         
@@ -32,17 +24,11 @@ export default {
         seethisPageProduct(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
         },
-        editProduct(thisproduct){
-            this.$router.push({name:'editproduct',params:{ProductID:thisproduct}});
-        }
     },
     computed:{
         ProductAll(){
             return this.$store.getters.getProduct
         },
-        the_user(){
-            return this.$store.getters.getThe_User
-        }
     },
     created(){
         this.$store.dispatch("initDataProduct")

@@ -47,7 +47,7 @@ export default {
                 a_title:'',
                 a_detail:'',
                 a_image:'',
-                a_date:''
+                a_create_date:''
             },
             url: null,
             fileimage:''

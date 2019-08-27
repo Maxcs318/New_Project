@@ -64,7 +64,7 @@ export default {
     },
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/Product/'+pic)
+            return require('../../../assets/Product/'+pic)
         },
         ChooseFiles(){
             document.getElementById('chooseImage').click()
