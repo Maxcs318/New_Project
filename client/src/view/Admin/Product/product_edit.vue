@@ -90,7 +90,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Edit_Product",FD)
                     setTimeout(()=>{
-                        this.$router.push('/productall')
+                        this.$router.push('/AdminP')
                     },2000)  
                 this.$swal("Edit Product Success .", "", "success")
         }

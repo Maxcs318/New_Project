@@ -4,6 +4,7 @@
             <div class="col-lg-2 col-xs-12"></div>
             <div class="col-lg-8 col-xs-12" v-if="thisNews">
                 <img :src="getImgUrl(thisNews.n_image)" width="100%">
+                <!-- <a :href="getImgUrl(thisNews.n_image)" download>File Dowload</a> -->
                 <h5 class="mt-3">{{thisNews.n_title}}</h5>
                 <p style="text-align: right;">{{thisNews.n_date}}</p>
                 <p style="text-indent: 2em;">{{thisNews.n_detail}}</p>

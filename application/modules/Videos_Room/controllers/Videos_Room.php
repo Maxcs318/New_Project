@@ -43,34 +43,7 @@
                 exit ;
             }
             $newRoom = (array)json_decode($this->input->post('room'));             
-            $createM ;
-                if(date('m')==1){
-                    $createM = 'มกราคม';
-                }else if(date('m')==2){
-                    $createM = 'กุมภาพันธ์';
-                }else if(date('m')==3){
-                    $createM = 'มีนาคม';
-                }else if(date('m')==4){
-                    $createM = 'เมษายน';
-                }else if(date('m')==5){
-                    $createM = 'พฤษภาคม';
-                }else if(date('m')==6){
-                    $createM = 'มิถุนายน';
-                }else if(date('m')==7){
-                    $createM = 'กรกฎาคม';
-                }else if(date('m')==8){
-                    $createM = 'สิงหาคม';
-                }else if(date('m')==9){
-                    $createM = 'กันยายน';
-                }else if(date('m')==10){
-                    $createM = 'ตุลาคม';
-                }else if(date('m')==11){
-                    $createM = 'พฤษจิกายน';
-                }else if(date('m')==12){
-                    $createM = 'ธันวาคม';                            
-                }
-            $createY = date('Y')+543;
-            $newRoom['vr_create_date'] = date('d').' '.$createM.' '.$createY;
+            $newRoom['vr_create_date'] = $this->Check__model->date_time_now();
             $newRoom['vr_owner'] = $creatorID;
             $thisID = $this->Videos_Room_model->insert_room($newRoom);
             $newRoom['vr_id'] = $thisID;
@@ -94,7 +67,6 @@
             // insert
             $newVideos = (array)json_decode($this->input->post('videos'));            
             $thisID = $this->Videos_Room_model->insert_videos($newVideos);
-            // $newVideos['v_id'] = $thisID;
             for($i=0; $i<sizeof($newVideos); $i++){
                 $newVideos[$i]->v_id = $thisID[$i] ;
             }
@@ -116,11 +88,11 @@
                 echo 'fail';
                 exit ;
             }
-            // update
+            // update Room
             $Room = (array)json_decode($this->input->post('room'));  
             $RoomID['vr_id'] = $Room['vr_id'];
             unset($Room['vr_id']);
-            $Room['vr_update_date'] = null;
+            $Room['vr_update_date'] = $this->Check__model->date_time_now();
             $thisUpdate = $this->Videos_Room_model->update_video_room($Room,$RoomID);
                 if($thisUpdate == true){
                     $Room['vr_id'] = $RoomID['vr_id'];

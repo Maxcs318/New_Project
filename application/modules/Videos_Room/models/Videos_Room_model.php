@@ -5,6 +5,7 @@
         public function __construct()
         {
             parent::__construct();
+            $this->load->model('../../Check_/models/Check__model');
             $this->output->set_content_type("application/json", 'utf-8');
             $this->videos = 'videos';
             $this->video_room = 'video_room';
@@ -38,6 +39,7 @@
         {
             $lastID = array();
             for($i=0; $i<sizeof($data); $i++){
+                $data[$i]->v_create_date = $this->Check__model->date_time_now();
             $ins = $this->db->insert($this->videos,$data[$i]);
                 if($ins){
                     array_push($lastID,$this->db->insert_id());

@@ -30,7 +30,7 @@ export default {
             this.$router.push('/AdminP')
         },
         video_room(){
-            // this.$router.push('/AdminN')
+            this.$router.push('/AdminLR')
         }
     }
 }

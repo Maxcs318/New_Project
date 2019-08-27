@@ -55,7 +55,8 @@ export default {
                 v_title:'',
                 v_description:'',
                 v_link:'',
-                v_room:''
+                v_room:'',
+                v_create_date:''
             }]
         }
     },

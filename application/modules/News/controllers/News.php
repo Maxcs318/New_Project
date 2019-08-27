@@ -52,34 +52,7 @@
                 if ($this->upload->do_upload('userfile')){
                     $data = array('upload_data' => $this->upload->data());
                     $news['n_image'] = $_FILES['userfile']['name'];
-                    $createM ;
-                        if(date('m')==1){
-                            $createM = 'มกราคม';
-                        }else if(date('m')==2){
-                            $createM = 'กุมภาพันธ์';
-                        }else if(date('m')==3){
-                            $createM = 'มีนาคม';
-                        }else if(date('m')==4){
-                            $createM = 'เมษายน';
-                        }else if(date('m')==5){
-                            $createM = 'พฤษภาคม';
-                        }else if(date('m')==6){
-                            $createM = 'มิถุนายน';
-                        }else if(date('m')==7){
-                            $createM = 'กรกฎาคม';
-                        }else if(date('m')==8){
-                            $createM = 'สิงหาคม';
-                        }else if(date('m')==9){
-                            $createM = 'กันยายน';
-                        }else if(date('m')==10){
-                            $createM = 'ตุลาคม';
-                        }else if(date('m')==11){
-                            $createM = 'พฤษจิกายน';
-                        }else if(date('m')==12){
-                            $createM = 'ธันวาคม';                            
-                        }
-                    $createY = date('Y')+543;
-                    $news['n_create_date'] = date('d').' '.$createM.' '.$createY;
+                    $news['n_create_date'] = $this->Check__model->date_time_now();
                     $thisID = $this->news_model->insert_news($news);
                     $news['n_id']=$thisID;
                     echo json_encode($news);
@@ -128,7 +101,7 @@
             }
                 $newsEditID['n_id'] = $news['n_id'];
                 unset($news['n_id']); 
-                $news['n_update_date'] = null; 
+                $news['n_update_date'] = $this->Check__model->date_time_now();
                 $thisUpdate = $this->news_model->update_news($news,$newsEditID);
                 if($thisUpdate == true){
                     $news['n_id'] = $newsEditID['n_id'];

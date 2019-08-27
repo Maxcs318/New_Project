@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-xs-6"></div>
                         <div class="col-lg-6 col-xs-6">
-                            <button class="form-control btn-primary" type="submit"> Create. </button>
+                            <button class="form-control btn-primary" type="submit"> Save. </button>
                         </div>
                     </div>
                 </form>
@@ -39,7 +39,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Edit_Video_Room",FD)
                     setTimeout(()=>{
-                        this.$router.push('/listroom')
+                        this.$router.push('/AdminLR')
                     },2000)  
                 this.$swal("Edit Video Room Success .", "", "success")
         }
