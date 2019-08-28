@@ -35,6 +35,7 @@
       this.$store.dispatch("initApp")
       this.$store.dispatch("initDataNews")
       this.$store.dispatch("initDataArticle")
+      this.$store.dispatch("initDataFiles")
       this.$store.dispatch("initDataProduct")
       this.$store.dispatch("initDataVideos")
       this.$store.dispatch("initDataVideo_Room")    

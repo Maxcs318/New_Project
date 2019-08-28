@@ -9,6 +9,7 @@ const store = new Vuex.Store({
         statusPage:'',
         news:[],
         article:[],
+        files:[],
         product:[],
         members : [],
         the_user:'',
@@ -28,6 +29,9 @@ const store = new Vuex.Store({
         },
         ProductAll(state,product){
             state.product = product
+        },
+        FilesAll(state,files){
+            state.files = files
         },
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -51,6 +55,9 @@ const store = new Vuex.Store({
         },
         Add_Article(state,Newarticle){
             state.article.push(Newarticle)
+        },
+        Add_Files_Upload(state,Newfiles){
+            state.files.push(Newfiles)
         },
         Add_Product(state,Newproduct){
             state.product.push(Newproduct)
@@ -131,6 +138,13 @@ const store = new Vuex.Store({
                     context.commit("ArticleAll",response.data)
             })
         },
+        initDataFiles(context){
+            axios.get("http://gamaproject.vue.com/Files_Upload/get_all_files_upload")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("FilesAll",response.data)
+            })
+        },
         initDataProduct(context){
             axios.get("http://gamaproject.vue.com/product/get_all_product")
                 .then(response => {
@@ -201,8 +215,9 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/article/insert_article',article)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
-                    context.commit("Add_Article",response.data)
+                    // console.log('Response Data',response.data[0].article)
+                    context.commit("Add_Article",response.data[0].article)
+                    context.commit("Add_Files_Upload",response.data[0].files)
                 }
             })
         },
@@ -296,6 +311,9 @@ const store = new Vuex.Store({
         },
         getArticle(state){
             return state.article.reverse()
+        },
+        getFiles(state){
+            return state.files
         },
         getProduct(state){
             return state.product.reverse()

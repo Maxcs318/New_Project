@@ -39,6 +39,8 @@ import EditProduct from './view/Admin/Product/product_edit.vue';
 import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
 // end edit page
+//test01
+import Test01 from './zero_test_code/test01.vue';
 
 Vue.use(VueRouter)
 
@@ -96,7 +98,8 @@ export const router = new VueRouter({
 
 
 
-        
+        //test01
+        { path : "/test01",component : Test01 },
 
         { path : "*", redirect : "/" }
     ],
