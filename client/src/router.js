@@ -43,6 +43,7 @@ import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edi
 
 //profile
 import Profile from './view/Profile/profile.vue';
+import EditProfile from './view/Profile/profile_edit.vue';
 
 //test01
 import Test01 from './zero_test_code/test01.vue';
@@ -101,6 +102,7 @@ export const router = new VueRouter({
         
         // start profile
         { path : "/myProfile",component : Profile },
+        { path : "/editprofile",component : EditProfile },
 
         // end profile
         
