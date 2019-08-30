@@ -129,7 +129,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Article",FD)
                     setTimeout(()=>{
-                        // this.$router.push('/AdminA')
+                        this.$router.push('/AdminA')
                     },5000)  
                 this.$swal("Save Article Success .", "", "success")
             }else{

@@ -2,11 +2,15 @@
     <div class="container mt-3">
         <div class="row ">
             <div class="col-lg-2 col-xs-12"></div>
-            <div class="col-lg-8 col-xs-12" v-if="thisArticle">
+            <div class="col-lg-8 col-xs-12" v-if="thisArticle != null">
                 <img :src="getImgUrl(thisArticle.a_image)" width="100%">
                 <h5 class="mt-3">{{thisArticle.a_title}}</h5>
                 <p style="text-align: right;">{{thisArticle.a_date}}</p>
                 <p style="text-indent: 2em;">{{thisArticle.a_detail}}</p>
+                    <!--<br> <a :href="getImgUrl(thisArticle.a_image)" download> Download File Image</a> <br><br> -->
+                <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >
+                    <a :href="loadFile(file.f_title)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                </div>
             </div>
             <div class="col-lg-2 col-xs-12"></div>
         </div>
@@ -17,6 +21,9 @@ export default {
     methods:{
         getImgUrl(pic) {
             return require('../../assets/Article/'+pic)
+        },
+        loadFile(fi){
+            return require('../../assets/Files_Upload/'+fi)
         }
     },
     computed : {
@@ -29,6 +36,20 @@ export default {
                 }
             }
             return article
+        },
+        thisFiles(){
+            var filesAll = this.$store.getters.getFiles
+            var files_article = []
+            for(var i=0; i<filesAll.length; i++){
+                if(filesAll[i].f_key == this.thisArticle.a_file_key){
+                    files_article.push(filesAll[i])
+                }
+            }
+            if(files_article.length != 0){
+                return files_article
+            }else{
+                return false
+            }
         }
     }
 }

@@ -36,6 +36,39 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.(pdf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ppt)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(zip)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
       }
     ]
   },
