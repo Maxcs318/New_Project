@@ -14,8 +14,8 @@
                 Institute : {{the_user.m_institute}}<br>
                 Address : {{the_user.m_address}}<br>
                 <hr>
-                Id : {{the_user.m_id}}<br>
-                Id number : {{the_user.m_id_number}}<br>
+                ID : {{the_user.m_id}}<br>
+                ID number : {{the_user.m_id_number}}<br>
                 Status : {{the_user.m_status}}<br>
                 Member Type : {{the_user.m_type}}<br>
                 Upgrade Date ID : {{the_user.m_upgrade_date_id}}<br>

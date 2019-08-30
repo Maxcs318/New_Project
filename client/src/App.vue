@@ -32,7 +32,6 @@
     },
     created(){
       this.$store.dispatch("initApp")
-      this.$store.dispatch("initApp")
       this.$store.dispatch("initDataNews")
       this.$store.dispatch("initDataArticle")
       this.$store.dispatch("initDataFiles")

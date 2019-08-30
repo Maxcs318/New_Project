@@ -96,7 +96,7 @@ export default {
             this.$router.push('/register')
         },
         profile(){
-            this.$router.push('/profile')
+            this.$router.push('/myProfile')
         },
         videosroom(){
             this.$router.push('/listroom')

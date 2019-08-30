@@ -25,6 +25,7 @@ import admin_Article from "./view/Admin/Articles/articles.vue"
 import admin_Product from "./view/Admin/Product/products.vue"
 import admin_ListRooms from "./view/Admin/Videos_Room/listRooms.vue"
 import admin_ListVideos from "./view/Admin/Videos_Room/listVideos.vue"
+
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
 import addArticle from "./view/Admin/Articles/article_insert.vue"
@@ -39,6 +40,10 @@ import EditProduct from './view/Admin/Product/product_edit.vue';
 import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
 // end edit page
+
+//profile
+import Profile from './view/Profile/profile.vue';
+
 //test01
 import Test01 from './zero_test_code/test01.vue';
 
@@ -85,6 +90,7 @@ export const router = new VueRouter({
         { path : "/addroom",component : addRoom },
         { path : "/addvideos",component : addVideos },
         // stop insert
+
         // start edit 
         { path : "/editnewsandactivity/:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
         { path : "/editarticle/:ArticleID",name:"editarticle",component : EditArticle },
@@ -93,7 +99,10 @@ export const router = new VueRouter({
         { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
         // stop edit
         
-        
+        // start profile
+        { path : "/myProfile",component : Profile },
+
+        // end profile
         
 
 
