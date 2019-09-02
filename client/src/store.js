@@ -48,7 +48,7 @@ const store = new Vuex.Store({
             state.the_user = user
         },
         addMember(state,member){
-            state.members.push(member)
+            // state.members.push(member)
         },
         Add_News(state,Newnews){
             state.news.push(Newnews)
@@ -105,6 +105,9 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.videos[index] = Editvideo
             }
+        },
+        Edit_Profile(state,Eprofile){
+            // state.the_user = Eprofile
         }
 
 
@@ -197,8 +200,8 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post("http://gamaproject.vue.com/user/save", JSON.stringify(newuser))
             .then(response => {
-                // console.log(newuser)
-                context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
+                console.log(newuser)
+                // context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
             })
         },
         // Start Add data
@@ -292,6 +295,16 @@ const store = new Vuex.Store({
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
                     context.commit("Edit_Video",response.data)
+                }
+            })
+        },
+        Edit_Profile(context,profile){
+            axios.post('http://gamaproject.vue.com/user/edit_profile',profile)
+            .then(response =>{
+                // console.log('Response',response)
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    context.commit("Edit_Profile",response.data)
                 }
             })
         }

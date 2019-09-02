@@ -18,6 +18,9 @@
                 E-mail : {{the_user.m_email}}<br>
                 Institute : {{the_user.m_institute}}<br>
                 Address : {{the_user.m_address}}<br><br>
+                <br>
+                Join in : {{the_user.m_create_date}}<br>
+                Last Edit : {{the_user.m_update_date}}<br>
                 <div class="row">
                     <div class="col-lg-8 col-xs-12"></div>
                     <div class="col-lg-4 col-xs-12">
@@ -30,8 +33,7 @@
                 Status : {{the_user.m_status}}<br>
                 Member Type : {{the_user.m_type}}<br>
                 Upgrade Date ID : {{the_user.m_upgrade_date_id}}<br>
-                Join in : {{the_user.m_create_date}}<br>
-                Last Edit : {{the_user.m_update_date}}<br>
+                
                 Password : {{the_user.m_password}} -->
 
             </div>

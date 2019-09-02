@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-5" v-if="log_on">
         <div class="col-lg-4 col-xs-12"></div>
         <div class="col-lg-4 col-xs-12" >
             <!-- /// -->
@@ -13,12 +13,6 @@
                 <h5>Lastname</h5>
                 <input type="text" v-model="newuser.m_lastname" class="form-control" required>
                 <br>
-                <!-- <h5>E-mail</h5>
-                <input type="email" v-model="newuser.m_email" class="form-control" required>
-                <br>
-                <h5>Phone</h5>
-                <input type="text" v-model="newuser.m_phone" class="form-control" required>
-                <br> -->
                 <h5>Username</h5>
                 <input type="text" v-model="newuser.m_username" class="form-control" required>
                 <br>
@@ -83,8 +77,11 @@ export default {
             this.register_user = this.newuser
             // console.log(this.newuser)
             this.$store.dispatch("Register",this.register_user)
+            .then( response => { 
+                console.log(response)
+            })
+
             this.$router.push('/login')
-            .then(() => {
                 setTimeout(() => {
                     this.newuser.m_firstname =''
                     this.newuser.m_lastname =''
@@ -93,12 +90,22 @@ export default {
                     this.newuser.m_email =''
                     this.newuser.m_password =''
                 }, 500)
-            })            
                 
+            this.$swal("Register Success .", "", "success")                
         },
         //
         back_login(){
             this.$router.push('/login')
+        }
+    },
+    computed:{
+        log_on(){
+            var user = this.$store.getters.getThe_User
+            if(user != '' || user != null){
+                this.$router.push("/")
+            }else{
+                return 'register'
+            }
         }
     }
 }

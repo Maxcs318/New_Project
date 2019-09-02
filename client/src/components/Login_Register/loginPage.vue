@@ -1,6 +1,7 @@
 <template>
-<div class="container">
-    <div class="row mt-5">
+<div class="container" >
+    <div class="row mt-5" v-if="log_on">
+        <!-- {{log_on}} -->
         <div class="col-lg-4 col-xs-12"></div>
         <div class="col-lg-4 col-xs-12">
             <!-- /// -->
@@ -67,7 +68,6 @@ export default {
                         }, 3000)
                     }else{
                         this.UserLogin = 'User or Password incorrect'
-                        // this.$router.push("/login")
                     }
                 }, 400)
                 this.$store.dispatch("initApp")
@@ -86,6 +86,16 @@ export default {
         username:function(){
             if(this.username==''){
                 this.UserLogin = ''
+            }
+        }
+    },
+    computed:{
+        log_on(){
+            var user = this.$store.getters.getThe_User
+            if(user != '' || user != null){
+                this.$router.push("/")
+            }else{
+                return 'login'
             }
         }
     }

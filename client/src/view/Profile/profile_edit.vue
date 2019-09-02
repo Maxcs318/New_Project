@@ -4,13 +4,15 @@
         <div class="row" v-if="the_user">
             <div class="col-lg-3 col-xs-12"></div>      
             <div class="col-lg-6 col-xs-12">
-                <img v-if="the_user.m_imageprofile != ''" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
-                <img v-if="the_user.m_imageprofile == ''" src="../../assets/Profile_Image/default_profile.jpg" width="100%"><br><br>
-                <button class="btn btn-success" type="button">
-                    Change Image Profile
-                </button>
+                <img v-if="the_user.m_imageprofile != '' && url== null" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
+                <img v-if="the_user.m_imageprofile == '' && url== null" src="../../assets/Profile_Image/default_profile.jpg" width="100%">
+                <img v-if="url"  :src="url" width="100%"/><br><br>
+                    <button type="button" class="btn btn-primary" @click="ChooseFiles">
+                        Change Image
+                    </button>
                 <br><br>
             <form @submit.prevent="submitEditProfile">                        
+                <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
 
                 Firstname TH 
                 <input type="text" v-model="E_member.m_firstname" class="form-control " ><br>
@@ -27,8 +29,8 @@
                 Username  
                 <input type="text" v-model="E_member.m_username" class="form-control " ><br>
 
-                Image Profile 
-                <input type="text" v-model="E_member.m_imageprofile" class="form-control " ><br>
+                <!-- Image Profile 
+                <input type="text" v-model="E_member.m_imageprofile" class="form-control " ><br> -->
 
                 Company 
                 <input type="text" v-model="E_member.m_company" class="form-control " ><br>
@@ -37,7 +39,7 @@
                 <input type="text" v-model="E_member.m_phone" class="form-control " ><br>
 
                 E-mail 
-                <input type="text" v-model="E_member.m_email" class="form-control " ><br>
+                <input type="email" v-model="E_member.m_email" class="form-control " ><br>
 
                 Institute 
                 <input type="text" v-model="E_member.m_institute" class="form-control " ><br>
@@ -57,7 +59,7 @@
                 Join in : {{the_user.m_create_date}}<br>
                 Last Edit : {{the_user.m_update_date}}<br>
                 Password : {{the_user.m_password}} -->
-                <div class="row">
+                <div class="row">   
                     <div class="col-lg-9 col-xs-12"></div>
                     <div class="col-lg-3 col-xs-12">
                         <button class="form-control btn-primary">Save</button>
@@ -76,12 +78,28 @@ export default {
         return{
             E_member:'',
             passwordOld:'',
-            passwordCheck:''
+            passwordCheck:'',
+            url: null,
+            fileimage:''
         }
     },
     methods:{
         getImgUrl(pic) {
             return require('../../assets/Profile_Image/'+pic)
+        },
+        ChooseFiles(){
+            document.getElementById('chooseImage').click()
+        },
+        handleFiles(e){
+            const file = e.target.files[0]
+            this.url = URL.createObjectURL(file)
+            let uploadedFiles = this.$refs.files.files[0]
+            this.fileimage = uploadedFiles
+            if(this.fileimage.size>10000000){
+                this.fileimage = []
+                this.url = null
+                this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
+            }
         },
         submitEditProfile(){
             var chk = md5(this.passwordCheck)
@@ -89,20 +107,20 @@ export default {
                 this.$swal(" Confirm Password Incorrect .", "", "error")
                 this.passwordCheck = ''
             }else{
+                var jsonProfile = JSON.stringify(this.E_member)
+                var FD  = new FormData()
 
-            console.log(this.E_member)
-                // var jsonArticle = JSON.stringify(this.articleE)
-                // var FD  = new FormData()
-                //     if(this.url != null || this.url!= ''){
-                //         FD.append('userfile',this.fileimage)
-                //     }
-                //     FD.append('article',jsonArticle)            
-                //     FD.append('creator',JSON.stringify(this.$store.state.log_on))
-                //     this.$store.dispatch("Edit_Article",FD)
+                    if(this.url != null || this.url!= ''){
+                        FD.append('userfile',this.fileimage)
+                    }
+                    FD.append('profile',jsonProfile)            
+                    FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+                    this.$store.dispatch("Edit_Profile",FD)
+
                     setTimeout(()=>{
                         this.$router.push('/myProfile')
                     },2000)  
-                this.$swal("Edit Article Success .", "", "success")
+                this.$swal("Edit Profile Success .", "", "success")
             }
         }
     },
@@ -110,7 +128,7 @@ export default {
         the_user(){
             var user = this.$store.getters.getThe_User
             this.E_member = user
-            // this.E_member.m_password = ''
+
             this.passwordOld = user.m_password
             return user
         }

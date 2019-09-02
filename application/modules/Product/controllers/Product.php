@@ -101,7 +101,7 @@
             }
                 $productEditID['p_id'] = $product['p_id'];
                 unset($product['p_id']); 
-                $product['p_update_date'] = $this->Check__model->date_time_now();; 
+                $product['p_update_date'] = $this->Check__model->date_time_now(); 
                 $thisUpdate = $this->product_model->update_product($product,$productEditID);
                 if($thisUpdate == true){
                     $product['p_id'] = $productEditID['p_id'];

@@ -7,6 +7,7 @@
         public function __construct()
         {
             parent::__construct();
+            $this->load->model('../../Check_/models/Check__model');
             $this->tableName = 'member';
             $this->logged = 'logged';
 
@@ -21,6 +22,7 @@
         // register
         public function save($data = array())
         {
+            $data['m_create_date'] = $this->Check__model->date_time_now();
             $insert = $this->db->insert($this->tableName,$data);
             if($insert){
                 return json_encode(
@@ -84,7 +86,12 @@
             }
         }
 
-
+        // Edit Profile
+        public function edit_profile($data = array(),$where = array())
+        {
+            $statusEdit = $this->db->where($where)->update($this->tableName,$data);
+            return json_encode($statusEdit);
+        }
 
 
 
