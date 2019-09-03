@@ -29,6 +29,7 @@ export default {
     },
     created(){
         this.$store.dispatch("initDataNews")
+        this.$store.dispatch("initDataFiles")
     }
 }
 </script>

@@ -86,15 +86,17 @@ const store = new Vuex.Store({
         Edit_News(state,E_news){
             var Editnews = E_news.news
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
-            console.log(Editnews)
-            console.log(index)
+            // console.log(Editnews)
+            // console.log(index)
             if(index > -1){
                 state.news[index] = Editnews
             }
         },
-        Edit_Article(state,Editarticle){
-            // console.log(Editnews)
+        Edit_Article(state,E_article){
+            var Editarticle = E_article.article
             let index = state.article.findIndex(a => a.a_id == Editarticle.a_id)
+            // console.log(Editarticle)
+            // console.log(index)
             if(index > -1){
                 state.article[index] = Editarticle
             }
@@ -285,7 +287,7 @@ const store = new Vuex.Store({
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
-                    context.commit("Edit_Article",response.data)
+                    context.commit("Edit_Article",response.data[0])
                 }
             })
         },
