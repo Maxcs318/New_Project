@@ -21,6 +21,14 @@
                             หัวเรื่อง
                             <input type="text" v-model="article.a_title" class="form-control" required>
                             <br>
+                            ประเภทของบทความ
+                            <select v-model="article.a_category" class="form-control" required>
+                                <option selected disabled value=''>Choose Category</option>
+                                <option v-for="(ac,index) in article_category" :key="index" :value="ac.ac_id" >
+                                    {{ ac.ac_title }}
+                                </option>
+                            </select>
+                            <br>
                             รายระเอียด
                             <textarea v-model="article.a_detail" class="form-control" rows="6" ></textarea>
                             <br>
@@ -60,6 +68,7 @@ export default {
         return{
             article:{
                 a_title:'',
+                a_category:'',
                 a_detail:'',
                 a_image:'',
                 a_create_date:'',
@@ -145,6 +154,11 @@ export default {
                 this.files.push( uploadedFiles[i] );
             }
             this.uploadPercentage = 0
+        }
+    },
+    computed:{
+        article_category(){
+            return this.$store.getters.getArticle_Category
         }
     }
 }

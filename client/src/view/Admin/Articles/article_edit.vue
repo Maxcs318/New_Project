@@ -14,6 +14,13 @@
                     หัวเรื่อง
                     <input type="text" v-model="articleE.a_title" class="form-control" required>
                     <br>
+                    ประเภทของบทความ
+                    <select v-model="articleE.a_category" class="form-control" required>
+                        <option v-for="(ac,index) in article_category" :key="index" :value="ac.ac_id" >
+                            {{ ac.ac_title }}
+                        </option>
+                    </select>
+                    <br>
                     รายระเอียด
                     <textarea v-model="articleE.a_detail" class="form-control" rows="6" ></textarea>
                     <br>
@@ -106,6 +113,9 @@ export default {
             }else{
                 return false
             }
+        },
+        article_category(){
+            return this.$store.getters.getArticle_Category
         },
         the_user(){
             var user = this.$store.getters.getThe_User

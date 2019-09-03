@@ -7,15 +7,20 @@
             parent::__construct();
             $this->output->set_content_type("application/json", 'utf-8');
             $this->article = 'article';
+            $this->article_category = 'article_category';
 
         }
         // get all Article
         public function get_all_article()
         {
-            // $this->db->order_by('a_id', 'DESC');
             $articleAll = $this->db->get($this->article)->result(); 
             return json_encode($articleAll);  
-            
+        }
+        // get all Article Category
+        public function get_all_article_category()
+        {
+            $articleAll = $this->db->get($this->article_category)->result(); 
+            return json_encode($articleAll);  
         }
         // insert Article
         public function insert_article($data = array())

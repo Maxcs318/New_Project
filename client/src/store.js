@@ -8,9 +8,9 @@ const store = new Vuex.Store({
     state : {
         statusPage:'',
         news:[],
-        article:[],
+        article:[],article_category:[],
         files:[],
-        product:[],
+        product:[],product_category:[],
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -26,6 +26,9 @@ const store = new Vuex.Store({
         },
         ArticleAll(state,article){
             state.article = article
+        },
+        Article_Category(state,a_category){
+            state.article_category = a_category
         },
         ProductAll(state,product){
             state.product = product
@@ -139,6 +142,13 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("ArticleAll",response.data)
+            })
+        },
+        initDataArticle_Category(context){
+            axios.get("http://gamaproject.vue.com/article/get_all_article_category")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Article_Category",response.data)
             })
         },
         initDataFiles(context){
@@ -301,7 +311,6 @@ const store = new Vuex.Store({
         Edit_Profile(context,profile){
             axios.post('http://gamaproject.vue.com/user/edit_profile',profile)
             .then(response =>{
-                // console.log('Response',response)
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit("Edit_Profile",response.data)
@@ -324,6 +333,9 @@ const store = new Vuex.Store({
         },
         getArticle(state){
             return state.article.reverse()
+        },
+        getArticle_Category(state){
+            return state.article_category
         },
         getFiles(state){
             return state.files

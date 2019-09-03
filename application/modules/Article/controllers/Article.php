@@ -23,6 +23,11 @@
         {
             echo $this->article_model->get_all_article();
         }
+        // get all Article_Category
+        public function get_all_article_category()
+        {
+            echo $this->article_model->get_all_article_category();
+        }
         // insert Article
         public function insert_article()
         {
