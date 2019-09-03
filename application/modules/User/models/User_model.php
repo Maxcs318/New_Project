@@ -49,7 +49,7 @@
             $query = $this->db->where($where)->get($this->tableName)->result();
             if($query != null){
                 $Now_user = $query[0];
-                    $genDate = date('dmYHis').$Now_user->m_id;
+                    $genDate = date('dmYHis').$Now_user->m_id.substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                     $data = array('l_id_m_id'=>$Now_user->m_id,'token'=>$genDate);
                     $create_token = $this->db->insert($this->logged,$data);
                     if($create_token == true){

@@ -85,8 +85,6 @@
                 exit ;
             }
             // do edit
-            // print_r($_FILES['userfile']);
-            // exit;
             if(isset($_FILES['userfile'])){
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
