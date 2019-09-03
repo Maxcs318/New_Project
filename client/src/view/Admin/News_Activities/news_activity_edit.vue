@@ -17,6 +17,10 @@
                     รายระเอียด
                     <textarea v-model="newsE.n_detail" class="form-control" rows="6" ></textarea>
                     <br>
+                    <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >
+                        <a :href="loadFile(file.f_title)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-lg-6">
                             <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFiles"> Change Image </button>
@@ -44,6 +48,9 @@ export default {
     methods:{
         getImgUrl(pic) {
             return require('../../../assets/News/'+pic)
+        },
+        loadFile(fi){
+            return require('../../../assets/Files_Upload/'+fi)
         },
         ChooseFiles(){
             document.getElementById('chooseImage').click()
@@ -85,6 +92,20 @@ export default {
             }
             this.newsE = news 
             return news
+        },
+        thisFiles(){
+            var filesAll = this.$store.getters.getFiles
+            var files_news = []
+            for(var i=0; i<filesAll.length; i++){
+                if(filesAll[i].f_key == this.thisNews.n_file_key){
+                    files_news.push(filesAll[i])
+                }
+            }
+            if(files_news.length != 0){
+                return files_news
+            }else{
+                return false
+            }
         },
         the_user(){
             var user = this.$store.getters.getThe_User

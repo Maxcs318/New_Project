@@ -54,10 +54,14 @@ const store = new Vuex.Store({
             // state.members.push(member)
         },
         Add_News(state,Newnews){
-            state.news.push(Newnews)
+            // console.log('News',Newnews.news)
+            // console.log('File',Newnews.files)
+            state.news.push(Newnews.news)
         },
         Add_Article(state,Newarticle){
-            state.article.push(Newarticle)
+            // console.log('News',Newarticle.article)
+            // console.log('File',Newarticle.files)
+            state.article.push(Newarticle.article)
         },
         Add_Files_Upload(state,Newfiles){
             state.files.push(Newfiles)
@@ -80,12 +84,14 @@ const store = new Vuex.Store({
             }
         },
         Edit_News(state,Editnews){
+            // console.log(Editnews)
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
             if(index > -1){
                 state.news[index] = Editnews
             }
         },
         Edit_Article(state,Editarticle){
+            // console.log(Editnews)
             let index = state.article.findIndex(a => a.a_id == Editarticle.a_id)
             if(index > -1){
                 state.article[index] = Editarticle
@@ -220,7 +226,7 @@ const store = new Vuex.Store({
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
-                    context.commit("Add_News",response.data)
+                    context.commit("Add_News",response.data[0])
                 }
             })
         },
@@ -228,9 +234,9 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/article/insert_article',article)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data[0].article)
-                    context.commit("Add_Article",response.data[0].article)
-                    context.commit("Add_Files_Upload",response.data[0].files)
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Article",response.data[0])
+                    // context.commit("Add_Files_Upload",response.data[0].files)
                 }
             })
         },

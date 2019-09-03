@@ -8,7 +8,6 @@
                 <h5 class="mt-3">{{thisArticle.a_title}}</h5>
                 <p style="text-align: right;">{{thisArticle.a_date}}</p>
                 <p style="text-indent: 2em;">{{thisArticle.a_detail}}</p>
-                    <!--<br> <a :href="getImgUrl(thisArticle.a_image)" download> Download File Image</a> <br><br> -->
                 <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >
                     <a :href="loadFile(file.f_title)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
                 </div>

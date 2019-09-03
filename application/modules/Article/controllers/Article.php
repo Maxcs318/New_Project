@@ -52,7 +52,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'      => './../client/src/assets/Article/',
+                    'upload_path'   => './../client/src/assets/Article/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -71,6 +71,9 @@
                 }
                 // insert file_upload
                 $filesAll = array();
+                $article_dataFiles=[];
+                
+                if(isset($_FILES['userfileupload0'])){
                 $filesupload_length = sizeof($_FILES)-1;
                 for($x = 0; $x < $filesupload_length; $x++) {
                     // Set New FileName
@@ -100,12 +103,16 @@
                 } 
                 if(sizeof($filesAll) == $filesupload_length){
                     $dataFiles = $this->Files_Upload_model->insert_files_upload($filesAll);
-                    $article_dataFiles=[];
                     array_push($article_dataFiles,array('article'=>$article,'files'=>$dataFiles));
-                    echo json_encode($article_dataFiles);
                 }else{
                     echo 'Error !!!';
                 }
+            }else{
+                array_push($article_dataFiles,array('article'=>$article,'files'=>null));
+
+            }
+                echo json_encode($article_dataFiles);
+
         }
         // update Article
         public function update_article(){
