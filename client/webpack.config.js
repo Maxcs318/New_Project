@@ -69,6 +69,17 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(rar)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash:8].[ext]'
+            }
+          }
+        ]
       }
     ]
   },

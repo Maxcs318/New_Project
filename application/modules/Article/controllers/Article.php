@@ -118,7 +118,7 @@
             }
             //update
             $article = (array)json_decode($this->input->post('article'));
-            if($_FILES['userfile']){
+            if(isset($_FILES['userfile'])){
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
                 $typeF = strrev($nameF);

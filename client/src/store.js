@@ -303,7 +303,7 @@ const store = new Vuex.Store({
             .then(response =>{
                 // console.log('Response',response)
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit("Edit_Profile",response.data)
                 }
             })

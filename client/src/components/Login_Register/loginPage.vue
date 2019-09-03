@@ -92,10 +92,10 @@ export default {
     computed:{
         log_on(){
             var user = this.$store.getters.getThe_User
-            if(user != '' || user != null){
-                this.$router.push("/")
-            }else{
+            if(user == '' || user == null){
                 return 'login'
+            }else{
+                this.$router.push("/")
             }
         }
     }

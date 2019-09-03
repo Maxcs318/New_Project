@@ -101,10 +101,10 @@ export default {
     computed:{
         log_on(){
             var user = this.$store.getters.getThe_User
-            if(user != '' || user != null){
-                this.$router.push("/")
+            if(user == '' || user == null){
+                return 'register'                
             }else{
-                return 'register'
+                this.$router.push("/")
             }
         }
     }

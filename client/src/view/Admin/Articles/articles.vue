@@ -51,6 +51,7 @@ export default {
     },
     created(){
         this.$store.dispatch("initDataArticle")
+        this.$store.dispatch("initDataFiles")
     }
 }
 </script>
