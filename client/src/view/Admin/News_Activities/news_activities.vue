@@ -18,13 +18,13 @@
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(news,index) in the_news" :key="index">
+                    <tr v-for="(news,index) in the_news.slice().reverse()" :key="index">
                         <td>{{news.n_id}}</td>
                         <td>{{news.n_title.slice(0,35)}}</td>
                         <td>{{news.n_create_date}}</td>
                         <td>{{news.n_update_date}}</td>
                         <td> <button class="form-control btn-warning" @click="editNews(news.n_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger">Delete</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteNews(news.n_id)">Delete</button> </td>
                     </tr>
                 </table>
             </div>
@@ -39,6 +39,30 @@ export default {
         },
         editNews(thisnews){
             this.$router.push({name:'editnewsandactivity',params:{NewsID:thisnews}});
+        },
+        deleteNews(thisnews){
+            // console.log(thisnews)
+            var FD  = new FormData()
+            FD.append('newsID',JSON.stringify(thisnews))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want delete this News ID "+thisnews,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.$store.dispatch("Delete_News",FD)
+                    swal("Delete Success .", {icon: "success",});
+                    // console.log(FD)
+                } else {
+                    // swal("Your imaginary file is safe!");
+                }
+            })
+
+            
         }
     },
     computed:{

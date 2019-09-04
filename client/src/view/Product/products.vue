@@ -2,7 +2,7 @@
     <div class="container mt-3">
         <h4>Product</h4>
         <div class="row">
-            <div class="col-lg-3 col-xs-12" v-for="(product,index) in ProductAll" :key="index">
+            <div class="col-lg-3 col-xs-12" v-for="(product,index) in ProductAll.slice().reverse()" :key="index">
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageProduct(product.p_id)">
                 <h5 @click="seethisPageProduct(product.p_id)">{{product.p_title}}</h5>
                 <p style="text-align: center;">{{product.p_price}} ฿</p>

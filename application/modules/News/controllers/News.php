@@ -204,8 +204,35 @@
 
         }
 
-
-
+        // delete_news
+        public function delete_news()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //delete
+            $newsID = json_decode($this->input->post('newsID'));
+            $news['n_id'] = $newsID;
+            //find file key
+            $news_file_key = (array)json_decode($this->news_model->get_file_key_news($news));
+            // dete news
+            $newsstatus = $this->news_model->delete_news($news);
+            // delete files in this news 
+            $file_key['f_key'] = $news_file_key['n_file_key'];
+            $filesstatus =$this->Files_Upload_model->delete_files_upload($file_key);
+            if($newsstatus == true){
+                echo $newsID ;
+            }
+        }
 
 
 

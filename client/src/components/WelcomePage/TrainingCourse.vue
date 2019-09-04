@@ -4,7 +4,7 @@
         <h5>หลักสูตรอบรม</h5>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6" v-for="(product,index) in trainingCourse.slice(0,4)" :key="index">
+                <div class="col-lg-3 col-md-6" v-for="(product,index) in trainingCourse.slice().reverse().slice(0,4)" :key="index">
                     <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageCourse(product.p_id)">
                     <h5 @click="seethisPageCourse(product.p_id)">{{product.p_title}}</h5>
                     <p style="text-align: right;">{{product.p_date}}</p>

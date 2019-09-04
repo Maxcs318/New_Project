@@ -32,11 +32,11 @@
             }
             return $lastID;
         }
-        // update Files_Upload
-        // public function update_files_upload($data = array(), $where = array())
-        // {
-        //     return json_encode($this->db->where($where)->update($this->files_upload,$data));
-        // }
+        // delete Files_Upload
+        public function delete_files_upload( $where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->files_upload));
+        }
         
 
 

@@ -18,7 +18,7 @@
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(product,index) in ProductAll" :key="index" >
+                    <tr v-for="(product,index) in ProductAll.slice().reverse()" :key="index" >
                         <td>{{product.p_id}}</td>
                         <td>{{product.p_title.slice(0,35)}}</td>
                         <td>{{product.p_create_date}}</td>

@@ -120,8 +120,15 @@ const store = new Vuex.Store({
             }
         },
         Edit_Profile(state,Eprofile){
-            // state.the_user = Eprofile
-        }
+            state.the_user = Eprofile
+        },
+        Delete_News(state,newsID){
+            let index = state.news.findIndex(n => n.n_id == newsID)
+            if(index > -1){
+                // console.log(state.news[index])
+                state.news.splice(index,1)
+            }
+        },
 
 
     },
@@ -326,6 +333,15 @@ const store = new Vuex.Store({
                     context.commit("Edit_Profile",response.data)
                 }
             })
+        },
+        Delete_News(context,this_news){
+            axios.post('http://gamaproject.vue.com/news/delete_news',this_news)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Delete_News",response.data)
+                }
+            })
         }
         
         
@@ -339,10 +355,10 @@ const store = new Vuex.Store({
             return state.the_user
         },
         getNews(state){
-            return state.news.reverse()
+            return state.news
         },
         getArticle(state){
-            return state.article.reverse()
+            return state.article
         },
         getArticle_Category(state){
             return state.article_category
@@ -351,7 +367,7 @@ const store = new Vuex.Store({
             return state.files
         },
         getProduct(state){
-            return state.product.reverse()
+            return state.product
         },
         getBook(state){
             let product = state.product
@@ -361,7 +377,7 @@ const store = new Vuex.Store({
                         booklist.push(product[i])
                     }
                 }
-            return booklist.reverse()
+            return booklist
         },
         getTrainingCourse(state){
             let productall = state.product
@@ -371,13 +387,13 @@ const store = new Vuex.Store({
                         trainingC.push(productall[i])
                     }
                 }
-            return trainingC.reverse()
+            return trainingC
         },
         getVideos(state){
             return state.videos
         },
         getVideo_Room(state){
-            return state.video_room.reverse()
+            return state.video_room
         }
     }
 

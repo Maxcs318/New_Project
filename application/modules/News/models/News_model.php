@@ -17,6 +17,12 @@
             return json_encode($newsAll);  
             
         }
+        // get file key news
+        public function get_file_key_news($where = array())
+        {
+            $news = $this->db->select('n_file_key')->where($where)->get($this->news)->result(); 
+            return json_encode($news[0]);  
+        }
         // insert News
         public function insert_news($data = array())
         {
@@ -32,8 +38,11 @@
         {
             return json_encode($this->db->where($where)->update($this->news,$data));
         }
-        
-
+        // delete News
+        public function delete_news($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->news));
+        }
 
 
 

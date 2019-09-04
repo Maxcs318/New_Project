@@ -2,7 +2,7 @@
     <div class="container mt-3">
         <h4>List Room</h4>
         <div class="row">
-            <div class="col-lg-4 col-xs-12" v-for="(list,index) in ListRoom" :key="index">
+            <div class="col-lg-4 col-xs-12" v-for="(list,index) in ListRoom.slice().reverse()" :key="index">
                 <div @click="seethisRoom(list.vr_id)">
                 <!-- {{list.vr_id}} <br> -->
                 Room Name: <b>{{list.vr_title}}</b> <br>
