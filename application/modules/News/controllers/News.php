@@ -112,7 +112,7 @@
         }
         // update News
         public function update_news(){
-            // check status for insert
+            // check status for update
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
                 echo 'fail';
@@ -207,7 +207,7 @@
         // delete_news
         public function delete_news()
         {
-            // check status for insert
+            // check status for delete
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
                 echo 'fail';
@@ -229,6 +229,7 @@
             // delete files in this news 
             $file_key['f_key'] = $news_file_key['n_file_key'];
             $filesstatus =$this->Files_Upload_model->delete_files_upload($file_key);
+            
             if($newsstatus == true){
                 echo $newsID ;
             }

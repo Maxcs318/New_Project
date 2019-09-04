@@ -129,6 +129,13 @@ const store = new Vuex.Store({
                 state.news.splice(index,1)
             }
         },
+        Delete_Article(state,articleID){
+            let index = state.article.findIndex(a => a.a_id == articleID)
+            if(index > -1){
+                // console.log(state.article[index])
+                state.article.splice(index,1)
+            }
+        }
 
 
     },
@@ -340,6 +347,15 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit("Delete_News",response.data)
+                }
+            })
+        },
+        Delete_Article(context,this_article){
+            axios.post('http://gamaproject.vue.com/article/delete_article',this_article)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Delete_Article",response.data)
                 }
             })
         }

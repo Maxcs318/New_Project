@@ -55,7 +55,7 @@ export default {
             .then((willDelete) => {
                 if (willDelete) {
                     this.$store.dispatch("Delete_News",FD)
-                    swal("Delete Success .", {icon: "success",});
+                    swal({title: "Delete Success.",icon: "success",});
                     // console.log(FD)
                 } else {
                     // swal("Your imaginary file is safe!");

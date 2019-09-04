@@ -116,7 +116,7 @@
         }
         // update Article
         public function update_article(){
-            // check status for insert
+            // check status for update
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
                 echo 'fail';
@@ -205,6 +205,36 @@
                 }
                 
                 echo json_encode($article_dataFiles);
+        }
+
+        // delete article
+        public function delete_article(){
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //delete
+            $articleID = json_decode($this->input->post('articleID'));
+            $article['a_id'] = $articleID;
+            //find file key
+            $article_file_key = (array)json_decode($this->article_model->get_file_key_article($article));
+            // dete article
+            $articlestatus = $this->article_model->delete_article($article);
+            // delete files in this article 
+            $file_key['f_key'] = $article_file_key['a_file_key'];
+            $filesstatus =$this->Files_Upload_model->delete_files_upload($file_key);
+
+            if($articlestatus == true){
+                echo $articleID ;
+            }        
         }
 
 

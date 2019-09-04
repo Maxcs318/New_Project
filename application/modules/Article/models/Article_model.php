@@ -22,6 +22,12 @@
             $articleAll = $this->db->get($this->article_category)->result(); 
             return json_encode($articleAll);  
         }
+        // get file key article
+        public function get_file_key_article($where = array())
+        {
+            $article = $this->db->select('a_file_key')->where($where)->get($this->article)->result(); 
+            return json_encode($article[0]);    
+        }
         // insert Article
         public function insert_article($data = array())
         {
@@ -37,8 +43,10 @@
         {
             return json_encode($this->db->where($where)->update($this->article,$data));
         }
-        
-
+        // delete article
+        public function delete_article($where = array()){
+            return json_encode($this->db->where($where)->delete($this->article));
+        }
 
 
 

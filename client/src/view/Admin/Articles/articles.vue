@@ -24,7 +24,7 @@
                         <td>{{article.a_create_date}}</td>
                         <td>{{article.a_update_date}}</td>
                         <td> <button class="form-control btn-warning" @click="editArticle(article.a_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger">Delete</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteArticle(article.a_id)">Delete</button> </td>
                     </tr>
                 </table>
             </div>
@@ -39,6 +39,28 @@ export default {
         },
         editArticle(thisarticle){
             this.$router.push({name:'editarticle',params:{ArticleID:thisarticle}});
+        },
+        deleteArticle(thisarticle){
+            // console.log(thisarticle)
+            var FD  = new FormData()
+            FD.append('articleID',JSON.stringify(thisarticle))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want delete this Article ID "+thisarticle,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.$store.dispatch("Delete_Article",FD)
+                    swal({title: "Delete Success.",icon: "success",});
+                    // console.log(FD)
+                } else {
+                    // swal("Your imaginary file is safe!");
+                }
+            })
         }
     },
     computed:{
