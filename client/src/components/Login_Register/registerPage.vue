@@ -13,11 +13,11 @@
                 <h5>Lastname</h5>
                 <input type="text" v-model="newuser.m_lastname" class="form-control" required>
                 <br>
-                <h5>Username</h5>
+                <h5>Username {{text_alert}}</h5> 
                 <input type="text" v-model="newuser.m_username" class="form-control" required>
                 <br>
                 <h5>Password</h5>
-                <input type="password" v-model="newuser.m_password" class="form-control" required>
+                <input type="password" v-model="password_normal" class="form-control" required>
                 <br>
                 <br>
                 <div class="row">
@@ -46,52 +46,44 @@ import md5 from 'js-md5'
 export default {
     data(){
         return{
-            user:{
-                m_username:'',
-                m_password:''
-            },
             password_normal:'',
             newuser:{
                 m_firstname:'',
                 m_lastname:'',
                 m_username:'',
-                m_status:'user',
-                m_phone:'',
-                m_email:'',
                 m_password:''
             },
-            register_user:''
+            register_user:'',
+            text_alert:''
         }
     },
     methods:{
-        onSubmitLogin(){
-            // console.log(this.user)
-            this.user.m_password = md5(this.password_normal);
-            this.$store.dispatch("Logining_in",this.user)
-            .then( response => {
-                //
-            })
-        },
         onSubmitRegister(){
-            this.newuser.m_password = md5(this.newuser.m_password);
+            this.newuser.m_password = md5(this.password_normal);
             this.register_user = this.newuser
             // console.log(this.newuser)
             this.$store.dispatch("Register",this.register_user)
             .then( response => { 
-                console.log(response)
+
+                setTimeout(() => {
+                    if(this.$store.state.statusRegister == 'fail'){
+                        this.newuser.m_username =''
+                        this.newuser.m_password ='' 
+                        this.password_normal = ''  
+                        // this.text_alert = 'username ซ้ำ ครับ'
+                        this.$swal(" Username ซ้ำ ครับ  .", "", "error") 
+                     
+                    }else{
+                        this.$router.push('/login')
+                        this.$swal("Register Success .", "", "success") 
+                    }
+                }, 400)
+
+
+                 
             })
 
-            this.$router.push('/login')
-                setTimeout(() => {
-                    this.newuser.m_firstname =''
-                    this.newuser.m_lastname =''
-                    this.newuser.m_username =''
-                    this.newuser.m_phone =''
-                    this.newuser.m_email =''
-                    this.newuser.m_password =''
-                }, 500)
-                
-            this.$swal("Register Success .", "", "success")                
+                        
         },
         //
         back_login(){

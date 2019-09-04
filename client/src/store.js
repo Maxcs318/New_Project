@@ -7,6 +7,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state : {
         statusPage:'',
+        statusRegister:'',
+
         news:[],
         article:[],article_category:[],
         files:[],
@@ -50,8 +52,9 @@ const store = new Vuex.Store({
         Log_On(state,user){
             state.the_user = user
         },
-        addMember(state,member){
+        addMember(state,statusrR){
             // state.members.push(member)
+            state.statusRegister = statusrR
         },
         Add_News(state,Newnews){
             // console.log('News',Newnews.news)
@@ -234,8 +237,8 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post("http://gamaproject.vue.com/user/save", JSON.stringify(newuser))
             .then(response => {
-                console.log(newuser)
-                // context.commit("addMember",{ m_id : response.data.insert_id, ...newuser})
+                // console.log(response.data)
+                context.commit("addMember",response.data)
             })
         },
         // Start Add data

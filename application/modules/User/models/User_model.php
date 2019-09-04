@@ -23,22 +23,28 @@
         public function save($data = array())
         {
             $data['m_create_date'] = $this->Check__model->date_time_now();
+            $data['m_status'] = 'user';
+            if($data['m_username'] == ''||$data['m_username'] == null ){
+                return 'fail';
+                // exit;
+            }
+            if($data['m_password'] == ''||$data['m_password'] == null ){
+                return 'fail';
+                // exit;
+            }
+            $new_username['m_username'] = $data['m_username'];
+            $checkMember = $this->db->where($new_username)->get($this->tableName)->result(); 
+            if($checkMember != []){
+                return 'fail' ;
+
+            }
+
             $insert = $this->db->insert($this->tableName,$data);
             if($insert){
                 return json_encode(
                     array("insert_id" => $this->db->insert_id())
                 );
             }
-        }
-        // update member
-        public function update($data = array(),$where = array())
-        {
-            return json_encode($this->db->where($where)->update($this->tableName,$data));
-        }
-        // delete member
-        public function delete($where = array())
-        {
-            return json_encode($this->db->where($where)->delete($this->tableName));
         }
 
         // ----------------------------------------------------------------------------------------

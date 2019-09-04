@@ -29,25 +29,7 @@
         {
             echo $this->user_model->save($this->JSON_DATA);
         }
-        // update member
-        public function update()
-        {
-            $id = $this->JSON_DATA["m_id"];
-            unset($this->JSON_DATA["m_id"]);
-            echo $this->user_model->update(
-                 $this->JSON_DATA,
-                array(
-                    "m_id"=>$id
-                )
-            );
-        }
-        // delete member
-        public function delete()
-        {
-            echo $this->user_model->delete(
-                 $this->JSON_DATA
-            );
-        }
+        
         // -------------------------------------------------------------------------------------------
         
         // Login 
