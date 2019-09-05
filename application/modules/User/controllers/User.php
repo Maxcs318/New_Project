@@ -87,7 +87,11 @@
                     exit;
                 }
             }
-            unset($profile['m_id']); 
+            unset($profile['m_id']);
+            // block edit this data 
+            unset($profile['m_status']);
+            unset($profile['m_type']);
+            unset($profile['m_create_date']);
             $Edit_ID = array('m_id'=>$ownID);
             $profile['m_update_date'] = $this->Check__model->date_time_now();
             $Do_edit = $this->user_model->edit_profile($profile,$Edit_ID);

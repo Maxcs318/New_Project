@@ -29,8 +29,8 @@
                 Username  
                 <input type="text" v-model="E_member.m_username" class="form-control " ><br>
 
-                <!-- Image Profile 
-                <input type="text" v-model="E_member.m_imageprofile" class="form-control " ><br> -->
+                <!-- Status 
+                <input type="text" v-model="E_member.m_status" class="form-control " ><br> -->
 
                 Company 
                 <input type="text" v-model="E_member.m_company" class="form-control " ><br>
