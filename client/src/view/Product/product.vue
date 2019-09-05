@@ -11,7 +11,8 @@
                 <img :src="getImgUrl(thisProduct.p_image)" width="100%">
             </div>
             <div class="col-lg-5 col-xs-12 mt-3" v-if="thisProduct">
-                <p style="text-indent: 2em;">{{thisProduct.p_detail}}</p>
+                <p style="text-indent: 2em;">{{thisProduct.p_description}}</p>
+                <p style="text-align: right;">{{thisProduct.p_category}}</p>
                 <p>ราคาปกติ {{thisProduct.p_price}} ฿</p>
                 <p>ราคาสำหรับสมาชิก {{thisProduct.p_price2}} ฿</p>
                 <p style="text-align: right;">{{thisProduct.p_date}}</p>

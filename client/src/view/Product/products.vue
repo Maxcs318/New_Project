@@ -6,8 +6,8 @@
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageProduct(product.p_id)">
                 <h5 @click="seethisPageProduct(product.p_id)">{{product.p_title}}</h5>
                 <p style="text-align: center;">{{product.p_price}} ฿</p>
-                <!-- <p style="text-align: right;">{{product.p_type}}</p> -->
-                <!-- <p style="text-indent: 2em;">{{product.p_detail.slice(0,60)}}</p> -->
+                <!-- <p style="text-align: right;">{{product.p_category}}</p> -->
+                <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
                 <button class="form-control btn-primary"> สั่งซื้อ </button>
                 <br>
             </div>

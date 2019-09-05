@@ -408,7 +408,7 @@ const store = new Vuex.Store({
             let product = state.product
             var booklist =[]
                 for(var i=0; i<product.length; i++){
-                    if(product[i].p_type == 'book'){
+                    if(product[i].p_category == 'book'){
                         booklist.push(product[i])
                     }
                 }
@@ -418,7 +418,7 @@ const store = new Vuex.Store({
             let productall = state.product
             var trainingC =[]
                 for(var i=0; i<productall.length; i++){
-                    if(productall[i].p_type == 'training_course'){
+                    if(productall[i].p_category == 'training_course'){
                         trainingC.push(productall[i])
                     }
                 }

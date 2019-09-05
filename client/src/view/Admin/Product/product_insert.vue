@@ -22,7 +22,7 @@
                             <input type="text" v-model="product.p_title" class="form-control" required>
                             <br>
                             รายระเอียด
-                            <textarea v-model="product.p_detail" class="form-control" rows="6" ></textarea>
+                            <textarea v-model="product.p_description" class="form-control" rows="6" ></textarea>
                             <br>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     ประเภทสินค้า
-                                    <input type="text" v-model="product.p_type" class="form-control" required>                                    
+                                    <input type="text" v-model="product.p_category" class="form-control" required>                                    
                                 </div>
                             </div>
                             <div class="row mt-5">
@@ -65,12 +65,12 @@ export default {
         return{
             product:{
                 p_title:'',
-                p_detail:'',
+                p_description:'',
                 p_image:'',
                 p_price:'',
                 p_price2:'',
                 p_amount:'',
-                p_type:'',
+                p_category:'',
                 p_create_date:''
             },
             url: null,

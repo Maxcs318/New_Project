@@ -15,7 +15,7 @@
                     <input type="text" v-model="productE.p_title" class="form-control" required>
                     <br>
                     รายระเอียด
-                    <textarea v-model="productE.p_detail" class="form-control" rows="5" ></textarea>
+                    <textarea v-model="productE.p_description" class="form-control" rows="5" ></textarea>
                     <br>
                     <div class="row">
                         <div class="col-lg-6">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-lg-6">
                             ประเภทสินค้า
-                            <input type="text" v-model="productE.p_type" class="form-control" required>                                    
+                            <input type="text" v-model="productE.p_category" class="form-control" required>                                    
                         </div>
                     </div>
                     <br>
