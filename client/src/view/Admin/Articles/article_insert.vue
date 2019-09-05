@@ -34,12 +34,13 @@
                             <br>
                             <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                                 <input type="file" ref="files" style="display: none;" id="FileUpload1" @change="handleFileUpload" multiple>
-                                <button type="button" class="form-control btn-primary col-lg-6" @click="ChooseFiles"> Choose Files </button>
                             <br>
-                            <div class="row" v-for="(f,index) in files" :key="index" style="text-align: left; width: 100%;">
+                            <div class="row" v-for="(f,index) in files" :key="index">
                                 <div class="col-lg-10">
+                                    <input type="text" class="form-control" v-model="file_title[index]" placeholder="File Title" required>
                                     <b> {{index+1}}. File  </b> {{files[index].name }}
                                     <b> Size </b>{{files[index].size}} byte
+                                    <br><br>
                                 </div>
                                 <div class="col-lg-2">
                                     <button type="button" class="form-control btn-danger" 
@@ -48,9 +49,13 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-lg-6"></div>
+                                <div class="col-lg-6">
+                                    <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Files </button>
+                                    <br>
+                                </div>
                                 <div class="col-lg-6">
                                     <button type="submit" class="form-control btn-primary col-12"> Save </button>
+                                    <br>
                                 </div>
                             </div>
                         </form>
@@ -78,6 +83,8 @@ export default {
             fileimage:'',
             files : [],
             max_size_file : 0,
+            file_title : [],
+
         }
     },
     methods:{
@@ -104,6 +111,7 @@ export default {
         },
         handleFileUpload(event){
             this.files = []
+            this.file_title = []
             this.Datafile = []
             var i=0
             let uploadedFiles = this.$refs.files.files;
@@ -122,17 +130,20 @@ export default {
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
             this.files.splice(index,1)
+            this.file_title.splice(index,1)
         },
         //submit
         submitArticle(){
             if(this.fileimage.size<10000000 && this.fileimage !=''){
                 var jsonArticle = JSON.stringify(this.article)
+                var jsonFiles_Title = JSON.stringify(this.file_title)
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
                     if(this.files.length!=0){
                         for( var i = 0; i < this.files.length; i++ ){
                             FD.append('userfileupload'+i, this.files[i]);
                         }
+                        FD.append('file_title',jsonFiles_Title)   
                     }
                     FD.append('article',jsonArticle)
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))

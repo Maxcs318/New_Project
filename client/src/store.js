@@ -138,6 +138,13 @@ const store = new Vuex.Store({
                 // console.log(state.article[index])
                 state.article.splice(index,1)
             }
+        },
+        Delete_File(state,fileID){
+            let index = state.files.findIndex(f => f.f_id == fileID)
+            if(index > -1){
+                // console.log(state.files[index])
+                state.files.splice(index,1)
+            }
         }
 
 
@@ -246,7 +253,7 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/news/insert_news',news)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data[0])
                     context.commit("Add_News",response.data[0])
                 }
             })
@@ -255,7 +262,7 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/article/insert_article',article)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data[0])
                     context.commit("Add_Article",response.data[0])
                     // context.commit("Add_Files_Upload",response.data[0].files)
                 }
@@ -302,7 +309,7 @@ const store = new Vuex.Store({
         Edit_Article(context,article){
             axios.post('http://gamaproject.vue.com/article/update_article',article)
             .then(response =>{
-                // console.log('Response Data',response.data)
+                // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
                     context.commit("Edit_Article",response.data[0])
                 }
@@ -361,7 +368,16 @@ const store = new Vuex.Store({
                     context.commit("Delete_Article",response.data)
                 }
             })
-        }
+        },
+        Delete_File(context,this_news){
+            axios.post('http://gamaproject.vue.com/Files_Upload/delete_files_upload',this_news)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Delete_File",response.data)
+                }
+            })
+        },
         
         
         

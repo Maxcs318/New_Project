@@ -9,7 +9,7 @@
                 <p style="text-align: right;">{{thisArticle.a_date}}</p>
                 <p style="text-indent: 2em;">{{thisArticle.a_detail}}</p>
                 <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >
-                    <a :href="loadFile(file.f_title)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                    <a :href="loadFile(file.f_name)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
                 </div>
             </div>
             <div class="col-lg-2 col-xs-12"></div>

@@ -2,12 +2,13 @@
     <div class="container mt-3">
         <center><h4>Edit Article</h4></center>
         <div class="row mt-5" v-if="thisArticle && the_user">
-            <div class="col-lg-5 col-xs-12">
+            <div class="col-lg-2 col-xs-12"></div>
+            <div class="col-lg-8 col-xs-12">
                 <img v-if="url"  :src="url" width="100%"/>
                 <img v-else :src="getImgUrl(thisArticle.a_image)" width="100%">
                 <br><br>
-            </div>
-            <div class="col-lg-7 col-xs-12">
+                <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFilesImage"> Change Image </button>
+                <br>
                 <form @submit.prevent="submitArticle">                        
                     <input id="chooseImage" ref="filesimage" style="display: none;" type="file" @change="handleFilesImage">
 
@@ -25,34 +26,30 @@
                     <textarea v-model="articleE.a_detail" class="form-control" rows="6" ></textarea>
                     <br>
                     <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" >
-                        <a :href="loadFile(file.f_title)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                        <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
+                        <a :href="loadFile(file.f_name)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                        <br>
                     </div>
                     <br>
                             <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                             <br>
-                            <div class="row" v-for="(f,index) in files" :key="index" style="text-align: left; width: 100%;">
-                                <div class="col-lg-10">
+                            <div class="row" v-for="(f,index) in files" :key="index" >
+                                <div class="col-lg-10 clo-xs-12">
+                                    <input type="text" class="form-control" v-model="file_title[index]" placeholder="File Title" required>
                                     <b> {{index+1}}. File  </b> {{files[index].name }}
                                     <b> Size </b>{{files[index].size}} byte
+                                    <br><br>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-2 col-xs-12">
                                     <button type="button" class="form-control btn-danger" 
                                     @click="RemoveRow(index)">X</button> <br>
                                 </div>
                             </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFilesImage"> Change Image </button>
-                            <br>
-                        </div>
+                    
+                    <div class="row mt-3">
                         <div class="col-lg-6">
                             <input type="file" ref="files" style="display: none;" id="FileUpload1" @change="handleFileUpload" multiple>
                             <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Files </button>
-                            <br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
                             <br>
                         </div>
                         <div class="col-lg-6">
@@ -62,6 +59,7 @@
                     </div>
                 </form>                
             </div> 
+            <div class="col-lg-2 col-xs-12"></div>
         </div>
     </div>
 </template>
@@ -70,6 +68,7 @@ export default {
     data(){
         return{
             articleE:'',
+            file_title:[],
             url: null,
             fileimage:'',
             files : [],
@@ -104,6 +103,7 @@ export default {
         },
         handleFileUpload(event){
             this.files = []
+            this.file_title = []
             this.Datafile = []
             var i=0
             let uploadedFiles = this.$refs.files.files;
@@ -122,10 +122,19 @@ export default {
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
             this.files.splice(index,1)
+            this.file_title.splice(index,1)
+        },
+        // delete file
+        RemoveFile: function(fileID){
+            var FD_delete  = new FormData()
+                FD_delete.append('fileID',fileID)
+                FD_delete.append('creator',JSON.stringify(this.$store.state.log_on))
+            this.$store.dispatch("Delete_File",FD_delete)    
         },
         // submit
         submitArticle(){
                 var jsonArticle = JSON.stringify(this.articleE)
+                var jsonFiles_Title = JSON.stringify(this.file_title)
                 var FD  = new FormData()
                     if(this.url != null || this.url!= ''){
                         FD.append('userfile',this.fileimage)
@@ -134,6 +143,7 @@ export default {
                         for( var i = 0; i < this.files.length; i++ ){
                             FD.append('userfileupload'+i, this.files[i]);
                         }
+                        FD.append('file_title',jsonFiles_Title)   
                     }
                     FD.append('article',jsonArticle)            
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))

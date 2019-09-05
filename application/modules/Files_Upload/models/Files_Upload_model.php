@@ -24,6 +24,7 @@
                 if($ins){
                     $lastID[$i]=[
                         'f_id'=>$this->db->insert_id(),
+                        'f_name'=>$data[$i]['f_name'],
                         'f_title'=>$data[$i]['f_title'],
                         'f_key'=>$data[$i]['f_key'],
                         'f_create_date'=>$data[$i]['f_create_date']

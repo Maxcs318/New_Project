@@ -47,6 +47,8 @@
             $key_link = 'A'.date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
             // insert image & article
             $article = (array)json_decode($this->input->post('article'));
+            $file_title = (array)json_decode($this->input->post('file_title'));
+
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
                 $typeF = strrev($nameF);
@@ -92,7 +94,8 @@
                     if ($this->files_upload->do_upload('userfileupload'.$x)){
                         $data = array('upload_data' => $this->files_upload->data());
                         array_push($filesAll,array(
-                            'f_title'=>$_FILES['userfileupload'.$x]['name'],
+                            'f_name'=>$_FILES['userfileupload'.$x]['name'],
+                            'f_title'=>$file_title[$x],
                             'f_key'=>$key_link,
                             'f_create_date'=>$this->Check__model->date_time_now()
                         ));
@@ -130,6 +133,8 @@
             }
             //update
             $article = (array)json_decode($this->input->post('article'));
+            $file_title = (array)json_decode($this->input->post('file_title'));
+
             if(isset($_FILES['userfile'])){
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
                 $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
@@ -185,7 +190,8 @@
                         if ($this->files_upload->do_upload('userfileupload'.$x)){
                             $data = array('upload_data' => $this->files_upload->data());
                             array_push($filesAll,array(
-                                'f_title'=>$_FILES['userfileupload'.$x]['name'],
+                                'f_name'=>$_FILES['userfileupload'.$x]['name'],
+                                'f_title'=>$file_title[$x],
                                 'f_key'=>$article['a_file_key'],
                                 'f_create_date'=>$this->Check__model->date_time_now()
                             ));

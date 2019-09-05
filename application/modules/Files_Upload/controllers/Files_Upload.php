@@ -22,6 +22,31 @@
         {
             echo $this->Files_Upload_model->get_all_files_upload();
         }
+        // delete file
+        public function delete_files_upload()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $fileID = json_decode($this->input->post('fileID'));
+            $this_file['f_id'] = $fileID;
+            $filestatus = $this->Files_Upload_model->delete_files_upload($this_file);
+            if($filestatus == true){
+                echo $fileID;
+            }else{
+                echo 'fail';
+            }
+
+        }
         
 
 
