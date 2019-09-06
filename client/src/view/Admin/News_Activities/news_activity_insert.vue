@@ -101,7 +101,7 @@ export default {
         handleFileUpload(event){
             this.files = []
             this.file_title = []
-            this.Datafile = []
+             
             var i=0
             let uploadedFiles = this.$refs.files.files;
             for( var i = 0; i < uploadedFiles.length; i++ ){
@@ -114,7 +114,6 @@ export default {
                     // alert
                     this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
             }
-            this.uploadPercentage = 0
         },
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
@@ -146,15 +145,6 @@ export default {
             }
         }
     },
-    watch :{
-        RemoveRow: function(){
-            this.files=[]
-            let uploadedFiles = this.$refs.files.files;
-            for( var i = 0; i < uploadedFiles.length; i++ ){
-                this.files.push( uploadedFiles[i] );
-            }
-            this.uploadPercentage = 0
-        }
-    }
+    
 }
 </script>

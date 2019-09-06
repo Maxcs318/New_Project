@@ -9,6 +9,13 @@
             <div class="col-lg-1 col-xs-12"></div>
             <div class="col-lg-5 col-xs-12">
                 <img :src="getImgUrl(thisProduct.p_image)" width="100%">
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-3"  v-if="thisProduct_Image" v-for="(pi,index) in thisProduct_Image" :key="index">
+                        <img :src="getImgUrl(pi.pi_name)" width="100%">
+                        <br><br>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-5 col-xs-12 mt-3" v-if="thisProduct">
                 <p style="text-indent: 2em;">{{thisProduct.p_description}}</p>
@@ -79,6 +86,21 @@ export default {
                 }
             }
             return product
+        },
+        thisProduct_Image(){
+            var product_imageAll = this.$store.getters.getProduct_Image
+            var product_image = []
+                for(var i=0; i<product_imageAll.length; i++){
+                    if(product_imageAll[i].pi_image_key == this.thisProduct.p_image_key){
+                        product_image.push(product_imageAll[i])
+                    }
+                }
+                if(product_image.length != 0){
+                    return product_image  
+                }else{
+                    return false
+                }
+              
         }
     }
 }

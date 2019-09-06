@@ -47,6 +47,8 @@
                 echo 'fail';
                 exit ;
             }
+            // set key
+            $key_link = 'P'.date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
             // insert
             $product = (array)json_decode($this->input->post('product'));
                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
@@ -63,15 +65,54 @@
                     $data = array('upload_data' => $this->upload->data());
                     
                     $product['p_image'] = $_FILES['userfile']['name'];
+                    $product['p_image_key'] = $key_link;
                     $product['p_create_date'] = $this->Check__model->date_time_now();
                     $thisID = $this->product_model->insert_product($product);
                     $product['p_id']=$thisID;
-                    echo json_encode($product);
-
                 }else{
                     $error = array('error' => $this->upload->display_errors());
                     print_r($error);
                 }
+                // insert another image
+                $product_image = array();
+                $product_dataFiles=[];
+
+                if(isset($_FILES['userfileupload0'])){
+                    $filesupload_length = sizeof($_FILES)-1;
+                    for($x = 0; $x < $filesupload_length; $x++) {
+                        // Set New FileName
+                        $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                        $nameF = substr(strrev($_FILES['userfileupload'.$x]['name']), 0, strrpos(strrev($_FILES['userfileupload'.$x]['name']),"."));
+                        $typeF = strrev($nameF);
+                        $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
+                        // End Set FileName
+                        // upload image to dir
+                        
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('userfileupload'.$x)){
+                            $data = array('upload_data' => $this->upload->data());
+                            array_push($product_image,array(
+                                'pi_name'=>$_FILES['userfileupload'.$x]['name'],
+                                'pi_image_key'=>$key_link,
+                                'pi_create_date'=>$this->Check__model->date_time_now()
+                            ));
+                            
+                        }else{
+                            $error = array('error' => $this->upload->display_errors());
+                            print_r($error);
+                        }
+                    }
+                    if(sizeof($product_image) == $filesupload_length){
+                        $data_image = $this->product_model->insert_product_image($product_image);;
+                        array_push($product_dataFiles,array('product'=>$product,'product_image'=>$data_image));
+                    }else{
+                        echo 'Error !!!';
+                    }
+                }else{
+                    array_push($product_dataFiles,array('product'=>$product,'product_image'=>null));
+                }
+                echo json_encode($product_dataFiles);
+
         }
         // update Product
         public function update_product(){
@@ -119,7 +160,33 @@
                 }
         }
 
+        // delete product_image
+        public function delete_product_image()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $product_imageID = json_decode($this->input->post('product_imageID'));
 
+            $product_i['pi_id'] = $product_imageID;
+            $product_i_status = $this->product_model->delete_product_image($product_i);
+            if($product_i_status == true){
+                echo $product_imageID;
+            }else{
+                echo 'fail';
+            }
+
+            
+        }
 
 
 

@@ -76,7 +76,10 @@ const store = new Vuex.Store({
             state.files.push(Newfiles)
         },
         Add_Product(state,Newproduct){
-            state.product.push(Newproduct)
+            state.product.push(Newproduct.product)
+            for(var i=0; i<Newproduct.product_image.length; i++){
+                state.product_image.push(Newproduct.product_image[i])
+            }
         },
         VideosAll(state,videosall){
             state.videos = videosall
@@ -150,6 +153,13 @@ const store = new Vuex.Store({
             if(index > -1){
                 // console.log(state.files[index])
                 state.files.splice(index,1)
+            }
+        },
+        Delete_Product_Image(state,product_imageID){
+            let index = state.product_image.findIndex(pi => pi.pi_id == product_imageID)
+            if(index > -1){
+                // console.log(state.files[index])
+                state.product_image.splice(index,1)
             }
         }
 
@@ -292,8 +302,8 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/product/insert_product',product)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
-                    context.commit("Add_Product",response.data)
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Add_Product",response.data[0])
                 }
             })
         },
@@ -329,7 +339,7 @@ const store = new Vuex.Store({
         Edit_Article(context,article){
             axios.post('http://gamaproject.vue.com/article/update_article',article)
             .then(response =>{
-                // console.log('Response Data',response.data[0])
+                console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
                     context.commit("Edit_Article",response.data[0])
                 }
@@ -398,6 +408,15 @@ const store = new Vuex.Store({
                 }
             })
         },
+        Delete_Product_Image(context,product_imageID){
+            axios.post('http://gamaproject.vue.com/product/delete_product_image',product_imageID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    context.commit("Delete_Product_Image",response.data)
+                }
+            })            
+        }
         
         
         

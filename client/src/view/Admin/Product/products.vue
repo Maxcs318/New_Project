@@ -53,6 +53,8 @@ export default {
     },
     created(){
         this.$store.dispatch("initDataProduct")
+        this.$store.dispatch("initDataProduct_Category")
+        this.$store.dispatch("initDataProduct_Image")
     }
 }
 </script>

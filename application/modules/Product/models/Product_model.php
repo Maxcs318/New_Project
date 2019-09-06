@@ -39,13 +39,34 @@
                 }
             return json_encode($lastID);
         }
+        // insert product_image
+        public function insert_product_image($data = array())
+        {
+            $lastID;
+            for($i=0;$i < sizeof($data) ; $i++){
+            $ins = $this->db->insert($this->product_image,$data[$i]);
+                if($ins){
+                    $lastID[$i]=[
+                        'pi_id'=>$this->db->insert_id(),
+                        'pi_name'=>$data[$i]['pi_name'],
+                        'pi_image_key'=>$data[$i]['pi_image_key'],
+                        'pi_create_date'=>$data[$i]['pi_create_date']
+                    ];
+                }
+            }
+            return $lastID;
+        }
         // update Product
         public function update_product($data = array(), $where = array())
         {
             return json_encode($this->db->where($where)->update($this->product,$data));
         }
 
-
+        //delete product_image
+        public function delete_product_image($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->product_image));
+        }
 
 
 
