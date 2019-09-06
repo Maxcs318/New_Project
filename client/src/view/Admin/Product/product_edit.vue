@@ -12,7 +12,7 @@
                     <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
 
                     ชื่อสินค้า
-                    <input type="text" v-model="productE.p_title" class="form-control" required>
+                    <input type="text" v-model="productE.p_name" class="form-control" required>
                     <br>
                     รายระเอียด
                     <textarea v-model="productE.p_description" class="form-control" rows="5" ></textarea>

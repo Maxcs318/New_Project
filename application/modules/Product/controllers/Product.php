@@ -22,6 +22,16 @@
         {
             echo $this->product_model->get_all_product();
         }
+        // get all Product_Category
+        public function get_all_product_category()
+        {
+            echo $this->product_model->get_all_product_category();
+        }
+        // get all Product_Image
+        public function get_all_product_image()
+        {
+            echo $this->product_model->get_all_product_image();
+        }
         // insert Product
         public function insert_product()
         {

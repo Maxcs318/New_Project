@@ -37,6 +37,8 @@
       this.$store.dispatch("initDataArticle_Category")
       this.$store.dispatch("initDataFiles")
       this.$store.dispatch("initDataProduct")
+      this.$store.dispatch("initDataProduct_Category")
+      this.$store.dispatch("initDataProduct_Image")
       this.$store.dispatch("initDataVideos")
       this.$store.dispatch("initDataVideo_Room")    
     }

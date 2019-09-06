@@ -19,7 +19,7 @@
                             <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
                             <br>
                             ชื่อสินค้า
-                            <input type="text" v-model="product.p_title" class="form-control" required>
+                            <input type="text" v-model="product.p_name" class="form-control" required>
                             <br>
                             รายระเอียด
                             <textarea v-model="product.p_description" class="form-control" rows="6" ></textarea>
@@ -64,7 +64,7 @@ export default {
     data(){
         return{
             product:{
-                p_title:'',
+                p_name:'',
                 p_description:'',
                 p_image:'',
                 p_price:'',

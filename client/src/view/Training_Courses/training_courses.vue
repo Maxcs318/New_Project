@@ -2,9 +2,9 @@
     <div class="container">
         <h4 class="mt-3">หลักสูตร & อบรม</h4> <br>
         <div class="row">
-            <div class="col-lg-3 col-xs-6" v-for="(product,index) in trainingC" :key="index">
+            <div class="col-lg-3 col-xs-6" v-for="(product,index) in trainingC.slice().reverse()" :key="index">
                 <img :src="getImgUrl(product.p_image)" width="100%" @click="seethisPage(product.p_id)">
-                <h5>{{product.p_title}}</h5>
+                <h5>{{product.p_name}}</h5>
                 <!-- <p style="text-align: right;">{{product.p_date}}</p> -->
                 <p style="text-align: center;">{{product.p_price}} ฿</p>
                 <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
@@ -26,7 +26,14 @@ export default {
     },
     computed:{
         trainingC(){
-            return this.$store.getters.getTrainingCourse
+            var productAll = this.$store.getters.getProduct_Set_Category
+            var training_course = []
+                for(var i=0; i<productAll.length; i++){
+                    if(productAll[i].p_category == 'training_course'){
+                        training_course.push(productAll[i])
+                    }
+                }
+            return training_course
         }
     },
     created(){

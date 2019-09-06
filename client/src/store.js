@@ -12,7 +12,7 @@ const store = new Vuex.Store({
         news:[],
         article:[],article_category:[],
         files:[],
-        product:[],product_category:[],
+        product:[],product_category:[],product_image:[],
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -34,6 +34,12 @@ const store = new Vuex.Store({
         },
         ProductAll(state,product){
             state.product = product
+        },
+        Product_CategoryAll(state,product){
+            state.product_category = product
+        },
+        Product_ImageAll(state,product){
+            state.product_image = product
         },
         FilesAll(state,files){
             state.files = files
@@ -197,6 +203,20 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("ProductAll",response.data)
+            })
+        },
+        initDataProduct_Category(context){
+            axios.get("http://gamaproject.vue.com/product/get_all_product_category")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Product_CategoryAll",response.data)
+            })
+        },
+        initDataProduct_Image(context){
+            axios.get("http://gamaproject.vue.com/product/get_all_product_image")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Product_ImageAll",response.data)
             })
         },
         initDataVideos(context){
@@ -404,25 +424,25 @@ const store = new Vuex.Store({
         getProduct(state){
             return state.product
         },
-        getBook(state){
-            let product = state.product
-            var booklist =[]
-                for(var i=0; i<product.length; i++){
-                    if(product[i].p_category == 'book'){
-                        booklist.push(product[i])
-                    }
-                }
-            return booklist
+        getProduct_Category(state){
+            return state.product_category
         },
-        getTrainingCourse(state){
+        getProduct_Image(state){
+            return state.product_image
+        },
+        getProduct_Set_Category(state){
             let productall = state.product
-            var trainingC =[]
-                for(var i=0; i<productall.length; i++){
-                    if(productall[i].p_category == 'training_course'){
-                        trainingC.push(productall[i])
+            let productcategory = state.product_category
+            var product_set_category =[]
+                for(var i=0; i<productall.length; i++){                    
+                    for(var j=0; j<productcategory.length;j++){
+                        if(productall[i].p_category == productcategory[j].pc_id){
+                            productall[i].p_category = productcategory[j].pc_title
+                        }
                     }
+                    product_set_category.push(productall[i])
                 }
-            return trainingC
+            return product_set_category
         },
         getVideos(state){
             return state.videos

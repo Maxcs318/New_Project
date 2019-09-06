@@ -20,7 +20,7 @@
                     </tr>
                     <tr v-for="(product,index) in ProductAll.slice().reverse()" :key="index" >
                         <td>{{product.p_id}}</td>
-                        <td>{{product.p_title.slice(0,35)}}</td>
+                        <td>{{product.p_name.slice(0,35)}}</td>
                         <td>{{product.p_create_date}}</td>
                         <td>{{product.p_update_date}}</td>
                         <td> <button class="form-control btn-warning" @click="editProduct(product.p_id)">Edit</button> </td>

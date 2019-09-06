@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-lg-3 col-xs-12" v-for="(product,index) in ProductAll.slice().reverse()" :key="index">
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageProduct(product.p_id)">
-                <h5 @click="seethisPageProduct(product.p_id)">{{product.p_title}}</h5>
+                <h5 @click="seethisPageProduct(product.p_id)">{{product.p_name}}</h5>
                 <p style="text-align: center;">{{product.p_price}} ฿</p>
-                <!-- <p style="text-align: right;">{{product.p_category}}</p> -->
+                <p style="text-align: right;">{{product.p_category}}</p>
                 <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
                 <button class="form-control btn-primary"> สั่งซื้อ </button>
                 <br>
@@ -27,7 +27,7 @@ export default {
     },
     computed:{
         ProductAll(){
-            return this.$store.getters.getProduct
+            return this.$store.getters.getProduct_Set_Category
         },
     },
     created(){
