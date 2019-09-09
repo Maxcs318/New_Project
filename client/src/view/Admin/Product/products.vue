@@ -24,7 +24,7 @@
                         <td>{{product.p_create_date}}</td>
                         <td>{{product.p_update_date}}</td>
                         <td> <button class="form-control btn-warning" @click="editProduct(product.p_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger">Delete</button> </td>
+                        <td> <button class="form-control btn-danger" @click="deleteProduct(product.p_id)">Delete</button> </td>
                     </tr>
                 </table>
             </div>
@@ -35,12 +35,32 @@
 <script>
 export default {
     methods:{
-        
         addproduct(thisproduct){
             this.$router.push('/addproduct');
         },
         editProduct(thisproduct){
             this.$router.push({name:'editproduct',params:{ProductID:thisproduct}});
+        },
+        deleteProduct(thisproduct){
+            // console.log(thisproduct)
+            var FD  = new FormData()
+            FD.append('productID',JSON.stringify(thisproduct))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want delete this Product ID "+thisproduct,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.$store.dispatch("Delete_Product",FD)
+                    swal({title: "Delete Success.",icon: "success",});
+                } else {
+                    // swal("Your imaginary file is safe!");
+                }
+            })
         }
     },
     computed:{

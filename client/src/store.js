@@ -176,6 +176,13 @@ const store = new Vuex.Store({
                 // console.log(state.files[index])
                 state.product_image.splice(index,1)
             }
+        },
+        Delete_Product(state,productID){
+            let index = state.product.findIndex(p => p.p_id == productID)
+            if(index > -1){
+                // console.log(state.product[index])
+                state.product.splice(index,1)
+            }
         }
 
 
@@ -219,7 +226,6 @@ const store = new Vuex.Store({
         initDataFiles(context){
             axios.get("http://gamaproject.vue.com/Files_Upload/get_all_files_upload")
                 .then(response => {
-                    // console.log(response)
                     context.commit("FilesAll",response.data)
             })
         },
@@ -431,7 +437,16 @@ const store = new Vuex.Store({
                     context.commit("Delete_Product_Image",response.data)
                 }
             })            
-        }
+        },
+        Delete_Product(context,this_product){
+            axios.post('http://gamaproject.vue.com/product/delete_product',this_product)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Delete_Product",response.data)
+                }
+            })
+        },
         
         
         

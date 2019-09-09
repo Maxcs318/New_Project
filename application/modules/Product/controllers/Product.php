@@ -230,6 +230,36 @@
 
             
         }
+        // delete product 
+        public function delete_product()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $productID = json_decode($this->input->post('productID'));
+            //delete
+            $product['p_id'] = $productID;
+            //find image key
+            $product_image_key = (array)json_decode($this->product_model->get_image_key_product($product));
+            // dete product
+            $productstatus = $this->product_model->delete_product($product);
+            // delete image in this product 
+            $image_key['pi_image_key'] = $product_image_key['p_image_key'];
+            $imagestatus = $this->product_model->delete_product_image($image_key);
+
+            if($productstatus == true){
+                echo $productID ;
+            }
+        }
 
 
 

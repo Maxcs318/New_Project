@@ -61,11 +61,20 @@
         {
             return json_encode($this->db->where($where)->update($this->product,$data));
         }
-
+        // get image key in this product
+        public function get_image_key_product($where = array())
+        {   
+            $product = $this->db->select('p_image_key')->where($where)->get($this->product)->result(); 
+            return json_encode($product[0]);
+        }
         //delete product_image
         public function delete_product_image($where = array())
         {
             return json_encode($this->db->where($where)->delete($this->product_image));
+        }
+        // delete product
+        public function delete_product($where = array()){
+            return json_encode($this->db->where($where)->delete($this->product));
         }
 
 
