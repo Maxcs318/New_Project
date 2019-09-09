@@ -98,26 +98,41 @@ const store = new Vuex.Store({
         Edit_News(state,E_news){
             var Editnews = E_news.news
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
-            // console.log(Editnews)
-            // console.log(index)
             if(index > -1){
                 state.news[index] = Editnews
             }
+            // var addFiles = E_news.files
+            // if(addFiles!=null){
+            //     for(var i=0; i<addFiles.length; i++){
+            //         state.files.push(addFiles[i])
+            //     }
+            // }
         },
         Edit_Article(state,E_article){
             var Editarticle = E_article.article
             let index = state.article.findIndex(a => a.a_id == Editarticle.a_id)
-            // console.log(Editarticle)
-            // console.log(index)
             if(index > -1){
                 state.article[index] = Editarticle
             }
+            // var addFiles = E_article.files
+            // if(addFiles != null){
+            //     for(var i=0; i<addFiles.length; i++){
+            //         state.files.push(addFiles[i])
+            //     }
+            // }
         },
-        Edit_Product(state,Editproduct){
+        Edit_Product(state,thisProduct){
+            var Editproduct = thisProduct.product
             let index = state.product.findIndex(p => p.p_id == Editproduct.p_id)
             if(index > -1){
                 state.product[index] = Editproduct
             }
+            // var addProductImage = thisProduct.product_image
+            // if(addProductImage != null){
+            //     for(var i=0; i<addProductImage.length;i++){
+            //         state.product_image.push(addProductImage[i])
+            //     }
+            // }
         },
         Edit_Video_Room(state,Editvideo_room){
             let index = state.video_room.findIndex(vr => vr.vr_id == Editvideo_room.vr_id)
@@ -339,7 +354,7 @@ const store = new Vuex.Store({
         Edit_Article(context,article){
             axios.post('http://gamaproject.vue.com/article/update_article',article)
             .then(response =>{
-                console.log('Response Data',response.data[0])
+                // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
                     context.commit("Edit_Article",response.data[0])
                 }
@@ -348,9 +363,9 @@ const store = new Vuex.Store({
         Edit_Product(context,product){
             axios.post('http://gamaproject.vue.com/product/update_product',product)
             .then(response =>{
-                // console.log('Response Data',response.data)
+                // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
-                    context.commit("Edit_Product",response.data)
+                    context.commit("Edit_Product",response.data[0])
                 }
             })
         },
@@ -412,7 +427,7 @@ const store = new Vuex.Store({
             axios.post('http://gamaproject.vue.com/product/delete_product_image',product_imageID)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit("Delete_Product_Image",response.data)
                 }
             })            

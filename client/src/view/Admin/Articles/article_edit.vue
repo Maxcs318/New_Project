@@ -17,7 +17,7 @@
                     <br>
                     ประเภทของบทความ
                     <select v-model="articleE.a_category" class="form-control" required>
-                        <option v-for="(ac,index) in article_category" :key="index" :value="ac.ac_id" >
+                        <option v-for="ac in article_category" :value="ac.ac_id" >
                             {{ ac.ac_title }}
                         </option>
                     </select>
@@ -25,15 +25,15 @@
                     รายระเอียด
                     <textarea v-model="articleE.a_detail" class="form-control" rows="6" ></textarea>
                     <br>
-                    <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" >
+                    <div v-if="thisFiles != null" v-for="(file,run) in thisFiles"  >
                         <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
-                        <a :href="loadFile(file.f_name)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>
+                        <a :href="loadFile(file.f_name)" download> Dowload File </a> {{file.f_title}}<br>
                         <br>
                     </div>
                     <br>
                             <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                             <br>
-                            <div class="row" v-for="(f,index) in files" :key="index" >
+                            <div class="row" v-for="(files_Add,index) in files" :key="index" >
                                 <div class="col-lg-10 clo-xs-12">
                                     <input type="text" class="form-control" v-model="file_title[index]" placeholder="File Title" required>
                                     <b> {{index+1}}. File  </b> {{files[index].name }}
@@ -80,6 +80,7 @@ export default {
             return require('../../../assets/Article/'+pic)
         },
         loadFile(fi){
+            // return fi ? require('../../../assets/Files_Upload/'+fi) : ''
             return require('../../../assets/Files_Upload/'+fi)
         },
         // image

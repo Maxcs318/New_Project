@@ -7,10 +7,10 @@
                 <img v-if="url"  :src="url" width="100%"/>
                 <img v-else :src="getImgUrl(thisProduct.p_image)" width="100%">
                 <br><br>
-                <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFiles"> Change Preview Image </button>
+                <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFilesImage"> Change Preview Image </button>
                 <br>
                 <form @submit.prevent="submitProduct">                        
-                    <input id="chooseImage" ref="files" style="display: none;" type="file" @change="handleFiles">
+                    <input id="chooseImage" ref="filesimage" style="display: none;" type="file" @change="handleFilesImage">
 
                     ชื่อสินค้า
                     <input type="text" v-model="productE.p_name" class="form-control" required>
@@ -45,16 +45,32 @@
                     </div> <br>
                     <div class="row" v-if="thisProduct_Image">
                         <h5 class="col-lg-12">Another Image</h5>
-                        <div class="col-lg-3" v-for="(pi,index) in thisProduct_Image" :key="index">
+                        <div class="col-lg-3" v-for="(pi,run) in thisProduct_Image" :key="run">
                             <img :src="getImgUrl(pi.pi_name)" width="100%"> 
                             <button type="button" class="form-control btn-danger" @click="DeleteProduct_Image(pi.pi_id)">Delete</button>
                             <br><br>
                         </div>
                     </div>
                     <br>
+                    <!--  -->
+                            <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
+                                <input type="file" ref="files" style="display: none;" id="anotherImage" @change="handleFileUpload" multiple>
+                            <br>
+                            <div class="row" v-for="(f,index) in files" :key="index">
+                                <div class="col-lg-10">
+                                    <b> {{index+1}}. File  </b> {{files[index].name }}
+                                    <b> Size </b>{{files[index].size}} byte
+                                    <br><br>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button type="button" class="form-control btn-danger" 
+                                    @click="RemoveRow(index)">X</button> <br>
+                                </div>
+                            </div>
+                    <!--  -->
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" class="form-control btn-success col-lg-12" > Add Another Image </button>
+                            <button type="button" class="form-control btn-success col-lg-12" @click="ChooseFiles"> Add Another Image </button>
                             <br>
                         </div>
                         <div class="col-lg-6">
@@ -75,20 +91,23 @@ export default {
         return{
             productE:'',
             url: null,
-            fileimage:''
+            fileimage:'',
+            files : [],
+            max_size_file : 0,
         }
     },
     methods:{
         getImgUrl(pic) {
             return require('../../../assets/Product/'+pic)
         },
-        ChooseFiles(){
+        // preview image
+        ChooseFilesImage(){
             document.getElementById('chooseImage').click()
         },
-        handleFiles(e){
+        handleFilesImage(e){
             const file = e.target.files[0]
             this.url = URL.createObjectURL(file)
-            let uploadedFiles = this.$refs.files.files[0]
+            let uploadedFiles = this.$refs.filesimage.files[0]
             this.fileimage = uploadedFiles
             if(this.fileimage.size>10000000){
                 this.fileimage = []
@@ -103,11 +122,41 @@ export default {
                 FD_delete.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Delete_Product_Image",FD_delete)  
         },
+        // another image
+        ChooseFiles(){
+            document.getElementById('anotherImage').click()
+        },
+        handleFileUpload(event){
+            this.files = []
+             
+            var i=0
+            let uploadedFiles = this.$refs.files.files;
+            for( var i = 0; i < uploadedFiles.length; i++ ){
+                this.files.push( uploadedFiles[i] );
+                this.max_size_file = this.max_size_file + uploadedFiles[i].size
+            }
+            if(this.max_size_file>10000000){
+                this.files = []
+                this.max_size_file = 0
+                    // alert
+                    this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
+            }
+        },
+        RemoveRow: function(index){
+            this.max_size_file = this.max_size_file - this.files[index].size
+            this.files.splice(index,1)
+        },
+        // submit
         submitProduct(){
                 var jsonProduct = JSON.stringify(this.productE)
                 var FD  = new FormData()
                     if(this.url != null || this.url!= ''){
                         FD.append('userfile',this.fileimage)
+                    }
+                    if(this.files.length!=0){
+                        for( var i = 0; i < this.files.length; i++ ){
+                            FD.append('userfileupload'+i, this.files[i]);
+                        }
                     }
                     FD.append('product',jsonProduct)            
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
@@ -116,7 +165,7 @@ export default {
                         this.$router.push('/AdminP')
                     },2000)  
                 this.$swal("Edit Product Success .", "", "success")
-        }
+        },
     },
     computed : {
         thisProduct(){
