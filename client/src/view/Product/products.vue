@@ -8,7 +8,7 @@
                 <p style="text-align: center;">{{product.p_price}} ฿</p>
                 <p style="text-align: right;">{{product.p_category}}</p>
                 <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-                <button class="form-control btn-primary"> สั่งซื้อ </button>
+                <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
                 <br>
             </div>
         </div>

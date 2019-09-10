@@ -13,6 +13,8 @@ const store = new Vuex.Store({
         article:[],article_category:[],
         files:[],
         product:[],product_category:[],product_image:[],
+        cart:[],
+
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -183,14 +185,40 @@ const store = new Vuex.Store({
                 // console.log(state.product[index])
                 state.product.splice(index,1)
             }
-        }
+        },
+        // Cart 
+        Add_Cart(state,add_cart){
+            // console.log(add_cart.p_id)
+            var productAdd = add_cart
+            var chk = 'yes'
+            if(state.cart!=null){
+                for(var i=0; i<state.cart.length; i++){
+                    if(state.cart[i].p_id == productAdd.p_id){
+                        state.cart[i].quantity = state.cart[i].quantity + productAdd.quantity
+                        chk = 'no'
+                    } 
+                }
+            }
+            if(chk == 'yes'){
+                state.cart.push(productAdd)
+            }
+            localStorage.setItem("Cart", JSON.stringify(state.cart));
+            // state.cart = null
+            // state.cart = add_cart
+        },
+        Remove_Cart(state){
+            console.log('remove')
+            state.cart = []
+            localStorage.removeItem('Cart')
 
+        }
+        
 
     },
     actions : {
         // Start Load Data
         initApp(context){
-            // check login
+            // check login            
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
@@ -230,6 +258,11 @@ const store = new Vuex.Store({
             })
         },
         initDataProduct(context){
+            // set cart 
+            if(localStorage.getItem('Cart')){
+                this.state.cart = JSON.parse(localStorage.getItem('Cart'))
+            }
+            // get product
             axios.get("http://gamaproject.vue.com/product/get_all_product")
                 .then(response => {
                     // console.log(response)
@@ -295,7 +328,7 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post("http://gamaproject.vue.com/user/save", JSON.stringify(newuser))
             .then(response => {
-                // console.log(response.data)
+                console.log(response.data)
                 context.commit("addMember",response.data)
             })
         },
@@ -448,6 +481,14 @@ const store = new Vuex.Store({
             })
         },
         
+        // Cart Real Time 
+        Add_Cart(context,addProduct){
+            console.log(addProduct)
+            context.commit('Add_Cart',addProduct)
+        },
+        Remove_Cart(context){
+            context.commit('Remove_Cart')
+        }
         
         
     },
@@ -498,6 +539,10 @@ const store = new Vuex.Store({
         },
         getVideo_Room(state){
             return state.video_room
+        },
+
+        getCart(state){
+            return state.cart
         }
     }
 

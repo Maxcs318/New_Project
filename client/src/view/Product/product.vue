@@ -1,6 +1,11 @@
 <template>
-    <div class="container mt-3">
-        <div class="row" v-if="thisProduct">
+    <div class="container mt-3" v-if="thisProduct && MyCart">
+        <div class="row">
+            <!--  -->
+                <div v-for=" (MC,index) in MyCart" :key="index">
+                    {{MC}}
+                </div>
+            <!--  -->
             <div class="col-lg-12 col-xs-12" >
                 <center><h3>{{thisProduct.p_name}}</h3></center>
             </div>
@@ -28,7 +33,7 @@
                     <div class="col-lg-2 col-xs-12"><button class="form-control btn-danger" @click="removeproduct">-</button><br></div>
                     <div class="col-lg-4 col-xs-12"><input type="text" v-model="amount" class="form-control"><br></div>
                     <div class="col-lg-2 col-xs-12"><button class="form-control btn-success" @click="addproduct">+</button><br></div>
-                    <div class="col-lg-4 col-xs-12"><button class="form-control btn-primary">สั่งซื้อ</button><br></div>
+                    <div class="col-lg-4 col-xs-12"><button class="form-control btn-primary" @click="add_to_cart(thisProduct.p_id)">Add to Cart</button><br></div>
                 </div>
                 <div v-if="total!=0">
                     <p>ราคารวมทั้งหมด {{total}} บาท</p>
@@ -42,8 +47,9 @@
 export default {
     data(){
         return{
-            amount:0,
-            total:0
+            amount:1,
+            total:0,
+            nowcart:[]
         }
     },
     methods:{
@@ -57,6 +63,11 @@ export default {
             if(this.amount>0){
                 this.amount = this.amount-1
             }
+        },
+        add_to_cart(p_id){
+            var productAdd = { p_id : p_id, quantity : this.amount }
+            this.$store.dispatch("Add_Cart",productAdd)
+            this.$swal("Add "+this.thisProduct.p_name+" to Cart "+this.amount+ " pieces", "", "success")
         }
     },
     watch:{
@@ -99,9 +110,13 @@ export default {
                     return product_image  
                 }else{
                     return false
-                }
-              
-        }
+                }     
+        },
+        MyCart(){
+            
+            return this.$store.getters.getCart  
+                      
+        },
     }
 }
 </script>

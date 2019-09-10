@@ -24,6 +24,7 @@
         {
             $data['m_create_date'] = $this->Check__model->date_time_now();
             $data['m_status'] = 'user';
+            $data['m_id'] = null;
             if($data['m_username'] == ''||$data['m_username'] == null ){
                 return 'fail';
                 // exit;

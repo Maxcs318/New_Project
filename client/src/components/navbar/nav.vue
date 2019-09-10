@@ -63,6 +63,7 @@
                         <b-dropdown-item @click="profile">Profile</b-dropdown-item>
                         <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
                         <b-dropdown-item @click="productall">Product All</b-dropdown-item>
+                        <b-dropdown-item @click="my_cart">My Cart</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item @click="Log_Out">
                             Log Out
@@ -107,7 +108,9 @@ export default {
         admin(){
             this.$router.push('/Admin')
         },
-        
+        my_cart(){
+            this.$router.push('/my_cart')
+        },
         newsandactivities(){
             this.$router.push('/newsandactivities')
         },
