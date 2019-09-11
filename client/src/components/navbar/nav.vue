@@ -46,7 +46,7 @@
                 
             
             <b-navbar-nav class="ml-auto">
-                <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
+                <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
                 <button v-if="this.$store.state.the_user == '' " class="form-control btn-light" @click="Log_in"> Log in </button>
                 <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
                     <template slot="button-content"> {{this.$store.state.the_user.m_username}} </template>
