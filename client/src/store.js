@@ -13,7 +13,7 @@ const store = new Vuex.Store({
         article:[],article_category:[],
         files:[],
         product:[],product_category:[],product_image:[],
-        cart:[],
+        // cart:[],
 
         members : [],
         the_user:'',
@@ -189,28 +189,40 @@ const store = new Vuex.Store({
         // Cart 
         Add_Cart(state,add_cart){
             // console.log(add_cart.p_id)
-            var productAdd = add_cart
+            var cart = JSON.parse(localStorage.getItem('Cart'))
+            if(cart == null){
+                cart = []
+            }
             var chk = 'yes'
-            if(state.cart!=null){
-                for(var i=0; i<state.cart.length; i++){
-                    if(state.cart[i].p_id == productAdd.p_id){
-                        state.cart[i].quantity = state.cart[i].quantity + productAdd.quantity
+            if(cart.length>0){
+                for(var i=0; i<cart.length; i++){
+                    if(cart[i].p_id == add_cart.p_id){
+                        cart[i].quantity = cart[i].quantity + add_cart.quantity
                         chk = 'no'
                     } 
                 }
             }
             if(chk == 'yes'){
-                state.cart.push(productAdd)
+                cart.push(add_cart)
             }
-            localStorage.setItem("Cart", JSON.stringify(state.cart));
-            // state.cart = null
-            // state.cart = add_cart
+            localStorage.removeItem('Cart')
+            localStorage.setItem("Cart", JSON.stringify(cart));
+        },
+        Remove_Product_In_Cart(state,productID){
+            var cart = JSON.parse(localStorage.getItem('Cart'))
+
+            let index = cart.findIndex(p => p.p_id == productID)
+            if(index > -1){
+                cart.splice(index,1)
+            }
+            localStorage.removeItem('Cart')
+            localStorage.setItem("Cart", JSON.stringify(cart));
+
+
         },
         Remove_Cart(state){
             console.log('remove')
-            state.cart = []
             localStorage.removeItem('Cart')
-
         }
         
 
@@ -258,10 +270,6 @@ const store = new Vuex.Store({
             })
         },
         initDataProduct(context){
-            // set cart 
-            if(localStorage.getItem('Cart')){
-                this.state.cart = JSON.parse(localStorage.getItem('Cart'))
-            }
             // get product
             axios.get("http://gamaproject.vue.com/product/get_all_product")
                 .then(response => {
@@ -486,6 +494,9 @@ const store = new Vuex.Store({
             console.log(addProduct)
             context.commit('Add_Cart',addProduct)
         },
+        Remove_Product_In_Cart(context,productID){
+            context.commit('Remove_Product_In_Cart',productID)
+        },
         Remove_Cart(context){
             context.commit('Remove_Cart')
         }
@@ -541,9 +552,7 @@ const store = new Vuex.Store({
             return state.video_room
         },
 
-        getCart(state){
-            return state.cart
-        }
+        
     }
 
 })

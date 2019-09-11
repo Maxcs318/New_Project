@@ -6,7 +6,7 @@
                 <img :src="getImgUrl(thisArticle.a_image)" width="100%">
                 <p style="text-align: right;">{{thisArticle.a_category}}</p>
                 <h5 class="mt-3">{{thisArticle.a_title}}</h5>
-                <p style="text-align: right;">{{thisArticle.a_date}}</p>
+                <p style="text-align: right;">{{thisArticle.a_create_date}}</p>
                 <p style="text-indent: 2em;">{{thisArticle.a_detail}}</p>
                 <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >
                     <a :href="loadFile(file.f_name)" download> Dowload File {{index+1}}</a> {{file.f_title}}<br>

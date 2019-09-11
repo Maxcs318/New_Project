@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6" v-for="(article,index) in the_article.slice().reverse()" :key="index" >
                 <img :src="getImgUrlArticle(article.a_image)" width="100%" @click="seethisPage(article.a_id)">
                 <h5>{{article.a_title}}</h5>
-                <p style="text-align: right;">{{article.a_date}}</p>
+                <p style="text-align: right;">{{article.a_create_date}}</p>
                 <p style="text-indent: 2em;">{{article.a_detail.slice(0,60)}}</p>
                 <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
             </div>

@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <center><h5>My Cart</h5></center>
-                
-                <table style="width:100% ">
+                <br>
+                <table style="width:100% " v-if="MyCart">
                     <tr style="width:100% ">
                         <th>ID Product</th>
                         <th>Name Product</th>
@@ -13,15 +13,16 @@
                         <th>Price Total</th>
                         <th></th>
                     </tr>
-                    <tr style="width:100% " v-for=" (MC,index) in this_cart" :key="index">
+                    <tr style="width:100% " v-for=" (MC,index) in thisMyCart" :key="index">
                         <td> {{MC.p_id}} </td>
                         <td> {{MC.p_name}} </td>
                         <td> {{MC.p_price}} </td>
                         <td> {{MC.quantity}} </td>
-                        <td> {{MC.price_total}} </td> 
+                        <td> {{computePrice( index,MC.p_price,MC.quantity )}} </td> 
                         <td> <button class="btn btn-danger" type="button" @click="remove_all(MC.p_id)">Remove </button> </td>                       
                     </tr>
                 </table>
+                <p style="text-align: right;"> x</p>
 
             </div>
         </div>
@@ -35,8 +36,10 @@
                 <br>
             </div>
         </div>
-            State <br>
-            {{MyCart}}
+            LocalStorage <br>
+            <!-- <div v-for=" x in MyCart" >
+                {{x}}
+            </div> -->
 
     </div>
 </template>
@@ -44,34 +47,47 @@
 export default {
     data(){
         return{
-            this_cart:''        
+            thisMyCart:''
         }
     },
     methods:{
-        add_product(){
-            this.$store.dispatch("Add_Cart_ProductAdd",productAdd)
+        computePrice(index,price,quantity){
+            var ptt = price*quantity
+            this.thisMyCart[index].price_total = ptt
+            return this.thisMyCart[index].price_total
+        },
+        add_product(productID){
+            // this.$store.dispatch("Add_Cart_ProductAdd",productID)
             // localStorage.setItem('Cart',0)
-            // this.this_cart = this.this_cart+1
+            // this.MyCart = this.MyCart+1
         },
         remove(){
 
         },
-        remove_all(ProductID){
-            console.log(ProductID)
+        remove_all(productID){
+            console.log(productID)
+            for(var i=0; i<this.thisMyCart.length; i++){
+                if(this.thisMyCart[i].p_id == productID){
+                    this.thisMyCart.splice(i,1)
+                }
+            }
+
+            this.$store.dispatch("Remove_Product_In_Cart",productID)
         },
         clear_cart(){
-            this.this_cart = null
+            this.thisMyCart = []
             this.$store.dispatch("Remove_Cart")
         }
     },
     watch:{
-        this_cart(){
-            // localStorage.setItem("Cart", JSON.stringify(this.this_cart));
-        }
+        //
     },
     computed:{
         MyCart(){
-            var cart = this.$store.getters.getCart
+            var cart = JSON.parse(localStorage.getItem('Cart'))
+            if(cart == null){
+                cart=[]
+            }
             var now_cart = []
             var product_all = this.$store.getters.getProduct_Set_Category
             var user = this.$store.getters.getThe_User
@@ -87,14 +103,12 @@ export default {
                             p_name : product_all[j].p_name,
                             quantity : cart[i].quantity,
                             p_price : product_all[j].p_price,
-                            price_total : product_all[j].p_price*cart[i].quantity
+                            price_total : null
                         })
                     }
                 }
             }
-            
-
-            this.this_cart = now_cart
+            this.thisMyCart = now_cart
             return cart
         },
     },

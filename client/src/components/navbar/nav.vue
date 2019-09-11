@@ -9,31 +9,24 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <h5>
-                    <b-nav-item-dropdown text="เกี่ยวกับสมาชิก" left>
-                        <b-dropdown-item @click="aboutmember">เกี่ยวกับสมาชิก</b-dropdown-item>
-                        <b-dropdown-item >...</b-dropdown-item>
-                    </b-nav-item-dropdown>
-                    </h5>
+                    <router-link to="/">
+                        <b-navbar-brand> <b-nav-text><h5> หน้าหลัก </h5></b-nav-text> </b-navbar-brand>
+                    </router-link>
                 </b-navbar-nav>
                 <b-navbar-nav>
-                    <h5>
-                    <b-nav-item-dropdown text="ข่าวสารกิจกรรม" left>
-                        <b-dropdown-item @click="newsandactivities">ข่าสารกิจกรรม ทั้งหมด</b-dropdown-item>
-                        <b-dropdown-item >ภาพกิจกรรม ต่างๆ</b-dropdown-item>
-                    </b-nav-item-dropdown>
-                    </h5>
+                    <router-link to="/aboutmember">
+                        <b-navbar-brand> <b-nav-text><h5> เกี่ยวกับสมาชิก </h5></b-nav-text> </b-navbar-brand>
+                    </router-link>
                 </b-navbar-nav>
                 <b-navbar-nav>
-                    <b-navbar-brand>
-                        <h5>
-                        <b-nav-item-dropdown text="บทความ" left>
-                            <b-dropdown-item @click="articles">บทความ ทั้งหมด</b-dropdown-item>
-                            <b-dropdown-item >บทความเทคนิคดีๆ</b-dropdown-item>
-                            <b-dropdown-item >Inside GAMA International</b-dropdown-item>
-                        </b-nav-item-dropdown>
-                        </h5>
-                    </b-navbar-brand>
+                    <router-link to="/newsandactivities">
+                        <b-navbar-brand> <b-nav-text><h5> ข่าวสาร & กิจกรรม </h5></b-nav-text> </b-navbar-brand>
+                    </router-link>
+                </b-navbar-nav>
+                <b-navbar-nav>
+                    <router-link to="/articles">
+                        <b-navbar-brand> <b-nav-text><h5> บทความ </h5></b-nav-text> </b-navbar-brand>
+                    </router-link>
                 </b-navbar-nav>
                 <b-navbar-nav>
                     <router-link to="/training_courses">
@@ -46,13 +39,11 @@
                     </router-link>
                 </b-navbar-nav>
                 <b-navbar-nav>
-                    <h5>
-                    <b-nav-item-dropdown text="ติดต่อเรา" left>
-                        <b-dropdown-item @click="contact">ติดต่อเรา</b-dropdown-item>
-                        <b-dropdown-item >คณะกรรมการ GAMA Thailand</b-dropdown-item>
-                    </b-nav-item-dropdown>
-                    </h5>
+                    <router-link to="/contact">
+                        <b-navbar-brand> <b-nav-text><h5> ติดต่อเรา </h5></b-nav-text> </b-navbar-brand>
+                    </router-link>
                 </b-navbar-nav>
+                
             
             <b-navbar-nav class="ml-auto">
                 <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button>
@@ -111,18 +102,8 @@ export default {
         my_cart(){
             this.$router.push('/my_cart')
         },
-        newsandactivities(){
-            this.$router.push('/newsandactivities')
-        },
-        aboutmember(){
-            this.$router.push('/aboutmember')
-        },
-        articles(){
-            this.$router.push('/articles')
-        },
-        contact(){
-            this.$router.push('/contact')
-        }
+        
+        
 
     }
 }
