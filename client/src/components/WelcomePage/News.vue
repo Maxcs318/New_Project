@@ -4,7 +4,7 @@
         <h5>ข่าวและกิจกรรมล่าสุด</h5>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-6 mt-3" v-for="(news,index) in the_news.slice().reverse().slice(0,1)" :key="index" >
+                <div class="col-lg-12 col-md-6 mt-3" v-for="news in the_news.slice().reverse().slice(0,1)">
                     <div class="row">
                         <div class="col-lg-6">
                             <h5 @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
@@ -16,7 +16,7 @@
                         </div>
                     </div>                    
                 </div>
-                <div class="col-lg-6 col-md-6 mt-3" v-for="(news,index) in the_news.slice().reverse().slice(1,3)" :key="index" >
+                <div class="col-lg-6 col-md-6 mt-3" v-for="news in the_news.slice().reverse().slice(1,3)">
                     <img :src="getImgUrl(news.n_image)" width="100%" @click="seethisPageNews(news.n_id)">
                     <h5 @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
                     <p style="text-align: right;">{{news.n_create_date}}</p>
