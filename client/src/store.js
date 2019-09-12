@@ -525,6 +525,17 @@ const store = new Vuex.Store({
 
         },
 
+        // Order
+        Create_Order(context,order){
+            axios.post('http://gamaproject.vue.com/order/create_order',order)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    // context.commit('Create_Order',response.data)
+                }
+            })
+        }
+
         
         
     },

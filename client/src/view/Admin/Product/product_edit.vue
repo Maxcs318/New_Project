@@ -31,7 +31,7 @@
                     <div class="row mt-3">
                         <div class="col-lg-6">
                             จำนวนสินค้า
-                            <input type="text" v-model="productE.p_amount" class="form-control" required>
+                            <input type="text" v-model="productE.p_quantity" class="form-control" required>
                         </div>
                         <div class="col-lg-6">
                             ประเภทสินค้า

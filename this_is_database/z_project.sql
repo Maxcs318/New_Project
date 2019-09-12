@@ -301,7 +301,7 @@ CREATE TABLE `product` (
   `p_price` text NOT NULL,
   `p_price2` text NOT NULL,
   `p_image` text NOT NULL,
-  `p_amount` text NOT NULL,
+  `p_quantity` text NOT NULL,
   `p_category` varchar(50) NOT NULL,
   `p_image_key` varchar(100) NOT NULL,
   `p_create_date` varchar(50) NOT NULL,
@@ -312,7 +312,7 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`p_id`, `p_name`, `p_description`, `p_price`, `p_price2`, `p_image`, `p_amount`, `p_category`, `p_image_key`, `p_create_date`, `p_update_date`) VALUES
+INSERT INTO `product` (`p_id`, `p_name`, `p_description`, `p_price`, `p_price2`, `p_image`, `p_quantity`, `p_category`, `p_image_key`, `p_create_date`, `p_update_date`) VALUES
 (1, 'green', 'green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green green ', '500', '5000', '09082019165757PR6HC4zZsj.jpg', '6', '1', '1', '09 สิงหาคม 2562', '2019-08-23 15:20:51'),
 (2, 'training to Iron-cat', 'คุณก็เป็นซุปเปอร์แมวมหาปะลัยได้', '40000', '1000', '090820191702553xMQci4hWZ.jpg', '999', '2', '2', '09 สิงหาคม 2562', '2019-08-23 15:20:51'),
 (3, 'Book 2', 'green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 green 2 ', '5000', '4999', '09082019174606sUcnOWBaq9.jpg', '10', '1', '3', '09 สิงหาคม 2562', '2019-08-23 15:20:51'),

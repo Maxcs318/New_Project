@@ -1,13 +1,13 @@
 <template>
     <div class="container mt-5">
-        <div class="row" v-if="MyCart.length<1">
+        <div class="row" v-if="thisMyCart.length==0">
             <h5 style="width:100%; text-align: center;"> Your Cart is Empty</h5>
         </div>
-        <div class="row" v-if="MyCart.length>0 && Compute_Total">
+        <div class="row" v-if="MyCart.length>0 && Compute_Total && thisMyCart.length!=0">
             <div class="col-lg-12 col-xs-12">
                 <center><h5>My Cart</h5></center>
                 <br>
-                <table style="width:100%; text-align: center;" v-if="MyCart">
+                <table style="width:100%; text-align: center;">
                     <tr style="width:100% ">
                         <th>ID Product</th>
                         <th>Name Product</th>
@@ -29,25 +29,18 @@
                         <td> <button class="btn btn-danger" type="button" @click="remove_all(index,MC.p_id)">Remove </button> </td>                       
                     </tr>
                 </table>
-                <p style="text-align: center;" class="mt-3"> Total Price {{total_Price}}  ฿</p>
-
+                <p style="text-align: center;" class="mt-3"> Total Price {{total_Price}}  ฿</p> <br><br>
             </div>
-        </div>
-        <div class="row mt-5" v-if="MyCart.length>0">
             <div class="col-lg-3 col-xs-3">
                 <button type="button" class="form-control btn-danger" @click="clear_cart">Clear Cart</button>
                 <br>
             </div>
+            <div class="col-lg-6 col-xs-6"></div>
             <div class="col-lg-3 col-xs-3">
                 <button type="button" class="form-control btn-primary" @click="create_order">Create Order</button>
                 <br>
             </div>
         </div>
-            <!-- LocalStorage <br> -->
-            <!-- <div v-for=" x in MyCart" >
-                {{x}}
-            </div> -->
-
     </div>
 </template>
 <script>
@@ -61,6 +54,15 @@ export default {
     methods:{
         seethisPageProduct(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
+        },
+        create_order(){
+
+            // console.log(this.thisMyCart)
+            // console.log(this.total_Price)
+            var FD  = new FormData()
+            FD.append('order',JSON.stringify(this.thisMyCart))
+            FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+            this.$store.dispatch("Create_Order",FD)
         },
         computePrice(index,price,quantity){
             var ptt = price*quantity
@@ -78,12 +80,38 @@ export default {
             }
         },
         remove_all(index,productID){
-            this.thisMyCart.splice(index,1)
-            this.$store.dispatch("Remove_Product_In_Cart",productID)
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want Remove This Product",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.thisMyCart.splice(index,1)
+                    this.$store.dispatch("Remove_Product_In_Cart",productID)
+                    swal({title: "Remove Product Success.",icon: "success",});
+                }
+            })
+            
         },
         clear_cart(){
-            this.thisMyCart = []
-            this.$store.dispatch("Remove_Cart")
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want Remove all Product in Cart ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    this.thisMyCart = []
+                    this.$store.dispatch("Remove_Cart")
+                    swal({title: "Clear Cart Success.",icon: "success",});
+                }
+            })
+            
         }
     },
     computed:{
@@ -107,7 +135,7 @@ export default {
                 for(var j=0; j<product_all.length; j++){
                     
                     if(cart[i].p_id == product_all[j].p_id){
-                        if(user.m_status == 'admin'){
+                        if(user.m_type == '2' || user.m_type == '3'){
                             the_price = product_all[j].p_price2
                         }else{
                             the_price = product_all[j].p_price

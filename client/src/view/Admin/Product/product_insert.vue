@@ -37,7 +37,7 @@
                             <div class="row mt-3">
                                 <div class="col-lg-6">
                                     จำนวนสินค้า
-                                    <input type="text" v-model="product.p_amount" class="form-control" required>
+                                    <input type="text" v-model="product.p_quantity" class="form-control" required>
                                 </div>
                                 <div class="col-lg-6">
                                     ประเภทสินค้า
@@ -93,7 +93,7 @@ export default {
                 p_image:'',
                 p_price:'',
                 p_price2:'',
-                p_amount:'',
+                p_quantity:'',
                 p_category:'',
                 p_create_date:''
             },
