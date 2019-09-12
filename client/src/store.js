@@ -217,12 +217,24 @@ const store = new Vuex.Store({
             }
             localStorage.removeItem('Cart')
             localStorage.setItem("Cart", JSON.stringify(cart));
-
-
         },
         Remove_Cart(state){
             console.log('remove')
             localStorage.removeItem('Cart')
+        },
+        Add_Cart_ProductAdd(state,productID){
+            var cart = JSON.parse(localStorage.getItem('Cart'))
+            let index = cart.findIndex(p => p.p_id == productID)
+            cart[index].quantity = cart[index].quantity+1
+            localStorage.removeItem('Cart')
+            localStorage.setItem("Cart", JSON.stringify(cart));
+        },
+        Remove_Cart_ProductRemove(state,productID){
+            var cart = JSON.parse(localStorage.getItem('Cart'))
+            let index = cart.findIndex(p => p.p_id == productID)
+            cart[index].quantity = cart[index].quantity-1
+            localStorage.removeItem('Cart')
+            localStorage.setItem("Cart", JSON.stringify(cart));
         }
         
 
@@ -490,16 +502,29 @@ const store = new Vuex.Store({
         },
         
         // Cart Real Time 
+        // เพิ่มสินค้าใน แถบสินค้าลงตะกร้า
         Add_Cart(context,addProduct){
             console.log(addProduct)
             context.commit('Add_Cart',addProduct)
         },
+        // ลบสินค้าในตะกร้า ลบออก 1 สินค้า
         Remove_Product_In_Cart(context,productID){
             context.commit('Remove_Product_In_Cart',productID)
         },
+        // ล้างตะกร้า ลบสินค้าทั้งหมดในตะกร้า
         Remove_Cart(context){
             context.commit('Remove_Cart')
-        }
+        },
+        // เพิ่มสินค้า 1 ชิ้น ในหน้าตะกร้า
+        Add_Cart_ProductAdd(context,productID){
+            context.commit('Add_Cart_ProductAdd',productID)
+        },
+        // นำสินค้าออก 1 ชิ้น ในหน้าตะกร้า
+        Remove_Cart_ProductRemove(context,productID){
+            context.commit('Remove_Cart_ProductRemove',productID)
+
+        },
+
         
         
     },

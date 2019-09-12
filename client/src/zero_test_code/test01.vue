@@ -1,24 +1,29 @@
 <template>
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-3">
-                xuip[]
-            </div>
-            <div class="col-lg-12">
-                <input type="text" class="form-control col-lg-4"> aasfasrg
-            </div>
-            <div class="col-lg-3">
-                xuip[]
-            </div>
-        </div>
+        <!-- test slice text -->
+        {{text.slice(0,-10)}}  <br>
+        <!-- ตัดข้างหลังออก 10 ตัว -->
+        <!-- value = abcdefghijklmnop -->
+
+        {{text.slice(0,10)}}   <br>
+        <!-- เอาตั้งแต่ตัวแรกถึงตัวที่ 10 -->
+        <!-- value = abcdefghij -->
+
+        {{text.slice(10,text.length)}}   <br>
+        <!-- เอาตั้งแต่ตัวที่ 11 ถึงตัวสุดท้าย -->
+        <!-- value = klmnopqrstuvwxyz -->
 
 
-        <!-- Product set Category<br> -->
-        <!-- {{ this.$store.getters.getProduct_Category }}<br> -->
-        <!-- image<br>
-        {{ this.$store.getters.getProduct_Image }}<br>
-        product<br> -->
-        <!-- {{ this.$store.getters.getProduct }}<br> -->
         
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            text:'abcdefghijklmnopqrstuvwxyz'
+        }
+    }
+}
+</script>
+
