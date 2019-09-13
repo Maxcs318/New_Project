@@ -3,7 +3,7 @@ import Vuex from "vuex"
 import axios from "axios"
 
 Vue.use(Vuex)
-
+const base_url = 'http://gamaproject.vue.com/'
 const store = new Vuex.Store({
     state : {
         statusPage:'',
@@ -246,7 +246,7 @@ const store = new Vuex.Store({
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
-                axios.post("http://gamaproject.vue.com/user/loadLogin", JSON.stringify(user))
+                axios.post(base_url +"user/loadLogin", JSON.stringify(user))
                 .then(response => {
                     context.commit("Log_On",response.data)
                 })
@@ -255,63 +255,63 @@ const store = new Vuex.Store({
             }
         },
         initDataNews(context){
-            axios.get("http://gamaproject.vue.com/news/get_all_news")
+            axios.get(base_url +"news/get_all_news")
                 .then(response => {
                     // console.log(response)
                     context.commit("NewsAll",response.data)
             })
         },
         initDataArticle(context){
-            axios.get("http://gamaproject.vue.com/article/get_all_article")
+            axios.get(base_url +"article/get_all_article")
                 .then(response => {
                     // console.log(response)
                     context.commit("ArticleAll",response.data)
             })
         },
         initDataArticle_Category(context){
-            axios.get("http://gamaproject.vue.com/article/get_all_article_category")
+            axios.get(base_url +"article/get_all_article_category")
                 .then(response => {
                     // console.log(response)
                     context.commit("Article_Category",response.data)
             })
         },
         initDataFiles(context){
-            axios.get("http://gamaproject.vue.com/Files_Upload/get_all_files_upload")
+            axios.get(base_url +"Files_Upload/get_all_files_upload")
                 .then(response => {
                     context.commit("FilesAll",response.data)
             })
         },
         initDataProduct(context){
             // get product
-            axios.get("http://gamaproject.vue.com/product/get_all_product")
+            axios.get(base_url +"product/get_all_product")
                 .then(response => {
                     // console.log(response)
                     context.commit("ProductAll",response.data)
             })
         },
         initDataProduct_Category(context){
-            axios.get("http://gamaproject.vue.com/product/get_all_product_category")
+            axios.get(base_url +"product/get_all_product_category")
                 .then(response => {
                     // console.log(response)
                     context.commit("Product_CategoryAll",response.data)
             })
         },
         initDataProduct_Image(context){
-            axios.get("http://gamaproject.vue.com/product/get_all_product_image")
+            axios.get(base_url +"product/get_all_product_image")
                 .then(response => {
                     // console.log(response)
                     context.commit("Product_ImageAll",response.data)
             })
         },
         initDataVideos(context){
-            axios.get("http://gamaproject.vue.com/Videos_Room/get_all_videos")
+            axios.get(base_url +"Videos_Room/get_all_videos")
                 .then(response => {
                     // console.log(response.data)
                     context.commit("VideosAll",response.data)
             })
         },
         initDataVideo_Room(context){
-            axios.get("http://gamaproject.vue.com/Videos_Room/get_all_video_room")
+            axios.get(base_url +"Videos_Room/get_all_video_room")
                 .then(response => {
                     // console.log(response)
                     context.commit("Video_Room",response.data)
@@ -325,7 +325,7 @@ const store = new Vuex.Store({
         // login
         Logining_in(context,user){
             // console.log(user)            
-            axios.post("http://gamaproject.vue.com/user/checkLogin", JSON.stringify(user))
+            axios.post(base_url +"user/checkLogin", JSON.stringify(user))
             .then(response => {
                 // console.log(response)
                     if(response.data != '' && response.data != null){
@@ -338,7 +338,7 @@ const store = new Vuex.Store({
         },
         Log_Out(context){
             var user_logout = { token : this.state.log_on}
-            axios.post("http://gamaproject.vue.com/user/log_out", JSON.stringify(user_logout))
+            axios.post(base_url +"user/log_out", JSON.stringify(user_logout))
             .then(response => {
                 localStorage.removeItem('The_User')
                 context.commit("Log_Out")
@@ -346,7 +346,7 @@ const store = new Vuex.Store({
             })
         },
         Register(context,newuser){
-            axios.post("http://gamaproject.vue.com/user/save", JSON.stringify(newuser))
+            axios.post(base_url +"user/save", JSON.stringify(newuser))
             .then(response => {
                 console.log(response.data)
                 context.commit("addMember",response.data)
@@ -354,7 +354,7 @@ const store = new Vuex.Store({
         },
         // Start Add data
         Add_News(context,news){
-            axios.post('http://gamaproject.vue.com/news/insert_news',news)
+            axios.post(base_url +'news/insert_news',news)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -363,7 +363,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Article(context,article){
-            axios.post('http://gamaproject.vue.com/article/insert_article',article)
+            axios.post(base_url +'article/insert_article',article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -373,7 +373,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Product(context,product){
-            axios.post('http://gamaproject.vue.com/product/insert_product',product)
+            axios.post(base_url +'product/insert_product',product)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -382,7 +382,7 @@ const store = new Vuex.Store({
             })
         },
         CreateRoom(context,newRoom){
-            axios.post('http://gamaproject.vue.com/Videos_Room/insert_room',newRoom)
+            axios.post(base_url +'Videos_Room/insert_room',newRoom)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -391,7 +391,7 @@ const store = new Vuex.Store({
             })
         },
         AddVideos(context,newvideos){
-            axios.post('http://gamaproject.vue.com/Videos_Room/insert_videos',newvideos)
+            axios.post(base_url +'Videos_Room/insert_videos',newvideos)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -402,7 +402,7 @@ const store = new Vuex.Store({
         // End Add Data
         // Start Edit Data
         Edit_News(context,news){
-            axios.post('http://gamaproject.vue.com/news/update_news',news)
+            axios.post(base_url +'news/update_news',news)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -411,7 +411,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Article(context,article){
-            axios.post('http://gamaproject.vue.com/article/update_article',article)
+            axios.post(base_url +'article/update_article',article)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -420,7 +420,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Product(context,product){
-            axios.post('http://gamaproject.vue.com/product/update_product',product)
+            axios.post(base_url +'product/update_product',product)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -429,7 +429,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Video_Room(context,video_room){
-            axios.post('http://gamaproject.vue.com/Videos_Room/update_video_room',video_room)
+            axios.post(base_url +'Videos_Room/update_video_room',video_room)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -438,7 +438,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Video(context,video){
-            axios.post('http://gamaproject.vue.com/Videos_Room/update_video',video)
+            axios.post(base_url +'Videos_Room/update_video',video)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -447,7 +447,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Profile(context,profile){
-            axios.post('http://gamaproject.vue.com/user/edit_profile',profile)
+            axios.post(base_url +'user/edit_profile',profile)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -456,7 +456,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_News(context,this_news){
-            axios.post('http://gamaproject.vue.com/news/delete_news',this_news)
+            axios.post(base_url +'news/delete_news',this_news)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -465,7 +465,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Article(context,this_article){
-            axios.post('http://gamaproject.vue.com/article/delete_article',this_article)
+            axios.post(base_url +'article/delete_article',this_article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -474,7 +474,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_File(context,this_news){
-            axios.post('http://gamaproject.vue.com/Files_Upload/delete_files_upload',this_news)
+            axios.post(base_url +'Files_Upload/delete_files_upload',this_news)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -483,7 +483,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Product_Image(context,product_imageID){
-            axios.post('http://gamaproject.vue.com/product/delete_product_image',product_imageID)
+            axios.post(base_url +'product/delete_product_image',product_imageID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -492,7 +492,7 @@ const store = new Vuex.Store({
             })            
         },
         Delete_Product(context,this_product){
-            axios.post('http://gamaproject.vue.com/product/delete_product',this_product)
+            axios.post(base_url +'product/delete_product',this_product)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -527,7 +527,7 @@ const store = new Vuex.Store({
 
         // Order
         Create_Order(context,order){
-            axios.post('http://gamaproject.vue.com/order/create_order',order)
+            axios.post(base_url +'order/create_order',order)
             .then(response =>{
                 if(response.data != 'fail'){
                     console.log('Response Data',response.data)
