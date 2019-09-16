@@ -26,7 +26,7 @@ export default {
             return this.path_files+'News/'+pic
         },
         loadFile(fi){
-            return this.path_files+'Files_Upload/'+pic
+            return this.path_files+'Files_Upload/'+fi
         }
     },
     computed : {

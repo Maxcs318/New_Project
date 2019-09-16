@@ -53,7 +53,7 @@
                     </div>
                     <br>
                     <!--  -->
-                            <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
+                            <h5> Another Image [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                                 <input type="file" ref="files" style="display: none;" id="anotherImage" @change="handleFileUpload" multiple>
                             <br>
                             <div class="row" v-for="(f,index) in files" :key="index">

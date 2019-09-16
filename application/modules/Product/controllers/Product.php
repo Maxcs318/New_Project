@@ -56,7 +56,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'      => './../client/src/assets/Product/',
+                    'upload_path'   => './../public/assets/Product/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -131,8 +131,7 @@
             //update
             $product = (array)json_decode($this->input->post('product'));
             $config = array(
-                'upload_path'      => './../public/assets/Product/',
-                // 'upload_path'      => './../client/src/assets/Product/',
+                'upload_path'   => './../public/assets/Product/',
                 'allowed_types' => '*',
                 'max_size'      => '0',
             );

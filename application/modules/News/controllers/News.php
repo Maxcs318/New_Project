@@ -49,7 +49,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'   => './../client/src/assets/News/',
+                    'upload_path'   => './../public/assets/News/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -80,7 +80,7 @@
                         $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                         // End Set FileName
                         $configFiles = array(
-                            'upload_path'   => './../client/src/assets/Files_Upload/',
+                            'upload_path'   => './../public/assets/Files_Upload/',
                             'allowed_types' => '*',
                             'max_size'      => '0',
                         );
@@ -137,7 +137,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'      => './../client/src/assets/News/',
+                    'upload_path'   => './../public/assets/News/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -177,7 +177,7 @@
                         $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                         // End Set FileName
                         $configFiles = array(
-                            'upload_path'   => './../client/src/assets/Files_Upload/',
+                            'upload_path'   => './../public/assets/Files_Upload/',
                             'allowed_types' => '*',
                             'max_size'      => '0',
                         );
