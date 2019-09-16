@@ -19,7 +19,7 @@
 export default {
     methods:{
         getImgUrlProduct(picP) {
-            return require('../../assets/Product/'+picP)
+            return this.path_files+'Product/'+picP
         },
         seethisPageProduct(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
@@ -29,6 +29,9 @@ export default {
         ProductAll(){
             return this.$store.getters.getProduct_Set_Category
         },
+        path_files(){
+            return this.$store.getters.getPath_Files
+        }
     },
     created(){
         this.$store.dispatch("initDataProduct")

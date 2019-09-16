@@ -20,7 +20,7 @@
 export default {
     methods:{
         getImgUrlProduct(picP) {
-            return require('../../assets/Product/'+picP)
+            return this.path_files+'Product/'+picP
         },
         seethisPageCourse(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
@@ -36,6 +36,9 @@ export default {
                     }
                 }
             return training_course
+        },
+        path_files(){
+            return this.$store.getters.getPath_Files
         }
     },
     created(){

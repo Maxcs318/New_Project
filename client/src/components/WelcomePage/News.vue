@@ -31,7 +31,7 @@
 export default {
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/News/'+pic)
+            return this.path_files+'News/'+pic
         },
         seethisPageNews(thisnews){
             this.$router.push({name:'newsandactivity',params:{NewsID:thisnews}});
@@ -40,6 +40,9 @@ export default {
     computed:{
         the_news(){
             return this.$store.getters.getNews
+        },
+        path_files(){
+            return this.$store.getters.getPath_Files
         }
     },
     created(){

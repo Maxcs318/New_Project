@@ -23,10 +23,10 @@
 export default {
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/News/'+pic)
+            return this.path_files+'News/'+pic
         },
         loadFile(fi){
-            return require('../../assets/Files_Upload/'+fi)
+            return this.path_files+'Files_Upload/'+pic
         }
     },
     computed : {
@@ -53,6 +53,9 @@ export default {
             }else{
                 return false
             }
+        },
+        path_files(){
+            return this.$store.getters.getPath_Files
         }
     }
 }

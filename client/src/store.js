@@ -6,6 +6,8 @@ Vue.use(Vuex)
 const base_url = 'http://gamaproject.vue.com/'
 const store = new Vuex.Store({
     state : {
+        file_image_path:'http://gamaproject.vue.com/assets/',
+
         statusPage:'',
         statusRegister:'',
 
@@ -540,6 +542,9 @@ const store = new Vuex.Store({
         
     },
     getters : {
+        getPath_Files(state){
+            return state.file_image_path
+        },
         getMembers(state){
             return state.members
         },

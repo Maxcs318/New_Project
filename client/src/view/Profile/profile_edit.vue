@@ -4,8 +4,8 @@
         <div class="row" v-if="the_user">
             <div class="col-lg-3 col-xs-12"></div>      
             <div class="col-lg-6 col-xs-12">
-                <img v-if="the_user.m_imageprofile != '' && url== null" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
-                <img v-if="the_user.m_imageprofile == '' && url== null" src="../../assets/Profile_Image/default_profile.jpg" width="100%">
+                <img v-if="the_user.m_imageprofile != '' && url == null" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
+                <img v-if="the_user.m_imageprofile == '' && url== null" :src=" this.path_files+'Profile_Image/default_profile.jpg'" width="100%">
                 <img v-if="url"  :src="url" width="100%"/><br><br>
                     <button type="button" class="btn btn-primary" @click="ChooseFiles">
                         Change Image
@@ -85,7 +85,7 @@ export default {
     },
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/Profile_Image/'+pic)
+            return this.path_files+'Profile_Image/'+pic
         },
         ChooseFiles(){
             document.getElementById('chooseImage').click()
@@ -131,6 +131,9 @@ export default {
 
             this.passwordOld = user.m_password
             return user
+        },
+        path_files(){
+            return this.$store.getters.getPath_Files
         }
     },
     created(){

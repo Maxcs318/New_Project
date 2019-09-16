@@ -16,7 +16,7 @@
 export default {
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/News/'+pic)
+            return this.path_files+'News/'+pic
         },
         seethisPage(thisnews){
             this.$router.push({name:'newsandactivity',params:{NewsID:thisnews}});
@@ -26,6 +26,9 @@ export default {
         the_news(){
             return this.$store.getters.getNews
         },
+        path_files(){
+            return this.$store.getters.getPath_Files
+        }
     },
     created(){
         this.$store.dispatch("initDataNews")

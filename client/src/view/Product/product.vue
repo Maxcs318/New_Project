@@ -49,7 +49,7 @@ export default {
     },
     methods:{
         getImgUrl(pic) {
-            return require('../../assets/Product/'+pic)
+            return this.path_files+'Product/'+pic
         },
         addproduct(){
             this.amount = this.amount+1
@@ -107,6 +107,9 @@ export default {
                     return false
                 }     
         },
+        path_files(){
+            return this.$store.getters.getPath_Files
+        }
         
     }
 }

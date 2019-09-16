@@ -77,11 +77,10 @@ export default {
     },
     methods:{
         getImgUrl(pic) {
-            return require('../../../assets/Article/'+pic)
+            return this.path_files+'Article/'+pic
         },
         loadFile(fi){
-            // return fi ? require('../../../assets/Files_Upload/'+fi) : ''
-            return require('../../../assets/Files_Upload/'+fi)
+            return this.path_files+'Files_Upload/'+fi
         },
         // image
         ChooseFilesImage(){
@@ -155,6 +154,9 @@ export default {
         }
     },
     computed : {
+        path_files(){
+            return this.$store.getters.getPath_Files
+        },
         thisArticle(){
             var articleAll = this.$store.getters.getArticle
             var article 

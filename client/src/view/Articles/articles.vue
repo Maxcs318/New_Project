@@ -16,7 +16,7 @@
 export default {
     methods:{
         getImgUrlArticle(pic) {
-            return require('../../assets/Article/'+pic)
+            return this.path_files+'Article/'+pic
         },
         seethisPage(thisarticle){
             this.$router.push({name:'article',params:{ArticleID:thisarticle}});
@@ -26,6 +26,9 @@ export default {
         the_article(){
             return this.$store.getters.getArticle
         },
+        path_files(){
+            return this.$store.getters.getPath_Files
+        }
     },
     created(){
         this.$store.dispatch("initDataArticle")
