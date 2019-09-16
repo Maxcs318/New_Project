@@ -506,7 +506,7 @@ const store = new Vuex.Store({
         // Cart Real Time 
         // เพิ่มสินค้าใน แถบสินค้าลงตะกร้า
         Add_Cart(context,addProduct){
-            console.log(addProduct)
+            // console.log(addProduct)
             context.commit('Add_Cart',addProduct)
         },
         // ลบสินค้าในตะกร้า ลบออก 1 สินค้า
