@@ -131,7 +131,8 @@
             //update
             $product = (array)json_decode($this->input->post('product'));
             $config = array(
-                'upload_path'      => './../client/src/assets/Product/',
+                'upload_path'      => './../public/assets/Product/',
+                // 'upload_path'      => './../client/src/assets/Product/',
                 'allowed_types' => '*',
                 'max_size'      => '0',
             );
