@@ -43,15 +43,25 @@
             }
             $ownID  = $this->Check__model->chk_token($own);
             // echo $ownID;
-            $order = (array)json_decode($this->input->post('order'));
+            $order_input = (array)json_decode($this->input->post('order'));
             // echo $ownID;
             // print_r($order);
             $price_total = 0;
-            for($i=0; $i<sizeof($order); $i++){
-                $price_total = $price_total + $order[$i]->price_total;
+            $order_item=[];
+            for($k=0; $k<sizeof($order_input); $k++){
+                if($order_input[$k]->quantity>0){
+                    array_push($order_item,$order_input[$k]);
+                    $price_total = $price_total + $order_item[$k]->price_total;
+                }
             }
-            echo $price_total;
-            // print_r($order[0]->p_id);
+            $order['o_total_price'] = $price_total;
+            $order['o_code_order'] = $ownID.substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+            $order['o_status_id'] = 1;
+            $order['o_create_date'] = $this->Check__model->date_time_now();
+            // print_r ($order_input);
+            
+            print_r ($order_item);
+            print_r ($order);
             // echo json_encode($order);
             
 

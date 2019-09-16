@@ -30,6 +30,12 @@
             return json_encode($this->db->get($this->order_items)->result());
         }
         
+        // insert order
+        public function x()
+        {
+            
+        }
+        // insert order_items
 
 
 

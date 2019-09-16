@@ -56,13 +56,18 @@ export default {
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
         },
         create_order(){
-
-            // console.log(this.thisMyCart)
-            // console.log(this.total_Price)
+            var my_order =[]
+            for(var f=0; f<this.thisMyCart.length; f++){
+                if( this.thisMyCart[f].quantity > 0 ){
+                    my_order.push(this.thisMyCart[f])
+                }
+            }
+            // console.log(my_order)
             var FD  = new FormData()
-            FD.append('order',JSON.stringify(this.thisMyCart))
+            FD.append('order',JSON.stringify(my_order))
             FD.append('own_id',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Create_Order",FD)
+            swal({title: "Create Order Success.",icon: "success",});
         },
         computePrice(index,price,quantity){
             var ptt = price*quantity
@@ -118,7 +123,9 @@ export default {
         Compute_Total(){
             this.total_Price = 0
                 for(var i=0; i<this.thisMyCart.length; i++){
-                    this.total_Price = this.total_Price + this.thisMyCart[i].price_total
+                    if(this.thisMyCart[i].quantity > 0){
+                        this.total_Price = this.total_Price + this.thisMyCart[i].price_total
+                    }
                 }
             return true
         },
