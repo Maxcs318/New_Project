@@ -54,15 +54,37 @@
                     $price_total = $price_total + $order_item[$k]->price_total;
                 }
             }
+            if(sizeof($order_item)<1){
+                echo 'fail';
+                exit;
+            }
             $order['o_total_price'] = $price_total;
-            $order['o_code_order'] = $ownID.substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+            $order['o_own_id'] = $ownID;
+            $order['o_code_order'] = $ownID.'-'.substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
             $order['o_status_id'] = 1;
             $order['o_create_date'] = $this->Check__model->date_time_now();
-            // print_r ($order_input);
-            
-            print_r ($order_item);
-            print_r ($order);
-            // echo json_encode($order);
+
+            // create order
+            $order_created = (array)json_decode($this->order_model->create_order($order));
+
+            $O_items=[];
+            for($run=0; $run<sizeof($order_item);$run++){
+                $item['oi_product_id'] = $order_item[$run]->p_id;
+                $item['oi_quantity'] = $order_item[$run]->quantity;
+                $item['oi_product_price'] = $order_item[$run]->p_price;
+                $item['oi_total_price'] = $order_item[$run]->price_total;
+                $item['oi_order_id'] = $order_created['o_id'];
+                $item['oi_create_date'] = $this->Check__model->date_time_now();
+                array_push($O_items,$item);
+            }
+
+            // add order_item to order
+            $order_items_created = (array)json_decode($this->order_model->create_order_item($O_items));
+
+            // echo $order_created['o_id'];
+            // print_r($O_items);
+            print_r($order_items_created);
+            // echo $order_items_created;
             
 
             

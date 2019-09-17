@@ -1,50 +1,67 @@
 <template>
-    <div>
-        <br>
-        <h5>หนังสือ</h5>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6" v-for="(product,index) in book.slice().reverse().slice(0,4)" :key="index">
-                    <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageBook(product.p_id)">
-                    <h5 @click="seethisPageBook(product.p_id)">{{product.p_name}}</h5>
-                    <!-- <p style="text-align: right;">{{product.p_create_date}}</p> -->
-                    <!-- <p style="text-align: right;">{{product.p_category}}</p> -->
-                    <p style="text-align: center;">฿ {{product.p_price}}</p>
-                    <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-                    <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
-                </div>
-            </div>
+  <div>
+    <div class="book">
+      <div class="container">
+        <div class="row">
+          <label class="col-lg-10 col-xs-12 header">หนังสือ</label>
+          <div class="col-lg-2">
+            <button class="btn-viewall">ดูทั้งหมด></button>
+          </div>
         </div>
+        <div class="row justify-content-around">
+          <div
+            class="col-lg-3 col-md-6 col-xs-6"
+            v-for="(product,index) in book.slice().reverse().slice(0,4)"
+            :key="index"
+          >
+            <img
+              class="rounded mx-auto d-block"
+              :src="getImgUrlProduct(product.p_image)"
+              width="100%"
+              @click="seethisPageBook(product.p_id)"
+            />
+            <h5 class="book-detail" @click="seethisPageBook(product.p_id)">{{product.p_name}}</h5>
+            <!-- <p style="text-align: right;">{{product.p_create_date}}</p> -->
+            <!-- <p style="text-align: right;">{{product.p_category}}</p> -->
+            <p class="price" style="text-align: center;">฿ {{product.p_price}}</p>
+            <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
+            <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
-    methods:{
-        getImgUrlProduct(picP) {
-            return this.path_files+'Product/'+picP
-        },
-        seethisPageBook(thisproduct){
-            this.$router.push({name:'product',params:{ProductID:thisproduct}});
-        }
+  methods: {
+    getImgUrlProduct(picP) {
+      return this.path_files+'Product/'+picP
     },
-    computed:{
-        book(){
-            var productAll = this.$store.getters.getProduct_Set_Category
-            var book = []
-                for(var i=0; i<productAll.length; i++){
-                    if(productAll[i].p_category == 'book'){
-                        book.push(productAll[i])
-                    }
-                }
-            return book
-        },
-        path_files(){
-            return this.$store.getters.getPath_Files
-        }
-    },
-    created(){
-        this.$store.dispatch("initDataProduct")
+    seethisPageBook(thisproduct) {
+      this.$router.push({
+        name: "product",
+        params: { ProductID: thisproduct }
+      });
     }
-    
-}
+  },
+  computed: {
+    book() {
+      var productAll = this.$store.getters.getProduct_Set_Category;
+      var book = [];
+      for (var i = 0; i < productAll.length; i++) {
+        if (productAll[i].p_category == "book") {
+          book.push(productAll[i]);
+        }
+      }
+      return book;
+    },
+    path_files(){
+      return this.$store.getters.getPath_Files
+    }
+  },
+  created() {
+    this.$store.dispatch("initDataProduct");
+  }
+};
 </script>

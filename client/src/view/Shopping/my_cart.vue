@@ -1,5 +1,16 @@
 <template>
     <div class="container mt-5">
+        <!-- // -->
+        <div v-if="address_show == 'OFF'">
+        <div class="row">
+            <div class="col-lg-10 col-xs-12"></div>
+            <div class="col-lg-2 col-xs-12"> 
+                <button type="button" class="form-control btn-success" @click="page_order"> Order </button>
+            </div>
+            <div class="col-lg-2 col-xs-12"> 
+                <button type="button" class="form-control btn-success" @click="show_X"> Show </button>
+            </div>
+        </div>
         <div class="row" v-if="thisMyCart.length==0">
             <h5 style="width:100%; text-align: center;"> Your Cart is Empty</h5>
         </div>
@@ -9,7 +20,7 @@
                 <br>
                 <table style="width:100%; text-align: center;">
                     <tr style="width:100% ">
-                        <th>ID Product</th>
+                        <th>No</th>
                         <th>Name Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -17,7 +28,7 @@
                         <th></th>
                     </tr>
                     <tr style="width:100% " v-for=" (MC,index) in thisMyCart" :key="index">
-                        <td> {{MC.p_id}} </td>
+                        <td> {{index+1}} </td>
                         <td @click="seethisPageProduct(MC.p_id)"> {{MC.p_name}} </td>
                         <td> {{MC.p_price}} </td>
                         <td>
@@ -37,9 +48,18 @@
             </div>
             <div class="col-lg-6 col-xs-6"></div>
             <div class="col-lg-3 col-xs-3">
-                <button type="button" class="form-control btn-primary" @click="create_order">Create Order</button>
+                <button type="button" class="form-control btn-primary" @click="create_order">Check Out</button>
                 <br>
             </div>
+        </div>
+        </div>
+        <!-- // -->
+        <div v-else>
+        <div class="row">
+            <div class="col-lg-2 col-xs-12"> 
+                <button type="button" class="form-control btn-success" @click="show_X"> Show </button>
+            </div>
+        </div>
         </div>
     </div>
 </template>
@@ -47,11 +67,23 @@
 export default {
     data(){
         return{
+            address_show:'OFF',
+
             thisMyCart:'',
             total_Price:0
         }   
     },
     methods:{
+        show_X(){
+            if(this.address_show=='OFF'){
+                this.address_show = 'ON'
+            }else{
+                this.address_show='OFF'
+            }
+        },
+        page_order(){
+            this.$router.push('my_order')
+        },
         seethisPageProduct(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
         },

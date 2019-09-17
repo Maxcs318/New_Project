@@ -18,7 +18,9 @@ import product from './view/Product/product.vue';
 import ListRoom from './view/Videos_Room/listRooms.vue';
 import ListVideos from './view/Videos_Room/listVideos.vue';
 import RoomVideo from './view/Videos_Room/roomVideo.vue';
+
 import My_Cart from './view/Shopping/my_cart.vue';
+import My_Order from './view/Shopping/my_order.vue';
 // admin page
 import admin from "./view/Admin/AdminPage.vue"
 import admin_News from "./view/Admin/News_Activities/news_activities.vue"
@@ -66,6 +68,7 @@ export const router = new VueRouter({
         { path : "/contact",component : Contact },
 
         { path : "/my_cart",component : My_Cart },
+        { path : "/my_order",component : My_Order },
         // end router in navbar
 
         { path : "/newsandactivity/:NewsID",name:"newsandactivity",component : thisNews },

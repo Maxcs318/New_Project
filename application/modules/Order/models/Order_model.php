@@ -7,7 +7,7 @@
         public function __construct()
         {
             parent::__construct();
-            $this->load->model('../../Check_/models/Check__model');
+            $this->output->set_content_type("application/json", 'utf-8');
             $this->orders = 'orders';
             $this->order_status = 'order_status';
             $this->order_items = 'order_items';
@@ -31,12 +31,29 @@
         }
         
         // insert order
-        public function x()
+        public function create_order($data=array())
         {
-            
+            $lastID;
+            $ins = $this->db->insert($this->orders,$data);
+            if($ins){
+                $lastID = $data;
+                $lastID['o_id'] = $this->db->insert_id();
+            }
+            return json_encode($lastID);
         }
         // insert order_items
-
+        public function create_order_item($data=array())
+        {
+            $data_res=[];
+            for($i=0; $i<sizeof($data); $i++){
+                $ins = $this->db->insert($this->order_items,$data[$i]);
+                if($ins){
+                    $data[$i]['oi_id'] = $this->db->insert_id();
+                    array_push($data_res,$data[$i]);
+                }
+            }
+            return json_encode($data_res);
+        }
 
 
 

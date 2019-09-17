@@ -13,8 +13,26 @@
         <!-- เอาตั้งแต่ตัวที่ 11 ถึงตัวสุดท้าย -->
         <!-- value = klmnopqrstuvwxyz -->
         
-        <img :src="getImgUrl('16092019095042gKv4Jzxumr.jpg')" width="100%"> 
-        <!-- {{path_files}} -->
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                Name
+                <input type="text" class="form-control">
+                Address
+                <textarea class="form-control" rows="6"></textarea>
+                Postcode
+                <input type="text" class="form-control">
+                Phone
+                <input type="text" class="form-control">
+                E-mail
+                <input type="text" class="form-control">
+                Company
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+
     </div>
 </template>
 <script>

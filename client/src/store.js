@@ -15,8 +15,7 @@ const store = new Vuex.Store({
         article:[],article_category:[],
         files:[],
         product:[],product_category:[],product_image:[],
-        // cart:[],
-
+        order:[],order_items:[],order_status:[],        
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -48,6 +47,16 @@ const store = new Vuex.Store({
         FilesAll(state,files){
             state.files = files
         },
+        Orders(state,order){
+            state.order = order
+        },
+        Order_Items(state,order_items){
+            state.order_items = order_items
+        },
+        Order_Status(state,order_status){
+            state.order_status = order_status
+        },
+
         LoadingPage(state,statusP){
             state.statusPage = statusP
         },
@@ -319,6 +328,30 @@ const store = new Vuex.Store({
                     context.commit("Video_Room",response.data)
             })
         },
+        // = = =
+        initDataOrders(context){
+            axios.get(base_url +"order/get_all_order")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Orders",response.data)
+            })
+        },
+        initDataOrder_Items(context){
+            axios.get(base_url +"order/get_all_order_items")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Order_Items",response.data)
+            })
+        },
+        initDataOrder_Status(context){
+            axios.get(base_url +"order/get_all_order_status")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Order_Status",response.data)
+            })
+        },
+
+
         // End Load Data
         // load page
         LoadingPage(context,statusPage){
@@ -592,6 +625,33 @@ const store = new Vuex.Store({
         getVideo_Room(state){
             return state.video_room
         },
+        getOrder(state){
+            return state.order
+        },
+        getOrder_Item(state){
+            return state.order_items
+        },
+        getOrder_Status(state){
+            return state.order_status
+        },
+        getMy_Order(state){
+            var ord = state.order
+            // var ord_i = state.order_items
+            var ord_s = state.order_status
+            var user = state.the_user
+            var my_o = []
+            for(var i=0; i<ord.length; i++){
+                if( ord[i].o_own_id == user.m_id ){
+                    for(var j=0; j<ord_s.length; j++){
+                        if(ord[i].o_status_id == ord_s[j].os_id){
+                            ord[i].o_status_id = ord_s[j].os_title
+                        }
+                    }
+                    my_o.push(ord[i])
+                }
+            }
+            return my_o
+        }
 
         
     }
