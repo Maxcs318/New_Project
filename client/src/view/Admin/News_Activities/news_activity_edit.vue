@@ -38,7 +38,7 @@
                                     @click="RemoveRow(index)">X</button> <br>
                                 </div>
                             </div>
-                    <div class="row mt-3">
+                    <div class="row  ">
                         <div class="col-lg-6">
                             <input type="file" ref="files" style="display: none;" id="FileUpload1" @change="handleFileUpload" multiple>
                             <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Files </button>

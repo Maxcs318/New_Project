@@ -6,7 +6,7 @@
         <!-- pc page -->
         <div class="news-pc">
           <div
-            class="col-lg-12 col-md-6 mt-3"
+            class="col-lg-12 col-md-6  "
             v-for="news in the_news.slice().reverse().slice(0,1)"
           >
             <div class="row">
@@ -34,7 +34,7 @@
         <!-- mb page -->
         <div class="news-mb">
           <div
-            class="col-lg-12 col-md-6 mt-3"
+            class="col-lg-12 col-md-6  "
             v-for="news in the_news.slice().reverse().slice(0,1)"
           >
             <div class="row">
@@ -63,7 +63,7 @@
         <!-- row page -->
         <div class="row">
           <div
-            class="col-lg-6 col-md-6 col-xs-12 mt-3"
+            class="col-lg-6 col-md-6 col-xs-12  "
             v-for="news in the_news.slice().reverse().slice(1,3)"
           >
             <div class="news-2">

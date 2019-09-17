@@ -5,7 +5,7 @@
             <div class="col-lg-8 col-xs-12" v-if="thisArticle != null">
                 <img :src="getImgUrl(thisArticle.a_image)" width="100%">
                 <p style="text-align: right;">{{thisArticle.a_category}}</p>
-                <h5 class="mt-3">{{thisArticle.a_title}}</h5>
+                <h5 class=" ">{{thisArticle.a_title}}</h5>
                 <p style="text-align: right;">{{thisArticle.a_create_date}}</p>
                 <p style="text-indent: 2em;">{{thisArticle.a_detail}}</p>
                 <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index" >

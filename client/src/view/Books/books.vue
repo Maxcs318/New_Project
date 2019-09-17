@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h4 class="mt-3">หนังสือ</h4> <br>
+        <h4 class=" ">หนังสือ</h4> <br>
         <div class="row">
             <div class="col-lg-3 col-md-6" v-for="(product,index) in book.slice().reverse()" :key="index">
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPage(product.p_id)">

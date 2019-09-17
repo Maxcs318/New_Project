@@ -30,7 +30,7 @@
     <br />
     <div class="row">
       <div
-        class="col-lg-6 col-md-6 col-xs-12 mt-3"
+        class="col-lg-6 col-md-6 col-xs-12  "
         v-for="news in News_all.slice().reverse().slice(1,3)"
       >
         <div>

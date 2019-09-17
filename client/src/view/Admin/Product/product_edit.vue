@@ -28,7 +28,7 @@
                             <input type="text" v-model="productE.p_price2" class="form-control" required>                                    
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row  ">
                         <div class="col-lg-6">
                             จำนวนสินค้า
                             <input type="text" v-model="productE.p_quantity" class="form-control" required>

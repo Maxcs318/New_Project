@@ -40,7 +40,7 @@
                         <td> <button class="btn btn-danger" type="button" @click="remove_all(index,MC.p_id)">Remove </button> </td>                       
                     </tr>
                 </table>
-                <p style="text-align: center;" class="mt-3"> Total Price {{total_Price}}  ฿</p> <br><br>
+                <p style="text-align: center;" class=" "> Total Price {{total_Price}}  ฿</p> <br><br>
             </div>
             <div class="col-lg-3 col-xs-3">
                 <button type="button" class="form-control btn-danger" @click="clear_cart">Clear Cart</button>
