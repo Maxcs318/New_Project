@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3" v-if="thisProduct">
+    <div class="container " v-if="thisProduct">
         <div class="row">
             <div class="col-lg-12 col-xs-12" >
                 <center><h3>{{thisProduct.p_name}}</h3></center>

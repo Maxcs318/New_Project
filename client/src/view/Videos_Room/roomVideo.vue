@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div class="container ">
         <div class="row">
             <div class="col-lg-12 col-xs-12" v-for="(video,index) in thisVideo" :key="index">
                 <h4>{{video.v_title}}</h4>    

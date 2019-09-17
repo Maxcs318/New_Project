@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div class="container ">
         <center><h4>Edit News</h4></center>
         <div class="row mt-5" v-if="thisNews && the_user">
             <div class="col-lg-2 col-xs-12"></div>

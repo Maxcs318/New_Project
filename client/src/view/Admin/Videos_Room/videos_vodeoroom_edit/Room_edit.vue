@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div class="container ">
         <center><h4>Edit Video Room</h4></center>
         <div class="row mt-5" v-if="thisVideo_Room && the_user">
             <div class="col-lg-3 col-xs-12"></div>

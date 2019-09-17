@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-3">
+    <div class="container ">
         <center><h4>Create Room</h4></center>
         <div class="row">
             <div class="col-lg-3 col-xs-12"></div>
