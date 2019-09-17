@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row">
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control btn-primary" @click="news">News & Activity</button> <br>

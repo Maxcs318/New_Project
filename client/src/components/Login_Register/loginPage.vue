@@ -23,10 +23,11 @@
                     </div>
                     <br>
                     <br>
-                    <br>
                     <div class="col-lg-6">
                         <button type="submit" class="form-control col-12 btn-primary"> Login </button>
                     </div>
+                    <br>
+                    <br>
                 </div>
             </form>
             <!-- /// -->

@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container ">
         <!-- test slice text -->
         <!-- //{{text.slice(0,-10)}}  <br> -->
         <!-- ตัดข้างหลังออก 10 ตัว -->

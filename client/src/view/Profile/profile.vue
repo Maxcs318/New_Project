@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container ">
         <center><h5> My Profile </h5></center>
         <div class="row" v-if="the_user">
             <div class="col-lg-3 col-xs-12" ></div>      

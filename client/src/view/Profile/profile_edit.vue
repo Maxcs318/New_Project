@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container ">
         <center><h4> Edit Profile </h4></center><br>
         <div class="row" v-if="the_user">
             <div class="col-lg-3 col-xs-12"></div>      

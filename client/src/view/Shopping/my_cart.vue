@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="container ">
         <!-- // -->
         <div v-if="address_show == 'OFF'">
         <div class="row">

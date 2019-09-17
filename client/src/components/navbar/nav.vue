@@ -142,7 +142,7 @@ export default {
 }
 
 .navbar {
-  position: absolute;
+  /* position: absolute; */
   border-top: 4px solid #eecd02;
   background: none;
   z-index: 1;
