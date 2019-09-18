@@ -41,6 +41,9 @@
       this.$store.dispatch("initDataProduct_Image")
       this.$store.dispatch("initDataVideos")
       this.$store.dispatch("initDataVideo_Room")    
+      this.$store.dispatch("initDataOrders")    
+      this.$store.dispatch("initDataOrder_Items")    
+      this.$store.dispatch("initDataOrder_Status")    
     }
     
   }

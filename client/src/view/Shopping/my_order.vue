@@ -22,7 +22,7 @@
                     </tr>
                     <tr v-for="(order,index) in Order " :key="index">
                         <td>{{index+1}}</td>
-                        <td>{{order.o_code_order}}</td>
+                        <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
                         <td>{{order.o_total_price}}</td>
                         <td>{{order.o_status_id}}</td>
                         <td>{{order.o_create_date}}</td>
@@ -48,6 +48,9 @@ export default {
     methods:{
         page_cart(){
             this.$router.push('my_cart')
+        },
+        seethisOrder(this_order){
+            this.$router.push({name:'order',params:{CodeOrder:this_order}});
         },
         Pay_This(order_id){
             console.log('pay',order_id)
