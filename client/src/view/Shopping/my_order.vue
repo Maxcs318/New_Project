@@ -31,12 +31,11 @@
                         </td>
                         <td> 
                             <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id)"> Delete </button> 
-                        </td>
-                        
+                        </td>        
                     </tr>
                 </table>
                 
-                
+                <br><br>
                 
                 
                 

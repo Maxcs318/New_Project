@@ -7,9 +7,6 @@
             <div class="col-lg-2 col-xs-12"> 
                 <button type="button" class="form-control btn-success" @click="page_order"> Order </button>
             </div>
-            <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-success" @click="show_X"> Show </button>
-            </div>
         </div>
         <div class="row" v-if="thisMyCart.length==0">
             <h5 style="width:100%; text-align: center;"> Your Cart is Empty</h5>
@@ -48,7 +45,7 @@
             </div>
             <div class="col-lg-6 col-xs-6"></div>
             <div class="col-lg-3 col-xs-3">
-                <button type="button" class="form-control btn-primary" @click="create_order">Check Out</button>
+                <button type="button" class="form-control btn-primary" @click="check_out">Check Out</button>
                 <br>
             </div>
         </div>
@@ -56,9 +53,35 @@
         <!-- // -->
         <div v-else>
         <div class="row">
-            <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-success" @click="show_X"> Show </button>
+            <div class="col-lg-4 col-xs-12"></div>
+            <div class="col-lg-4 col-xs-12">
+                <form @submit.prevent="submitCart_To_Order">    
+                    <h5><center>Shipping Address</center></h5>
+                    Title
+                    <input type="text" v-model="shipping_address.sa_title" class="form-control" required>
+                    Address
+                    <textarea class="form-control" rows="5" v-model="shipping_address.sa_address" required></textarea>
+                    Postcode
+                    <input type="text" v-model="shipping_address.sa_postcode" class="form-control" required>
+                    Phone
+                    <input type="text" v-model="shipping_address.sa_phone" class="form-control" required>
+                    E-mail
+                    <input type="text" v-model="shipping_address.sa_email" class="form-control" required>
+                    Company
+                    <input type="text" v-model="shipping_address.sa_company" class="form-control" required>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-6">
+                            <button type="button" class="form-control btn-danger" @click="check_out"> Back. </button> <br>
+                        </div>
+                        <div class="col-lg-6 col-xs-6">
+                            <button type="submit" class="form-control btn-primary"> Save. </button> <br>
+                        </div>
+                    </div>                
+                    <br>
+                </form>
             </div>
+            <div class="col-lg-4 col-xs-12"></div>
         </div>
         </div>
     </div>
@@ -68,13 +91,20 @@ export default {
     data(){
         return{
             address_show:'OFF',
-
+            shipping_address:{
+                sa_title:'',
+                sa_address:'',
+                sa_postcode:'',
+                sa_phone:'',
+                sa_email:'',
+                sa_company:''
+            },
             thisMyCart:'',
             total_Price:0
         }   
     },
     methods:{
-        show_X(){
+        check_out(){
             if(this.address_show=='OFF'){
                 this.address_show = 'ON'
             }else{
@@ -87,19 +117,23 @@ export default {
         seethisPageProduct(thisproduct){
             this.$router.push({name:'product',params:{ProductID:thisproduct}});
         },
-        create_order(){
+        submitCart_To_Order(){
             var my_order =[]
             for(var f=0; f<this.thisMyCart.length; f++){
                 if( this.thisMyCart[f].quantity > 0 ){
                     my_order.push(this.thisMyCart[f])
                 }
             }
-            // console.log(my_order)
             var FD  = new FormData()
             FD.append('order',JSON.stringify(my_order))
+            FD.append('shipping_address',JSON.stringify(this.shipping_address))
             FD.append('own_id',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Create_Order",FD)
-            swal({title: "Create Order Success.",icon: "success",});
+            swal({title: "Create Order Success.",icon: "success",})
+            
+            setTimeout(()=>{
+                this.$router.push('/my_order')
+            },2000)
         },
         computePrice(index,price,quantity){
             var ptt = price*quantity
