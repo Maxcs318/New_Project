@@ -1,7 +1,7 @@
 <template>
   <div>
-    <img class="img-box" src="./../../assets/image/Backgroundbox.png" />
-    <img class="mb-bg" src="./../../assets/image/mb-bg.png" />
+    <img class="img-box" :src="path_files+'background_img/Backgroundbox.png'" />
+    <img class="mb-bg" :src="path_files+'background_img/mb-bg.png'" />
     <!-- <div class="row"> -->
     <div class="box1">
       <div class="col-lg-5 col-xs-12">
@@ -12,7 +12,7 @@
         >เราคือองค์กรแหล่งนำความรู้ แลกเปลี่ยนประสบการณ์หลักสูตรบริหาร การขายระดับสูง</label>
         <br />
         <label class="text3">สมัครสมาชิกสมาคมผู้จัดการและเจ้าของสำนักงานตัวแทนประกันชีวิต (GAMA)</label>
-        <br>
+        <br />
         <button class="btn register-btn">สมัครสมาชิก</button>
       </div>
     </div>
@@ -23,8 +23,11 @@
 export default {
   name: "carousel",
   data() {
-    return {
-    
+    return {};
+  },
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
     }
   },
   methods: {

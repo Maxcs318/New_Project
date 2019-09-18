@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" class="navbar float-right">
       <router-link to="/">
         <b-navbar-brand>
-          <img src="./../../assets/image/logo-white.png" />
+          <img :src="path_files+'logo_img/logo-white.png'" />
         </b-navbar-brand>
       </router-link>
 
@@ -105,6 +105,11 @@ export default {
     return {
       active: false
     };
+  },
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
+    }
   },
   methods: {
     Log_Out() {

@@ -9,16 +9,16 @@
           </div>
           <div class="col-lg-2 col-0"></div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat1.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat1.png'" />
           </div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat2.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat2.png'" />
           </div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat3.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat3.png'" />
           </div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat4.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat4.png'" />
           </div>
           <div class="col-lg-2 col-auto"></div>
 
@@ -27,10 +27,10 @@
           </div>
           <div class="col-lg-4 col-0"></div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat5.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat5.png'" alt />
           </div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat6.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat6.png'" alt />
           </div>
           <div class="col-lg-4 col-0"></div>
 
@@ -40,7 +40,7 @@
           <div class="col-lg-5 col-0"></div>
           <div class="col-lg-2 col-12">
             <center>
-              <img src="./../../assets/image/sponsor-plat7.png" alt />
+              <img :src="path_files+'sponsor_img/sponsor-plat7.png'" alt />
             </center>
           </div>
           <div class="col-lg-5 col-0"></div>
@@ -50,17 +50,26 @@
           </div>
           <div class="col-lg-4 col-0"></div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat8.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat8.png'" alt />
           </div>
           <div class="col-lg-2 col-auto">
-            <img src="./../../assets/image/sponsor-plat9.png" alt />
+            <img :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
           </div>
           <div class="col-lg-4 col-0"></div>
         </div>
       </div>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
+    }
+  }
+};
+</script>

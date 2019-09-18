@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-2 col-xs-12">
-            <img class="footer-logo float-right" src="./../../assets/image/logo.jpg" />
+            <img class="footer-logo float-right" :src="path_files+'footer_img/logo.jpg'" />
           </div>
           <div class="col-lg-8 col-xs-12">
             <label>GAMA THAILAND</label>
@@ -18,10 +18,10 @@
             <label>Tel: 02-6315885 ต่อ 14 Fax: 02-6318908</label>
           </div>
           <div class="col-lg-2 social">
-            <img src="./../../assets/image/facebook-logo.png" alt />
-            <img src="./../../assets/image/instagram-logo.png" alt />
-            <img src="./../../assets/image/youtube-logo.png" alt />
-            <img src="./../../assets/image/line-logo.png" alt />
+            <img :src="path_files+'footer_img/facebook-logo.png'" alt />
+            <img :src="path_files+'footer_img/instagram-logo.png'" alt />
+            <img :src="path_files+'footer_img/youtube-logo.png'" alt />
+            <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
         </div>
         <div class="row">
@@ -35,7 +35,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
+    }
+  }
+};
 </script>
 <style>
 footer {
