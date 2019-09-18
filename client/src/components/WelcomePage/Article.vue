@@ -35,7 +35,7 @@
 export default {
   methods: {
     getImgUrlArticle(picA) {
-      return this.path_files+'Article/'+picA
+      return this.path_files + "Article/" + picA;
     },
     seethisPageArticle(thisarticle) {
       this.$router.push({
@@ -48,8 +48,8 @@ export default {
     the_article() {
       return this.$store.getters.getArticle;
     },
-    path_files(){
-      return this.$store.getters.getPath_Files
+    path_files() {
+      return this.$store.getters.getPath_Files;
     }
   },
   created() {

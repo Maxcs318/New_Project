@@ -8,28 +8,28 @@
             <p>Platinum</p>
           </div>
           <div class="col-lg-2 col-0"></div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat1.png'" />
           </div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat2.png'" />
           </div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat3.png'" />
           </div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat4.png'" />
           </div>
-          <div class="col-lg-2 col-auto"></div>
+          <div class="col-lg-2 col-0"></div>
 
           <div class="col-lg-12">
             <p>Gold</p>
           </div>
           <div class="col-lg-4 col-0"></div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat5.png'" alt />
           </div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat6.png'" alt />
           </div>
           <div class="col-lg-4 col-0"></div>
@@ -37,22 +37,22 @@
           <div class="col-lg-12">
             <p>Bronze</p>
           </div>
-          <div class="col-lg-5 col-0"></div>
-          <div class="col-lg-2 col-12">
+          <div class="col-lg-5 col-3"></div>
+          <div class="col-lg-2 col-6">
             <center>
               <img :src="path_files+'sponsor_img/sponsor-plat7.png'" alt />
             </center>
           </div>
-          <div class="col-lg-5 col-0"></div>
+          <div class="col-lg-5 col-3"></div>
 
           <div class="col-lg-12 col-xs-12">
             <p>Blue</p>
           </div>
           <div class="col-lg-4 col-0"></div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat8.png'" alt />
           </div>
-          <div class="col-lg-2 col-auto">
+          <div class="col-lg-2 col-6">
             <img :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
           </div>
           <div class="col-lg-4 col-0"></div>
