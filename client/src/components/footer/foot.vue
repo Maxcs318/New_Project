@@ -5,10 +5,11 @@
       <br />
       <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-2 col-xs-12">
-            <img class="footer-logo float-right" :src="path_files+'footer_img/logo.jpg'" />
+          <div class="col-lg-2 col-12">
+            <img class="footer-logo" :src="path_files+'footer_img/logo.jpg'" />
           </div>
-          <div class="col-lg-8 col-xs-12">
+          <div class="col-lg-8 col-12">
+            <br />
             <label>GAMA THAILAND</label>
             <br />
             <label>138 อาคารจูเวลเลอรี่ เซ็นเตอร์ ชั้น 12 ห้อง 138/32</label>
@@ -17,18 +18,31 @@
             <br />
             <label>Tel: 02-6315885 ต่อ 14 Fax: 02-6318908</label>
           </div>
+
           <div class="col-lg-2 social">
+            <br />
+            <img :src="path_files+'footer_img/facebook-logo.png'" />
+            <img :src="path_files+'footer_img/instagram-logo.png'" alt />
+            <img :src="path_files+'footer_img/youtube-logo.png'" alt />
+            <img :src="path_files+'footer_img/line-logo.png'" alt />
+          </div>
+          <div class="col-4 social-mb"></div>
+          <div class="col-4 social-mb">
+            <br />
             <img :src="path_files+'footer_img/facebook-logo.png'" alt />
             <img :src="path_files+'footer_img/instagram-logo.png'" alt />
             <img :src="path_files+'footer_img/youtube-logo.png'" alt />
             <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
+          <div class="col-4 social-mb"></div>
         </div>
+
         <div class="row">
           <div class="col-lg-2"></div>
-          <div class="col-lg-10 col-xs-12">
+          <div class="col-lg-10">
             <p>© 2019 GAMA Thailand, All Rights Reserved.</p>
           </div>
+          <div class="col-lg-2"></div>
         </div>
       </div>
     </footer>
@@ -49,9 +63,7 @@ footer {
   border-top: 1px solid rgba(142, 142, 142, 0.5);
   background-color: #fff;
 }
-.social {
-  padding: 0;
-}
+
 .footer-line {
   height: 2px;
   margin-top: 100px;
@@ -60,13 +72,9 @@ footer {
 
 .footer-logo {
   width: 158px;
-  margin: 0;
-}
-
-footer img {
-  width: 27px;
-  margin-top: 29px;
-  margin-right: 10%;
+  display: block;
+  margin-left: auto;
+  margin-top: 23px;
 }
 
 footer label {
@@ -76,6 +84,7 @@ footer label {
   line-height: 29px;
   color: #6a6a6a;
 }
+
 footer p {
   font-style: normal;
   font-weight: 500;
@@ -86,19 +95,34 @@ footer p {
   color: #6a6a6a;
 }
 
+.social img {
+  width: 23px;
+}
+.social-mb {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .footer-logo {
-    display: block;
-    margin: 0 123px 23px;
+    margin-left: auto;
+    margin-right: auto;
   }
+
   footer label,
   p {
     display: block;
     line-height: 0;
     text-align: center;
   }
-  footer img {
-    margin-left: 7%;
+  .social {
+    display: none;
+  }
+  .social-mb {
+    display: block;
+  }
+  .social-mb img {
+    width: 21%;
+    margin: 0 auto;
   }
 }
 </style>
