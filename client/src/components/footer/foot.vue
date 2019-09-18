@@ -8,24 +8,24 @@
           <div class="col-lg-2 col-12">
             <img class="footer-logo" :src="path_files+'footer_img/logo.jpg'" />
           </div>
-          <div class="col-lg-8 col-12">
+          <div class="col-lg-8 col-12 address">
             <br />
-            <label>GAMA THAILAND</label>
+            <p>GAMA THAILAND</p>
             <br />
-            <label>138 อาคารจูเวลเลอรี่ เซ็นเตอร์ ชั้น 12 ห้อง 138/32</label>
+            <p>138 อาคารจูเวลเลอรี่ เซ็นเตอร์ ชั้น 12 ห้อง 138/32</p>
             <br />
-            <label>ถ.นเรส ซ.บางรัก กทม.10500</label>
+            <p>ถ.นเรส ซ.บางรัก กทม.10500</p>
             <br />
-            <label>Tel: 02-6315885 ต่อ 14 Fax: 02-6318908</label>
+            <p>Tel: 02-6315885 ต่อ 14 &nbsp; &nbsp; &nbsp;&nbsp; Fax: 02-6318908</p>
           </div>
 
           <div class="col-lg-2 social">
-            <br />
-            <img :src="path_files+'footer_img/facebook-logo.png'" />
+            <img :src="path_files+'footer_img/facebook-logo.png'" alt />
             <img :src="path_files+'footer_img/instagram-logo.png'" alt />
             <img :src="path_files+'footer_img/youtube-logo.png'" alt />
             <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
+
           <div class="col-2 social-mb"></div>
           <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/facebook-logo.png'" alt />
@@ -39,14 +39,13 @@
           <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
-
           <div class="col-2 social-mb"></div>
         </div>
 
         <div class="row">
           <div class="col-lg-2"></div>
           <div class="col-lg-10">
-            <p>© 2019 GAMA Thailand, All Rights Reserved.</p>
+            <p class="contact">© 2019 GAMA Thailand, All Rights Reserved.</p>
           </div>
           <div class="col-lg-2"></div>
         </div>
@@ -82,8 +81,11 @@ footer {
   margin-left: auto;
   margin-top: 23px;
 }
-
-footer label {
+p {
+  margin: 0;
+  padding: 0;
+}
+footer .address p {
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -91,18 +93,20 @@ footer label {
   color: #6a6a6a;
 }
 
-footer p {
+footer .contact {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
-  margin-top: 33px;
+  padding-top: 33px;
   margin-bottom: 58px;
   line-height: 18px;
   color: #6a6a6a;
 }
 
 .social img {
-  width: 23px;
+  margin-top: 23px;
+  margin-left: 7%;
+  width: 11%;
 }
 .social-mb {
   display: none;
@@ -114,10 +118,7 @@ footer p {
     margin-right: auto;
   }
 
-  footer label,
-  p {
-    display: block;
-    line-height: 0;
+  footer p {
     text-align: center;
   }
   .social {
@@ -129,7 +130,7 @@ footer p {
     margin-bottom: 0px;
   }
   .social-mb img {
-    width: 80%;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
