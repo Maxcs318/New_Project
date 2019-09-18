@@ -31,19 +31,13 @@ export default {
             return this.$store.getters.getPath_Files
         },
         thisArticle(){
-            var articleAll = this.$store.getters.getArticle
-            var article
-            var article_c = this.$store.getters.getArticle_Category
+            var articleAll = this.$store.getters.getArticle_Set_Category
+            var article = null
             for(var i=0; i<articleAll.length; i++){
                 if(articleAll[i].a_id == this.$route.params.ArticleID){       
                     article = articleAll[i]
                 }
-            }
-            for(var j=0; j<article_c.length; j++){
-                if(article.a_category == article_c[j].ac_id){
-                    article.a_category = article_c[j].ac_title
-                }
-            }
+            }            
             return article
         },
         thisFiles(){

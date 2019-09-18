@@ -593,6 +593,18 @@ const store = new Vuex.Store({
         getArticle_Category(state){
             return state.article_category
         },
+        getArticle_Set_Category(state){
+            var article = state.article
+            var article_c = state.article_category
+            for(var i=0;i<article.length;i++){
+                for(var j=0; j<article_c.length; j++){
+                    if(article[i].a_category == article_c[j].ac_id){
+                    article[i].a_category = article_c[j].ac_title
+                    }
+                }
+            }
+            return article
+        },
         getFiles(state){
             return state.files
         },
