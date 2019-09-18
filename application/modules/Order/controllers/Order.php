@@ -64,8 +64,9 @@
             $shipp_AD = (array)json_decode($this->input->post('shipping_address'));
             $shipp_AD['sa_member_id'] = $ownID;
             $shipp_AD['sa_create_date'] = $this->Check__model->date_time_now();
-            $shipp_AD_Success = $this->Shipping_Address_model->save_shipping_address($shipp_AD);
+            $shipp_AD_Success = (array)json_decode($this->Shipping_Address_model->save_shipping_address($shipp_AD));
 
+            $order['o_shipping_address_id'] = $shipp_AD_Success['sa_id'];
             $order['o_total_price'] = $price_total;
             $order['o_own_id'] = $ownID;
             $order['o_code_order'] = $ownID.'-'.substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
@@ -91,7 +92,7 @@
 
             // echo $order_created['o_id'];
             // print_r($O_items);
-            print_r((array)json_decode($shipp_AD_Success));
+            // echo $shipp_AD_Success['sa_id'];
             // echo $order_items_created;
             
 
