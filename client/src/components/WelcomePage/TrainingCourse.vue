@@ -37,7 +37,7 @@
 export default {
   methods: {
     getImgUrlProduct(picP) {
-      return this.path_files+'Product/'+picP
+      return this.path_files + "Product/" + picP;
     },
     seethisPageCourse(thisproduct) {
       this.$router.push({
@@ -57,8 +57,8 @@ export default {
       }
       return training_course;
     },
-    path_files(){
-      return this.$store.getters.getPath_Files
+    path_files() {
+      return this.$store.getters.getPath_Files;
     }
   },
   created() {
@@ -66,3 +66,84 @@ export default {
   }
 };
 </script>
+<style scoped>
+.training {
+  position: relative;
+  margin-top: 131px;
+}
+
+.header {
+  font-style: normal;
+  margin-bottom: 34px;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 120%;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.training-img {
+  /* position: absolute; */
+  top: 12px;
+  margin-top: 34px;
+}
+
+.training-img2 {
+  position: absolute;
+  top: 408px;
+  margin: 0 auto;
+}
+
+.course-text {
+  position: absolute;
+  top: 265px;
+  left: 20px;
+  padding-left: 19px;
+  padding-right: 19px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.75px;
+  color: #fff;
+}
+
+.course-date {
+  position: absolute;
+  top: 330px;
+  left: 20px;
+  padding-left: 19px;
+  padding-right: 19px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #d8d8d8;
+}
+.btn-viewall {
+  background: #576574;
+  border: none;
+  border-radius: 14px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 2px 14px;
+  line-height: 150%;
+  margin-left: 63px;
+  text-align: right;
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .training {
+    margin-top: 0;
+  }
+  .course-text {
+    top: 175px;
+  }
+  .course-date {
+    top: 267px;
+  }
+}
+</style>

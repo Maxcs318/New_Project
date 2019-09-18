@@ -81,10 +81,12 @@ footer {
   margin-left: auto;
   margin-top: 23px;
 }
+
 p {
   margin: 0;
   padding: 0;
 }
+
 footer .address p {
   font-style: normal;
   font-weight: 600;
