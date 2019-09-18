@@ -26,15 +26,21 @@
             <img :src="path_files+'footer_img/youtube-logo.png'" alt />
             <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
-          <div class="col-4 social-mb"></div>
-          <div class="col-4 social-mb">
-            <br />
+          <div class="col-2 social-mb"></div>
+          <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/facebook-logo.png'" alt />
+          </div>
+          <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/instagram-logo.png'" alt />
+          </div>
+          <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/youtube-logo.png'" alt />
+          </div>
+          <div class="col-2 social-mb">
             <img :src="path_files+'footer_img/line-logo.png'" alt />
           </div>
-          <div class="col-4 social-mb"></div>
+
+          <div class="col-2 social-mb"></div>
         </div>
 
         <div class="row">
@@ -119,10 +125,14 @@ footer p {
   }
   .social-mb {
     display: block;
+    margin-top: 31px;
+    margin-bottom: 0px;
   }
   .social-mb img {
-    width: 21%;
-    margin: 0 auto;
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
