@@ -44,6 +44,10 @@ export default {
 };
 </script>
 <style scoped>
+img {
+  cursor: pointer;
+}
+
 .head {
   position: absolute;
   z-index: 1;

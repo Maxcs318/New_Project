@@ -6,7 +6,7 @@
         <img :src="getImgUrl(thisNews.n_image)" width="100%" />
         <!-- <a :href="getImgUrl(thisNews.n_image)" download>File Dowload</a> -->
         <h5 class="activity-title mt-4">{{thisNews.n_title}}</h5>
-        <p class="activity-date" style="text-align:left">{{thisNews.n_create_date}}</p>
+        <p class="activity-date" style="text-align:left">{{thisNews.n_create_date.slice(0,-13)}}</p>
         <br />
         <p class="activity-detail" style="text-align:left">{{thisNews.n_detail}}</p>
         <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index">
@@ -18,27 +18,27 @@
       <div class="col-lg-10 col-12" v-else>This Page No Data.</div>
       <div class="col-lg-1 col-12"></div>
     </div>
-    <br />
-    <br />
-    <br />
-    <div class="row">
-      <div class="col-lg-6 col-12" v-for="news in News_all.slice().reverse().slice(1,3)">
-        <div>
-          <img
-            class="activities-img-mb"
-            :src="getImgUrl(news.n_image)"
-            width="100%"
-            height="360px"
-            @click="seethisPageNews(news.n_id)"
-          />
-          <h5 class="activities-2-title" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
-          <p class="activities-2-date" style="text-align: left;">{{news.n_create_date}}</p>
+
+    <div class="activity2">
+      <div class="row">
+        <div class="col-lg-6 col-12" v-for="news in News_all.slice().reverse().slice(1,3)">
+          <div>
+            <img
+              class="activities-img-mb"
+              :src="getImgUrl(news.n_image)"
+              width="100%"
+              height="360px"
+              @click="seethisPageNews(news.n_id)"
+            />
+            <h5 class="activities-2-title" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
+            <p
+              class="activities-2-date"
+              style="text-align: left;"
+            >{{news.n_create_date.slice(0,-13)}}</p>
+          </div>
         </div>
       </div>
     </div>
-    <br />
-    <br />
-    <br />
   </div>
 </template>
 <script>
@@ -98,6 +98,14 @@ export default {
   font-size: 29px;
   line-height: 120%;
   letter-spacing: 0.75px;
+}
+.activity2 {
+  margin-top: 102px;
+  margin-bottom: 65px;
+}
+
+.activity2 img {
+  cursor: pointer;
 }
 
 .activity-date {

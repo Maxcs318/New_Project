@@ -11,9 +11,9 @@
                 <hr />
               </div>
               <div class="col-lg-4">
-                <h5 class="head" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
+                <h5 class="head">{{news.n_title}}</h5>
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
-                <p class="news-date1" style="text-align: left;">{{news.n_create_date}}</p>
+                <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
               </div>
               <div class="col-lg-6">
                 <div class="news1"></div>
@@ -48,7 +48,7 @@
               <div class="col-xs-12">
                 <hr />
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
-                <p class="news-date1" style="text-align: left;">{{news.n_create_date}}</p>
+                <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
               </div>
             </div>
           </div>
@@ -58,12 +58,13 @@
         <div class="row">
           <div
             class="col-lg-6 col-md-6 col-12"
+            @click="seethisPageNews(news.n_id)"
             v-for="news in the_news.slice().reverse().slice(1,3)"
           >
             <div class="news-2">
-              <img :src="getImgUrl(news.n_image)" width="100%" @click="seethisPageNews(news.n_id)" />
+              <img :src="getImgUrl(news.n_image)" width="100%" />
               <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
-              <p class="news-date" style="text-align: left;">{{news.n_create_date}}</p>
+              <p class="news-date" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
             </div>
           </div>
         </div>
@@ -151,6 +152,7 @@ export default {
 
 .img-news {
   width: 100%;
+  cursor: pointer;
 }
 
 .news1 {
@@ -179,6 +181,7 @@ export default {
 
 .news-2 {
   margin-top: 59px;
+  cursor: pointer;
 }
 
 .news-2 img {
@@ -212,10 +215,6 @@ export default {
   font-size: 18px;
   line-height: 150%;
   color: #d8d8d8;
-}
-
-.img-col-3 img {
-  width: 100%;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -280,14 +279,6 @@ export default {
   .news-date1 {
     margin-top: 27px;
     padding-left: 0px;
-  }
-
-  .img-col-3 {
-    top: 50px;
-  }
-
-  .img-col-3 img {
-    width: 386px;
   }
 
   .mb-margin {

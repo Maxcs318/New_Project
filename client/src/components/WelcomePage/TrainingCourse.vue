@@ -85,13 +85,14 @@ export default {
   /* position: absolute; */
   top: 12px;
   margin-top: 34px;
+  cursor: pointer;
 }
 
-.training-img2 {
+/* .training-img2 {
   position: absolute;
   top: 408px;
   margin: 0 auto;
-}
+} */
 
 .course-text {
   position: absolute;

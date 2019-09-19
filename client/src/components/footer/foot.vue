@@ -82,7 +82,6 @@ footer {
   margin-top: 12px;
 }
 
-
 footer .address p {
   font-style: normal;
   font-weight: 600;

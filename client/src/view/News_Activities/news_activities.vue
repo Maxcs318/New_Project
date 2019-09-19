@@ -9,7 +9,7 @@
           v-for="(news,index) in the_news.slice().reverse().slice(0,1)"
           :key="index"
         >
-          <div class="row" @click="seethisPage(news.n_id)">
+          <div class="row">
             <div class="col-lg-2">
               <hr style="background: white" />
             </div>
@@ -38,7 +38,7 @@
           v-for="(news,index) in the_news.slice().reverse().slice(0,1)"
           :key="index"
         >
-          <div class="row" @click="seethisPage(news.n_id)">
+          <div class="row">
             <div class="col-lg-6">
               <div class="shadow-news1"></div>
               <div class="shadow-news2"></div>
@@ -129,6 +129,7 @@ export default {
   width: 100%;
   height: 370px;
   margin-bottom: 54px;
+  cursor: pointer;
 }
 .shadow-news1 {
   position: absolute;
@@ -156,6 +157,7 @@ export default {
   width: 100%;
   height: auto;
   margin-bottom: 32px;
+  cursor: pointer;
 }
 .activitiesall-text2 {
   position: absolute;

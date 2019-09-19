@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container">
-      <div class="article">
+    <div class="article">
+      <div class="container">
         <div class="row">
           <header class="col-lg-10 col-xs-12 header">บทความ GAMA Thailand</header>
           <div class="col-lg-2">
@@ -20,8 +20,8 @@
                 width="100%"
                 @click="seethisPageArticle(article.a_id)"
               />
-              <h5 class="text" @click="seethisPageArticle(article.a_id)">{{article.a_title}}</h5>
-              <p class="date" style="text-align: left;">{{article.a_create_date}}</p>
+              <h5 class="text">{{article.a_title}}</h5>
+              <p class="date" style="text-align: left;">{{article.a_create_date.slice(0,-13)}}</p>
               <!-- <p style="text-indent: 2em;">{{article.a_detail.slice(0,60)}}</p> -->
               <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
             </div>
@@ -61,6 +61,9 @@ export default {
 .article {
   position: relative;
   margin-top: 512px;
+}
+.article img{
+  cursor: pointer;
 }
 
 .header {

@@ -114,6 +114,7 @@ export default {
 .article2 {
   margin-top: 102px;
   margin-bottom: 65px;
+  cursor: pointer;
 }
 .article-title {
   position: absolute;

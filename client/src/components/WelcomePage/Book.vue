@@ -16,16 +16,13 @@
           >
             <img
               class="rounded mx-auto d-block"
+              
               :src="getImgUrlProduct(product.p_image)"
               width="75%"
               @click="seethisPageBook(product.p_id)"
             />
-            <h5 class="book-detail" @click="seethisPageBook(product.p_id)">{{product.p_name}}</h5>
-            <!-- <p style="text-align: right;">{{product.p_create_date}}</p> -->
-            <!-- <p style="text-align: right;">{{product.p_category}}</p> -->
+            <h5 class="book-detail">{{product.p_name}}</h5>
             <p class="price" style="text-align: center;">฿ {{product.p_price}}</p>
-            <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-            <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
           </div>
         </div>
       </div>
@@ -75,6 +72,10 @@ export default {
     rgba(255, 255, 255, 0.1) 48.44%,
     rgba(242, 242, 242, 0) 100%
   );
+}
+
+.book img{
+  cursor: pointer;
 }
 
 .rounded {
