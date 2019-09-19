@@ -24,7 +24,7 @@
               <img
                 class="img-activities"
                 :src="getImgUrl(news.n_image)"
-                @click="seethisPageNews(news.n_id)"
+                @click="seethisPage(news.n_id)"
               />
             </div>
           </div>
@@ -45,7 +45,7 @@
               <img
                 class="img-activities"
                 :src="getImgUrl(news.n_image)"
-                @click="seethisPageNews(news.n_id)"
+                @click="seethisPage(news.n_id)"
               />
             </div>
             <div class="col-12">
