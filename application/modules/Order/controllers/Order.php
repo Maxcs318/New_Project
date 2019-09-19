@@ -60,12 +60,15 @@
                 exit;
             }
 
-            //save shipping address
-            $shipp_AD = (array)json_decode($this->input->post('shipping_address'));
-            $shipp_AD['sa_member_id'] = $ownID;
-            $shipp_AD['sa_create_date'] = $this->Check__model->date_time_now();
-            $shipp_AD_Success = (array)json_decode($this->Shipping_Address_model->save_shipping_address($shipp_AD));
-
+            //save shipping address 
+            if($this->input->post('shipping_address')!=''||$this->input->post('shipping_address')!=null){
+                $shipp_AD = (array)json_decode($this->input->post('shipping_address'));
+                $shipp_AD['sa_member_id'] = $ownID;
+                $shipp_AD['sa_create_date'] = $this->Check__model->date_time_now();
+                $shipp_AD_Success = (array)json_decode($this->Shipping_Address_model->save_shipping_address($shipp_AD));
+            }else{
+                $shipp_AD_Success['sa_id'] = json_decode($this->input->post('shipping_address_id'));
+            }
             $order['o_shipping_address_id'] = $shipp_AD_Success['sa_id'];
             $order['o_total_price'] = $price_total;
             $order['o_own_id'] = $ownID;
@@ -91,7 +94,7 @@
             $order_items_created = (array)json_decode($this->order_model->create_order_item($O_items));
 
             // echo $order_created['o_id'];
-            // print_r($O_items);
+            print_r($order);
             // echo $shipp_AD_Success['sa_id'];
             // echo $order_items_created;
             

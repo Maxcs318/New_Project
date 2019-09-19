@@ -44,6 +44,7 @@
       this.$store.dispatch("initDataOrders")    
       this.$store.dispatch("initDataOrder_Items")    
       this.$store.dispatch("initDataOrder_Status")    
+      this.$store.dispatch("initDataShipping_Address")    
     }
     
   }

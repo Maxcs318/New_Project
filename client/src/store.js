@@ -14,8 +14,11 @@ const store = new Vuex.Store({
         news:[],
         article:[],article_category:[],
         files:[],
+
         product:[],product_category:[],product_image:[],
-        order:[],order_items:[],order_status:[],        
+        order:[],order_items:[],order_status:[],  
+        shipping_address:[],
+        
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
@@ -56,6 +59,11 @@ const store = new Vuex.Store({
         Order_Status(state,order_status){
             state.order_status = order_status
         },
+        Shipping_Address(state,sa){
+            state.shipping_address = sa
+        },
+
+
 
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -348,6 +356,13 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("Order_Status",response.data)
+            })
+        },
+        initDataShipping_Address(context){
+            axios.get(base_url +"Shipping_Address/get_all_shipping_address")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Shipping_Address",response.data)
             })
         },
 
@@ -663,8 +678,21 @@ const store = new Vuex.Store({
                 }
             }
             return my_o
+        },
+        getShipping_Address(state){
+            return state.shipping_address
+        },
+        getMy_Shipping_Address(state){
+            var sa = state.shipping_address
+            var user = state.the_user
+            var my_sa =[]
+                for(var i=0; i<sa.length; i++){
+                    if(sa[i].sa_member_id == user.m_id){
+                        my_sa.push(sa[i])
+                    }
+                }
+            return my_sa
         }
-
         
     }
 

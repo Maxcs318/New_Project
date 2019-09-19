@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="row" v-if="thisMyCart.length==0">
-            <h5 style="width:100%; text-align: center;"> Your Cart is Empty</h5>
+            <h5 style="width:100%; text-align: center;"> Your Cart is Empty</h5> <br><br><br><br>
         </div>
         <div class="row" v-if="MyCart.length>0 && Compute_Total && thisMyCart.length!=0">
             <div class="col-lg-12 col-xs-12">
@@ -57,18 +57,27 @@
             <div class="col-lg-4 col-xs-12">
                 <form @submit.prevent="submitCart_To_Order">    
                     <h5><center>Shipping Address</center></h5>
+                    <div v-if="My_Shipping_Address!=''">
+                        Select Old Shipping Address
+                        <select class="form-control" v-model="select_sa">
+                            <option value=""> - - No Select - - </option>
+                            <option v-for="(shipping ,index) in My_Shipping_Address" :key="index" :value="shipping.sa_id" >
+                                {{ shipping.sa_title }}
+                            </option>
+                        </select>
+                    </div>
                     Title
-                    <input type="text" v-model="shipping_address.sa_title" class="form-control" required>
+                    <input type="text" v-model="shipping_address.sa_title" class="form-control" :disabled="click_select_sa()" required>
                     Address
-                    <textarea class="form-control" rows="5" v-model="shipping_address.sa_address" required></textarea>
+                    <textarea class="form-control" rows="5" v-model="shipping_address.sa_address" :disabled="click_select_sa()" required></textarea>
                     Postcode
-                    <input type="text" v-model="shipping_address.sa_postcode" class="form-control" required>
+                    <input type="text" v-model="shipping_address.sa_postcode" class="form-control" :disabled="click_select_sa()" required>
                     Phone
-                    <input type="text" v-model="shipping_address.sa_phone" class="form-control" required>
+                    <input type="text" v-model="shipping_address.sa_phone" class="form-control" :disabled="click_select_sa()" required>
                     E-mail
-                    <input type="text" v-model="shipping_address.sa_email" class="form-control" required>
+                    <input type="text" v-model="shipping_address.sa_email" class="form-control" :disabled="click_select_sa()" required>
                     Company
-                    <input type="text" v-model="shipping_address.sa_company" class="form-control" required>
+                    <input type="text" v-model="shipping_address.sa_company" class="form-control" :disabled="click_select_sa()" required>
                     <br>
                     <div class="row">
                         <div class="col-lg-6 col-xs-6">
@@ -90,6 +99,7 @@
 export default {
     data(){
         return{
+            select_sa:'',
             address_show:'OFF',
             shipping_address:{
                 sa_title:'',
@@ -111,6 +121,13 @@ export default {
                 this.address_show='OFF'
             }
         },
+        click_select_sa(){
+            if(this.select_sa == ''){
+                return false
+            }else{
+                return true
+            }
+        },
         page_order(){
             this.$router.push('my_order')
         },
@@ -126,7 +143,11 @@ export default {
             }
             var FD  = new FormData()
             FD.append('order',JSON.stringify(my_order))
-            FD.append('shipping_address',JSON.stringify(this.shipping_address))
+            if(this.select_sa == ''){
+                FD.append('shipping_address',JSON.stringify(this.shipping_address))
+            }else{
+                FD.append('shipping_address_id',JSON.stringify(this.select_sa))
+            }
             FD.append('own_id',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Create_Order",FD)
             swal({title: "Create Order Success.",icon: "success",})
@@ -185,6 +206,26 @@ export default {
             
         }
     },
+    watch:{
+        select_sa: function () {
+            if(this.select_sa == ''){
+                this.shipping_address = {
+                    sa_title:'',
+                    sa_address:'',
+                    sa_postcode:'',
+                    sa_phone:'',
+                    sa_email:'',
+                    sa_company:''
+                }
+            }else{
+                for(var i=0; i<this.My_Shipping_Address.length; i++){
+                    if(this.select_sa == this.My_Shipping_Address[i].sa_id){
+                        this.shipping_address = this.My_Shipping_Address[i]
+                    }
+                }
+            }
+        },
+    },
     computed:{
         Compute_Total(){
             this.total_Price = 0
@@ -226,6 +267,12 @@ export default {
             this.thisMyCart = now_cart
             return cart
         },
+        My_Shipping_Address(){
+            return this.$store.getters.getMy_Shipping_Address
+        }
     },
+    created(){
+        this.$store.dispatch("initDataShipping_Address")
+    }
 }
 </script>
