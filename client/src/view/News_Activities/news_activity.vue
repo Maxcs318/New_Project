@@ -8,8 +8,8 @@
     <br />
     <br />
     <div class="row">
-      <div class="col-lg-1 col-xs-12"></div>
-      <div class="col-lg-10 col-xs-12" v-if="thisNews">
+      <div class="col-lg-1 col-12"></div>
+      <div class="col-lg-10 col-12" v-if="thisNews">
         <img :src="getImgUrl(thisNews.n_image)" width="100%" />
         <!-- <a :href="getImgUrl(thisNews.n_image)" download>File Dowload</a> -->
         <h5 class="activity-title mt-4">{{thisNews.n_title}}</h5>
@@ -22,17 +22,14 @@
           <br />
         </div>
       </div>
-      <div class="col-lg-10 col-xs-12" v-else>This Page No Data.</div>
-      <div class="col-lg-1 col-xs-12"></div>
+      <div class="col-lg-10 col-12" v-else>This Page No Data.</div>
+      <div class="col-lg-1 col-12"></div>
     </div>
     <br />
     <br />
     <br />
     <div class="row">
-      <div
-        class="col-lg-6 col-md-6 col-xs-12  "
-        v-for="news in News_all.slice().reverse().slice(1,3)"
-      >
+      <div class="col-lg-6 col-12" v-for="news in News_all.slice().reverse().slice(1,3)">
         <div>
           <img
             class="activity-img-mb"
@@ -56,15 +53,15 @@
 export default {
   methods: {
     getImgUrl(pic) {
-      return this.path_files+'News/'+pic
+      return this.path_files + "News/" + pic;
     },
     loadFile(fi) {
-      return this.path_files+'Files_Upload/'+fi
+      return this.path_files + "Files_Upload/" + fi;
     }
   },
   computed: {
-    path_files(){
-      return this.$store.getters.getPath_Files
+    path_files() {
+      return this.$store.getters.getPath_Files;
     },
     News_all() {
       return this.$store.getters.getNews;
@@ -163,7 +160,7 @@ export default {
     padding-left: 21px;
     padding-right: 21px;
   }
-  
+
   .activities-2-date {
     top: 235px;
     padding-left: 21px;
