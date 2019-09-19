@@ -79,19 +79,17 @@ footer {
   width: 158px;
   display: block;
   margin-left: auto;
-  margin-top: 23px;
+  margin-top: 12px;
 }
 
-p {
-  margin: 0;
-  padding: 0;
-}
 
 footer .address p {
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
-  line-height: 29px;
+  margin: 0;
+  padding: 0;
+  line-height: 30%;
   color: #6a6a6a;
 }
 
