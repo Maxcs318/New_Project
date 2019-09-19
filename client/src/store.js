@@ -663,7 +663,6 @@ const store = new Vuex.Store({
         },
         getMy_Order(state){
             var ord = state.order
-            // var ord_i = state.order_items
             var ord_s = state.order_status
             var user = state.the_user
             var my_o = []

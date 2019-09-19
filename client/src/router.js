@@ -21,6 +21,7 @@ import RoomVideo from './view/Videos_Room/roomVideo.vue';
 
 import My_Cart from './view/Shopping/my_cart.vue';
 import My_Order from './view/Shopping/my_order.vue';
+import My_Order_History from './view/Shopping/my_order_history.vue';
 import Order from './view/Shopping/order.vue';
 // admin page
 import admin from "./view/Admin/AdminPage.vue"
@@ -70,6 +71,7 @@ export const router = new VueRouter({
 
         { path : "/my_cart",component : My_Cart },
         { path : "/my_order",component : My_Order },
+        { path : "/my_order_history",component : My_Order_History },
         { path : "/order/:CodeOrder",name:"order",component : Order },
 
         // end router in navbar
