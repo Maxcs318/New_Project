@@ -1,13 +1,7 @@
 <template>
   <div class="container">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="row">
+    
+    <div class="row" style="padding-top: 70px;">
       <div class="col-lg-1 col-12"></div>
       <div class="col-lg-10 col-12" v-if="thisNews">
         <img :src="getImgUrl(thisNews.n_image)" width="100%" />
@@ -32,7 +26,7 @@
       <div class="col-lg-6 col-12" v-for="news in News_all.slice().reverse().slice(1,3)">
         <div>
           <img
-            class="activity-img-mb"
+            class="activities-img-mb"
             :src="getImgUrl(news.n_image)"
             width="100%"
             height="360px"
@@ -150,7 +144,7 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-  .activity-img-mb {
+  .activities-img-mb {
     width: 100%;
     height: 271px;
   }

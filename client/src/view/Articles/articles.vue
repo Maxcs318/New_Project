@@ -1,18 +1,14 @@
 <template>
-  <div class="container" style="padding-top: 120px;">
+  <div class="container" style="padding-top: 151px;">
     <div class="row">
       <div
         class="col-lg-6 col-12"
+        @click="seethisPage(article.a_id)"
         v-for="(article,index) in the_article.slice().reverse()"
         :key="index"
         style="margin-bottom: 32px;"
       >
-        <img
-          :src="getImgUrlArticle(article.a_image)"
-          width="100%"
-          height="370px"
-          @click="seethisPage(article.a_id)"
-        />
+        <img :src="getImgUrlArticle(article.a_image)" width="100%" height="370px" />
         <h5 class="head">{{article.a_title}}</h5>
         <p class="date">{{article.a_create_date.slice(0,-13)}}</p>
         <!-- <p style="text-indent: 2em;">{{article.a_detail.slice(0,60)}}</p> -->
