@@ -1,10 +1,5 @@
 <template>
   <div class="container">
-    <!-- <br />
-    <br />
-    <br />
-    <br />
-    <br />-->
     <div class="row">
       <!-- activities all pc-scale -->
       <div class="activities-pc">
