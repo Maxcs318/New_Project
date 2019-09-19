@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    
     <div class="row" style="padding-top: 70px;">
       <div class="col-lg-1 col-12"></div>
       <div class="col-lg-10 col-12" v-if="thisNews">
@@ -37,7 +36,6 @@
         </div>
       </div>
     </div>
-
     <br />
     <br />
     <br />
@@ -51,6 +49,12 @@ export default {
     },
     loadFile(fi) {
       return this.path_files + "Files_Upload/" + fi;
+    },
+    seethisPageNews(thisnews) {
+      this.$router.push({
+        name: "newsandactivity",
+        params: { NewsID: thisnews }
+      });
     }
   },
   computed: {
