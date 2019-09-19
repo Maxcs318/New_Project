@@ -12,7 +12,9 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <h5><center>Order History</center></h5>
-
+                <br>
+                <h5><center> ส่วนนี้ยังไม่ได้ทำ </center></h5>
+                <br>
             </div>
         </div>
     </div>
