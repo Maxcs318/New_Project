@@ -10,8 +10,8 @@
         <br />
         <p class="activity-detail" style="text-align:left">{{thisNews.n_detail}}</p>
         <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index">
-          <a :href="loadFile(file.f_name)" download>Dowload File :</a>
-          &nbsp; {{file.f_title}}
+          <a :href="loadFile(file.f_name)" class="btn" download><i class="fa fa-download"></i>&nbsp; Download File :</a>
+          {{file.f_title}}
           <br />
         </div>
       </div>
@@ -109,8 +109,14 @@ export default {
 }
 
 a {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: yellow;
+  transition: 0.25s
+}
+
+a:hover{
+  font-size: 1.4em;
+  color: #48dbfb;
 }
 
 .activity-date {
