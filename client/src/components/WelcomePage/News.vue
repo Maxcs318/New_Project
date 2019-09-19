@@ -5,7 +5,7 @@
       <div class="container">
         <!-- pc page -->
         <div class="news-pc">
-          <div class="col-lg-12 col-md-6" v-for="news in the_news.slice().reverse().slice(0,1)">
+          <div class="col-lg-12 col-12" v-for="news in the_news.slice().reverse().slice(0,1)">
             <div class="row">
               <div class="col-lg-2">
                 <hr />
@@ -30,7 +30,7 @@
         </div>
         <!-- mb page -->
         <div class="news-mb">
-          <div class="col-lg-12 col-md-6" v-for="news in the_news.slice().reverse().slice(0,1)">
+          <div class="col-lg-12 col-12" v-for="news in the_news.slice().reverse().slice(0,1)">
             <div class="row">
               <div class="col-xs-12">
                 <div class="news1"></div>
@@ -57,7 +57,7 @@
         <!-- row page -->
         <div class="row">
           <div
-            class="col-lg-6 col-md-6 col-xs-12"
+            class="col-lg-6 col-md-6 col-12"
             v-for="news in the_news.slice().reverse().slice(1,3)"
           >
             <div class="news-2">
@@ -113,7 +113,7 @@ export default {
 }
 
 .news hr {
-  border: 1px solid #fff;
+  background-color: #fff;
 }
 
 .head {
@@ -261,13 +261,12 @@ export default {
   .head {
     position: absolute;
     z-index: 1;
-    margin-top: 35%;
+    margin-top: -25%;
     color: #fff;
   }
 
   hr {
-    position: relative;
-    margin-top: 310px;
+    margin-top: 50px;
     margin-left: 0px;
     width: 100%;
   }

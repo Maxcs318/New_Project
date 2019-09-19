@@ -95,7 +95,7 @@ export default {
 
 .course-text {
   position: absolute;
-  top: 265px;
+  top: 295px;
   left: 20px;
   padding-left: 19px;
   padding-right: 19px;
@@ -111,7 +111,7 @@ export default {
 
 .course-date {
   position: absolute;
-  top: 330px;
+  top: 367px;
   left: 20px;
   padding-left: 19px;
   padding-right: 19px;
@@ -144,6 +144,14 @@ export default {
   }
   .course-date {
     top: 267px;
+  }
+  .header {
+    margin-bottom: 16px;
+  }
+  .btn-viewall {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 14px;
   }
 }
 </style>

@@ -10,14 +10,14 @@
         </div>
         <div class="row justify-content-around">
           <div
-            class="col-lg-3 col-md-6 col-xs-6"
+            class="col-lg-3 col-md-6 col-6"
             v-for="(product,index) in book.slice().reverse().slice(0,4)"
             :key="index"
           >
             <img
               class="rounded mx-auto d-block"
               :src="getImgUrlProduct(product.p_image)"
-              width="100%"
+              width="75%"
               @click="seethisPageBook(product.p_id)"
             />
             <h5 class="book-detail" @click="seethisPageBook(product.p_id)">{{product.p_name}}</h5>
@@ -79,7 +79,7 @@ export default {
 
 .rounded {
   background: #d8d8d8;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .header {
@@ -128,6 +128,15 @@ export default {
 @media only screen and (max-width: 600px) {
   .book {
     margin-top: 66px;
+  }
+  .header {
+  margin-bottom: 16px;
+
+}
+  .btn-viewall{
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 34px;
   }
 }
 </style>

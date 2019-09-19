@@ -85,7 +85,7 @@ export default {
   position: absolute;
   box-sizing: border-box;
   left: 10.5%;
-  top: 43px;
+  top: 42px;
   width: 253px;
   height: 190px;
   background: rgba(255, 255, 255, 0.131938);
