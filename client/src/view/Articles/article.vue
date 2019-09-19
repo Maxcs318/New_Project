@@ -8,8 +8,8 @@
         <p class="date">{{thisArticle.a_create_date.slice(0,-13)}}</p>
         <p class="detail">{{thisArticle.a_detail}}</p>
         <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index">
-          <a :href="loadFile(file.f_name)" download>Dowload File {{index+1}}</a>
-          {{file.f_title}}
+          <a :href="loadFile(file.f_name)" download>Dowload File :</a>
+           &nbsp; {{file.f_title}}
           <br />
         </div>
       </div>
@@ -111,6 +111,12 @@ export default {
   padding-top: 21px;
   padding-bottom: 30px;
 }
+
+a{
+  font-size: 1.5em;
+  color: yellow;
+}
+
 .article2 {
   margin-top: 102px;
   margin-bottom: 65px;

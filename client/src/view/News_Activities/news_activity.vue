@@ -10,8 +10,8 @@
         <br />
         <p class="activity-detail" style="text-align:left">{{thisNews.n_detail}}</p>
         <div v-if="thisFiles != null" v-for="(file,index) in thisFiles" :key="index">
-          <a :href="loadFile(file.f_name)" download>Dowload File {{index+1}}</a>
-          {{file.f_title}}
+          <a :href="loadFile(file.f_name)" download>Dowload File :</a>
+          &nbsp; {{file.f_title}}
           <br />
         </div>
       </div>
@@ -106,6 +106,11 @@ export default {
 
 .activity2 img {
   cursor: pointer;
+}
+
+a {
+  font-size: 1.5em;
+  color: yellow;
 }
 
 .activity-date {
