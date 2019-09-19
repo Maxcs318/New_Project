@@ -261,13 +261,12 @@ export default {
   .head {
     position: absolute;
     z-index: 1;
-    margin-top: 35%;
+    margin-top: -25%;
     color: #fff;
   }
 
   hr {
-    position: relative;
-    margin-top: 310px;
+    margin-top: 50px;
     margin-left: 0px;
     width: 100%;
   }

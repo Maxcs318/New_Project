@@ -138,8 +138,14 @@ export default {
     margin-top: 244px;
   }
   .text {
+    top: 140px;
     left: 19px;
     right: 29px;
+  }
+  .date {
+    top: 230px;
+    padding-left: 9px;
+    padding-right: 9px;
   }
 }
 </style>

@@ -92,4 +92,14 @@
   margin-top: 312px;
   color: #6cadfd;
 }
+@media only screen and (max-width: 600px) {
+  .invite .invite-text {
+     padding-left: 21px;
+    padding-right: 21px;
+  }
+  .invite .invite-text2 {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+}
 </style>
