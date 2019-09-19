@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-10 col-xs-12"></div>
             <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-success" @click="page_order"> Order </button>
+                <button type="button" class="form-control btn-success" @click="page_order"> Order </button> <br>
             </div>
         </div>
         <div class="row" v-if="thisMyCart.length==0">

@@ -1,9 +1,12 @@
 <template>
     <div class="container ">
         <div class="row">
-            <div class="col-lg-10 col-xs-12"></div>
+            <div class="col-lg-8 col-xs-12"></div>
             <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-success" @click="page_cart"> Cart </button>
+                <button type="button" class="form-control btn-primary" @click="page_order_history"> Order History </button> <br>
+            </div>
+            <div class="col-lg-2 col-xs-12"> 
+                <button type="button" class="form-control btn-success" @click="page_cart"> Cart </button> <br>
             </div>
         </div>
         <div class="row">
@@ -48,6 +51,9 @@ export default {
     methods:{
         page_cart(){
             this.$router.push('my_cart')
+        },
+        page_order_history(){
+            this.$router.push('my_order_history')
         },
         seethisOrder(this_order){
             this.$router.push({name:'order',params:{CodeOrder:this_order}});
