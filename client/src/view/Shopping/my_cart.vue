@@ -186,7 +186,6 @@ export default {
                     swal({title: "Remove Product Success.",icon: "success",});
                 }
             })
-            
         },
         clear_cart(){
             this.$swal({

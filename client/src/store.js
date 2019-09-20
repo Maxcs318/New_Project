@@ -18,6 +18,7 @@ const store = new Vuex.Store({
         product:[],product_category:[],product_image:[],
         order:[],order_items:[],order_status:[],  
         shipping_address:[],
+        payment:[],banking:[],
         
         members : [],
         the_user:'',
@@ -62,7 +63,12 @@ const store = new Vuex.Store({
         Shipping_Address(state,sa){
             state.shipping_address = sa
         },
-
+        Payment(state,pm){
+            state.payment = pm
+        },
+        Banking(state,bk){
+            state.banking = bk
+        },
 
 
         LoadingPage(state,statusP){
@@ -254,6 +260,13 @@ const store = new Vuex.Store({
             cart[index].quantity = cart[index].quantity-1
             localStorage.removeItem('Cart')
             localStorage.setItem("Cart", JSON.stringify(cart));
+        },
+        Delete_My_Order(state,order){
+            var order_id = order.o_id 
+            let index = state.order.findIndex(o => o.o_id == order_id)
+            if(index > -1){
+                state.order.splice(index,1)
+            }
         }
         
 
@@ -363,6 +376,20 @@ const store = new Vuex.Store({
                 .then(response => {
                     // console.log(response)
                     context.commit("Shipping_Address",response.data)
+            })
+        },
+        initDataPayment(context){
+            axios.get(base_url +"Payment/get_all_payment")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Payment",response.data)
+            })
+        },
+        initDataBanking(context){
+            axios.get(base_url +"Banking/get_all_banking")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Banking",response.data)
             })
         },
 
@@ -584,6 +611,15 @@ const store = new Vuex.Store({
                     // context.commit('Create_Order',response.data)
                 }
             })
+        },
+        Delete_My_Order(context,orderID){
+            axios.post(base_url +'order/delete_order',orderID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_My_Order',response.data)
+                }
+            })
         }
 
         
@@ -691,6 +727,12 @@ const store = new Vuex.Store({
                     }
                 }
             return my_sa
+        },
+        getPayments(state){
+            return state.payment
+        },
+        getBanking(state){
+            return state.banking
         }
         
     }

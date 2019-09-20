@@ -101,8 +101,30 @@
 
             
         }
+        // delete_order
+        public function delete_order()
+        {
+            // check status for create order
+            $own = json_decode($this->input->post('own_id'));
+            if($own==null || $own==''){
+                echo 'fail';
+                exit;
+            }
+            $ownID  = $this->Check__model->chk_token($own);
+            // echo $ownID;
+            $orderID = json_decode($this->input->post('orderID'));
+            //set data order for delete
+            $order['o_id'] = $orderID ;
+            $order['o_own_id'] = $ownID ;
+            //do delete order
+            $order_deleted = $this->order_model->delete_order($order);
+            //set order id of order item
+            $order_item['oi_order_id'] = $orderID ;
+            //do delete order item
+            $order_item_deleted = $this->order_model->delete_order_item($order_item);
 
-
+            echo json_encode($order);
+        }
 
 
 

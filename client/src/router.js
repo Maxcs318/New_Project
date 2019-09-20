@@ -23,6 +23,7 @@ import My_Cart from './view/Shopping/my_cart.vue';
 import My_Order from './view/Shopping/my_order.vue';
 import My_Order_History from './view/Shopping/my_order_history.vue';
 import Order from './view/Shopping/order.vue';
+import Payment from './view/Shopping/payment.vue';
 // admin page
 import admin from "./view/Admin/AdminPage.vue"
 import admin_News from "./view/Admin/News_Activities/news_activities.vue"
@@ -73,6 +74,7 @@ export const router = new VueRouter({
         { path : "/my_order",component : My_Order },
         { path : "/my_order_history",component : My_Order_History },
         { path : "/order/:CodeOrder",name:"order",component : Order },
+        { path : "/payment/:CodeOrder",name:"payment",component : Payment },
 
         // end router in navbar
 

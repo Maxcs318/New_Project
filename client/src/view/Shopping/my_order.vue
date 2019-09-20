@@ -30,18 +30,13 @@
                         <td>{{order.o_status_id}}</td>
                         <td>{{order.o_create_date}}</td>
                         <td> 
-                            <button type="button" class="form-control btn-primary" @click="Pay_This(order.o_id)"> Pay </button> 
+                            <button type="button" class="form-control btn-primary" @click="Pay_This(order.o_id,order.o_code_order)"> Pay </button> 
                         </td>
                         <td> 
-                            <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id)"> Delete </button> 
+                            <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id,order.o_code_order)"> Delete </button> 
                         </td>        
                     </tr>
-                </table>
-                
-                <br><br>
-                
-                
-                
+                </table> <br><br>
             </div>            
         </div>
     </div>
@@ -58,13 +53,28 @@ export default {
         seethisOrder(this_order){
             this.$router.push({name:'order',params:{CodeOrder:this_order}});
         },
-        Pay_This(order_id){
-            console.log('pay',order_id)
-            swal({title: "Pay Success.",icon: "success",});
+        Pay_This(order_id,order_code){
+            this.$router.push({name:'payment',params:{CodeOrder:order_code}});
         },
-        Delete_Order(order_id){
-            console.log('delete',order_id)
-            swal({title: "Delete Success.",icon: "success",});
+        Delete_Order(order_id,order_code){
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want Delete This Order Code : "+order_code,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // console.log('delete',order_id)
+                    var FD  = new FormData()
+                    FD.append('orderID',order_id)            
+                    FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+                    this.$store.dispatch("Delete_My_Order",FD)
+                    swal({title: "Delete Order Success.",icon: "success",});
+                }
+            })
+            
         }
     },
     computed:{

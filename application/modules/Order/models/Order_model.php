@@ -54,7 +54,16 @@
             }
             return json_encode($data_res);
         }
-
+        //delete order
+        public function delete_order($where=array())
+        {
+            return json_encode($this->db->where($where)->delete($this->orders));
+        }
+        //delete order item
+        public function delete_order_item($where=array())
+        {
+            return json_encode($this->db->where($where)->delete($this->order_items));
+        }
 
 
 
