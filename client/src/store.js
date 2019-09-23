@@ -19,6 +19,7 @@ const store = new Vuex.Store({
         order:[],order_items:[],order_status:[],  
         shipping_address:[],
         payment:[],banking:[],
+        money_transfer:[],
         
         members : [],
         the_user:'',
@@ -68,6 +69,9 @@ const store = new Vuex.Store({
         },
         Banking(state,bk){
             state.banking = bk
+        },
+        Money_Transfer(state,mtf){
+            state.money_transfer = mtf
         },
 
 
@@ -267,7 +271,10 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.order.splice(index,1)
             }
-        }
+        },
+        Money_Transfer_Insert(state, mtf_insert){
+            state.money_transfer.push(mtf_insert)
+        },
         
 
     },
@@ -392,7 +399,13 @@ const store = new Vuex.Store({
                     context.commit("Banking",response.data)
             })
         },
-
+        initDataMoney_Transfer(context){
+            axios.get(base_url +"Money_Transfer/get_all_money_transfer")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Money_Transfer",response.data)
+            })
+        },
 
         // End Load Data
         // load page
@@ -620,8 +633,17 @@ const store = new Vuex.Store({
                     context.commit('Delete_My_Order',response.data)
                 }
             })
+        },
+        // Money Transfer
+        Money_Transfer_Insert(context,mtf_i){
+            axios.post(base_url +'Money_Transfer/money_trasfer_insert',mtf_i)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    // context.commit('Money_Transfer_Insert',response.data)
+                }
+            })
         }
-
         
         
     },
@@ -733,6 +755,9 @@ const store = new Vuex.Store({
         },
         getBanking(state){
             return state.banking
+        },
+        getMoney_Transfer(state){
+            return state.money_transfer
         }
         
     }

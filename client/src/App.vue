@@ -47,6 +47,7 @@
       this.$store.dispatch("initDataShipping_Address")
       this.$store.dispatch("initDataPayment")
       this.$store.dispatch("initDataBanking")
+      this.$store.dispatch("initDataMoney_Transfer")
           
     }
     

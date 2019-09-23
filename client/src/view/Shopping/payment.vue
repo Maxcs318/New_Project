@@ -6,10 +6,10 @@
                 <form @submit.prevent="submitPay">  
                     <h5><center>Order Code : {{Order.o_code_order}} <br> Price : {{Order.o_total_price}} ฿</center></h5>                    
                     Title
-                    <input type="text" class="form-control" v-model="money_transfer.mtf_title" required><br>
+                    <input type="text" class="form-control" v-model="money_transfer.mtf_title" ><br>
                     <div v-if="Payment!=''">
                         Payment
-                        <select class="form-control" v-model="money_transfer.mtf_payments_id" required>
+                        <select class="form-control" v-model="money_transfer.mtf_payments_id" >
                             <option selected disabled value=""> - - No Select - - </option>
                             <option v-for="(pay ,index) in Payment" :key="index" :value="pay.pm_id" >
                                 {{ pay.pm_title }}
@@ -19,7 +19,7 @@
                     <div v-if="money_transfer.mtf_payments_id==1">
                         <br>
                         Banking
-                        <select class="form-control" v-model="money_transfer.mtf_banking_id" required>
+                        <select class="form-control" v-model="money_transfer.mtf_banking_id" >
                             <option disabled selected value=""> - - No Select - - </option>
                             <option v-for="(bk ,index) in Banking" :key="index" :value="bk.b_id"  @click="select_banking(bk)">
                                 {{ bk.b_name }}
@@ -47,7 +47,7 @@
                             <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesImage"> Choose Image Slip </button>
                             <input id="chooseImage" ref="filesimage" style="display: none;" type="file" @change="handleFilesImage">
                             <br>
-                    Transfer Date <br>
+                    Transfer Date : {{money_transfer.mtf_date}}<br>
 
                     <date-pick  
                                 size="large" v-model="money_transfer.mtf_date" 
@@ -122,10 +122,12 @@ export default {
         },
         // submit
         submitPay(){
-            console.log(this.Order)
-            console.log(this.money_transfer)
-            this.$swal('Save.')
-
+            var FD  = new FormData()
+            FD.append('money_transfer',JSON.stringify(this.money_transfer))
+            FD.append('order',JSON.stringify(this.Order))           
+            FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+            this.$store.dispatch("Money_Transfer_Insert",FD)
+            // swal({title: "Confirm Success.",icon: "success",});
         },
         back_to_see_list(){
             this.$router.go(-1)
