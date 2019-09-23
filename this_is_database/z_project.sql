@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2019 at 06:36 AM
+-- Generation Time: Sep 20, 2019 at 11:54 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -107,6 +107,31 @@ INSERT INTO `article_category` (`ac_id`, `ac_title`, `ac_description`, `ac_creat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banking`
+--
+
+CREATE TABLE `banking` (
+  `b_id` int(11) NOT NULL,
+  `b_name` varchar(200) NOT NULL,
+  `b_account_name` varchar(250) NOT NULL,
+  `b_account_number` varchar(10) NOT NULL,
+  `b_description` varchar(250) NOT NULL,
+  `b_create_date` varchar(100) NOT NULL,
+  `b_update_date` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `banking`
+--
+
+INSERT INTO `banking` (`b_id`, `b_name`, `b_account_name`, `b_account_number`, `b_description`, `b_create_date`, `b_update_date`) VALUES
+(1, 'ธนาคาร กรุงใคร', ' A krungkrai', '1234567890', 'ตกลง กรุงใคร ?', '', ''),
+(2, 'ธนาคาร ใครพานิด', 'A Kraipanid', '1357908642', 'แล้วใครพานิด ?', '', ''),
+(3, 'ธนาคาร ทหารใคร', 'A tahankrai', '0987654321', 'ทหารใคร ? ( อันนี้ ผมไม่หารนะครับ )', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `files_upload`
 --
 
@@ -185,10 +210,10 @@ INSERT INTO `logged` (`l_id`, `time`, `l_id_m_id`, `token`) VALUES
 (78, '2019-09-04 09:02:20', '16', '0409201916022016UCEk0mDqEl'),
 (80, '2019-09-10 09:22:07', '14', '1009201916220714jAvdCmR5yq'),
 (94, '2019-09-13 07:56:35', '12', '1309201914563512rnE3l5Q8MY'),
-(97, '2019-09-16 04:46:26', '2', '160920191146262Z6echLAMBt'),
-(100, '2019-09-16 06:38:52', '2', '160920191338522NPiOSOjqRM'),
-(101, '2019-09-17 03:35:22', '2', '170920191035222UNA3Liq5Oq'),
-(102, '2019-09-17 10:43:56', '1', '170920191743561aEOBV74ByZ');
+(102, '2019-09-17 10:43:56', '1', '170920191743561aEOBV74ByZ'),
+(103, '2019-09-18 05:42:24', '1', '180920191242241uovMbS0rTU'),
+(106, '2019-09-19 06:02:47', '12', '19092019130247125WoMG2YNDf'),
+(107, '2019-09-20 03:49:54', '2', '200920191049542gVgqxVA5rp');
 
 -- --------------------------------------------------------
 
@@ -268,6 +293,25 @@ INSERT INTO `member_type` (`mt_id`, `mt_name`, `mt_create_date`, `mt_update_date
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `money_transfer`
+--
+
+CREATE TABLE `money_transfer` (
+  `mtf_id` int(11) NOT NULL,
+  `mtf_payments_id` varchar(50) NOT NULL,
+  `mtf_member_id` varchar(50) NOT NULL,
+  `mtf_title` varchar(250) NOT NULL,
+  `mtf_banking_id` varchar(50) NOT NULL,
+  `mtf_slip` text NOT NULL,
+  `mtf_date` varchar(100) NOT NULL,
+  `mtf_comment` text NOT NULL,
+  `mtf_create_date` varchar(100) NOT NULL,
+  `mtf_update_date` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `news`
 --
 
@@ -335,7 +379,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`o_id`, `o_code_order`, `o_own_id`, `o_total_price`, `o_status_id`, `o_comment`, `o_money_transfer_id`, `o_shipping_address_id`, `o_create_date`, `o_update_date`) VALUES
-(1, '1-0ZSNG0BGP3', '1', '6236', '1', '', '', '1', '18 กันยายน 2562 time 11:35:04', '');
+(1, '1-2C3NAJYDB8', '1', '3092', '1', '', '', '3', '20 กันยายน 2562 time 11:01:22', ''),
+(2, '1-JLRO9GT2P2', '1', '3016', '1', '', '', '1', '20 กันยายน 2562 time 11:31:21', ''),
+(3, '1-QLC4LGI47G', '1', '2351', '1', '', '', '3', '20 กันยายน 2562 time 12:05:25', '');
 
 -- --------------------------------------------------------
 
@@ -359,8 +405,18 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`oi_id`, `oi_order_id`, `oi_product_id`, `oi_product_price`, `oi_quantity`, `oi_total_price`, `oi_create_date`, `oi_update_date`) VALUES
-(1, '1', '21', '101', 49, '4949', '18 กันยายน 2562 time 11:35:04', ''),
-(2, '1', '22', '99', 13, '1287', '18 กันยายน 2562 time 11:35:04', '');
+(1, '1', '22', '99', 3, '297', '20 กันยายน 2562 time 11:01:22', ''),
+(2, '1', '19', '19', 4, '76', '20 กันยายน 2562 time 11:01:22', ''),
+(3, '1', '4', '665', 1, '665', '20 กันยายน 2562 time 11:01:22', ''),
+(4, '1', '6', '999', 2, '1998', '20 กันยายน 2562 time 11:01:22', ''),
+(5, '1', '7', '56', 1, '56', '20 กันยายน 2562 time 11:01:22', ''),
+(6, '2', '22', '99', 3, '297', '20 กันยายน 2562 time 11:31:21', ''),
+(7, '2', '4', '665', 1, '665', '20 กันยายน 2562 time 11:31:21', ''),
+(8, '2', '6', '999', 2, '1998', '20 กันยายน 2562 time 11:31:21', ''),
+(9, '2', '7', '56', 1, '56', '20 กันยายน 2562 time 11:31:21', ''),
+(10, '3', '22', '99', 3, '297', '20 กันยายน 2562 time 12:05:26', ''),
+(11, '3', '6', '999', 2, '1998', '20 กันยายน 2562 time 12:05:26', ''),
+(12, '3', '7', '56', 1, '56', '20 กันยายน 2562 time 12:05:26', '');
 
 -- --------------------------------------------------------
 
@@ -385,6 +441,28 @@ INSERT INTO `order_status` (`os_id`, `os_title`, `os_description`, `os_create_da
 (2, 'สถานะ 2', '', '', ''),
 (3, 'สถานะ 3', '', '', ''),
 (4, 'สถานะ 4', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `pm_id` int(11) NOT NULL,
+  `pm_title` text NOT NULL,
+  `pm_description` text NOT NULL,
+  `pm_create_date` varchar(100) NOT NULL,
+  `pm_update_date` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`pm_id`, `pm_title`, `pm_description`, `pm_create_date`, `pm_update_date`) VALUES
+(1, 'Bank', '', '', ''),
+(2, 'Paypal', 'https://www.google.co.th/', '', '');
 
 -- --------------------------------------------------------
 
@@ -518,7 +596,10 @@ CREATE TABLE `shipping_address` (
 --
 
 INSERT INTO `shipping_address` (`sa_id`, `sa_title`, `sa_first_name`, `sa_last_name`, `sa_member_id`, `sa_address`, `sa_city`, `sa_country`, `sa_postcode`, `sa_company`, `sa_phone`, `sa_email`, `sa_create_date`, `sa_update_date`) VALUES
-(1, 'Max Home', '', '', '1', '81/1', '', '', '50130', 'no', '000', 'maxkiller1112@gmail.com', '18 กันยายน 2562 time 11:35:04', '');
+(1, 'Max Home', '', '', '1', '81/1', '', '', '50130', 'no', '000', 'maxkiller1112@gmail.com', '18 กันยายน 2562 time 11:35:04', ''),
+(2, 'Home 2', '', '', '1', '81/1', '', '', '50130', '123', '091', 'maxkiller1112@gmail.com', '18 กันยายน 2562 time 14:58:42', ''),
+(3, 'Home 009', '', '', '1', 'ดาวอังคาร', '', '', '900', 'ASW', '-1-1-1-', 'M@mail', '18 กันยายน 2562 time 16:30:53', ''),
+(4, 'My X', '', '', '2', 'pluto', '', '', '098', 'NO', '890', 'X@Xmail', '19 กันยายน 2562 time 10:59:42', '');
 
 -- --------------------------------------------------------
 
@@ -608,6 +689,12 @@ ALTER TABLE `article_category`
   ADD PRIMARY KEY (`ac_id`);
 
 --
+-- Indexes for table `banking`
+--
+ALTER TABLE `banking`
+  ADD PRIMARY KEY (`b_id`);
+
+--
 -- Indexes for table `files_upload`
 --
 ALTER TABLE `files_upload`
@@ -632,6 +719,12 @@ ALTER TABLE `member_type`
   ADD PRIMARY KEY (`mt_id`);
 
 --
+-- Indexes for table `money_transfer`
+--
+ALTER TABLE `money_transfer`
+  ADD PRIMARY KEY (`mtf_id`);
+
+--
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
@@ -654,6 +747,12 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `order_status`
   ADD PRIMARY KEY (`os_id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`pm_id`);
 
 --
 -- Indexes for table `product`
@@ -708,6 +807,12 @@ ALTER TABLE `article_category`
   MODIFY `ac_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `banking`
+--
+ALTER TABLE `banking`
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `files_upload`
 --
 ALTER TABLE `files_upload`
@@ -717,7 +822,7 @@ ALTER TABLE `files_upload`
 -- AUTO_INCREMENT for table `logged`
 --
 ALTER TABLE `logged`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -732,6 +837,12 @@ ALTER TABLE `member_type`
   MODIFY `mt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `money_transfer`
+--
+ALTER TABLE `money_transfer`
+  MODIFY `mtf_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
@@ -741,19 +852,25 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
   MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `pm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -777,7 +894,7 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT for table `shipping_address`
 --
 ALTER TABLE `shipping_address`
-  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `videos`

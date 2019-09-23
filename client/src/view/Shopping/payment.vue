@@ -47,8 +47,15 @@
                             <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesImage"> Choose Image Slip </button>
                             <input id="chooseImage" ref="filesimage" style="display: none;" type="file" @change="handleFilesImage">
                             <br>
-                    Transfer Date  {{money_transfer.mtf_date}}
-                    <input class="form-control" type="date"  v-model="money_transfer.mtf_date" required>
+                    Transfer Date <br>
+
+                    <date-pick  
+                                size="large" v-model="money_transfer.mtf_date" 
+                                :pickTime="true" :format="'DD-MM-YYYY HH:mm'"
+                                :inputAttributes="{readonly: true}"
+                     ></date-pick>
+                    <br><br>
+
                     Comment
                     <textarea class="form-control" rows="5" v-model="money_transfer.mtf_comment" ></textarea>
                     <br>
@@ -68,8 +75,13 @@
         </div>
     </div>
 </template>
+<style>
+    input { font-size:14px; }
+</style>
+
 <script>
-import moment from 'moment'
+import DatePick from 'vue-date-pick';
+import 'vue-date-pick/dist/vueDatePick.css';
 
 export default {
     data(){
@@ -89,6 +101,7 @@ export default {
             file_title : [],
         }
     },
+    components: {DatePick},
     methods:{
         // image slip
         ChooseFilesImage(){
