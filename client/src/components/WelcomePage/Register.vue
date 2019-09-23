@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="invite">
+      <img :src="path_files+'background_img/register-bg.png'" />
       <div class="container">
         <div class="row">
           <label class="invite-text">สมัครสมาชิก GAMA Thailand</label>
@@ -19,15 +20,28 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
+    }
+  }
+};
+</script>
 <style scoped>
 .invite {
   position: relative;
-  /* background-image: url("./../src/assets/image/register-bg.png"); */
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   height: 383px;
   margin-top: 131px;
   text-align: center;
+}
+
+.invite img {
+  width: 100%;
+  height: 383px;
+  margin: 0;
+  padding: 0;
 }
 
 .invite label {
@@ -60,6 +74,7 @@
 
 .invite button {
   position: absolute;
+  z-index: 1;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%);
@@ -68,7 +83,7 @@
   border: none;
   width: 222px;
   height: 48px;
-  margin-top: 173px;
+  margin-top: -200px;
   font-weight: 600;
   font-size: 18px;
   color: #093f84;
@@ -94,7 +109,7 @@
 }
 @media only screen and (max-width: 600px) {
   .invite .invite-text {
-     padding-left: 21px;
+    padding-left: 21px;
     padding-right: 21px;
   }
   .invite .invite-text2 {
