@@ -11,11 +11,25 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h5><center>Order History</center></h5>
+                <center><h5>My Order History</h5></center>
                 <br>
-                <h5><center> ส่วนนี้ยังไม่ได้ทำ </center></h5>
-                <br>
-            </div>
+                <table style="width:100%; text-align: center;">
+                    <tr>
+                        <th> No </th>
+                        <th> Code Order </th>
+                        <th> Total Price </th>
+                        <th> Status Order </th>
+                        <th> Create Date </th>
+                    </tr>
+                    <tr v-for="(order,index) in Order " :key="index">
+                        <td>{{index+1}}</td>
+                        <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
+                        <td>{{order.o_total_price}}</td>
+                        <td>{{order.o_status_id}}</td>
+                        <td>{{order.o_create_date}}</td>            
+                    </tr>
+                </table> <br><br>
+            </div>            
         </div>
     </div>
 </template>
@@ -27,6 +41,21 @@ export default {
         },
         page_cart(){
             this.$router.push('my_cart')
+        },
+        seethisOrder(this_order){
+            this.$router.push({name:'order',params:{CodeOrder:this_order}});
+        },
+    },
+    computed:{
+        Order(){
+            var myorder = this.$store.getters.getMy_Order
+            var order_status1 = []
+                for(var i=0; i<myorder.length; i++){
+                    if(myorder[i].o_status_id != 1){
+                       order_status1.push(myorder[i])
+                    }
+                }
+            return order_status1
         }
     }
 }

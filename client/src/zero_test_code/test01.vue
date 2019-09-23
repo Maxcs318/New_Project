@@ -1,8 +1,10 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-xs-12" v-for="t in Test">
-               ID : {{t.mtf_id}} Title : {{t.mtf_title}}
+            <div class="col-lg-6 col-xs-12" >
+                <div v-for="t in Test">
+                    ID : {{t.o_id}} 
+                </div>
             </div>
         </div>
     </div>
@@ -11,8 +13,11 @@
 export default {
     computed:{
         Test(){   
-            return this.$store.getters.getMoney_Transfer
+            return this.$store.getters.getOrder_For_Admin
         }
+    },
+    created(){
+        this.$store.dispatch("initDataMoney_Transfer")
     }
 }
 </script>

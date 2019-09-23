@@ -96,9 +96,6 @@ export default {
             },
             url: null,
             fileimage:'',
-            files : [],
-            max_size_file : 0,
-            file_title : [],
         }
     },
     components: {DatePick},
@@ -123,11 +120,13 @@ export default {
         // submit
         submitPay(){
             var FD  = new FormData()
+            FD.append('userfile',this.fileimage)
             FD.append('money_transfer',JSON.stringify(this.money_transfer))
             FD.append('order',JSON.stringify(this.Order))           
             FD.append('own_id',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Money_Transfer_Insert",FD)
-            // swal({title: "Confirm Success.",icon: "success",});
+            swal({title: "Confirm Success.",icon: "success",});
+            this.$router.go(-1)
         },
         back_to_see_list(){
             this.$router.go(-1)

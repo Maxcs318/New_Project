@@ -98,8 +98,6 @@
             // echo $shipp_AD_Success['sa_id'];
             // echo $order_items_created;
             
-
-            
         }
         // delete_order
         public function delete_order()
@@ -125,9 +123,6 @@
 
             echo json_encode($order);
         }
-
-
-
 
 
 

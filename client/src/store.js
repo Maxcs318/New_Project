@@ -640,7 +640,7 @@ const store = new Vuex.Store({
             .then(response =>{
                 if(response.data != 'fail'){
                     console.log('Response Data',response.data)
-                    // context.commit('Money_Transfer_Insert',response.data)
+                    context.commit('Money_Transfer_Insert',response.data)
                 }
             })
         }
@@ -721,20 +721,24 @@ const store = new Vuex.Store({
         },
         getMy_Order(state){
             var ord = state.order
-            var ord_s = state.order_status
             var user = state.the_user
             var my_o = []
             for(var i=0; i<ord.length; i++){
-                if( ord[i].o_own_id == user.m_id ){
-                    for(var j=0; j<ord_s.length; j++){
-                        if(ord[i].o_status_id == ord_s[j].os_id){
-                            ord[i].o_status_id = ord_s[j].os_title
-                        }
-                    }
+                if( ord[i].o_own_id == user.m_id){
                     my_o.push(ord[i])
                 }
             }
             return my_o
+        },
+        getOrder_For_Admin(state){
+            var ord = state.order
+            var order_admin = []
+            for(var i=0; i<ord.length; i++){
+                if( ord[i].o_status_id != 1 ){
+                    order_admin.push(ord[i])
+                }
+            }
+            return order_admin
         },
         getShipping_Address(state){
             return state.shipping_address

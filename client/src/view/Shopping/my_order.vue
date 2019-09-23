@@ -79,7 +79,14 @@ export default {
     },
     computed:{
         Order(){
-            return this.$store.getters.getMy_Order
+            var myorder = this.$store.getters.getMy_Order
+            var order_status1 = []
+                for(var i=0; i<myorder.length; i++){
+                    if(myorder[i].o_status_id == 1){
+                       order_status1.push(myorder[i])
+                    }
+                }
+            return order_status1
         }
     },
     created(){

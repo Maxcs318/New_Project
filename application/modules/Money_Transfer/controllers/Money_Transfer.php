@@ -8,8 +8,7 @@
             parent::__construct();
             $this->load->model("Money_Transfer_model");
             $this->load->model('../../Check_/models/Check__model');
-            $this->load->model('../../Files_Upload/models/Files_Upload_model');
-            $this->load->model('../../Shipping_Address/models/Shipping_Address_model');
+            $this->load->model('../../Order/models/order_model');
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
@@ -43,17 +42,42 @@
             if($money_tf['mtf_payments_id']!=1){
                 $money_tf['mtf_banking_id']='';
             }
-            
+            // start insert image slip
+            $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+            $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+            $typeF = strrev($nameF);
+            $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+            $config = array(
+                'upload_path'   => './../public/assets/Slip/',
+                'allowed_types' => '*',
+                'max_size'      => '0',
+            );
+            $this->load->library('upload', $config,'file_image');
+            $this->file_image->initialize($config);
+            if ($this->file_image->do_upload('userfile')){
+                $data = array('upload_data' => $this->file_image->data());   
+                $money_tf['mtf_slip'] = $_FILES['userfile']['name'];
+            }else{
+                $error = array('error' => $this->upload->display_errors());
+                print_r($error);
+            }
+            // end insert slip
+            // $money_tf['mtf_slip'] = 0;
             $money_tf['mtf_create_date'] = $this->Check__model->date_time_now();
             $money_tf['mtf_member_id'] = $ownID;
             $money_tf['mtf_id'] = $this->Money_Transfer_model->money_trasfer_insert($money_tf);
 
-            $order_set['o_id'] = $order['o_id'];
+            $order_id['o_id'] = $order['o_id'];
             $order_set['o_status_id'] = 2;
             $order_set['o_money_transfer_id'] = $money_tf['mtf_id'];
-            // print_r($money_tf);
+            $order_set['o_update_date'] = $this->Check__model->date_time_now();
+            
+            $statusUpdate_Order = $this->order_model->change_status_order($order_id,$order_set);
+
             // print_r($order_set);
-            print_r($money_tf);
+            // print_r($money_tf);
+
+            echo json_encode($statusUpdate_Order);
 
             
             
