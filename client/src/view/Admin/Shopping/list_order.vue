@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-xs-12" >
-                <h5><center> Admin Check </center></h5><br>
+                <h5><center> Admin Check Payments</center></h5><br>
                 <table style="width:100%; text-align: center;">
                     <tr>
                         <th> No </th>
@@ -27,7 +27,7 @@
                             <button type="button" class="form-control btn-primary" @click="Confirm_Order(order.o_code_order)"> Confirm </button> 
                         </td>
                         <td> 
-                            <!-- <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id,order.o_code_order)"> Delete </button>  -->
+                            <button type="button" class="form-control btn-danger" @click="No_Confirm_Order(order.o_code_order)"> Discard </button> 
                         </td>        
                     </tr>
                 </table> <br><br>
@@ -43,23 +43,47 @@ export default {
         },
         Confirm_Order(this_order){
             this.$swal({
-                title: "Are you sure?",
+                title: "Are you sure Confirm?",
                 text: "This Order "+this_order+" Pay ? ",
                 icon: "warning",
                 buttons: true,
                 primaryMode: true,
             })
-            .then((willDelete) => {
-                if (willDelete) {
-                    console.log(this_order)                    
+            .then((Confirm_Success) => {
+                if (Confirm_Success) {
+                    console.log('Confirm',this_order)    
+                    this.$store.dispatch("Confirm_Order",this_order)                
                     swal({title: "Confirm Success.",icon: "success",});
+                }
+            })
+        },
+        No_Confirm_Order(this_order){
+            this.$swal({
+                title: "Are you sure Discard?",
+                text: "This Order "+this_order+" ? ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((Discard_Success) => {
+                if (Discard_Success) {
+                    console.log('Discard',this_order)  
+                    this.$store.dispatch("Discard_Order",this_order)                                  
+                    swal({title: "Discard Success.",icon: "success",});
                 }
             })
         }
     },
     computed:{
         Order(){   
-            return this.$store.getters.getOrder_For_Admin
+            var order_for_admin = this.$store.getters.getOrder_For_Admin
+            var order_s2 = []
+                for(var i=0; i<order_for_admin.length; i++){
+                    if(order_for_admin[i].o_status_id==2){
+                        order_s2.push(order_for_admin[i])
+                    }
+                }
+            return order_s2
         },
         Order_Status(){
             return this.$store.getters.getOrder_Status          
@@ -68,6 +92,7 @@ export default {
     created(){
         this.$store.dispatch("initDataOrders")    
         this.$store.dispatch("initDataOrder_Items")    
-        this.$store.dispatch("initDataOrder_Status")    }
+        this.$store.dispatch("initDataOrder_Status")
+    }
 }
 </script>

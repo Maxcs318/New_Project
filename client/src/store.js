@@ -275,6 +275,20 @@ const store = new Vuex.Store({
         Money_Transfer_Insert(state, mtf_insert){
             state.money_transfer.push(mtf_insert)
         },
+        Confirm_Order(state,order_code){
+            let index = state.order.findIndex(o => o.o_code_order == order_code)
+            if(index > -1){
+                state.order[index].o_status_id = 3
+                console.log(state.order[index])
+            }
+        },
+        Discard_Order(state,order_code){
+            let index = state.order.findIndex(o => o.o_code_order == order_code)
+            if(index > -1){
+                state.order[index].o_status_id = 1
+                console.log(state.order[index])
+            }
+        }
         
 
     },
@@ -643,6 +657,12 @@ const store = new Vuex.Store({
                     context.commit('Money_Transfer_Insert',response.data)
                 }
             })
+        },
+        Confirm_Order(context,order_code){
+            context.commit('Confirm_Order',order_code)
+        },
+        Discard_Order(context,order_code){
+            context.commit('Discard_Order',order_code)
         }
         
         
