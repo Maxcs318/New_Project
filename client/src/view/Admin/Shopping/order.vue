@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <h5><center> Code Order : {{this.$route.params.CodeOrder}} </center></h5>
+                <!-- {{Order_Status}} -->
             </div>
         </div>
         <div class="row" v-if="Order!=0 && Shipping_Address">
@@ -51,12 +52,13 @@ export default {
     computed:{
         Order(){
             var od = this.$store.getters.getOrder 
+            var x = null
             for(var i=0; i<od.length; i++){
                 if(od[i].o_code_order == this.$route.params.CodeOrder){
-                    return od[i]
+                    x = od[i]
                 }
             }
-            return 0 
+            return x 
         },
         Order_Status(){
             return this.$store.getters.getOrder_Status 
@@ -92,6 +94,12 @@ export default {
             return sa_this_order
         }
     },
+    created(){
+      this.$store.dispatch("initDataOrders")    
+      this.$store.dispatch("initDataOrder_Items")    
+      this.$store.dispatch("initDataOrder_Status")    
+      this.$store.dispatch("initDataShipping_Address")
+    }
     
 }
 </script>

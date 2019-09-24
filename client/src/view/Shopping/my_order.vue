@@ -27,7 +27,11 @@
                         <td>{{index+1}}</td>
                         <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
                         <td>{{order.o_total_price}}</td>
-                        <td>{{order.o_status_id}}</td>
+                        <td>
+                            <div v-for=" os in Order_Status " v-if="os.os_id == order.o_status_id">
+                                {{os.os_title}}
+                            </div>
+                        </td>
                         <td>{{order.o_create_date}}</td>
                         <td> 
                             <button type="button" class="form-control btn-primary" @click="Pay_This(order.o_id,order.o_code_order)"> Pay </button> 
@@ -79,14 +83,10 @@ export default {
     },
     computed:{
         Order(){
-            var myorder = this.$store.getters.getMy_Order
-            var order_status1 = []
-                for(var i=0; i<myorder.length; i++){
-                    if(myorder[i].o_status_id == 1){
-                       order_status1.push(myorder[i])
-                    }
-                }
-            return order_status1
+            return this.$store.getters.getMy_Order[0]          
+        },
+        Order_Status(){
+            return this.$store.getters.getOrder_Status          
         }
     },
     created(){

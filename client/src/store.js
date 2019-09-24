@@ -723,12 +723,18 @@ const store = new Vuex.Store({
             var ord = state.order
             var user = state.the_user
             var my_o = []
+            var my_oh = []
+            var my_all_order = []
             for(var i=0; i<ord.length; i++){
-                if( ord[i].o_own_id == user.m_id){
+                if( ord[i].o_own_id == user.m_id && ord[i].o_status_id == 1 ){
                     my_o.push(ord[i])
+                }else if( ord[i].o_own_id == user.m_id && ord[i].o_status_id != 1 ){
+                    my_oh.push(ord[i])
                 }
             }
-            return my_o
+                my_all_order.push(my_o)
+                my_all_order.push(my_oh)
+            return my_all_order
         },
         getOrder_For_Admin(state){
             var ord = state.order

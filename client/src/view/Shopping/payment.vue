@@ -134,7 +134,7 @@ export default {
     },
     computed:{
         Order(){
-            var od = this.$store.getters.getMy_Order 
+            var od = this.$store.getters.getMy_Order[0] 
             for(var i=0; i<od.length; i++){
                 if(od[i].o_code_order == this.$route.params.CodeOrder){
                     return od[i]
