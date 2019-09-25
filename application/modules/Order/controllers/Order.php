@@ -123,8 +123,46 @@
 
             echo json_encode($order);
         }
-
-
+        // confirm order
+        public function confirm_order()
+        {
+            //check for confirm
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $order_code['o_code_order'] = json_decode($this->input->post('order_code'));
+            $order_status['o_status_id'] = 3;
+            $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
+            echo $order_code['o_code_order'];
+        }
+        // discard order
+        public function discard_order()
+        {
+            //check for discard
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $order_code['o_code_order'] = json_decode($this->input->post('order_code'));
+            $order_status['o_status_id'] = 1;
+            $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
+            echo $order_code['o_code_order'];
+        }
 
 
 

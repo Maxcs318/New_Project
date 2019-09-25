@@ -248,7 +248,7 @@ const store = new Vuex.Store({
             localStorage.setItem("Cart", JSON.stringify(cart));
         },
         Remove_Cart(state){
-            console.log('remove')
+            // console.log('remove')
             localStorage.removeItem('Cart')
         },
         Add_Cart_ProductAdd(state,productID){
@@ -279,14 +279,14 @@ const store = new Vuex.Store({
             let index = state.order.findIndex(o => o.o_code_order == order_code)
             if(index > -1){
                 state.order[index].o_status_id = 3
-                console.log(state.order[index])
+                // console.log(state.order[index])
             }
         },
         Discard_Order(state,order_code){
             let index = state.order.findIndex(o => o.o_code_order == order_code)
             if(index > -1){
                 state.order[index].o_status_id = 1
-                console.log(state.order[index])
+                // console.log(state.order[index])
             }
         }
         
@@ -653,16 +653,28 @@ const store = new Vuex.Store({
             axios.post(base_url +'Money_Transfer/money_trasfer_insert',mtf_i)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit('Money_Transfer_Insert',response.data)
                 }
             })
         },
         Confirm_Order(context,order_code){
-            context.commit('Confirm_Order',order_code)
+            axios.post(base_url +'order/confirm_order',order_code)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Confirm_Order',response.data)
+                }
+            })
         },
         Discard_Order(context,order_code){
-            context.commit('Discard_Order',order_code)
+            axios.post(base_url +'order/discard_order',order_code)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Discard_Order',response.data)
+        }
+            })
         }
         
         

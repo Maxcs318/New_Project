@@ -64,15 +64,12 @@
         {
             return json_encode($this->db->where($where)->delete($this->order_items));
         }
-
-        // Use By Money_Transfer Use for ( up status => 2 ) 
+        // Use By Money_Transfer Use for ( up status => 2 ) && Use By Order Use For Up and Drop Status
         public function change_status_order($where=array(),$data=array())
         {
             json_encode($this->db->where($where)->update($this->orders,$data));
         }
-
-
-
+    
 
 
 

@@ -42,6 +42,9 @@ export default {
             this.$router.push({name:'check_order',params:{CodeOrder:this_order}})
         },
         Confirm_Order(this_order){
+            var FD  = new FormData()
+            FD.append('order_code',JSON.stringify(this_order))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$swal({
                 title: "Are you sure Confirm?",
                 text: "This Order "+this_order+" Pay ? ",
@@ -51,13 +54,16 @@ export default {
             })
             .then((Confirm_Success) => {
                 if (Confirm_Success) {
-                    console.log('Confirm',this_order)    
-                    this.$store.dispatch("Confirm_Order",this_order)                
+                    // console.log('Confirm',this_order)    
+                    this.$store.dispatch("Confirm_Order",FD)                
                     swal({title: "Confirm Success.",icon: "success",});
                 }
             })
         },
         No_Confirm_Order(this_order){
+            var FD  = new FormData()
+            FD.append('order_code',JSON.stringify(this_order))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$swal({
                 title: "Are you sure Discard?",
                 text: "This Order "+this_order+" ? ",
@@ -67,8 +73,8 @@ export default {
             })
             .then((Discard_Success) => {
                 if (Discard_Success) {
-                    console.log('Discard',this_order)  
-                    this.$store.dispatch("Discard_Order",this_order)                                  
+                    // console.log('Discard',this_order)  
+                    this.$store.dispatch("Discard_Order",FD)                                  
                     swal({title: "Discard Success.",icon: "success",});
                 }
             })

@@ -13,6 +13,9 @@
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control btn-danger" @click="video_room">Video Room & Videos</button> <br>
             </div>
+            <div class="col-lg-6 col-xs-12">
+                <button type="button" class="form-control btn-warning" @click="list_order">Check Order</button> <br>
+            </div>
         </div>
         
     </div>
@@ -31,6 +34,9 @@ export default {
         },
         video_room(){
             this.$router.push('/AdminLR')
+        },
+        list_order(){
+            this.$router.push('/AdminListOrder')
         }
     }
 }
