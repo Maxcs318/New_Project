@@ -25,7 +25,7 @@
                 <br>
                 <center>
                 Total Price : {{ Order.o_total_price }} ฿ <br>
-                <!-- <div v-for="os in Order_Status" v-if="os.os_id == Order.o_status_id">Status : {{os.os_title}} </div> -->
+                <div v-for="os in Order_Status" v-if="os.os_id == Order.o_status_id">Status : {{os.os_title}} </div>
                 <!-- Order Create Date : {{ Order.o_create_date }}<br> -->
                 </center>
                 <br>
@@ -60,10 +60,10 @@
                 <h5><center> Order Error. Order May Not Have .  </center></h5>
             </div>
         </div>
-        <div class="row">
+        <div class="row" v-if="Moneytransfer">
             <div class="col-lg-6 col-xs-12"></div>
             <div class="col-lg-6 col-xs-12">
-                <div class="row">
+                <div class="row" >
                     <div class="col-lg-6 col-xs-12">
                         <button type="button" class="form-control btn-primary" @click="Confirm_Order"> Confirm </button>
                         <br>

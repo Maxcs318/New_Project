@@ -3,11 +3,12 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <h5><center> Code Order : {{this.$route.params.CodeOrder}} </center></h5>
+                <!-- {{Order_Status}} -->
             </div>
         </div>
         <div class="row" v-if="Order!=0 && Shipping_Address">
             <div class="col-lg-12 col-xs-12">
-                <table style="width:100%; text-align: center;">
+                <table style="width:100%; text-align: center;" v-if="Order">
                     <tr>
                         <th> Product </th>
                         <th> Price </th>
@@ -22,17 +23,35 @@
                     </tr>
                 </table>
                 <br>
-                Total Price : {{ Order.o_total_price }} ฿<br>
+                <center>
+                Total Price : {{ Order.o_total_price }} ฿ <br>
                 <div v-for="os in Order_Status" v-if="os.os_id == Order.o_status_id">Status : {{os.os_title}} </div>
-                Order Create Date : {{ Order.o_create_date }}<br>
+                <!-- Order Create Date : {{ Order.o_create_date }}<br> -->
+                </center>
                 <br>
-                Shipping Address <br>
-                Title : {{Shipping_Address.sa_title}} <br>
-                Address : {{Shipping_Address.sa_address}} <br>
-                Postcode : {{Shipping_Address.sa_postcode}} <br>
-                Company : {{Shipping_Address.sa_company}} <br>
-                E-mail : {{Shipping_Address.sa_email}} <br>
-                Phone : {{Shipping_Address.sa_phone}} <br>
+                    <div class="row" v-if="Moneytransfer && Banking && Payment">
+                        <div class="col-lg-4 col-xs-12">
+                            <img :src="getImgUrl(Moneytransfer.mtf_slip)" width="100%"> 
+                        </div>
+                        <div class="col-lg-4 col-xs-12">
+                            <h5>Money Transfer</h5>
+                            TiTle : {{Moneytransfer.mtf_title}}<br>
+                            Payment : {{Payment.pm_title}}<br>
+                            <div v-if="Banking != 'No'"> Banking : {{Banking.b_name}} </div>
+                            Payment Date : {{Moneytransfer.mtf_date}}<br>
+                            Comment : {{Moneytransfer.mtf_comment}}<br>
+                        </div>
+                        <div class="col-lg-4 col-xs-12" v-if="Shipping_Address">
+                            <h5>Shipping Address</h5>
+                            Title : {{Shipping_Address.sa_title}} <br>
+                            Address : {{Shipping_Address.sa_address}} <br>
+                            Postcode : {{Shipping_Address.sa_postcode}} <br>
+                            Company : {{Shipping_Address.sa_company}} <br>
+                            E-mail : {{Shipping_Address.sa_email}} <br>
+                            Phone : {{Shipping_Address.sa_phone}} <br>
+                        </div>
+                    </div>
+                <br>
             </div>
         </div>
         <div class="row" v-else>
@@ -41,22 +60,29 @@
                 <h5><center> Order Error. Order May Not Have .  </center></h5>
             </div>
         </div>
-        <div class="row">
-            <br>
-        </div>
     </div>
 </template>
 <script>
 export default {
+    methods:{
+        getImgUrl(pic) {
+            return this.path_files+'Slip/'+pic
+        },
+        
+    },
     computed:{
+        path_files(){
+            return this.$store.getters.getPath_Files
+        },
         Order(){
             var od = this.$store.getters.getOrder 
+            var x = null
             for(var i=0; i<od.length; i++){
                 if(od[i].o_code_order == this.$route.params.CodeOrder){
-                    return od[i]
+                    x = od[i]
                 }
             }
-            return 0 
+            return x 
         },
         Order_Status(){
             return this.$store.getters.getOrder_Status 
@@ -65,7 +91,6 @@ export default {
             var odi = this.$store.getters.getOrder_Item
             var order_i=[]
             var product_all = this.$store.getters.getProduct_Set_Category
-
                 for(var i=0;i<odi.length; i++){
                     if(odi[i].oi_order_id == this.Order.o_id){
                         // chang product id -> product name
@@ -75,10 +100,8 @@ export default {
                             }
                         }
                         order_i.push(odi[i])
-                    }
-                    
+                    }   
                 }
-            
             return order_i
         },
         Shipping_Address(){
@@ -90,6 +113,42 @@ export default {
                 }
             }
             return sa_this_order
+        },
+        Moneytransfer(){
+            var money = this.$store.getters.getMoney_Transfer
+            var this_money = null
+                for(var i=0;i<money.length;i++){
+                    if(money[i].mtf_id == this.Order.o_money_transfer_id){
+                        this_money = money[i]
+                    }
+                }
+            return this_money
+        },
+        Payment(){
+            var pm = this.$store.getters.getPayments
+            var mtf = this.Moneytransfer
+            var this_pm
+                for(var j=0;j<pm.length;j++){
+                    if(mtf.mtf_payments_id == pm[j].pm_id){
+                        this_pm = pm[j]
+                    }
+                }
+            return this_pm
+        },
+        Banking(){
+            var bk = this.$store.getters.getBanking
+            var mtf = this.Moneytransfer
+            var this_bk
+            if(mtf.mtf_banking_id >0){
+                for(var j=0;j<bk.length;j++){
+                    if(mtf.mtf_banking_id == bk[j].b_id){
+                        this_bk = bk[j]
+                    }
+                }
+            }else{
+                this_bk = 'No'
+            }
+            return this_bk
         }
     },
     
