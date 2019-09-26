@@ -76,7 +76,7 @@ export default {
         },
         Order(){
             var od = this.$store.getters.getOrder 
-            var x = null
+            var x
             for(var i=0; i<od.length; i++){
                 if(od[i].o_code_order == this.$route.params.CodeOrder){
                     x = od[i]
@@ -106,7 +106,7 @@ export default {
         },
         Shipping_Address(){
             var my_sa = this.$store.getters.getShipping_Address
-            var sa_this_order = null
+            var sa_this_order
             for(var i=0; i<my_sa.length; i++){
                 if(my_sa[i].sa_id == this.Order.o_shipping_address_id){
                     sa_this_order = my_sa[i]
@@ -116,7 +116,7 @@ export default {
         },
         Moneytransfer(){
             var money = this.$store.getters.getMoney_Transfer
-            var this_money = null
+            var this_money
                 for(var i=0;i<money.length;i++){
                     if(money[i].mtf_id == this.Order.o_money_transfer_id){
                         this_money = money[i]
@@ -151,6 +151,12 @@ export default {
             return this_bk
         }
     },
+    created(){
+        this.$store.dispatch("initDataShipping_Address")
+        this.$store.dispatch("initDataPayment")
+        this.$store.dispatch("initDataBanking")
+        this.$store.dispatch("initDataMoney_Transfer")
+    }
     
 }
 </script>

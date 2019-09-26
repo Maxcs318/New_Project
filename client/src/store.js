@@ -265,6 +265,9 @@ const store = new Vuex.Store({
             localStorage.removeItem('Cart')
             localStorage.setItem("Cart", JSON.stringify(cart));
         },
+        Create_Order(state,order){
+            state.order.push(order)
+        },
         Delete_My_Order(state,order){
             var order_id = order.o_id 
             let index = state.order.findIndex(o => o.o_id == order_id)
@@ -273,7 +276,17 @@ const store = new Vuex.Store({
             }
         },
         Money_Transfer_Insert(state, mtf_insert){
-            state.money_transfer.push(mtf_insert)
+            
+            var mtf = mtf_insert.money_transfer
+            var order_id = mtf_insert.order_id
+            // console.log(order_id)
+            // console.log(mtf)
+            state.money_transfer.push(mtf)
+            let index = state.order.findIndex(o => o.o_id == order_id)
+            if(index > -1){
+                state.order[index].o_money_transfer_id = mtf.mtf_id
+                state.order[index].o_status_id = 2
+            }
         },
         Confirm_Order(state,order_code){
             let index = state.order.findIndex(o => o.o_code_order == order_code)
@@ -641,8 +654,8 @@ const store = new Vuex.Store({
             axios.post(base_url +'order/create_order',order)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
-                    // context.commit('Create_Order',response.data)
+                    // console.log('Response Data',response.data)
+                    context.commit('Create_Order',response.data)
                 }
             })
         },
@@ -660,7 +673,7 @@ const store = new Vuex.Store({
             axios.post(base_url +'Money_Transfer/money_trasfer_insert',mtf_i)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
+                    console.log('Response Data',response.data)
                     context.commit('Money_Transfer_Insert',response.data)
                 }
             })

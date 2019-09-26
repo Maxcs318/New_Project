@@ -94,7 +94,7 @@
             $order_items_created = (array)json_decode($this->order_model->create_order_item($O_items));
 
             // echo $order_created['o_id'];
-            print_r($order);
+            echo json_encode($order);
             // echo $shipp_AD_Success['sa_id'];
             // echo $order_items_created;
             

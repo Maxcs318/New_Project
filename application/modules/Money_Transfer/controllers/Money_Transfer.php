@@ -71,17 +71,12 @@
             $order_set['o_status_id'] = 2;
             $order_set['o_money_transfer_id'] = $money_tf['mtf_id'];
             $order_set['o_update_date'] = $this->Check__model->date_time_now();
-            
             $statusUpdate_Order = $this->order_model->change_status_order($order_id,$order_set);
-
             // print_r($order_set);
             // print_r($money_tf);
-
-            echo json_encode($statusUpdate_Order);
-
-            
-            
-            // echo $this->Money_Transfer_model->money_trasfer_insert();
+            $mtf_and_order['money_transfer'] = $money_tf;
+            $mtf_and_order['order_id'] = $order['o_id'];
+            echo json_encode($mtf_and_order);
         }
         
        

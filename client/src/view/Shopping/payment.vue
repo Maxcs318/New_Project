@@ -126,7 +126,7 @@ export default {
             FD.append('own_id',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("Money_Transfer_Insert",FD)
             swal({title: "Confirm Success.",icon: "success",});
-            this.$router.go(-1)
+            this.$router.push({name:'order',params:{CodeOrder:this.Order.o_code_order}})
         },
         back_to_see_list(){
             this.$router.go(-1)
@@ -140,7 +140,7 @@ export default {
                     return od[i]
                 }
             }
-            return 0 
+            return this.$router.go(-1)
         },
         Payment(){
             return this.$store.getters.getPayments
