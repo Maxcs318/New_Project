@@ -13,6 +13,7 @@
                 <table style="width:100%; text-align: center;">
                     <tr>
                         <th> No </th>
+                        <th> Order ID </th>
                         <th> Code Order </th>
                         <th> Total Price </th>
                         <th> Status Order </th>
@@ -22,6 +23,7 @@
                     </tr>
                     <tr v-for="(order,index) in Order " :key="index">
                         <td>{{index+1}}</td>
+                        <td>{{order.o_id}}</td>
                         <td @click="check_this_order(order.o_code_order)">{{order.o_code_order}}</td>
                         <td>{{order.o_total_price}}</td>
                         <td>
