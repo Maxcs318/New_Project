@@ -29,11 +29,11 @@
                 <!-- Order Create Date : {{ Order.o_create_date }}<br> -->
                 </center>
                 <br>
-                    <div class="row" v-if="Moneytransfer && Banking && Payment">
-                        <div class="col-lg-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-xs-12" v-if="Moneytransfer && Banking && Payment">
                             <img :src="getImgUrl(Moneytransfer.mtf_slip)" width="100%"> 
                         </div>
-                        <div class="col-lg-4 col-xs-12">
+                        <div class="col-lg-4 col-xs-12" v-if="Moneytransfer && Banking && Payment">
                             <h5>Money Transfer</h5>
                             TiTle : {{Moneytransfer.mtf_title}}<br>
                             Payment : {{Payment.pm_title}}<br>
