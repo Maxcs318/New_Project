@@ -288,6 +288,13 @@ const store = new Vuex.Store({
                 state.order[index].o_status_id = 1
                 // console.log(state.order[index])
             }
+        },
+        Delivery_Order(state,order_code){
+            let index = state.order.findIndex(o => o.o_code_order == order_code)
+            if(index > -1){
+                state.order[index].o_status_id = 4
+                // console.log(state.order[index])
+            }
         }
         
 
@@ -673,7 +680,16 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit('Discard_Order',response.data)
-        }
+                }
+            })
+        },
+        Delivery_Order(context,order_code){
+            axios.post(base_url +'order/confirm_order_delivery',order_code)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delivery_Order',response.data)
+                }
             })
         }
         

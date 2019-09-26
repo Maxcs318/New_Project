@@ -163,6 +163,26 @@
             $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
             echo $order_code['o_code_order'];
         }
+        // delivery order
+        public function confirm_order_delivery()
+        {
+            //check for discard
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $order_code['o_code_order'] = json_decode($this->input->post('order_code'));
+            $order_status['o_status_id'] = 4;
+            $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
+            echo $order_code['o_code_order'];
+        }
 
 
 

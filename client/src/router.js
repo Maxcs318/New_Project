@@ -32,6 +32,7 @@ import admin_Product from "./view/Admin/Product/products.vue"
 import admin_ListRooms from "./view/Admin/Videos_Room/listRooms.vue"
 import admin_ListVideos from "./view/Admin/Videos_Room/listVideos.vue"
 import admin_ListOrder from "./view/Admin/Shopping/list_order.vue"
+import check_delivery from "./view/Admin/Shopping/list_order_check_delivery.vue"
 import admin_Order from "./view/Admin/Shopping/order.vue"
 import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
 
@@ -101,6 +102,7 @@ export const router = new VueRouter({
         { path : "/AdminLR",component : admin_ListRooms },
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
         { path : "/AdminListOrder",component : admin_ListOrder },
+        { path : "/AdminListOrder_check_delivery",component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery",component : admin_Gallery },
 

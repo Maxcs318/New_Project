@@ -18,6 +18,7 @@
                 <table style="width:100%; text-align: center;">
                     <tr style="width:100% ">
                         <th>No</th>
+                        <th>image</th>
                         <th>Name Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -26,6 +27,10 @@
                     </tr>
                     <tr style="width:100% " v-for=" (MC,index) in thisMyCart" :key="index">
                         <td> {{index+1}} </td>
+                        <td style="width:10% ">
+                            <img :src="getImgUrl(MC.p_image)" width="100%" @click="seethisPageProduct(MC.p_id)"> 
+                            <!-- {{MC.p_image}} -->
+                        </td>
                         <td @click="seethisPageProduct(MC.p_id)"> {{MC.p_name}} </td>
                         <td> {{MC.p_price}} </td>
                         <td>
@@ -114,6 +119,9 @@ export default {
         }   
     },
     methods:{
+        getImgUrl(pic) {
+            return this.path_files+'Product/'+pic
+        },
         check_out(){
             if(this.address_show=='OFF'){
                 this.address_show = 'ON'
@@ -226,6 +234,9 @@ export default {
         },
     },
     computed:{
+        path_files(){
+            return this.$store.getters.getPath_Files
+        },
         Compute_Total(){
             this.total_Price = 0
                 for(var i=0; i<this.thisMyCart.length; i++){
@@ -256,6 +267,7 @@ export default {
                         now_cart.push({
                             p_id : product_all[j].p_id,
                             p_name : product_all[j].p_name,
+                            p_image : product_all[j].p_image,
                             quantity : cart[i].quantity,
                             p_price : the_price,
                             price_total : null
