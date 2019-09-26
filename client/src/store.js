@@ -704,7 +704,16 @@ const store = new Vuex.Store({
                     context.commit('Delivery_Order',response.data)
                 }
             })
-        }
+        },
+        Add_Gallery(context,gallery){
+            axios.post(base_url +'gallery/insert_gallery',gallery)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    // context.commit('Add_Gallery',response.data)
+                }
+            })
+        },
         
         
     },

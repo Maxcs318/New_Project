@@ -4,13 +4,13 @@
             <div class="container ">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4><center>เพิ่ม รูปภาพกิจกรรม ( ยังไม่ได้แก้ อันนี้เป็น insert producr นะ )</center></h4>
+                        <h4><center>เพิ่ม รูปภาพกิจกรรม </center></h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-xs-12"></div>
                     <div class="col-lg-6 col-xs-12">
-                        <form @submit.prevent="submitProduct">
+                        <form @submit.prevent="submitGallery">
                             <center>                            
                                 <img v-if="url"  :src="url" width="100%"/>
                             </center>
@@ -18,37 +18,11 @@
                             <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
                             <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
                             <br>
-                            ชื่อสินค้า
-                            <input type="text" v-model="product.p_name" class="form-control" required>
+                            ชื่อกิจกรรม
+                            <input type="text" v-model="gallery.g_name" class="form-control" required>
                             <br>
                             รายระเอียด
-                            <textarea v-model="product.p_description" class="form-control" rows="6" ></textarea>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    ราคาปกติ
-                                    <input type="text" v-model="product.p_price" class="form-control" required>
-                                </div>
-                                <div class="col-lg-6">
-                                    ราคาสมาชิก
-                                    <input type="text" v-model="product.p_price2" class="form-control" required>                                    
-                                </div>
-                            </div>
-                            <div class="row  ">
-                                <div class="col-lg-6">
-                                    จำนวนสินค้า
-                                    <input type="text" v-model="product.p_quantity" class="form-control" required>
-                                </div>
-                                <div class="col-lg-6">
-                                    ประเภทสินค้า
-                                    <select v-model="product.p_category" class="form-control" required>
-                                        <option selected disabled value=''>Choose Category</option>
-                                        <option v-for="(pc,index) in product_category" :key="index" :value="pc.pc_id" >
-                                            {{ pc.pc_title }}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
+                            <textarea v-model="gallery.g_description" class="form-control" rows="6" ></textarea>
                             <br>
                             <h5>Another Image [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                                 <input type="file" ref="files" style="display: none;" id="anotherImage" @change="handleFileUpload" multiple>
@@ -72,6 +46,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <button type="submit" class="form-control btn-primary col-12"> Save </button>
+                                    <br>
                                 </div>
                             </div>
                         </form>
@@ -87,15 +62,9 @@
 export default {
     data(){
         return{
-            product:{
-                p_name:'',
-                p_description:'',
-                p_image:'',
-                p_price:'',
-                p_price2:'',
-                p_quantity:'',
-                p_category:'',
-                p_create_date:''
+            gallery:{
+                g_name:'',
+                g_description:'',
             },
             url: null,
             fileimage:'',
@@ -117,7 +86,7 @@ export default {
             if(this.fileimage.size>10000000){
                 this.fileimage = []
                 this.url = null
-                this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
+                this.$swal('Your image is larger than 10 MB. Sorry Choose Again !!!')
             }
         },
         // another image
@@ -137,16 +106,16 @@ export default {
                 this.files = []
                 this.max_size_file = 0
                     // alert
-                    this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
+                    this.$swal('Your image all is larger than 10 MB. Sorry Choose Again !!!')
             }
         },
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
             this.files.splice(index,1)
         },
-        submitProduct(){
+        submitGallery(){
             if(this.fileimage.size<10000000 && this.fileimage !=''){
-                var jsonProduct = JSON.stringify(this.product)
+                var jsonGallery = JSON.stringify(this.gallery)
                 var FD  = new FormData()
                     FD.append('userfile',this.fileimage)
                     if(this.files.length!=0){
@@ -154,21 +123,16 @@ export default {
                             FD.append('userfileupload'+i, this.files[i]);
                         }
                     }
-                    FD.append('product',jsonProduct)
+                    FD.append('gallery',jsonGallery)
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
-                    this.$store.dispatch("Add_Product",FD)
+                    this.$store.dispatch("Add_Gallery",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminP')
+                        // this.$router.push('/AdminP')
                     },2000)  
-                this.$swal("Save Product Success .", "", "success")
+                this.$swal("Save Gallery Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")
             }
-        }
-    },
-    computed:{
-        product_category(){
-            return this.$store.getters.getProduct_Category
         }
     },
 }
