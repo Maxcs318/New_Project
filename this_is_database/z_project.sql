@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2019 at 11:54 AM
+-- Generation Time: Sep 26, 2019 at 07:13 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -192,6 +192,22 @@ INSERT INTO `files_upload` (`f_id`, `f_name`, `f_title`, `f_key`, `f_create_date
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `g_id` int(11) NOT NULL,
+  `g_name` varchar(250) NOT NULL,
+  `g_release_date` varchar(100) NOT NULL,
+  `g_image` varchar(250) NOT NULL,
+  `g_description` text NOT NULL,
+  `g_create_date` varchar(100) NOT NULL,
+  `g_update_date` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logged`
 --
 
@@ -210,10 +226,8 @@ INSERT INTO `logged` (`l_id`, `time`, `l_id_m_id`, `token`) VALUES
 (78, '2019-09-04 09:02:20', '16', '0409201916022016UCEk0mDqEl'),
 (80, '2019-09-10 09:22:07', '14', '1009201916220714jAvdCmR5yq'),
 (94, '2019-09-13 07:56:35', '12', '1309201914563512rnE3l5Q8MY'),
-(102, '2019-09-17 10:43:56', '1', '170920191743561aEOBV74ByZ'),
-(103, '2019-09-18 05:42:24', '1', '180920191242241uovMbS0rTU'),
 (106, '2019-09-19 06:02:47', '12', '19092019130247125WoMG2YNDf'),
-(107, '2019-09-20 03:49:54', '2', '200920191049542gVgqxVA5rp');
+(116, '2019-09-25 07:36:01', '1', '250920191436011wV6izfYrAM');
 
 -- --------------------------------------------------------
 
@@ -309,6 +323,17 @@ CREATE TABLE `money_transfer` (
   `mtf_update_date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `money_transfer`
+--
+
+INSERT INTO `money_transfer` (`mtf_id`, `mtf_payments_id`, `mtf_member_id`, `mtf_title`, `mtf_banking_id`, `mtf_slip`, `mtf_date`, `mtf_comment`, `mtf_create_date`, `mtf_update_date`) VALUES
+(1, '2', '1', 'จ่ายแล้วนะ', '', '23092019161641s7aDWVjf3T.png', '12-09-2019 22:00', 'comment test Go Go Go', '23 กันยายน 2562 time 16:16:41', ''),
+(2, '2', '1', 'จ่ายอีก', '', '230920191620553OxJs89yiJ.jpg', '12-09-2019 00:00', 'จ่ายแล้ว ครับ', '23 กันยายน 2562 time 16:20:55', ''),
+(3, '2', '1', 'จ่าย ++', '', '23092019165800ejGjeLLBWq.jpg', '23-09-2019 11:30', 'comment', '23 กันยายน 2562 time 16:58:00', ''),
+(4, '1', '2', 'x pay', '2', '24092019122014whkkIuxcqY.jpg', '24-09-2019 12:20', 'p x p x p', '24 กันยายน 2562 time 12:20:14', ''),
+(5, '1', '1', 'จ่าย ๙๙๙', '1', '25092019171910hupzAlyPm8.jpg', '25-09-2019 17:18', '+++', '25 กันยายน 2562 time 17:19:10', '');
+
 -- --------------------------------------------------------
 
 --
@@ -379,9 +404,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`o_id`, `o_code_order`, `o_own_id`, `o_total_price`, `o_status_id`, `o_comment`, `o_money_transfer_id`, `o_shipping_address_id`, `o_create_date`, `o_update_date`) VALUES
-(1, '1-2C3NAJYDB8', '1', '3092', '1', '', '', '3', '20 กันยายน 2562 time 11:01:22', ''),
-(2, '1-JLRO9GT2P2', '1', '3016', '1', '', '', '1', '20 กันยายน 2562 time 11:31:21', ''),
-(3, '1-QLC4LGI47G', '1', '2351', '1', '', '', '3', '20 กันยายน 2562 time 12:05:25', '');
+(1, '1-2C3NAJYDB8', '1', '3092', '2', '', '1', '3', '20 กันยายน 2562 time 11:01:22', '23 กันยายน 2562 time 16:16:41'),
+(2, '1-JLRO9GT2P2', '1', '3016', '2', '', '3', '1', '20 กันยายน 2562 time 11:31:21', '23 กันยายน 2562 time 16:58:00'),
+(3, '1-QLC4LGI47G', '1', '2351', '2', '', '2', '3', '20 กันยายน 2562 time 12:05:25', '23 กันยายน 2562 time 16:20:55'),
+(4, '2-AJISR91UZB', '2', '600', '2', '', '4', '4', '20 กันยายน 2562 time 17:22:56', '24 กันยายน 2562 time 12:20:14'),
+(5, '1-W5X5F32LYD', '1', '3135', '1', '', '', '1', '23 กันยายน 2562 time 16:58:47', ''),
+(6, '2-MDC8X4ZQLX', '2', '220', '1', '', '', '4', '24 กันยายน 2562 time 12:08:01', ''),
+(7, '1-R1FJ384TWE', '1', '8135', '1', '', '', '5', '25 กันยายน 2562 time 14:21:48', ''),
+(8, '1-W4M26GSC1Q', '1', '4471', '1', '', '', '5', '25 กันยายน 2562 time 14:23:17', ''),
+(9, '1-O5C6EUK33Q', '1', '4848', '3', '', '5', '1', '25 กันยายน 2562 time 17:18:19', '25 กันยายน 2562 time 17:19:10');
 
 -- --------------------------------------------------------
 
@@ -416,7 +447,26 @@ INSERT INTO `order_items` (`oi_id`, `oi_order_id`, `oi_product_id`, `oi_product_
 (9, '2', '7', '56', 1, '56', '20 กันยายน 2562 time 11:31:21', ''),
 (10, '3', '22', '99', 3, '297', '20 กันยายน 2562 time 12:05:26', ''),
 (11, '3', '6', '999', 2, '1998', '20 กันยายน 2562 time 12:05:26', ''),
-(12, '3', '7', '56', 1, '56', '20 กันยายน 2562 time 12:05:26', '');
+(12, '3', '7', '56', 1, '56', '20 กันยายน 2562 time 12:05:26', ''),
+(13, '4', '20', '500', 1, '500', '20 กันยายน 2562 time 17:22:56', ''),
+(14, '4', '13', '100', 1, '100', '20 กันยายน 2562 time 17:22:56', ''),
+(15, '5', '22', '99', 3, '297', '23 กันยายน 2562 time 16:58:47', ''),
+(16, '5', '6', '999', 2, '1998', '23 กันยายน 2562 time 16:58:47', ''),
+(17, '5', '7', '56', 15, '840', '23 กันยายน 2562 time 16:58:47', ''),
+(18, '6', '21', '220', 1, '220', '24 กันยายน 2562 time 12:08:02', ''),
+(19, '7', '22', '99', 3, '297', '25 กันยายน 2562 time 14:21:48', ''),
+(20, '7', '6', '999', 2, '1998', '25 กันยายน 2562 time 14:21:48', ''),
+(21, '7', '7', '56', 15, '840', '25 กันยายน 2562 time 14:21:48', ''),
+(22, '7', '8', '1000', 5, '5000', '25 กันยายน 2562 time 14:21:48', ''),
+(23, '8', '22', '99', 3, '297', '25 กันยายน 2562 time 14:23:17', ''),
+(24, '8', '6', '999', 2, '1998', '25 กันยายน 2562 time 14:23:17', ''),
+(25, '8', '7', '56', 21, '1176', '25 กันยายน 2562 time 14:23:17', ''),
+(26, '8', '8', '1000', 1, '1000', '25 กันยายน 2562 time 14:23:17', ''),
+(27, '9', '22', '99', 3, '297', '25 กันยายน 2562 time 17:18:19', ''),
+(28, '9', '6', '999', 2, '1998', '25 กันยายน 2562 time 17:18:19', ''),
+(29, '9', '7', '56', 1, '56', '25 กันยายน 2562 time 17:18:19', ''),
+(30, '9', '8', '1000', 1, '1000', '25 กันยายน 2562 time 17:18:19', ''),
+(31, '9', '20', '499', 3, '1497', '25 กันยายน 2562 time 17:18:19', '');
 
 -- --------------------------------------------------------
 
@@ -437,10 +487,10 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`os_id`, `os_title`, `os_description`, `os_create_date`, `os_update_date`) VALUES
-(1, 'สถานะ 1', '', '', ''),
-(2, 'สถานะ 2', '', '', ''),
-(3, 'สถานะ 3', '', '', ''),
-(4, 'สถานะ 4', '', '', '');
+(1, 'waiting for payment.', 'รอชำระเงิน', '', ''),
+(2, 'Waiting to check payment.', 'รอตรวจสอบการชำระเงิน', '', ''),
+(3, 'Payment has been completed. Waiting for delivery.', 'ชำระเงินเรียบร้อย รอจัดส่ง', '', ''),
+(4, 'delivered successfully.', 'จัดส่งเรียบร้อย', '', '');
 
 -- --------------------------------------------------------
 
@@ -559,7 +609,6 @@ INSERT INTO `product_image` (`pi_id`, `pi_name`, `pi_create_date`, `pi_update_da
 (3, '06092019142142pLot0dcgKx.jpg', '06 กันยายน 2562 time 14:21:42', '', 'P06092019142142opY1m2Todl'),
 (4, '06092019142142QoDbagYfZZ.jpg', '06 กันยายน 2562 time 14:21:42', '', 'P06092019142142opY1m2Todl'),
 (5, '06092019142142PFioggIi6R.png', '06 กันยายน 2562 time 14:21:42', '', 'P06092019142142opY1m2Todl'),
-(6, '06092019142142WnrxgxuA5R.jpg', '06 กันยายน 2562 time 14:21:42', '', 'P06092019142142opY1m2Todl'),
 (7, '060920191421421Xp0aVEwt4.jpg', '06 กันยายน 2562 time 14:21:42', '', 'P06092019142142opY1m2Todl'),
 (14, '16092019120255KtcB3QSjMx.png', '16 กันยายน 2562 time 12:02:55', '', 'P11092019184056Da75d152BE'),
 (15, '16092019120255lAhYpyxBvA.jpg', '16 กันยายน 2562 time 12:02:55', '', 'P11092019184056Da75d152BE'),
@@ -599,7 +648,8 @@ INSERT INTO `shipping_address` (`sa_id`, `sa_title`, `sa_first_name`, `sa_last_n
 (1, 'Max Home', '', '', '1', '81/1', '', '', '50130', 'no', '000', 'maxkiller1112@gmail.com', '18 กันยายน 2562 time 11:35:04', ''),
 (2, 'Home 2', '', '', '1', '81/1', '', '', '50130', '123', '091', 'maxkiller1112@gmail.com', '18 กันยายน 2562 time 14:58:42', ''),
 (3, 'Home 009', '', '', '1', 'ดาวอังคาร', '', '', '900', 'ASW', '-1-1-1-', 'M@mail', '18 กันยายน 2562 time 16:30:53', ''),
-(4, 'My X', '', '', '2', 'pluto', '', '', '098', 'NO', '890', 'X@Xmail', '19 กันยายน 2562 time 10:59:42', '');
+(4, 'My X', '', '', '2', 'pluto', '', '', '098', 'NO', '890', 'X@Xmail', '19 กันยายน 2562 time 10:59:42', ''),
+(5, 'new home', '', '', '1', 'ดาว เสาร์', '', '', '0187', 'out the world', '9078563412', 'Newsadt@mail.com', '25 กันยายน 2562 time 14:21:48', '');
 
 -- --------------------------------------------------------
 
@@ -641,7 +691,7 @@ INSERT INTO `videos` (`v_id`, `v_title`, `v_description`, `v_link`, `v_room`, `v
 (48, 'SSS', 'SSSSSSA', 'AAAAAS', '13', '27 สิงหาคม 2562 time 16:07:56', '27 สิงหาคม 2562 time 16:44:30'),
 (49, 'soon name', 'no more', 'soon', '13', '27 สิงหาคม 2562 time 16:07:56', '27 สิงหาคม 2562 time 16:42:35'),
 (50, 'ADFFGA', 'fff', 'AAA', '14', '27 สิงหาคม 2562 time 16:50:09', '27 สิงหาคม 2562 time 16:50:35'),
-(51, 'zz', '++', 'Now. no videos.', '15', '16 กันยายน 2562 time 12:46:43', '');
+(51, 'zz ++', '++', 'Now. no videos.', '15', '16 กันยายน 2562 time 12:46:43', '26 กันยายน 2562 time 10:33:49');
 
 -- --------------------------------------------------------
 
@@ -699,6 +749,12 @@ ALTER TABLE `banking`
 --
 ALTER TABLE `files_upload`
   ADD PRIMARY KEY (`f_id`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`g_id`);
 
 --
 -- Indexes for table `logged`
@@ -819,10 +875,16 @@ ALTER TABLE `files_upload`
   MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `logged`
 --
 ALTER TABLE `logged`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -840,7 +902,7 @@ ALTER TABLE `member_type`
 -- AUTO_INCREMENT for table `money_transfer`
 --
 ALTER TABLE `money_transfer`
-  MODIFY `mtf_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mtf_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -852,13 +914,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `oi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `order_status`
@@ -894,7 +956,7 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT for table `shipping_address`
 --
 ALTER TABLE `shipping_address`
-  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `videos`

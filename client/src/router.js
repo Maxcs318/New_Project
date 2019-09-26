@@ -33,6 +33,7 @@ import admin_ListRooms from "./view/Admin/Videos_Room/listRooms.vue"
 import admin_ListVideos from "./view/Admin/Videos_Room/listVideos.vue"
 import admin_ListOrder from "./view/Admin/Shopping/list_order.vue"
 import admin_Order from "./view/Admin/Shopping/order.vue"
+import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
 
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
@@ -40,6 +41,7 @@ import addArticle from "./view/Admin/Articles/article_insert.vue"
 import addProduct from "./view/Admin/Product/product_insert.vue"
 import addRoom from "./view/Admin/Videos_Room/videos_videoroom_insert/Room_insert.vue"
 import addVideos from "./view/Admin/Videos_Room/videos_videoroom_insert/Videos_insert.vue"
+import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -100,6 +102,7 @@ export const router = new VueRouter({
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
         { path : "/AdminListOrder",component : admin_ListOrder },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
+        { path : "/AdminListGallery",component : admin_Gallery },
 
         // start insert
         { path : "/addnews",component : addNews },
@@ -107,6 +110,7 @@ export const router = new VueRouter({
         { path : "/addproduct",component : addProduct },
         { path : "/addroom",component : addRoom },
         { path : "/addvideos",component : addVideos },
+        { path : "/addgallery",component : addGallery },
         // stop insert
 
         // start edit 

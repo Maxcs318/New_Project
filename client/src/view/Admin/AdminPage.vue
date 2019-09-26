@@ -16,6 +16,9 @@
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control btn-warning" @click="list_order">Check Order</button> <br>
             </div>
+            <div class="col-lg-6 col-xs-12">
+                <button type="button" class="form-control " @click="list_gallery">List Gallery</button> <br>
+            </div>
         </div>
         
     </div>
@@ -37,6 +40,9 @@ export default {
         },
         list_order(){
             this.$router.push('/AdminListOrder')
+        },
+        list_gallery(){
+            this.$router.push('/AdminListGallery')
         }
     }
 }
