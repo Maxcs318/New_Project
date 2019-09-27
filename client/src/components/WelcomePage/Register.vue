@@ -90,6 +90,12 @@ export default {
   text-align: center;
 }
 
+.invite button:hover{
+  transition: .25s;
+  background: #ff9f1a;
+  color: #fff;
+}
+
 .invite .invite-text3 {
   font-style: normal;
   font-weight: 600;
