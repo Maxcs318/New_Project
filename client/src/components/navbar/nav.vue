@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" class="navbar float-right">
+    <b-navbar toggleable="lg" type="dark" class="navbar float-right">
       <router-link to="/">
         <b-navbar-brand>
           <img :src="path_files+'logo_img/logo-white.png'" />
@@ -81,7 +81,7 @@
             class="form-control btn-outline-primary"
             @click="Log_in"
           >Log in</button>
-          <b-nav-item-dropdown right v-if="this.$store.state.the_user != '' ">
+          <b-nav-item-dropdown style="color:red;" right v-if="this.$store.state.the_user != '' ">
             <template slot="button-content">{{this.$store.state.the_user.m_username}}</template>
             <b-dropdown-item
               @click="admin"
@@ -143,7 +143,7 @@ export default {
 </script>
 <style>
 .navbar-dark .navbar-nav .nav-link {
-  color: black !important;
+  color: white;
 }
 
 .navbar {
@@ -159,6 +159,7 @@ export default {
   font-size: 17px;
   line-height: 27px;
   margin-right: 25px;
+margin-top: 8px;  
   color: #757575;
 }
 
@@ -173,10 +174,6 @@ export default {
 .navbar img {
   width: 150px;
   margin-left: 86px;
-}
-
-.nav-link{
-  color: #757575;
 }
 
 .btn-outline-primary {
