@@ -140,6 +140,7 @@
             }
             $order_code['o_code_order'] = json_decode($this->input->post('order_code'));
             $order_status['o_status_id'] = 3;
+            $order_status['o_update_date'] = $this->Check__model->date_time_now();
             $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
             echo $order_code['o_code_order'];
         }
@@ -180,6 +181,7 @@
             }
             $order_code['o_code_order'] = json_decode($this->input->post('order_code'));
             $order_status['o_status_id'] = 4;
+            $order_status['o_update_date'] = $this->Check__model->date_time_now();
             $statusOrder = $this->order_model->change_status_order($order_code,$order_status);            
             echo $order_code['o_code_order'];
         }

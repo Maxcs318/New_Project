@@ -50,6 +50,10 @@
                             E-mail : {{Shipping_Address.sa_email}} <br>
                             Phone : {{Shipping_Address.sa_phone}} <br>
                         </div>
+                        <div class="col-lg-12 col-xs-12">   <br>
+                            Order Create On : {{Order.o_create_date}}<br>
+                            Status Order Last Update : {{Order.o_update_date}}
+                        </div>
                     </div>
                 <br>
             </div>
