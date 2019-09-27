@@ -74,7 +74,7 @@
           </router-link>
         </b-navbar-nav>
 
-        <b-navbar-nav class="ml-auto">
+        <b-navbar-nav>
           <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
           <button
             v-if="this.$store.state.the_user == '' "
@@ -147,7 +147,6 @@ export default {
 }
 
 .navbar {
-  /* position: absolute; */
   border-top: 4px solid #eecd02;
   background: none;
   z-index: 1;
@@ -174,6 +173,10 @@ export default {
 .navbar img {
   width: 150px;
   margin-left: 86px;
+}
+
+.nav-link{
+  color: #757575;
 }
 
 .btn-outline-primary {
