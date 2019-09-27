@@ -21,12 +21,18 @@ const store = new Vuex.Store({
         payment:[],banking:[],
         money_transfer:[],
         
+        gallery:[],gallery_image:[],
+
         members : [],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
         videos:[],
         video_room:[]
     },
+//==========================================================================================================
+//==========================================================================================================
+//==========================================================================================================
+
     mutations : {
         initMembers(state,members){
             state.members = members
@@ -72,6 +78,12 @@ const store = new Vuex.Store({
         },
         Money_Transfer(state,mtf){
             state.money_transfer = mtf
+        },
+        GalleryAll(state,gallery){
+            state.gallery = gallery
+        },
+        Gallery_ImageAll(state,gallery_image){
+            state.gallery_image = gallery_image
         },
 
 
@@ -132,12 +144,12 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.news[index] = Editnews
             }
-            // var addFiles = E_news.files
-            // if(addFiles!=null){
-            //     for(var i=0; i<addFiles.length; i++){
-            //         state.files.push(addFiles[i])
-            //     }
-            // }
+            var addFiles = E_news.files
+            if(addFiles!=null){
+                for(var i=0; i<addFiles.length; i++){
+                    state.files.push(addFiles[i])
+                }
+            }
         },
         Edit_Article(state,E_article){
             var Editarticle = E_article.article
@@ -145,25 +157,27 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.article[index] = Editarticle
             }
-            // var addFiles = E_article.files
-            // if(addFiles != null){
-            //     for(var i=0; i<addFiles.length; i++){
-            //         state.files.push(addFiles[i])
-            //     }
-            // }
+            var addFiles = E_article.files
+            if(addFiles != null){
+                for(var i=0; i<addFiles.length; i++){
+                    state.files.push(addFiles[i])
+                }
+            }
         },
         Edit_Product(state,thisProduct){
             var Editproduct = thisProduct.product
             let index = state.product.findIndex(p => p.p_id == Editproduct.p_id)
             if(index > -1){
                 state.product[index] = Editproduct
+                // console.log(state.product[index])
             }
-            // var addProductImage = thisProduct.product_image
-            // if(addProductImage != null){
-            //     for(var i=0; i<addProductImage.length;i++){
-            //         state.product_image.push(addProductImage[i])
-            //     }
-            // }
+            var addProductImage = thisProduct.product_image
+            if(addProductImage != null){
+                for(var i=0; i<addProductImage.length;i++){
+                    // console.log(addProductImage[i])
+                    state.product_image.push(addProductImage[i])
+                }
+            }
         },
         Edit_Video_Room(state,Editvideo_room){
             let index = state.video_room.findIndex(vr => vr.vr_id == Editvideo_room.vr_id)
@@ -308,10 +322,48 @@ const store = new Vuex.Store({
                 state.order[index].o_status_id = 4
                 // console.log(state.order[index])
             }
+        },
+        Add_Gallery(state,gallery){
+            var gallery_image = gallery.gallery_image
+            state.gallery.push(gallery.gallery)
+            // console.log(gallery.gallery)
+            for(var i=0;i<gallery_image.length;i++){
+                // console.log(gallery_image[i])
+                state.gallery_image.push(gallery_image[i])
+            }
+        },
+        Edit_Gallery(state,gallery){
+            var this_gallery = gallery.gallery
+            var gallery_image = gallery.gallery_image
+            let index = state.gallery.findIndex(g => g.g_id == this_gallery.g_id)
+            if(index > -1){
+                console.log(this_gallery)
+                state.gallery[index] = this_gallery
+            }
+            for(var i=0;i<gallery_image.length;i++){
+                console.log(gallery_image[i])
+                state.gallery_image.push(gallery_image[i])
+            }
+        },
+        Delete_Gallery(state,gallery){
+            let index = state.gallery.findIndex(g => g.g_id == gallery)
+            if(index > -1){
+                state.gallery.splice(index,1)
+            }
+        },
+        Delete_Gallery_Image(state,gallery_imageID){
+            let index = state.gallery_image.findIndex(gi => gi.gi_id == gallery_imageID)
+            if(index > -1){
+                state.gallery_image.splice(index,1)
+            }
         }
-        
 
     },
+    
+//==========================================================================================================
+//==========================================================================================================
+//==========================================================================================================
+
     actions : {
         // Start Load Data
         initApp(context){
@@ -440,6 +492,22 @@ const store = new Vuex.Store({
                     context.commit("Money_Transfer",response.data)
             })
         },
+        initDataGallery(context){
+            axios.get(base_url +"Gallery/get_all_gallery")
+                .then(response => {
+                    // console.log(response.data)
+                    context.commit("GalleryAll",response.data)
+            })
+        },
+        initDataGallery_Image(context){
+            axios.get(base_url +"Gallery/get_all_gallery_image")
+                .then(response => {
+                    // console.log(response.data)
+                    context.commit("Gallery_ImageAll",response.data)
+            })
+        },
+
+
 
         // End Load Data
         // load page
@@ -709,14 +777,45 @@ const store = new Vuex.Store({
             axios.post(base_url +'gallery/insert_gallery',gallery)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
-                    // context.commit('Add_Gallery',response.data)
+                    // console.log('Response Data',response.data[0])
+                    context.commit('Add_Gallery',response.data[0])
                 }
             })
         },
+        Edit_Gallery(context,gallery){
+            axios.post(base_url +'gallery/update_gallery',gallery)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Edit_Gallery',response.data[0])
+                }
+            })
+        },
+        Delete_Gallery(context,gallery){
+            axios.post(base_url +'gallery/delete_gallery',gallery)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Gallery',response.data)
+                }
+            })
+        },
+        Delete_Gallery_Image(context,gallery_imageID){
+            axios.post(base_url +'gallery/delete_gallery_image',gallery_imageID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Gallery_Image',response.data)
+                }
+            })
+        }
         
         
     },
+//==========================================================================================================
+//==========================================================================================================
+//==========================================================================================================
+
     getters : {
         getPath_Files(state){
             return state.file_image_path
@@ -838,7 +937,14 @@ const store = new Vuex.Store({
         },
         getMoney_Transfer(state){
             return state.money_transfer
+        },
+        getGallery(state){
+            return state.gallery
+        },
+        getGallery_Image(state){
+            return state.gallery_image
         }
+
         
     }
 

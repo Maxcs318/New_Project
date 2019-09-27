@@ -15,7 +15,7 @@
                                 <img v-if="url"  :src="url" width="100%"/>
                             </center>
                             <br>
-                            <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
+                            <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Preview Image </button>
                             <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
                             <br>
                             ชื่อกิจกรรม
@@ -41,7 +41,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Files </button>
+                                    <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Another Image </button>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">

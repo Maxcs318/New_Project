@@ -50,6 +50,7 @@ import EditArticle from './view/Admin/Articles/article_edit.vue';
 import EditProduct from './view/Admin/Product/product_edit.vue';
 import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
+import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
 // end edit page
 
 //profile
@@ -121,6 +122,7 @@ export const router = new VueRouter({
         { path : "/editproduct/:ProductID",name:"editproduct",component : EditProduct },
         { path : "/editvideoroom/:RoomID",name:"editvideoroom",component : EditVideo_room },
         { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
+        { path : "/editgallery/:GalleryID",name:"editgallery",component : EditGallery },
         // stop edit
         
         // start profile

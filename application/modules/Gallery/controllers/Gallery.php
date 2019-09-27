@@ -106,152 +106,147 @@
 
         }
         // update Gallery
-        // public function update_gallery(){
-        //     // check status for insert
-        //     $creator = json_decode($this->input->post('creator'));
-        //     if($creator==null || $creator==''){
-        //         echo 'fail';
-        //         exit;
-        //     }
-        //     $creatorID  = $this->Check__model->chk_token($creator);
-        //     $statusUser = $this->Check__model->chk_status($creatorID);
-        //     if( $statusUser != 'admin' ){
-        //         echo 'fail';
-        //         exit ;
-        //     }
-        //     //update
-        //     $product = (array)json_decode($this->input->post('product'));
-        //     $config = array(
-        //         'upload_path'   => './../public/assets/Product/',
-        //         'allowed_types' => '*',
-        //         'max_size'      => '0',
-        //     );
-        //     if(isset($_FILES['userfile'])){
-        //         $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
-        //         $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
-        //         $typeF = strrev($nameF);
-        //         $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+        public function update_gallery(){
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //update
+            $gallery = (array)json_decode($this->input->post('gallery'));
+            // echo json_encode($gallery);
+            $config = array(
+                'upload_path'   => './../public/assets/Gallery/',
+                'allowed_types' => '*',
+                'max_size'      => '0',
+            );
+            if(isset($_FILES['userfile'])){
+                $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                $typeF = strrev($nameF);
+                $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 
-        //         $this->load->library('upload', $config);
-        //         if ($this->upload->do_upload('userfile')){
-        //             $data = array('upload_data' => $this->upload->data());
-        //             $product['p_image'] = $_FILES['userfile']['name'];
-        //         }else{
-        //             $error = array('error' => $this->upload->display_errors());
-        //             print_r($error);
-        //             exit;
-        //         }
-        //     }
-        //         $productEditID['p_id'] = $product['p_id'];
-        //         unset($product['p_id']); 
-        //         $product['p_update_date'] = $this->Check__model->date_time_now(); 
-        //         $thisUpdate = $this->product_model->update_product($product,$productEditID);
-        //         if($thisUpdate == true){
-        //             $product['p_id'] = $productEditID['p_id'];
-        //             // echo json_encode($product);
-        //         }
-        //         // update image  ( insert another image )
-        //         $product_image = array();
-        //         $product_dataFiles=[];
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('userfile')){
+                    $data = array('upload_data' => $this->upload->data());
+                    $gallery['g_image'] = $_FILES['userfile']['name'];
+                }else{
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                    exit;
+                }
+            }
+                $galleryEditID['g_id'] = $gallery['g_id'];
+                unset($gallery['g_id']); 
+                $gallery['g_update_date'] = $this->Check__model->date_time_now(); 
+                $thisUpdate = $this->gallery_model->update_gallery($gallery,$galleryEditID);
+                if($thisUpdate == true){
+                    $gallery['g_id'] = $galleryEditID['g_id'];
+                }
+                // update image  ( insert another image )
+                $gallery_image = array();
+                $gallery_dataFiles=[];
 
-        //         if(isset($_FILES['userfileupload0'])){
-        //             if(isset($_FILES['userfile'])){
-        //                 $filesupload_length = sizeof($_FILES)-1;
-        //             }else{
-        //                 $filesupload_length = sizeof($_FILES);
-        //             }
-        //             for($x = 0; $x < $filesupload_length; $x++) {
-        //                 // Set New FileName
-        //                 $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
-        //                 $nameF = substr(strrev($_FILES['userfileupload'.$x]['name']), 0, strrpos(strrev($_FILES['userfileupload'.$x]['name']),"."));
-        //                 $typeF = strrev($nameF);
-        //                 $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
-        //                 // End Set FileName
-        //                 // upload image to dir
-        //                 $this->load->library('upload', $config);
-        //                 if ($this->upload->do_upload('userfileupload'.$x)){
-        //                     $data = array('upload_data' => $this->upload->data());
-        //                     array_push($product_image,array(
-        //                         'pi_name'=>$_FILES['userfileupload'.$x]['name'],
-        //                         'pi_image_key'=> $product['p_image_key'],
-        //                         'pi_create_date'=>$this->Check__model->date_time_now()
-        //                     ));
+                if(isset($_FILES['userfileupload0'])){
+                    if(isset($_FILES['userfile'])){
+                        $filesupload_length = sizeof($_FILES)-1;
+                    }else{
+                        $filesupload_length = sizeof($_FILES);
+                    }
+                    for($x = 0; $x < $filesupload_length; $x++) {
+                        // Set New FileName
+                        $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                        $nameF = substr(strrev($_FILES['userfileupload'.$x]['name']), 0, strrpos(strrev($_FILES['userfileupload'.$x]['name']),"."));
+                        $typeF = strrev($nameF);
+                        $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
+                        // End Set FileName
+                        // upload image to dir
+                        $this->load->library('upload', $config);
+                        if ($this->upload->do_upload('userfileupload'.$x)){
+                            $data = array('upload_data' => $this->upload->data());
+                            array_push($gallery_image,array(
+                                'gi_image'=>$_FILES['userfileupload'.$x]['name'],
+                                'gi_gallery_id'=> $gallery['g_id'],
+                                'gi_create_date'=>$this->Check__model->date_time_now()
+                            ));
                             
-        //                 }else{
-        //                     $error = array('error' => $this->upload->display_errors());
-        //                     print_r($error);
-        //                 }
-        //             }
-        //             if(sizeof($product_image) == $filesupload_length){
-        //                 $data_image = $this->product_model->insert_product_image($product_image);;
-        //                 array_push($product_dataFiles,array('product'=>$product,'product_image'=>$data_image));
-        //             }else{
-        //                 echo 'Error !!!';
-        //             }
-        //         }else{
-        //             array_push($product_dataFiles,array('product'=>$product,'product_image'=>null));
-        //         }
-        //         echo json_encode($product_dataFiles);
-        // }
+                        }else{
+                            $error = array('error' => $this->upload->display_errors());
+                            print_r($error);
+                        }
+                    }
+                    if(sizeof($gallery_image) == $filesupload_length){
+                        $data_image = $this->gallery_model->insert_gallery_image($gallery_image);;
+                        array_push($gallery_dataFiles,array('gallery'=>$gallery,'gallery_image'=>$data_image));
+                    }else{
+                        echo 'Error !!!';
+                    }
+                }else{
+                    array_push($gallery_dataFiles,array('gallery'=>$gallery,'gallery_image'=>null));
+                }
+                echo json_encode($gallery_dataFiles);
+        }
+        
+        // delete gallery 
+        public function delete_gallery()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $galleryID = json_decode($this->input->post('galleryID'));
+            //delete
+            $gallery['g_id'] = $galleryID;
+            // dete gallery
+            $gallerystatus = $this->gallery_model->delete_gallery($gallery);
+            // delete image in this gallery 
+            $image_key['gi_gallery_id'] = $gallery['g_id'];
+            $imagestatus = $this->gallery_model->delete_gallery_image($image_key);
+            if($gallerystatus == true){
+                echo $galleryID ;
+            }
+        }
 
-        // // delete product_image
-        // public function delete_product_image()
-        // {
-        //     // check status for delete
-        //     $creator = json_decode($this->input->post('creator'));
-        //     if($creator==null || $creator==''){
-        //         echo 'fail';
-        //         exit;
-        //     }
-        //     $creatorID  = $this->Check__model->chk_token($creator);
-        //     $statusUser = $this->Check__model->chk_status($creatorID);
-        //     if( $statusUser != 'admin' ){
-        //         echo 'fail';
-        //         exit ;
-        //     }
-        //     $product_imageID = json_decode($this->input->post('product_imageID'));
+        // delete gallery image
+        public function delete_gallery_image()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $gallery_imageID = json_decode($this->input->post('gallery_imageID'));
 
-        //     $product_i['pi_id'] = $product_imageID;
-        //     $product_i_status = $this->product_model->delete_product_image($product_i);
-        //     if($product_i_status == true){
-        //         echo $product_imageID;
-        //     }else{
-        //         echo 'fail';
-        //     }
-
-            
-        // }
-        // // delete product 
-        // public function delete_product()
-        // {
-        //     // check status for delete
-        //     $creator = json_decode($this->input->post('creator'));
-        //     if($creator==null || $creator==''){
-        //         echo 'fail';
-        //         exit;
-        //     }
-        //     $creatorID  = $this->Check__model->chk_token($creator);
-        //     $statusUser = $this->Check__model->chk_status($creatorID);
-        //     if( $statusUser != 'admin' ){
-        //         echo 'fail';
-        //         exit ;
-        //     }
-        //     $productID = json_decode($this->input->post('productID'));
-        //     //delete
-        //     $product['p_id'] = $productID;
-        //     //find image key
-        //     $product_image_key = (array)json_decode($this->product_model->get_image_key_product($product));
-        //     // dete product
-        //     $productstatus = $this->product_model->delete_product($product);
-        //     // delete image in this product 
-        //     $image_key['pi_image_key'] = $product_image_key['p_image_key'];
-        //     $imagestatus = $this->product_model->delete_product_image($image_key);
-
-        //     if($productstatus == true){
-        //         echo $productID ;
-        //     }
-        // }
-
+            $gallery_i['gi_id'] = $gallery_imageID;
+            $gallery_i_status = $this->gallery_model->delete_gallery_image($gallery_i);
+            if($gallery_i_status == true){
+                echo $gallery_imageID;
+            }else{
+                echo 'fail';
+            }
+        }
 
 
 

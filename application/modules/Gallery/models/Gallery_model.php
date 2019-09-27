@@ -54,12 +54,7 @@
         {
             return json_encode($this->db->where($where)->update($this->gallery,$data));
         }
-        // get image key in this gallery
-        public function get_image_key_gallery($where = array())
-        {   
-            $gallery = $this->db->select('p_image_key')->where($where)->get($this->gallery)->result(); 
-            return json_encode($gallery[0]);
-        }
+        
         //delete gallery_image
         public function delete_gallery_image($where = array())
         {

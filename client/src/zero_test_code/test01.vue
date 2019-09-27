@@ -14,7 +14,7 @@
 export default {
     computed:{
         Test(){
-            var x = this.$store.getters.getArticle
+            var x = this.$store.getters.getGallery_Image
             return x
         },
         Test2(){
