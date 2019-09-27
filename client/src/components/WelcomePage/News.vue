@@ -7,8 +7,8 @@
         <div class="news-pc">
           <div class="col-lg-12 col-12" v-for="news in the_news.slice().reverse().slice(0,1)">
             <div class="row">
-              <div class="col-lg-2">
-                <hr />
+              <div class="col-lg-2 col-12">
+                <hr>
               </div>
               <div class="col-lg-4">
                 <h5 class="head">{{news.n_title}}</h5>
@@ -42,11 +42,11 @@
                   @click="seethisPageNews(news.n_id)"
                 />
               </div>
-              <div class="col-xs-12">
+              <div class="col-12">
                 <h5 class="head" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
               </div>
-              <div class="col-xs-12">
-                <hr />
+              <div class="col-12">
+                <hr style="width:100%">
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
                 <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
               </div>
@@ -163,20 +163,20 @@ export default {
   box-sizing: border-box;
   left: 0%;
   top: 86px;
-  width: 418px;
-  height: 279px;
+  width: 80%;
+  height: 80%;
 }
 
 .news2 {
   position: absolute;
-  z-index: -2;
+  z-index: -1;
   opacity: 0.2;
   border: 2px solid #ffffff;
   box-sizing: border-box;
   left: -3%;
   top: 105px;
-  width: 418px;
-  height: 279px;
+  width: 80%;
+  height: 80%;
 }
 
 .news-2 {
@@ -238,7 +238,6 @@ export default {
   }
 
   .img-news {
-    top: 9px;
     left: 0;
     width: 100%;
   }
@@ -247,14 +246,14 @@ export default {
     width: 80%;
     height: 40%;
     left: -2%;
-    top: 78px;
+    top: 24%;
   }
 
   .news2 {
     width: 80%;
     height: 40%;
     left: -4%;
-    top: 89px;
+    top: 26%;
   }
 
   .head {
