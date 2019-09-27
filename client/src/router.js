@@ -18,6 +18,9 @@ import product from './view/Product/product.vue';
 import ListRoom from './view/Videos_Room/listRooms.vue';
 import ListVideos from './view/Videos_Room/listVideos.vue';
 import RoomVideo from './view/Videos_Room/roomVideo.vue';
+import GalleryList from './view/Gallery/gallery_list.vue';
+import Gallery from './view/Gallery/gallery.vue';
+
 
 import My_Cart from './view/Shopping/my_cart.vue';
 import My_Order from './view/Shopping/my_order.vue';
@@ -93,6 +96,10 @@ export const router = new VueRouter({
         { path : "/listroom",component : ListRoom },
         { path : "/listvideos/:RoomID",name:"listvideos",component : ListVideos },
         { path : "/roomvideo/:VideoID",name:"roomvideo",component : RoomVideo },
+
+        { path : "/gallerylist",component : GalleryList },
+        { path : "/gallery/:GalleryID",name:"gallery",component : Gallery },
+
 
     //Admin - - - >
         { path : "/Admin",component : admin },
