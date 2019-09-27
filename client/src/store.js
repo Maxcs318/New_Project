@@ -337,11 +337,11 @@ const store = new Vuex.Store({
             var gallery_image = gallery.gallery_image
             let index = state.gallery.findIndex(g => g.g_id == this_gallery.g_id)
             if(index > -1){
-                console.log(this_gallery)
+                // console.log(this_gallery)
                 state.gallery[index] = this_gallery
             }
             for(var i=0;i<gallery_image.length;i++){
-                console.log(gallery_image[i])
+                // console.log(gallery_image[i])
                 state.gallery_image.push(gallery_image[i])
             }
         },
