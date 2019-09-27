@@ -4,13 +4,16 @@
       <div class="container">
         <h1>ภาพกิจกรรมของ GAMA</h1>
         <div class="row">
-          <div class="col-lg-3 col-xs-12" 
-             v-for="(gallery,index) in Gallery.slice().reverse().slice(0,4)" :key="index"
-             @click="seethisGallery(gallery.g_id)"
+          <div
+            class="col-lg-3 col-xs-12"
+            v-for="(gallery,index) in Gallery.slice().reverse().slice(0,4)"
+            :key="index"
+            @click="seethisGallery(gallery.g_id)"
           >
-            <img :src="getImgUrlGallery(gallery.g_image)" width="100%"/>
+            <img :src="getImgUrlGallery(gallery.g_image)" />
+            <div class="training-block1"></div>
+            <div class="training-block2"></div>
           </div>
-          
         </div>
       </div>
     </div>
@@ -18,25 +21,28 @@
 </template>
 <script>
 export default {
-  methods:{
+  methods: {
     getImgUrlGallery(pic) {
       return this.path_files + "Gallery/" + pic;
     },
-    seethisGallery(this_Gallery){
-      this.$router.push({name:'gallery',params:{GalleryID:this_Gallery}});
-    },
+    seethisGallery(this_Gallery) {
+      this.$router.push({
+        name: "gallery",
+        params: { GalleryID: this_Gallery }
+      });
+    }
   },
-  computed:{
+  computed: {
     path_files() {
       return this.$store.getters.getPath_Files;
     },
-    Gallery(){
-      return this.$store.getters.getGallery
-    },
+    Gallery() {
+      return this.$store.getters.getGallery;
+    }
   },
-  created(){
-    this.$store.dispatch("initDataGallery")
-    this.$store.dispatch("initDataGallery_Image")
+  created() {
+    this.$store.dispatch("initDataGallery");
+    this.$store.dispatch("initDataGallery_Image");
   }
 };
 </script>
@@ -63,7 +69,8 @@ export default {
 
 .event img {
   position: relative;
-  width: 253px;
+  width: 100%;
+  cursor: pointer;
   display: block;
   margin-top: 29px;
   margin-left: auto;
@@ -72,11 +79,17 @@ export default {
   border-radius: 4px;
 }
 
+.event img:hover {
+  transition: .5s;
+  border: 5px solid #fff;
+}
+
 .training-block1 {
   position: absolute;
+  z-index: -1;
   box-sizing: border-box;
-  left: 7.5%;
-  top: 35px;
+  left: 9%;
+  top: 19%;
   width: 253px;
   height: 190px;
   background: rgba(255, 255, 255, 0.131938);
@@ -85,9 +98,10 @@ export default {
 
 .training-block2 {
   position: absolute;
+  z-index: -1;
   box-sizing: border-box;
-  left: 10.5%;
-  top: 42px;
+  left: 12%;
+  top: 23%;
   width: 253px;
   height: 190px;
   background: rgba(255, 255, 255, 0.131938);
