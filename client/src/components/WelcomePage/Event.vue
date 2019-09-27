@@ -4,26 +4,13 @@
       <div class="container">
         <h1>ภาพกิจกรรมของ GAMA</h1>
         <div class="row">
-          <div class="col-lg-3 col-6">
-            <div class="training-block1"></div>
-            <div class="training-block2"></div>
-            <img :src="path_files+'event_img/event1.png'" />
+          <div class="col-lg-3 col-xs-12" 
+             v-for="(gallery,index) in Gallery.slice().reverse().slice(0,4)" :key="index"
+             @click="seethisGallery(gallery.g_id)"
+          >
+            <img :src="getImgUrlGallery(gallery.g_image)" width="100%"/>
           </div>
-          <div class="col-lg-3 col-6">
-            <div class="training-block1"></div>
-            <div class="training-block2"></div>
-            <img :src="path_files+'event_img/event2.png'" />
-          </div>
-          <div class="col-lg-3 col-6 mb-mg4">
-            <div class="training-block1"></div>
-            <div class="training-block2"></div>
-            <img :src="path_files+'event_img/event3.png'" />
-          </div>
-          <div class="col-lg-3 col-6 mb-mg4">
-            <div class="training-block1"></div>
-            <div class="training-block2"></div>
-            <img :src="path_files+'event_img/event4.png'" />
-          </div>
+          
         </div>
       </div>
     </div>
@@ -31,10 +18,25 @@
 </template>
 <script>
 export default {
-  computed: {
+  methods:{
+    getImgUrlGallery(pic) {
+      return this.path_files + "Gallery/" + pic;
+    },
+    seethisGallery(this_Gallery){
+      this.$router.push({name:'gallery',params:{GalleryID:this_Gallery}});
+    },
+  },
+  computed:{
     path_files() {
       return this.$store.getters.getPath_Files;
-    }
+    },
+    Gallery(){
+      return this.$store.getters.getGallery
+    },
+  },
+  created(){
+    this.$store.dispatch("initDataGallery")
+    this.$store.dispatch("initDataGallery_Image")
   }
 };
 </script>
