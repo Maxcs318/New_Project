@@ -48,6 +48,8 @@
       this.$store.dispatch("initDataPayment")
       this.$store.dispatch("initDataBanking")
       this.$store.dispatch("initDataMoney_Transfer")
+      this.$store.dispatch("initDataGallery")
+      this.$store.dispatch("initDataGallery_Image")
           
     }
     
