@@ -13,6 +13,7 @@ const store = new Vuex.Store({
 
         news:[],
         article:[],article_category:[],
+        academic_article:[],academic_article_category:[],
         files:[],
 
         product:[],product_category:[],product_image:[],
@@ -85,7 +86,12 @@ const store = new Vuex.Store({
         Gallery_ImageAll(state,gallery_image){
             state.gallery_image = gallery_image
         },
-
+        Academic_ArticleAll(state,academic_article){
+            state.academic_article = academic_article
+        },
+        Academic_Article_Category(state,aa_category){
+            state.academic_article_category = aa_category
+        },
 
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -138,6 +144,10 @@ const store = new Vuex.Store({
                 state.videos.push(NVideos[i])
             }
         },
+        Add_Academic_Article(state,Newacademic_article){
+            state.academic_article.push(Newacademic_article.academic_article)    
+        },
+        
         Edit_News(state,E_news){
             var Editnews = E_news.news
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
@@ -193,6 +203,19 @@ const store = new Vuex.Store({
         },
         Edit_Profile(state,Eprofile){
             state.the_user = Eprofile
+        },
+        Edit_Academic_Article(state,E_academic_article){
+            var Edit_AA = E_academic_article.academic_article
+            let index = state.academic_article.findIndex(a => a.aa_id == Edit_AA.aa_id)
+            if(index > -1){
+                state.academic_article[index] = Edit_AA
+            }
+            var addFiles = E_academic_article.files
+            if(addFiles != null){
+                for(var i=0; i<addFiles.length; i++){
+                    state.files.push(addFiles[i])
+                }
+            }
         },
         Delete_News(state,newsID){
             let index = state.news.findIndex(n => n.n_id == newsID)
@@ -506,7 +529,20 @@ const store = new Vuex.Store({
                     context.commit("Gallery_ImageAll",response.data)
             })
         },
-
+        initDataAcademic_Article(context){
+            axios.get(base_url +"academic_article/get_all_academic_article")
+            .then(response => {
+                // console.log(response)
+                context.commit("Academic_ArticleAll",response.data)
+            })
+        },
+        initDataAcademic_Article_Category(context){
+            axios.get(base_url +"academic_article/get_all_academic_article_category")
+            .then(response => {
+                // console.log(response)
+                context.commit("Academic_Article_Category",response.data)
+            })
+        },
 
 
         // End Load Data
@@ -540,7 +576,7 @@ const store = new Vuex.Store({
         Register(context,newuser){
             axios.post(base_url +"user/save", JSON.stringify(newuser))
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 context.commit("addMember",response.data)
             })
         },
@@ -560,7 +596,6 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
                     context.commit("Add_Article",response.data[0])
-                    // context.commit("Add_Files_Upload",response.data[0].files)
                 }
             })
         },
@@ -588,6 +623,15 @@ const store = new Vuex.Store({
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
                     context.commit("AddVideos",response.data)
+                }
+            })
+        },
+        Add_Academic_Article(context,academic_article){
+            axios.post(base_url +'academic_article/insert_academic_article',academic_article)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Academic_Article",response.data[0])
                 }
             })
         },
@@ -644,6 +688,15 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit("Edit_Profile",response.data)
+                }
+            })
+        },
+        Edit_Academic_Article(context,academic_article){
+            axios.post(base_url +'academic_article/update_academic_article',academic_article)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Edit_Academic_Article",response.data[0])
                 }
             })
         },
@@ -943,6 +996,12 @@ const store = new Vuex.Store({
         },
         getGallery_Image(state){
             return state.gallery_image
+        },
+        getAcademic_Article(state){
+            return state.academic_article
+        },
+        getAcademic_Article_Category(state){
+            return state.academic_article_category
         }
 
         

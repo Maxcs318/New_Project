@@ -38,6 +38,7 @@ import admin_ListOrder from "./view/Admin/Shopping/list_order.vue"
 import check_delivery from "./view/Admin/Shopping/list_order_check_delivery.vue"
 import admin_Order from "./view/Admin/Shopping/order.vue"
 import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
+import admin_Academic_Articles from "./view/Admin/Academic_Articles/academic_articles.vue"
 
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
@@ -46,6 +47,7 @@ import addProduct from "./view/Admin/Product/product_insert.vue"
 import addRoom from "./view/Admin/Videos_Room/videos_videoroom_insert/Room_insert.vue"
 import addVideos from "./view/Admin/Videos_Room/videos_videoroom_insert/Videos_insert.vue"
 import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
+import addAcademicArticle from "./view/Admin/Academic_Articles/academic_articles_insert.vue"
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -54,6 +56,7 @@ import EditProduct from './view/Admin/Product/product_edit.vue';
 import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
 import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
+import EditAcademicArticle from './view/Admin/Academic_Articles/academic_articles_edit.vue';
 // end edit page
 
 //profile
@@ -113,6 +116,7 @@ export const router = new VueRouter({
         { path : "/AdminListOrder_check_delivery",component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery",component : admin_Gallery },
+        { path : "/AdminAA",component : admin_Academic_Articles },
 
         // start insert
         { path : "/addnews",component : addNews },
@@ -121,6 +125,8 @@ export const router = new VueRouter({
         { path : "/addroom",component : addRoom },
         { path : "/addvideos",component : addVideos },
         { path : "/addgallery",component : addGallery },
+        { path : "/add_academicarticle",component : addAcademicArticle },
+        
         // stop insert
 
         // start edit 
@@ -130,6 +136,9 @@ export const router = new VueRouter({
         { path : "/editvideoroom/:RoomID",name:"editvideoroom",component : EditVideo_room },
         { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
         { path : "/editgallery/:GalleryID",name:"editgallery",component : EditGallery },
+        { path : "/editacademicarticle/:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
+
+        
         // stop edit
         
         // start profile
