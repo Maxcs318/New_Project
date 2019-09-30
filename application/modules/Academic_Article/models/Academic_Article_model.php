@@ -25,7 +25,7 @@
         // get file key academic_article
         public function get_file_key_academic_article($where = array())
         {
-            $academic_article = $this->db->select('a_file_key')->where($where)->get($this->academic_article)->result(); 
+            $academic_article = $this->db->select('aa_file_key')->where($where)->get($this->academic_article)->result(); 
             return json_encode($academic_article[0]);    
         }
         // insert Academic Article

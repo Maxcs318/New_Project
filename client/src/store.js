@@ -252,6 +252,13 @@ const store = new Vuex.Store({
                 state.product.splice(index,1)
             }
         },
+        Delete_Academic_Article(state,academic_articleID){
+            let index = state.academic_article.findIndex(a => a.aa_id == academic_articleID)
+            if(index > -1){
+                // console.log(state.article[index])
+                state.academic_article.splice(index,1)
+            }
+        },
         // Cart 
         Add_Cart(state,add_cart){
             // console.log(add_cart.p_id)
@@ -745,6 +752,15 @@ const store = new Vuex.Store({
                 }
             })
         },
+        Delete_Academic_Article(context,academic_articleID){
+            axios.post(base_url +'academic_article/delete_academic_article',academic_articleID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    console.log('Response Data',response.data)
+                    context.commit("Delete_Academic_Article",response.data)
+                }
+            })
+        },
         
         // Cart Real Time 
         // เพิ่มสินค้าใน แถบสินค้าลงตะกร้า
@@ -1002,7 +1018,19 @@ const store = new Vuex.Store({
         },
         getAcademic_Article_Category(state){
             return state.academic_article_category
-        }
+        },
+        getAcademic_Article_Set_Category(state){
+            var academic_article = state.academic_article
+            var academic_article_c = state.academic_article_category
+            for(var i=0;i<academic_article.length;i++){
+                for(var j=0; j<academic_article_c.length; j++){
+                    if(academic_article[i].aa_category == academic_article_c[j].aac_id){
+                        academic_article[i].aa_category = academic_article_c[j].aac_title
+                    }
+                }
+            }
+            return academic_article
+        },
 
         
     }

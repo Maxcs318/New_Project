@@ -20,6 +20,9 @@ import ListVideos from './view/Videos_Room/listVideos.vue';
 import RoomVideo from './view/Videos_Room/roomVideo.vue';
 import GalleryList from './view/Gallery/gallery_list.vue';
 import Gallery from './view/Gallery/gallery.vue';
+import Academic_Articles from './view/Academic_Articles/academic_articles.vue';
+import Academic_Article from './view/Academic_Articles/academic_article.vue';
+
 
 
 import My_Cart from './view/Shopping/my_cart.vue';
@@ -47,7 +50,7 @@ import addProduct from "./view/Admin/Product/product_insert.vue"
 import addRoom from "./view/Admin/Videos_Room/videos_videoroom_insert/Room_insert.vue"
 import addVideos from "./view/Admin/Videos_Room/videos_videoroom_insert/Videos_insert.vue"
 import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
-import addAcademicArticle from "./view/Admin/Academic_Articles/academic_articles_insert.vue"
+import addAcademicArticle from "./view/Admin/Academic_Articles/academic_article_insert.vue"
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -56,7 +59,7 @@ import EditProduct from './view/Admin/Product/product_edit.vue';
 import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_edit.vue';
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
 import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
-import EditAcademicArticle from './view/Admin/Academic_Articles/academic_articles_edit.vue';
+import EditAcademicArticle from './view/Admin/Academic_Articles/academic_article_edit.vue';
 // end edit page
 
 //profile
@@ -102,6 +105,9 @@ export const router = new VueRouter({
 
         { path : "/gallerylist",component : GalleryList },
         { path : "/gallery/:GalleryID",name:"gallery",component : Gallery },
+
+        { path : "/academic_articles",component : Academic_Articles },
+        { path : "/academic_article/:AcademicArticleID",name:"academic_article",component : Academic_Article },
 
 
     //Admin - - - >

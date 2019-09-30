@@ -23,8 +23,8 @@
                         <td>{{article.aa_title.slice(0,35)}}</td>
                         <td>{{article.aa_create_date}}</td>
                         <td>{{article.aa_update_date}}</td>
-                        <td> <button class="form-control btn-warning" @click="editArticle(article.aa_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteArticle(article.aa_id)">Delete</button> </td>
+                        <td> <button class="form-control btn-warning" @click="editAcademicArticle(article.aa_id)">Edit</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle(article.aa_id)">Delete</button> </td>
                     </tr>
                 </table>
                 <br>
@@ -38,17 +38,17 @@ export default {
         add_academicarticle(){
             this.$router.push('/add_academicarticle')
         },
-        editArticle(this_academicarticle){
+        editAcademicArticle(this_academicarticle){
             this.$router.push({name:'editacademicarticle',params:{AcademicArticleID:this_academicarticle}});
         },
-        deleteArticle(this_academicarticle){
+        deleteAcademicArticle(this_academicarticle){
             // console.log(this_academicarticle)
             var FD  = new FormData()
-            FD.append('articleID',JSON.stringify(this_academicarticle))
+            FD.append('academic_articleID',JSON.stringify(this_academicarticle))
             FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$swal({
                 title: "Are you sure?",
-                text: "You want delete this Article ID "+this_academicarticle,
+                text: "You want delete this Academic Article ID "+this_academicarticle,
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
