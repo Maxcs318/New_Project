@@ -14,11 +14,11 @@
 export default {
     computed:{
         Test(){
-            var x = this.$store.getters.getGallery_Image
+            var x = this.$store.getters.getFiles
             return x
         },
         Test2(){
-            var y = 'x'
+            var y = this.Test.length
             // var y = this.$store.getters.getArticle_Set_Category
             return y
         }
