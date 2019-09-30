@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="padding-top: 151px;">
-    <h5>บทความวิชาการ</h5>
+    <h4>บทความวิชาการ</h4>
     <div class="row">
       <div
         class="col-lg-6 col-12"
