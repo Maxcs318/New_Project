@@ -19,6 +19,9 @@
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control " @click="list_gallery">List Gallery</button> <br>
             </div>
+            <div class="col-lg-6 col-xs-12">
+                <button type="button" class="form-control " @click="academic_article">Academic Article</button> <br>
+            </div>
         </div>
         
     </div>
@@ -43,6 +46,9 @@ export default {
         },
         list_gallery(){
             this.$router.push('/AdminListGallery')
+        },
+        academic_article(){
+            this.$router.push('/AdminAA')
         }
     }
 }

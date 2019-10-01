@@ -50,6 +50,9 @@
       this.$store.dispatch("initDataMoney_Transfer")
       this.$store.dispatch("initDataGallery")
       this.$store.dispatch("initDataGallery_Image")
+      this.$store.dispatch("initDataAcademic_Article")
+      this.$store.dispatch("initDataAcademic_Article_Category")
+
           
     }
     
