@@ -5,7 +5,7 @@
         <h1>ภาพกิจกรรมของ GAMA</h1>
         <div class="row">
           <div
-            class="col-lg-3 col-xs-12"
+            class="col-lg-3 col-6"
             v-for="(gallery,index) in Gallery.slice().reverse().slice(0,4)"
             :key="index"
             @click="seethisGallery(gallery.g_id)"
@@ -80,7 +80,7 @@ export default {
 }
 
 .event img:hover {
-  transition: .5s;
+  transition: 0.5s;
   border: 5px solid #fff;
 }
 
@@ -88,10 +88,10 @@ export default {
   position: absolute;
   z-index: -1;
   box-sizing: border-box;
-  left: 9%;
-  top: 19%;
-  width: 253px;
-  height: 190px;
+  left: 8%;
+  top: 20%;
+  width: 90%;
+  height: 85%;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
@@ -101,9 +101,9 @@ export default {
   z-index: -1;
   box-sizing: border-box;
   left: 12%;
-  top: 23%;
-  width: 253px;
-  height: 190px;
+  top: 25%;
+  width: 90%;
+  height: 85%;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
@@ -114,16 +114,16 @@ export default {
   }
 
   .training-block1 {
-    margin-left: 3px;
-    margin-top: 3px;
-    width: 86%;
+    left: 11%;
+    top: 24%;
+    width: 85%;
     height: 80%;
   }
 
   .training-block2 {
-    margin-left: 3px;
-    margin-top: 3px;
-    width: 86%;
+    left: 13%;
+    top: 28%;
+    width: 85%;
     height: 80%;
   }
 }
