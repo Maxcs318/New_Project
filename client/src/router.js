@@ -37,11 +37,14 @@ import admin_Article from "./view/Admin/Articles/articles.vue"
 import admin_Product from "./view/Admin/Product/products.vue"
 import admin_ListRooms from "./view/Admin/Videos_Room/listRooms.vue"
 import admin_ListVideos from "./view/Admin/Videos_Room/listVideos.vue"
+
 import admin_ListOrder from "./view/Admin/Shopping/list_order.vue"
-import check_delivery from "./view/Admin/Shopping/list_order_check_delivery.vue"
-import admin_Order from "./view/Admin/Shopping/order.vue"
+import check_delivery from "./view/Admin/Shopping/list_order_check_delivery.vue" 
+import admin_Order from "./view/Admin/Shopping/order.vue" // detail order for check
+
 import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
 import admin_Academic_Articles from "./view/Admin/Academic_Articles/academic_articles.vue"
+import admin_Online_Journal from "./view/Admin/Online_Journal/online_journals.vue"
 
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
@@ -51,6 +54,7 @@ import addRoom from "./view/Admin/Videos_Room/videos_videoroom_insert/Room_inser
 import addVideos from "./view/Admin/Videos_Room/videos_videoroom_insert/Videos_insert.vue"
 import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
 import addAcademicArticle from "./view/Admin/Academic_Articles/academic_article_insert.vue"
+import addOnline_Journal from "./view/Admin/Online_Journal/online_journal_insert.vue"
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -60,6 +64,7 @@ import EditVideo_room from './view/Admin/Videos_Room/videos_vodeoroom_edit/Room_
 import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edit.vue';
 import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
 import EditAcademicArticle from './view/Admin/Academic_Articles/academic_article_edit.vue';
+import EditOnline_Journal from './view/Admin/Online_Journal/online_journal_edit.vue';
 // end edit page
 
 //profile
@@ -68,6 +73,7 @@ import EditProfile from './view/Profile/profile_edit.vue';
 
 //test01
 import Test01 from './zero_test_code/test01.vue';
+import Test02 from './zero_test_code/test02.vue';
 
 Vue.use(VueRouter)
 
@@ -123,6 +129,8 @@ export const router = new VueRouter({
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery",component : admin_Gallery },
         { path : "/AdminAA",component : admin_Academic_Articles },
+        { path : "/AdminOJ",component : admin_Online_Journal },
+        
 
         // start insert
         { path : "/addnews",component : addNews },
@@ -132,6 +140,8 @@ export const router = new VueRouter({
         { path : "/addvideos",component : addVideos },
         { path : "/addgallery",component : addGallery },
         { path : "/add_academicarticle",component : addAcademicArticle },
+        { path : "/addonline_journal",component : addOnline_Journal },
+
         
         // stop insert
 
@@ -143,6 +153,7 @@ export const router = new VueRouter({
         { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
         { path : "/editgallery/:GalleryID",name:"editgallery",component : EditGallery },
         { path : "/editacademicarticle/:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
+        { path : "/editonline_journal/:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
 
         
         // stop edit
@@ -158,6 +169,7 @@ export const router = new VueRouter({
 
         //test01
         { path : "/test01",component : Test01 },
+        { path : "/test02/:TestID",name:"test02",component : Test02 },
 
         { path : "*", redirect : "/" }
     ],

@@ -73,12 +73,20 @@
             return json_encode($this->db->where($where)->delete($this->product_image));
         }
         // delete product
-        public function delete_product($where = array()){
+        public function delete_product($where = array())
+        {
             return json_encode($this->db->where($where)->delete($this->product));
         }
 
 
 
+
+        //================================================================
+        // public function select_this_product($where = array())
+        // {
+        //     $product = $this->db->where($where)->get($this->product)->result(); 
+        //     return $product;
+        // }
 
 
         

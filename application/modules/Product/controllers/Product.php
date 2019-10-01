@@ -269,6 +269,15 @@
 
 
         
+        //===================================================================
+        // public function select_this_product(){
+        //     $productID['p_id'] = json_decode($this->input->post('productID'));
+        //     $product = $this->product_model->select_this_product($productID);
+
+        //     echo json_encode($product);
+        // }
+
+
     }
 
 ?>

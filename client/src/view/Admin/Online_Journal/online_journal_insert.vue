@@ -4,31 +4,30 @@
             <div class="container ">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4><center>เพิ่ม รูปภาพกิจกรรม </center></h4>
+                        <h4><center>เพิ่ม วารสาร ออนไลน์</center></h4>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-xs-12"></div>
                     <div class="col-lg-6 col-xs-12">
-                        <form @submit.prevent="submitGallery">
-                            <center>                            
-                                <img v-if="url"  :src="url" width="100%"/>
-                            </center>
+                        <form @submit.prevent="submitOnline_Journal">
+                            หัวเรื่อง
+                            <input type="text" v-model="online_journal.oj_title" class="form-control" required>
                             <br>
-                            <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Preview Image </button>
-                            <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
+                            Detail
+                            <textarea v-model="online_journal.oj_detail" class="form-control" rows="6" ></textarea>
                             <br>
-                            ชื่อกิจกรรม
-                            <input type="text" v-model="gallery.g_name" class="form-control" required>
+                            Description
+                            <textarea v-model="online_journal.oj_description" class="form-control" rows="2" ></textarea>
                             <br>
-                            รายระเอียด
-                            <textarea v-model="gallery.g_description" class="form-control" rows="6" ></textarea>
-                            <br>
-                            <h5>Another Image [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
-                                <input type="file" ref="files" style="display: none;" id="anotherImage" @change="handleFileUpload" multiple>
+                            Permission
+                            <input v-model="online_journal.oj_permission" class="form-control" type="text"> <br>
+                            <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
+                                <input type="file" ref="files" style="display: none;" id="FileUpload1" @change="handleFileUpload" multiple>
                             <br>
                             <div class="row" v-for="(f,index) in files" :key="index">
                                 <div class="col-lg-10">
+                                    <input type="text" class="form-control" v-model="file_title[index]" placeholder="File Title" required>
                                     <b> {{index+1}}. File  </b> {{files[index].name }}
                                     <b> Size </b>{{files[index].size}} byte
                                     <br><br>
@@ -41,7 +40,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Another Image </button>
+                                    <button type="button" class="form-control btn-primary col-lg-12" @click="ChooseFiles"> Choose Files </button>
                                     <br>
                                 </div>
                                 <div class="col-lg-6">
@@ -62,39 +61,26 @@
 export default {
     data(){
         return{
-            gallery:{
-                g_name:'',
-                g_description:'',
+            online_journal:{
+                oj_title:'',
+                oj_detail:'',
+                oj_description:'',
+                oj_permission:'',
+                oj_create_date:''
             },
-            url: null,
-            fileimage:'',
             files : [],
             max_size_file : 0,
-
+            file_title:[],
         }
     },
     methods:{
-        // first image 
-        ChooseFilesFirst(){
-            document.getElementById('chooseImage').click()
-        },
-        handleFilesFirst(e){
-            const file = e.target.files[0]
-            this.url = URL.createObjectURL(file)
-            let uploadedFiles = this.$refs.filesfirst.files[0]
-            this.fileimage = uploadedFiles
-            if(this.fileimage.size>10000000){
-                this.fileimage = []
-                this.url = null
-                this.$swal('Your image is larger than 10 MB. Sorry Choose Again !!!')
-            }
-        },
-        // another image
+        // files
         ChooseFiles(){
-            document.getElementById('anotherImage').click()
+            document.getElementById('FileUpload1').click()
         },
         handleFileUpload(event){
             this.files = []
+            this.file_title = []
              
             var i=0
             let uploadedFiles = this.$refs.files.files;
@@ -106,34 +92,35 @@ export default {
                 this.files = []
                 this.max_size_file = 0
                     // alert
-                    this.$swal('Your image all is larger than 10 MB. Sorry Choose Again !!!')
+                    this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
             }
         },
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
             this.files.splice(index,1)
+            this.file_title.splice(index,1)
         },
-        submitGallery(){
-            if(this.fileimage.size<10000000 && this.fileimage !=''){
-                var jsonGallery = JSON.stringify(this.gallery)
+        //submit
+        submitOnline_Journal(){
+                var jsonOnline_Journal = JSON.stringify(this.online_journal)
+                var jsonFiles_Title = JSON.stringify(this.file_title)
                 var FD  = new FormData()
-                    FD.append('userfile',this.fileimage)
                     if(this.files.length!=0){
                         for( var i = 0; i < this.files.length; i++ ){
                             FD.append('userfileupload'+i, this.files[i]);
                         }
+                        FD.append('file_title',jsonFiles_Title)
                     }
-                    FD.append('gallery',jsonGallery)
+                    FD.append('online_journal',jsonOnline_Journal)            
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
-                    this.$store.dispatch("Add_Gallery",FD)
+                    this.$store.dispatch("Add_Online_Journal",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminListGallery')
+                        this.$router.push('/AdminOJ')
                     },2000)  
-                this.$swal("Save Gallery Success .", "", "success")
-            }else{
-                this.$swal("Please Choose Image .", "", "error")
-            }
+                this.$swal("Save Online Journal Success .", "", "success")
+            
         }
     },
+    
 }
 </script>

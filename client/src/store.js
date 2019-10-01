@@ -14,6 +14,7 @@ const store = new Vuex.Store({
         news:[],
         article:[],article_category:[],
         academic_article:[],academic_article_category:[],
+        online_journal:[],
         files:[],
 
         product:[],product_category:[],product_image:[],
@@ -92,6 +93,10 @@ const store = new Vuex.Store({
         Academic_Article_Category(state,aa_category){
             state.academic_article_category = aa_category
         },
+        Online_Journal(state,oj){
+            state.online_journal = oj
+        },
+
 
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -217,6 +222,19 @@ const store = new Vuex.Store({
                 }
             }
         },
+        Edit_Online_Journal(state,E_OJ){
+            var Edit_OJ = E_OJ.online_journal
+            let index = state.online_journal.findIndex(oj => oj.oj_id == Edit_OJ.oj_id)
+            if(index > -1){
+                state.online_journal[index] = Edit_OJ
+            }
+            var addFiles = E_OJ.files
+            if(addFiles != null){
+                for(var i=0; i<addFiles.length; i++){
+                    state.files.push(addFiles[i])
+                }
+            }
+        },
         Delete_News(state,newsID){
             let index = state.news.findIndex(n => n.n_id == newsID)
             if(index > -1){
@@ -259,6 +277,14 @@ const store = new Vuex.Store({
                 state.academic_article.splice(index,1)
             }
         },
+        Delete_Online_Journal(state,ojID){
+            let index = state.online_journal.findIndex(oj => oj.oj_id == ojID)
+            if(index > -1){
+                // console.log(state.article[index])
+                state.online_journal.splice(index,1)
+            }
+        },
+
         // Cart 
         Add_Cart(state,add_cart){
             // console.log(add_cart.p_id)
@@ -386,10 +412,15 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.gallery_image.splice(index,1)
             }
+        },
+        Add_Online_Journal(state,NewOJ){
+            state.news.push(NewOJ.online_journal)
         }
+        
+
 
     },
-    
+
 //==========================================================================================================
 //==========================================================================================================
 //==========================================================================================================
@@ -550,6 +581,13 @@ const store = new Vuex.Store({
                 context.commit("Academic_Article_Category",response.data)
             })
         },
+        initDataOnline_Journal(context){
+            axios.get(base_url +"online_journal/get_all_online_journal")
+            .then(response => {
+                // console.log(response)
+                context.commit("Online_Journal",response.data)
+            })
+        },
 
 
         // End Load Data
@@ -642,6 +680,17 @@ const store = new Vuex.Store({
                 }
             })
         },
+        Add_Online_Journal(context,online_journal){
+            axios.post(base_url +'online_journal/insert_online_journal',online_journal)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Online_Journal",response.data[0])
+                }
+            })
+        },
+
+
         // End Add Data
         // Start Edit Data
         Edit_News(context,news){
@@ -707,6 +756,15 @@ const store = new Vuex.Store({
                 }
             })
         },
+        Edit_Online_Journal(context,online_journal){
+            axios.post(base_url +'online_journal/update_online_journal',online_journal)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Edit_Online_Journal",response.data[0])
+                }
+            })
+        },
         Delete_News(context,this_news){
             axios.post(base_url +'news/delete_news',this_news)
             .then(response =>{
@@ -756,8 +814,17 @@ const store = new Vuex.Store({
             axios.post(base_url +'academic_article/delete_academic_article',academic_articleID)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit("Delete_Academic_Article",response.data)
+                }
+            })
+        },
+        Delete_Online_Journal(context,OJID){
+            axios.post(base_url +'online_journal/delete_online_journal',OJID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Delete_Online_Journal",response.data)
                 }
             })
         },
@@ -1030,6 +1097,9 @@ const store = new Vuex.Store({
                 }
             }
             return academic_article
+        },
+        getOnline_Journal(state){
+            return state.online_journal
         },
 
         
