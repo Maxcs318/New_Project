@@ -21,7 +21,17 @@
                             <textarea v-model="online_journal.oj_description" class="form-control" rows="2" ></textarea>
                             <br>
                             Permission
-                            <input v-model="online_journal.oj_permission" class="form-control" type="text"> <br>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <select v-model="online_journal.oj_permission" class="form-control" required>
+                                        <option selected disabled value=''>Choose Permission</option>
+                                        <option v-for="(mt,index) in Member_Type" :key="index" :value="mt.mt_id" >
+                                            ตั้งแต่ {{ mt.mt_name }} ขึ้นไป
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
                             <h5>Files [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                                 <input type="file" ref="files" style="display: none;" id="FileUpload1" @change="handleFileUpload" multiple>
                             <br>
@@ -121,6 +131,11 @@ export default {
             
         }
     },
+    computed:{
+        Member_Type(){
+            return this.$store.getters.getMember_Type
+        }
+    }
     
 }
 </script>

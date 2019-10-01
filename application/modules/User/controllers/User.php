@@ -24,6 +24,11 @@
         {
             echo $this->user_model->get_all_datamember();
         }
+        // member type
+        public function get_all_member_type()
+        {
+            echo $this->user_model->get_all_member_type();
+        }
         // register
         public function save()
         {

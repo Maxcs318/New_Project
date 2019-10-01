@@ -9,6 +9,7 @@
             parent::__construct();
             $this->load->model('../../Check_/models/Check__model');
             $this->tableName = 'member';
+            $this->member_type = 'member_type';
             $this->logged = 'logged';
 
             $this->load->library('session');//
@@ -18,6 +19,11 @@
         public function get_all_datamember()
         {
             return json_encode($this->db->get($this->tableName)->result());
+        }
+        // all member_type
+        public function get_all_member_type()
+        {
+            return json_encode($this->db->get($this->member_type)->result());
         }
         // register
         public function save($data = array())

@@ -32,6 +32,7 @@
     },
     created(){
       this.$store.dispatch("initApp")
+      this.$store.dispatch("initDataMember_Type")
       this.$store.dispatch("initDataNews")
       this.$store.dispatch("initDataArticle")
       this.$store.dispatch("initDataArticle_Category")

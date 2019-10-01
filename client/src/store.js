@@ -25,7 +25,7 @@ const store = new Vuex.Store({
         
         gallery:[],gallery_image:[],
 
-        members : [],
+        members : [],member_type:[],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
         videos:[],
@@ -38,6 +38,9 @@ const store = new Vuex.Store({
     mutations : {
         initMembers(state,members){
             state.members = members
+        },
+        Member_Type(state,member_type){
+            state.member_type = member_type
         },
         NewsAll(state,news){
             state.news = news
@@ -439,6 +442,13 @@ const store = new Vuex.Store({
             }else{
                 this.state.the_user=''
             }
+        },
+        initDataMember_Type(context){
+            axios.get(base_url +"user/get_all_member_type")
+                .then(response => {
+                    // console.log(response)
+                    context.commit("Member_Type",response.data)
+                })
         },
         initDataNews(context){
             axios.get(base_url +"news/get_all_news")
@@ -953,6 +963,9 @@ const store = new Vuex.Store({
 //==========================================================================================================
 
     getters : {
+        getMember_Type(state){
+            return state.member_type
+        },
         getPath_Files(state){
             return state.file_image_path
         },
@@ -1100,6 +1113,17 @@ const store = new Vuex.Store({
         },
         getOnline_Journal(state){
             return state.online_journal
+        },
+        getOnline_Journal_For_User(state){
+            var oj_user = []
+            var user = state.the_user
+            var online_journal = state.online_journal
+                for(var i=0; i<online_journal.length; i++){
+                    if(user.m_type >=online_journal[i].oj_permission){
+                        oj_user.push(online_journal[i])
+                    }
+                }
+            return oj_user
         },
 
         

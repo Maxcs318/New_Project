@@ -15,7 +15,16 @@
                     <textarea v-model="online_journalE.oj_description" class="form-control" rows="2" ></textarea>
                     <br>
                     Permission
-                    <input v-model="online_journalE.oj_permission" class="form-control" type="text"> <br>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                            <select v-model="online_journalE.oj_permission" class="form-control" required>
+                                <option v-for="(mt,index) in Member_Type" :key="index" :value="mt.mt_id" >
+                                    ตั้งแต่ {{ mt.mt_name }} ขึ้นไป
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
                     <div v-if="thisFiles != null" v-for="(file,run) in thisFiles"  >
                         <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
                          <a :href="loadFile(file.f_name)" download> Dowload File {{run+1}}</a> {{file.f_title}}<br>
@@ -158,7 +167,11 @@ export default {
                 this.$router.push('/')
             }
             return user
+        },
+        Member_Type(){
+            return this.$store.getters.getMember_Type
         }
+    
     }
 }
 </script>
