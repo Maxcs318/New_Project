@@ -150,10 +150,7 @@ export default {
                     }
                     FD.append('profile',jsonProfile)            
                     FD.append('own_id',JSON.stringify(this.$store.state.log_on))
-
                     FD.append('upgrade_time',this.upgrade_time) // time use for upgrade 
-                    
-
                     this.$store.dispatch("Edit_Profile",FD)
 
                     setTimeout(()=>{
