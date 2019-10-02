@@ -10,6 +10,7 @@
             $this->load->model('../../Check_/models/Check__model');
             $this->tableName = 'member';
             $this->member_type = 'member_type';
+            $this->member_upgrade_date = 'member_upgrade_date';
             $this->logged = 'logged';
 
             $this->load->library('session');//
@@ -24,6 +25,11 @@
         public function get_all_member_type()
         {
             return json_encode($this->db->get($this->member_type)->result());
+        }
+        // all member upgrade date
+        public function get_all_member_upgrade()
+        {
+            return json_encode($this->db->get($this->member_upgrade_date)->result());
         }
         // register
         public function save($data = array())
@@ -106,6 +112,13 @@
             return json_encode($statusEdit);
         }
 
+        public function upgrade_member_type($data=array())
+        {
+            $insert = $this->db->insert($this->member_upgrade_date,$data);
+            if($insert){
+                return json_encode( $this->db->insert_id() );
+            }
+        }
 
 
 

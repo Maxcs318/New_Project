@@ -32,6 +32,7 @@
     },
     created(){
       this.$store.dispatch("initApp")
+      this.$store.dispatch("initMembers")
       this.$store.dispatch("initDataMember_Type")
       this.$store.dispatch("initDataNews")
       this.$store.dispatch("initDataArticle")
@@ -54,6 +55,7 @@
       this.$store.dispatch("initDataAcademic_Article")
       this.$store.dispatch("initDataAcademic_Article_Category")
       this.$store.dispatch("initDataOnline_Journal")
+      this.$store.dispatch("initDataMember_Upgrade_Date")
       
 
           

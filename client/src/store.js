@@ -25,7 +25,7 @@ const store = new Vuex.Store({
         
         gallery:[],gallery_image:[],
 
-        members : [],member_type:[],
+        members : [],member_type:[],member_upgrade_date:[],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
         videos:[],
@@ -41,6 +41,9 @@ const store = new Vuex.Store({
         },
         Member_Type(state,member_type){
             state.member_type = member_type
+        },
+        Members_Upgrade_date(state,members_up){
+            state.member_upgrade_date = members_up
         },
         NewsAll(state,news){
             state.news = news
@@ -443,6 +446,20 @@ const store = new Vuex.Store({
                 this.state.the_user=''
             }
         },
+        initMembers(context){
+            axios.get(base_url +"user/get_all_datamember")
+            .then(response => {
+                // console.log(response.data)
+                context.commit("initMembers",response.data)
+            })
+        },
+        initDataMember_Upgrade_Date(context){
+            axios.get(base_url +"user/get_all_member_upgrade")
+            .then(response => {
+                // console.log(response.data)
+                context.commit("Members_Upgrade_date",response.data)
+            })
+        },
         initDataMember_Type(context){
             axios.get(base_url +"user/get_all_member_type")
                 .then(response => {
@@ -752,7 +769,7 @@ const store = new Vuex.Store({
             axios.post(base_url +'user/edit_profile',profile)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data)
+                    console.log('Response Data',response.data)
                     context.commit("Edit_Profile",response.data)
                 }
             })
@@ -965,6 +982,9 @@ const store = new Vuex.Store({
     getters : {
         getMember_Type(state){
             return state.member_type
+        },
+        getMember_Upgrade_Date(state){
+            return state.member_upgrade_date
         },
         getPath_Files(state){
             return state.file_image_path

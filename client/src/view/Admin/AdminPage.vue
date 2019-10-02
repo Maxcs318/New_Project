@@ -25,6 +25,9 @@
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control btn-warning" @click="online_journal">Online Journal</button> <br>
             </div>
+            <div class="col-lg-6 col-xs-12">
+                <button type="button" class="form-control btn-danger" @click="manage_members">Manage Members</button> <br>
+            </div>
         </div>
     </div>
 </template>
@@ -54,6 +57,9 @@ export default {
         },
         online_journal(){
             this.$router.push('/AdminOJ')
+        },
+        manage_members(){
+            this.$router.push('/AdminM')
         }
     }
 }

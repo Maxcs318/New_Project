@@ -7,6 +7,13 @@
                 <img v-if="the_user.m_imageprofile!=''" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
                 <img v-if="the_user.m_imageprofile==''" :src="getImgUrlDefault()" width="100%">
                 <br><br>
+                <div style="text-align: center; " v-for="m_up in Member_Upgrade_Date" v-if="m_up.mud_id == the_user.m_upgrade_date_id">
+                    <div v-for="m_up_type in Member_Type" v-if="m_up.mud_member_type_id == m_up_type.mt_id">
+                        Member Type : {{m_up_type.mt_name}} <br>
+                        End in : {{m_up.mud_date_end}}
+                    </div>
+                    <br>
+                </div>
                 Firstname TH : {{the_user.m_firstname}}<br>
                 Firstname Eng : {{the_user.m_firstname_eng}}<br>
                 Lastname TH : {{the_user.m_lastname}}<br>
@@ -59,6 +66,12 @@ export default {
         the_user(){
             var user = this.$store.getters.getThe_User
             return user
+        },
+        Member_Type(){
+            return this.$store.getters.getMember_Type
+        },
+        Member_Upgrade_Date(){
+            return this.$store.getters.getMember_Upgrade_Date
         },
         path_files(){
             return this.$store.getters.getPath_Files

@@ -29,6 +29,11 @@
         {
             echo $this->user_model->get_all_member_type();
         }
+        // member_upgrade_date
+        public function get_all_member_upgrade()
+        {
+            echo $this->user_model->get_all_member_upgrade();
+        }
         // register
         public function save()
         {
@@ -65,11 +70,14 @@
                 exit;
             }
             $ownID  = $this->Check__model->chk_token($own);
-
+            $statusUser = $this->Check__model->chk_status($ownID);
             $profile = (array)json_decode($this->input->post('profile'));
             if( $ownID != $profile['m_id'] ){
-                echo 'fail';
-                exit ;
+                if($statusUser != 'admin'){
+                    echo 'fail';
+                    exit ;
+                }
+                
             }
             // do edit
             if(isset($_FILES['userfile'])){
@@ -92,13 +100,39 @@
                     exit;
                 }
             }
-            unset($profile['m_id']);
+            $Edit_ID = array('m_id'=>$profile['m_id']);
             // block edit this data 
             unset($profile['m_status']);
-            unset($profile['m_type']);
             unset($profile['m_create_date']);
-            $Edit_ID = array('m_id'=>$ownID);
-            $profile['m_update_date'] = $this->Check__model->date_time_now();
+            if($statusUser == 'admin' ){ //&& $ownID != $profile['m_id']
+                $profile['m_update_date'] = $this->Check__model->date_time_now().' ( Edit By Admin )';
+                $upgrade_member_time = json_decode($this->input->post('upgrade_time'));
+                if($upgrade_member_time>0){
+                    //start date gen
+                    $start_date = date("d-m-Y H:i:s");
+                    //end date compute
+                    $end_date = date("d-m-Y H:i:s",strtotime("+".$upgrade_member_time." month", strtotime($start_date)));
+                    
+                    $upgrade_member = array(
+                        'mud_member_own_id' => $profile['m_id'],
+                        'mud_member_type_id' => $profile['m_type'],
+                        'mud_create_date' => $this->Check__model->date_time_now(),
+                        'mud_date_start' => $start_date,
+                        'mud_date_end' => $end_date
+                    );
+                    $profile['m_upgrade_date_id'] =  $this->user_model->upgrade_member_type($upgrade_member);
+                }
+            }else{
+                unset($profile['m_upgrade_date_id']);
+                $profile['m_update_date'] = $this->Check__model->date_time_now();
+            }
+
+            if($statusUser != 'admin'){
+                unset($profile['m_type']);
+            }
+
+            // editting
+            unset($profile['m_id']);
             $Do_edit = $this->user_model->edit_profile($profile,$Edit_ID);
             $profile['m_id'] = $ownID;
             if($Do_edit == true){

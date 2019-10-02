@@ -48,6 +48,8 @@ import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
 import admin_Academic_Articles from "./view/Admin/Academic_Articles/academic_articles.vue"
 import admin_Online_Journal from "./view/Admin/Online_Journal/online_journals.vue"
 
+import admin_member_list from "./view/Admin/Manage_Members/member_list.vue"
+
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
 import addArticle from "./view/Admin/Articles/article_insert.vue"
@@ -67,6 +69,9 @@ import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edi
 import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
 import EditAcademicArticle from './view/Admin/Academic_Articles/academic_article_edit.vue';
 import EditOnline_Journal from './view/Admin/Online_Journal/online_journal_edit.vue';
+
+import admin_member_edit from "./view/Admin/Manage_Members/member_edit.vue"
+
 // end edit page
 
 //profile
@@ -135,7 +140,9 @@ export const router = new VueRouter({
         { path : "/AdminListGallery",component : admin_Gallery },
         { path : "/AdminAA",component : admin_Academic_Articles },
         { path : "/AdminOJ",component : admin_Online_Journal },
-        
+
+        { path : "/AdminM",component : admin_member_list },
+
 
         // start insert
         { path : "/addnews",component : addNews },
@@ -160,6 +167,7 @@ export const router = new VueRouter({
         { path : "/editacademicarticle/:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
         { path : "/editonline_journal/:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
 
+        { path : "/editmember_by_admin/:MemberID",name:"editmember_by_admin",component : admin_member_edit },
         
         // stop edit
         
