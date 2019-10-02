@@ -113,7 +113,6 @@ const store = new Vuex.Store({
         Log_Out(state){
             state.log_on = null
             state.the_user = ''
-            state.members = ''
         },
         Log_On(state,user){
             state.the_user = user
