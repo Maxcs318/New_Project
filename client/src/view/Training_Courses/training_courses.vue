@@ -1,46 +1,145 @@
 <template>
-    <div class="container">
-        <h4 class=" ">หลักสูตร & อบรม</h4> <br>
-        <div class="row">
-            <div class="col-lg-3 col-xs-6" v-for="(product,index) in trainingC.slice().reverse()" :key="index">
-                <img :src="getImgUrl(product.p_image)" width="100%" @click="seethisPage(product.p_id)">
-                <h5>{{product.p_name}}</h5>
-                <!-- <p style="text-align: right;">{{product.p_date}}</p> -->
-                <p style="text-align: center;">{{product.p_price}} ฿</p>
-                <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-                <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
-                <br>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-6 col-12"
+        v-for="(product,index) in trainingC.slice().reverse().slice(0,2)"
+        :key="index"
+      >
+        <img
+          :src="getImgUrl(product.p_image)"
+          width="100%"
+          height="370px"
+          @click="seethisPage(product.p_id)"
+        />
+        <h5 class="course-name" style="text-align:left;">{{product.p_name}}</h5>
+        <p class="course-date" style="text-align:left;">{{product.p_create_date.slice(0,-13)}}</p>
+        <!-- <p style="text-align: center;">{{product.p_price}} ฿</p> -->
+        <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
+        <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
+        <br />
+      </div>
     </div>
+
+    <br />
+    <br />
+    <div class="row">
+      <div
+        class="col-lg-4 col-12"
+        v-for="(product,index) in trainingC.slice().reverse().slice(2)"
+        :key="index"
+      >
+        <img
+          :src="getImgUrl(product.p_image)"
+          width="100%"
+          height="230px"
+          @click="seethisPage(product.p_id)"
+        />
+        <h5 class="course-name2">{{product.p_name}}</h5>
+        <p class="course-date2">{{product.p_create_date.slice(0,-13)}}</p>
+        <!-- <p>{{product.p_price}} ฿</p> -->
+        <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
+        <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-    methods:{
-        getImgUrl(pic) {
-            return this.path_files+'Product/'+pic
-        },
-        seethisPage(thisproduct){
-            this.$router.push({name:'product',params:{ProductID:thisproduct}});
-        }
+  methods: {
+    getImgUrl(pic) {
+      return this.path_files + "Product/" + pic;
     },
-    computed:{
-        trainingC(){
-            var productAll = this.$store.getters.getProduct_Set_Category
-            var training_course = []
-                for(var i=0; i<productAll.length; i++){
-                    if(productAll[i].p_category == 'training_course'){
-                        training_course.push(productAll[i])
-                    }
-                }
-            return training_course
-        },
-        path_files(){
-            return this.$store.getters.getPath_Files
-        }
-    },
-    created(){
-        this.$store.dispatch("initDataProduct")
+    seethisPage(thisproduct) {
+      this.$router.push({
+        name: "product",
+        params: { ProductID: thisproduct }
+      });
     }
-}
+  },
+  computed: {
+    trainingC() {
+      var productAll = this.$store.getters.getProduct_Set_Category;
+      var training_course = [];
+      for (var i = 0; i < productAll.length; i++) {
+        if (productAll[i].p_category == "training_course") {
+          training_course.push(productAll[i]);
+        }
+      }
+      return training_course;
+    },
+    path_files() {
+      return this.$store.getters.getPath_Files;
+    }
+  },
+  created() {
+    this.$store.dispatch("initDataProduct");
+  }
+};
 </script>
+<style scoped>
+img,
+.course-name,
+.course-name2,
+.course-date,
+.course-date2 {
+  cursor: pointer;
+}
+.course-name {
+  position: absolute;
+  top: 70%;
+  padding-left: 21px;
+  padding-right: 21px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.75px;
+}
+.course-date {
+  position: absolute;
+  top: 90%;
+  padding-left: 21px;
+  padding-right: 21px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #d8d8d8;
+}
+.course-name2 {
+  position: absolute;
+  top: 50%;
+  padding-left: 21px;
+  padding-right: 21px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 100%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.75px;
+}
+.course-date2 {
+  position: absolute;
+  top: 70%;
+  padding-left: 21px;
+  padding-right: 21px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  color: #d8d8d8;
+}
+.course-name:hover,
+.course-name2:hover,
+.course-date:hover,
+.course-date2:hover{
+    transition: .25s;
+}
+</style>
