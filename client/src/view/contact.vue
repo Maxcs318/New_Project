@@ -19,7 +19,7 @@
         </p>
       </div>
 
-      <div class="col-lg-6 col-12">
+      <div class="col-lg-6 col-12" style="padding:0">
         <div class="gmap_canvas">
           <iframe
             width="100%"
@@ -56,6 +56,8 @@
   background: none !important;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 h4 {
   font-style: normal;
@@ -97,5 +99,13 @@ input[type="submit"] {
   font-size: 18px;
   line-height: 150%;
   border-radius: 29px;
+}
+
+@media only screen and (max-width: 600px) {
+  .gmap_canvas {
+    width: 100%;
+    height: 279px;
+    margin-top: 50px;
+  }
 }
 </style>
