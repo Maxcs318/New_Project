@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="padding-top: 151px;">
     <div class="row">
       <div
         class="col-lg-6 col-12"
@@ -139,7 +139,7 @@ img,
 .course-name:hover,
 .course-name2:hover,
 .course-date:hover,
-.course-date2:hover{
-    transition: .25s;
+.course-date2:hover {
+  transition: 0.25s;
 }
 </style>
