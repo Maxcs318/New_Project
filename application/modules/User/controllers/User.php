@@ -77,7 +77,14 @@
                     echo 'fail';
                     exit ;
                 }
-                
+            }
+            $username_check['m_username'] = $profile['m_username'];
+            $username_ID_for_check = $profile['m_id'];
+            $check_username_already_taken = json_decode($this->user_model->username_already_taken($username_check,$username_ID_for_check));
+            // echo $check_username_already_taken;
+            if($check_username_already_taken == 'unsuccess'){
+                echo 'fail';
+                exit ;
             }
             // do edit
             if(isset($_FILES['userfile'])){

@@ -49,7 +49,6 @@
             $checkMember = $this->db->where($new_username)->get($this->tableName)->result(); 
             if($checkMember != []){
                 return 'fail' ;
-
             }
 
             $insert = $this->db->insert($this->tableName,$data);
@@ -105,6 +104,19 @@
             }
         }
 
+        // Check Username Already Taken For Edit Profile
+        public function username_already_taken($data=array(),$ID_for_check=array())
+        {
+            $checkMember = $this->db->where($data)->get($this->tableName)->result(); 
+            if( sizeof($checkMember) != 0){
+                if($checkMember[0]->m_id != $ID_for_check){
+                    return json_encode('unsuccess');
+                }
+            }
+            
+            return json_encode('success');
+            
+        }
         // Edit Profile
         public function edit_profile($data = array(),$where = array())
         {
