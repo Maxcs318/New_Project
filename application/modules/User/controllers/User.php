@@ -114,7 +114,7 @@
             $profile['m_update_date'] = $this->Check__model->date_time_now();
 
             if($statusUser == 'admin' ){ //&& $ownID != $profile['m_id']
-                // $profile['m_update_date'] = $this->Check__model->date_time_now().' ( Edit By Admin )';
+                $profile['m_update_date'] = $this->Check__model->date_time_now().' ( Edit By Admin )';
                 $upgrade_member_time = json_decode($this->input->post('upgrade_time'));
                 if( $profile['m_type'] !=1 ){
                     if($upgrade_member_time>0){
