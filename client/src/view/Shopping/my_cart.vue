@@ -16,8 +16,12 @@
         </div>
         <br />
         <br />
-        <p class="empty-link">เลือกซื้อหลักสูตร & อบรม ></p>
-        <p class="empty-link">เลือกซื้อหนังสือ ></p>
+        <center>
+          <a href="#" class="empty-link">เลือกซื้อหลักสูตร & อบรม ></a>
+          <br />
+          <br />
+          <a href="#" class="empty-link">เลือกซื้อหนังสือ ></a>
+        </center>
       </div>
 
       <div class="row" v-if="MyCart.length>0 && Compute_Total && thisMyCart.length!=0">
@@ -365,12 +369,19 @@ export default {
   font-weight: 600;
   font-size: 29px;
 }
-.empty-link {
+a.empty-link {
+  cursor: pointer;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;
   color: #6cadfd;
   text-align: center;
+  text-decoration: none;
+}
+a.empty-link:hover {
+  transition: 0.25s;
+  /* font-size: 23px; */
+  color: #fff;
 }
 </style>
