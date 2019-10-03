@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h4><center>Manage Member</center></h4>
+                <h4><center>Manage Member</center></h4> 
                 <div class="row"> 
                     <div class="col-lg-2"></div>
                     <div class="col-lg-3">
@@ -25,7 +25,7 @@
                         </select>
                         <br>
                     </div>
-                    <div class="col-lg-2"></div>
+                    <div class="col-lg-2"> <center v-if="search!=''">Result : {{listFilter.length}} </center></div>
                 </div>
                 <table style="width:100%" >
                     <tr style="width:100%">
