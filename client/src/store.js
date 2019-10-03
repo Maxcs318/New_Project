@@ -214,6 +214,9 @@ const store = new Vuex.Store({
         Edit_Profile(state,Eprofile){
             state.the_user = Eprofile
         },
+        Edit_Profile_BY_Admin(state,Eprofile){
+            // state.the_user = Eprofile
+        },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
             let index = state.academic_article.findIndex(a => a.aa_id == Edit_AA.aa_id)
@@ -768,8 +771,17 @@ const store = new Vuex.Store({
             axios.post(base_url +'user/edit_profile',profile)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit("Edit_Profile",response.data)
+                }
+            })
+        },
+        Edit_Profile_BY_Admin(context,profile){
+            axios.post(base_url +'user/edit_profile',profile)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Edit_Profile_BY_Admin",response.data)
                 }
             })
         },

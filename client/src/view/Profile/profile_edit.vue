@@ -103,28 +103,46 @@ export default {
         },
         submitEditProfile(){
             var chk = md5(this.passwordCheck)
+            var chk_username = 'YES'
+                    for(var i=0; i<this.MemberAll.length; i++){
+                        if( this.E_member.m_username == this.MemberAll[i].m_username 
+                         && this.E_member.m_id != this.MemberAll[i].m_id ){
+                            chk_username = 'NO'
+                            // console.log(chk_username,this.E_member.m_id,this.MemberAll[i].m_id)
+                        }
+                            // console.log(chk_username,this.E_member.m_id,this.MemberAll[i].m_id)
+                    }
             if(chk != this.passwordOld){
                 this.$swal(" Confirm Password Incorrect .", "", "error")
                 this.passwordCheck = ''
             }else{
-                var jsonProfile = JSON.stringify(this.E_member)
-                var FD  = new FormData()
+                if( chk_username == 'YES' ){
+                    var jsonProfile = JSON.stringify(this.E_member)
+                    var FD  = new FormData()
 
-                    if(this.url != null || this.url!= ''){
-                        FD.append('userfile',this.fileimage)
-                    }
-                    FD.append('profile',jsonProfile)            
-                    FD.append('own_id',JSON.stringify(this.$store.state.log_on))
-                    this.$store.dispatch("Edit_Profile",FD)
+                        if(this.url != null || this.url!= ''){
+                            FD.append('userfile',this.fileimage)
+                        }
+                        FD.append('profile',jsonProfile)            
+                        FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+                        this.$store.dispatch("Edit_Profile",FD)
 
-                    setTimeout(()=>{
-                        this.$router.push('/myProfile')
-                    },2000)  
-                this.$swal("Edit Profile Success .", "", "success")
+                        setTimeout(()=>{
+                            this.$router.push('/myProfile')
+                        },2000)  
+                    this.$swal("Edit Profile Success .", "", "success")
+                    this.passwordCheck = ''
+                }else{
+                    this.$swal("This Username Is Already Taken. .", "", "error")
+                    this.passwordCheck = ''  
+                }
             }
         }
     },
     computed:{
+        MemberAll(){
+            return this.$store.getters.getMembers
+        },
         the_user(){
             var user = this.$store.getters.getThe_User
             this.E_member = user

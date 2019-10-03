@@ -1,11 +1,11 @@
 <template>
     <div class="container ">
         <center><h4> Edit Profile </h4></center><br>
-        <div class="row" v-if="the_user">
+        <div class="row" v-if="this_user_edit">
             <div class="col-lg-3 col-xs-12"></div>      
             <div class="col-lg-6 col-xs-12">
-                <img v-if="the_user.m_imageprofile != '' && url == null" :src="getImgUrl(the_user.m_imageprofile)" width="100%">
-                <img v-if="the_user.m_imageprofile == '' && url== null" :src=" this.path_files+'Profile_Image/default_profile.jpg'" width="100%">
+                <img v-if="this_user_edit.m_imageprofile != '' && url == null" :src="getImgUrl(this_user_edit.m_imageprofile)" width="100%">
+                <img v-if="this_user_edit.m_imageprofile == '' && url== null" :src=" this.path_files+'Profile_Image/default_profile.jpg'" width="100%">
                 <img v-if="url"  :src="url" width="100%"/><br><br>
                     <button type="button" class="btn btn-primary" @click="ChooseFiles">
                         Change Image
@@ -47,7 +47,7 @@
                 Address 
                 <input type="text" v-model="E_member.m_address" class="form-control " ><br>
 
-                <div v-for="m_up in Member_Upgrade_Date" v-if="m_up.mud_id == the_user.m_upgrade_date_id">
+                <div v-for="m_up in Member_Upgrade_Date" v-if="m_up.mud_id == this_user_edit.m_upgrade_date_id">
                     <div v-for="m_up_type in Member_Type" v-if="m_up.mud_member_type_id == m_up_type.mt_id">
                         Member Type Now : {{m_up_type.mt_name}} <br>
                         End in : {{m_up.mud_date_end}}
@@ -78,17 +78,15 @@
                 Confirm Password For Change Profile
                 <input type="password" v-model="passwordCheck" class="form-control " required><br>
 
-
-
                 <!-- <hr> -->
-                <!-- ID : {{the_user.m_id}}<br>
-                ID number : {{the_user.m_id_number}}<br>
-                Status : {{the_user.m_status}}<br>
-                Member Type : {{the_user.m_type}}<br>
-                Upgrade Date ID : {{the_user.m_upgrade_date_id}}<br>
-                Join in : {{the_user.m_create_date}}<br>
-                Last Edit : {{the_user.m_update_date}}<br>
-                Password : {{the_user.m_password}} -->
+                <!-- ID : {{this_user_edit.m_id}}<br>
+                ID number : {{this_user_edit.m_id_number}}<br>
+                Status : {{this_user_edit.m_status}}<br>
+                Member Type : {{this_user_edit.m_type}}<br>
+                Upgrade Date ID : {{this_user_edit.m_upgrade_date_id}}<br>
+                Join in : {{this_user_edit.m_create_date}}<br>
+                Last Edit : {{this_user_edit.m_update_date}}<br>
+                Password : {{this_user_edit.m_password}} -->
                 <div class="row">   
                     <div class="col-lg-9 col-xs-12"></div>
                     <div class="col-lg-3 col-xs-12">
@@ -135,6 +133,14 @@ export default {
         },
         submitEditProfile(){
             var chk = md5(this.passwordCheck)
+            var chk_username = 'YES'
+                    for(var i=0; i<this.MemberAll.length; i++){
+                        if( this.E_member.m_username == this.MemberAll[i].m_username 
+                         && this.E_member.m_id != this.MemberAll[i].m_id ){
+                            chk_username = 'NO'
+                        }
+                            // console.log(chk_username,this.E_member.m_id,this.MemberAll[i].m_id)
+                    }
             if(chk != this.password_admin){
                 this.$swal(" Confirm Password Incorrect .", "", "error")
                 this.passwordCheck = ''
@@ -142,27 +148,35 @@ export default {
                 if(this.E_member.m_type==1){
                     this.upgrade_time = ''
                 }
-                var jsonProfile = JSON.stringify(this.E_member)
-                var FD  = new FormData()
+                if(chk_username == 'YES'){
+                    var jsonProfile = JSON.stringify(this.E_member)
+                    var FD  = new FormData()
 
-                    if(this.url != null || this.url!= ''){
-                        FD.append('userfile',this.fileimage)
-                    }
-                    FD.append('profile',jsonProfile)            
-                    FD.append('own_id',JSON.stringify(this.$store.state.log_on))
-                    FD.append('upgrade_time',this.upgrade_time) // time use for upgrade 
-                    this.$store.dispatch("Edit_Profile",FD)
+                        if(this.url != null || this.url!= ''){
+                            FD.append('userfile',this.fileimage)
+                        }
+                        FD.append('profile',jsonProfile)            
+                        FD.append('own_id',JSON.stringify(this.$store.state.log_on))
+                        FD.append('upgrade_time',this.upgrade_time) // time use for upgrade 
+                        this.$store.dispatch("Edit_Profile_BY_Admin",FD)
 
-                    setTimeout(()=>{
-                        this.$router.push('/AdminM')
-                    },2000)  
-                this.$swal("Edit Profile Success .", "", "success")
-                this.passwordCheck = ''
+                        setTimeout(()=>{
+                            this.$router.push('/AdminM')
+                        },2000)  
+                    this.$swal("Edit Profile Success .", "", "success")
+                    this.passwordCheck = ''
+                }else{
+                    this.$swal("This Username Is Already Taken. .", "", "error")
+                    this.passwordCheck = ''                    
+                }
             }
         }
     },
     computed:{
-        the_user(){
+        MemberAll(){
+            return this.$store.getters.getMembers
+        },
+        this_user_edit(){
             var memberAll = this.$store.getters.getMembers
             var user
             var admin = this.$store.getters.getThe_User
