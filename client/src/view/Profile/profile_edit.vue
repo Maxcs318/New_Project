@@ -110,7 +110,6 @@ export default {
                             chk_username = 'NO'
                             // console.log(chk_username,this.E_member.m_id,this.MemberAll[i].m_id)
                         }
-                            // console.log(chk_username,this.E_member.m_id,this.MemberAll[i].m_id)
                     }
             if(chk != this.passwordOld){
                 this.$swal(" Confirm Password Incorrect .", "", "error")
