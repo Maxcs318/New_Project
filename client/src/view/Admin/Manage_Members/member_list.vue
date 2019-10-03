@@ -30,16 +30,20 @@
                 <table style="width:100%" >
                     <tr style="width:100%">
                         <th style="width:5%">ID</th>
-                        <th style="width:20%">First Name</th>
-                        <th style="width:20%">Last Name </th>
-                        <th style="width:20%">User Name</th>
+                        <th style="width:15%">First Name</th>
+                        <th style="width:15%">Last Name </th>
+                        <th style="width:15%">First Name Eng </th>
+                        <th style="width:15%">Last Name Eng </th>
+                        <th style="width:10%">User Name</th>
                         <th style="width:15%">Member Type</th>                        
-                        <th style="width:20%">  </th>
+                        <th style="width:10%">  </th>
                     </tr>
                     <tr v-for="(member,index) in listFilter" :key="index" >
                         <td>{{member.m_id}}</td>
                         <td>{{member.m_firstname.slice(0,35)}}</td>
                         <td>{{member.m_lastname}}</td>
+                        <td>{{member.m_firstname_eng}}</td>
+                        <td>{{member.m_lastname_eng}}</td>
                         <td>{{member.m_username}}</td>
                         <td> 
                             <div v-for="mt in Member_Type" v-if="mt.mt_id == member.m_type">
@@ -62,6 +66,8 @@ export default {
             select:[
                 {file:'firstname'},
                 {file:'lastname'},
+                {file:'firstname ENG'},
+                {file:'lastname ENG'},
                 {file:'username'},
                 {file:'member_type'}
             ],
@@ -98,11 +104,17 @@ export default {
                 return this.Members.filter(item => { return item.m_lastname.indexOf(text) > -1 })
             }else if(this.selected == 'member_type'){
                 return this.Members.filter(item => { return item.m_type.indexOf(text) > -1 })
+            }else if(this.selected == 'firstname ENG'){
+                return this.Members.filter(item => { return item.m_firstname_eng.indexOf(text) > -1 })
+            }else if(this.selected == 'lastname ENG'){
+                return this.Members.filter(item => { return item.m_lastname_eng.indexOf(text) > -1 })
             }else if(this.selected == ''){
                 return this.Members.filter(item => { 
                     return item.m_username.indexOf(text) > - 1 
                     || item.m_firstname.indexOf(text) > - 1 
                     || item.m_lastname.indexOf(text) > -1 
+                    || item.m_firstname_eng.indexOf(text) > -1 
+                    || item.m_lastname_eng.indexOf(text) > -1 
                     // || item.m_type.indexOf(text) > - 1 
                 })
             }
