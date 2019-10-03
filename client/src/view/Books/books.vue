@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" style="padding-top: 151px;">
       <div class="row">
         <div class="col-lg-3 col-6" v-for="(product,index) in book.slice().reverse()" :key="index">
           <img
