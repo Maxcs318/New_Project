@@ -4,7 +4,9 @@
       <loadingpage></loadingpage>          
     </div>
     <div v-else>
-      <navbar></navbar>
+      
+      <navbar v-if="this.$store.state.the_user == ''"></navbar>
+      <navbarmember v-if="this.$store.state.the_user != ''"></navbarmember>
       <div class="">
         
         <transition name="page" mode="out-in">
@@ -21,12 +23,14 @@
 
 <script>
   import Nav from './components/Navbar/nav';
+  import Nav_Member from './components/Navbar/nav_member.vue';
   import Footer from './components/Footer/foot.vue';
   import Loadingpage from './components/loadingpage/loadingData';
 
   export default {
     components :{
       navbar : Nav,
+      navbarmember : Nav_Member,
       foot : Footer,
       loadingpage : Loadingpage,
     },
