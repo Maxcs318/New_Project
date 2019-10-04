@@ -8,8 +8,6 @@
             parent::__construct();
             $this->load->model("Banking_model");
             $this->load->model('../../Check_/models/Check__model');
-            $this->load->model('../../Files_Upload/models/Files_Upload_model');
-            $this->load->model('../../Shipping_Address/models/Shipping_Address_model');
             $this->output->set_content_type("application/json", 'utf-8');
             // $this->output->set_header("Access-Control-Allow-Origin: *");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST , OPTIONS");
