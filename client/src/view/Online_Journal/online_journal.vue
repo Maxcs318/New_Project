@@ -26,7 +26,7 @@
 export default {
     methods:{
         loadFile(fi){
-            return this.path_files+'Files_Upload/'+fi
+            return this.path_files+'Online_Journal_Files_Upload/'+fi
         },
     },
     computed : {

@@ -45,7 +45,7 @@ export default {
       return this.path_files + "Academic_Article/" + pic;
     },
     loadFile(fi) {
-      return this.path_files + "Files_Upload/" + fi;
+      return this.path_files + "Academic_Article_Files_Upload/" + fi;
     },
     seethisPageArticle(thisAcademic_Article) {
       this.$router.push({name: "academic_article",params: { AcademicArticleID: thisAcademic_Article }});

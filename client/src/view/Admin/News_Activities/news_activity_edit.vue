@@ -72,7 +72,7 @@ export default {
             return this.path_files+'News/'+pic
         },
         loadFile(fi){
-            return this.path_files+'Files_Upload/'+fi
+            return this.path_files+'News_Files_Upload/'+fi
         },
         // choose image
         ChooseFilesImage(){

@@ -80,7 +80,7 @@ export default {
             return this.path_files+'Article/'+pic
         },
         loadFile(fi){
-            return this.path_files+'Files_Upload/'+fi
+            return this.path_files+'Article_Files_Upload/'+fi
         },
         // image
         ChooseFilesImage(){

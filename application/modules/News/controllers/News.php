@@ -80,7 +80,7 @@
                         $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                         // End Set FileName
                         $configFiles = array(
-                            'upload_path'   => './../public/assets/Files_Upload/',
+                            'upload_path'   => './../public/assets/News_Files_Upload/',
                             'allowed_types' => '*',
                             'max_size'      => '0',
                         );
@@ -177,7 +177,7 @@
                         $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                         // End Set FileName
                         $configFiles = array(
-                            'upload_path'   => './../public/assets/Files_Upload/',
+                            'upload_path'   => './../public/assets/News_Files_Upload/',
                             'allowed_types' => '*',
                             'max_size'      => '0',
                         );
