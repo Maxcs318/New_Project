@@ -96,7 +96,7 @@ export default {
             if(user == '' || user == null){
                 return 'register'                
             }else{
-                this.$router.push("/")
+                this.$router.go(-1)
             }
         }
     }

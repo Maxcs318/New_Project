@@ -47,6 +47,7 @@ import admin_Order from "./view/Admin/Shopping/order.vue" // detail order for ch
 import admin_Gallery from "./view/Admin/Gallery/gallery_list.vue"
 import admin_Academic_Articles from "./view/Admin/Academic_Articles/academic_articles.vue"
 import admin_Online_Journal from "./view/Admin/Online_Journal/online_journals.vue"
+import admin_Research from "./view/Admin/Research/researchs.vue"
 
 import admin_member_list from "./view/Admin/Manage_Members/member_list.vue"
 
@@ -59,6 +60,8 @@ import addVideos from "./view/Admin/Videos_Room/videos_videoroom_insert/Videos_i
 import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
 import addAcademicArticle from "./view/Admin/Academic_Articles/academic_article_insert.vue"
 import addOnline_Journal from "./view/Admin/Online_Journal/online_journal_insert.vue"
+import addResearch from "./view/Admin/Research/research_insert.vue"
+
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -69,6 +72,8 @@ import EditVideo from './view/Admin/Videos_Room/videos_vodeoroom_edit/Videos_edi
 import EditGallery from './view/Admin/Gallery/gallery_edit.vue';
 import EditAcademicArticle from './view/Admin/Academic_Articles/academic_article_edit.vue';
 import EditOnline_Journal from './view/Admin/Online_Journal/online_journal_edit.vue';
+import EditResearch from "./view/Admin/Research/research_edit.vue"
+
 
 import admin_member_edit from "./view/Admin/Manage_Members/member_edit.vue"
 
@@ -140,6 +145,7 @@ export const router = new VueRouter({
         { path : "/AdminListGallery",component : admin_Gallery },
         { path : "/AdminAA",component : admin_Academic_Articles },
         { path : "/AdminOJ",component : admin_Online_Journal },
+        { path : "/AdminR",component : admin_Research },
 
         { path : "/AdminM",component : admin_member_list },
 
@@ -153,6 +159,7 @@ export const router = new VueRouter({
         { path : "/addgallery",component : addGallery },
         { path : "/add_academicarticle",component : addAcademicArticle },
         { path : "/addonline_journal",component : addOnline_Journal },
+        { path : "/addresearch",component : addResearch },
 
         
         // stop insert
@@ -166,6 +173,7 @@ export const router = new VueRouter({
         { path : "/editgallery/:GalleryID",name:"editgallery",component : EditGallery },
         { path : "/editacademicarticle/:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
         { path : "/editonline_journal/:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
+        { path : "/editresearch/:ResearchID",name:"editresearch",component : EditResearch },
 
         { path : "/editmember_by_admin/:MemberID",name:"editmember_by_admin",component : admin_member_edit },
         

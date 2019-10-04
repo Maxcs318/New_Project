@@ -6,7 +6,7 @@
     <div v-else>
       
       <navbar v-if="this.$store.state.the_user == ''"></navbar>
-      <navbarmember v-if="this.$store.state.the_user != ''"></navbarmember>
+      <navbarmember v-else-if="this.$store.state.the_user != ''"></navbarmember>
       <div class="">
         
         <transition name="page" mode="out-in">

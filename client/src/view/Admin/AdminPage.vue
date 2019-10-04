@@ -28,6 +28,9 @@
             <div class="col-lg-6 col-xs-12">
                 <button type="button" class="form-control btn-danger" @click="manage_members">Manage Members</button> <br>
             </div>
+            <div class="col-lg-6 col-xs-12">
+                <button type="button" class="form-control btn-dark" @click="research">Research</button> <br>
+            </div>
         </div>
     </div>
 </template>
@@ -60,6 +63,9 @@ export default {
         },
         manage_members(){
             this.$router.push('/AdminM')
+        },
+        research(){
+            this.$router.push('/AdminR')
         }
     }
 }
