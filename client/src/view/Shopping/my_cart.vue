@@ -1,11 +1,13 @@
 <template>
-  <div class="container">
+  <div class="container" style="padding-top: 154px; margin-bottom: 143px;">
     <!-- // -->
     <div v-if="address_show == 'OFF'">
       <div class="row">
-        <div class="col-lg-10 col-xs-12"></div>
-        <div class="col-lg-2 col-xs-12">
-          <button type="button" class="form-control btn-primary" @click="page_order">Order</button>
+        <div class="col-lg-10 col-7">
+          <header>รายการในตะกร้า</header>
+        </div>
+        <div class="col-lg-2 col-5">
+          <button type="button" class="form-control btn-warning" @click="page_order">Order</button>
           <br />
         </div>
       </div>
@@ -24,62 +26,96 @@
         </center>
       </div>
 
-      <div class="row" v-if="MyCart.length>0 && Compute_Total && thisMyCart.length!=0">
-        <div class="col-lg-12 col-xs-12">
-          <center>
-            <h5>My Cart</h5>
-          </center>
-          <br />
-          <table style="width:100%; text-align: center;">
-            <tr style="width:100% ">
-              <th>No</th>
-              <th>image</th>
-              <th>Name Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Price Total</th>
-              <th></th>
-            </tr>
-            <tr style="width:100% " v-for=" (MC,index) in thisMyCart" :key="index">
-              <td>{{index+1}}</td>
-              <td style="width:10% ">
-                <img :src="getImgUrl(MC.p_image)" width="100%" @click="seethisPageProduct(MC.p_id)" />
-                <!-- {{MC.p_image}} -->
-              </td>
-              <td @click="seethisPageProduct(MC.p_id)">{{MC.p_name}}</td>
-              <td>{{MC.p_price}}</td>
-              <td>
-                <button class="btn" @click="remove_product(index,MC.p_id)">-</button>
-                {{MC.quantity}}
-                <button
-                  class="btn"
-                  @click="add_product(index,MC.p_id)"
-                >+</button>
-              </td>
-              <td>{{computePrice( index,MC.p_price,MC.quantity )}}</td>
-              <td>
-                <button
-                  class="btn btn-danger"
-                  type="button"
-                  @click="remove_all(index,MC.p_id)"
-                >Remove</button>
-              </td>
-            </tr>
-          </table>
-          <p style="text-align: center;" class>Total Price {{total_Price}} ฿</p>
-          <br />
-          <br />
-        </div>
-        <div class="col-lg-3 col-xs-3">
-          <button type="button" class="form-control btn-danger" @click="clear_cart">Clear Cart</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-6"></div>
-        <div class="col-lg-3 col-xs-3">
-          <button type="button" class="form-control btn-primary" @click="check_out">Check Out</button>
+      <!-- ------------|---------------------|------------------ -->
+      <!-- ------------|---------- order ----|------------------ -->
+      <!-- ------------V---------------------V------------------ -->
+      <div v-if="MyCart.length>0 && Compute_Total && thisMyCart.length!=0">
+        <div
+          v-for=" (MC,index) in thisMyCart"
+          :key="index"
+          style="background:#1A2A3E; border-radius:6px; margin-bottom: 8px"
+        >
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <button
+                @click="remove_all(index,MC.p_id)"
+                type="button"
+                class="close"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&#10006;</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <img
+                class="cart-img"
+                :src="getImgUrl(MC.p_image)"
+                @click="seethisPageProduct(MC.p_id)"
+              />
+              <!-- {{MC.p_image}} -->
+              <br />
+              <div @click="seethisPageProduct(MC.p_id)" style="text-align:center">{{MC.p_name}}</div>
+            </div>
+            <div class="col-lg-5">
+              <br />
+              <table width="100%">
+                <tr>
+                  <td class="td-padding">ราคาต่อชิ้น</td>
+                  <td style="text-align:center">{{MC.p_price}} ฿</td>
+                </tr>
+                <tr>
+                  <td class="td-padding">จำนวน</td>
+                  <td style="text-align:center">
+                    <button class="btn btn-quantity" @click="remove_product(index,MC.p_id)">-</button>
+                    {{MC.quantity}}
+                    <button
+                      class="btn btn-quantity"
+                      @click="add_product(index,MC.p_id)"
+                    >+</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-padding">รวม</td>
+                  <td style="text-align:center">{{computePrice( index,MC.p_price,MC.quantity )}} ฿</td>
+                </tr>
+              </table>
+            </div>
+          </div>
           <br />
         </div>
       </div>
+
+      <!-- ราคารวมสินค้าทั้งหมด -->
+      <hr />
+      <div class="row">
+        <div class="col-lg-6 col-xs-6"></div>
+        <div class="col-lg-6 col-xs-6">
+          <table width="100%">
+            <tr>
+              <td>รวมทั้งหมด</td>
+              <td style="text-align: right">{{total_Price}} ฿</td>
+            </tr>
+          </table>
+          <br />
+          <button
+            type="button"
+            class="col-lg-5 form-control btn-danger float-right"
+            @click="clear_cart"
+          >ล้างตะกร้า</button>
+          <br />
+          <br />
+
+          <button
+            type="button"
+            class="col-lg-5 form-control btn-warning float-right"
+            @click="check_out"
+          >ดำเนินการต่อ</button>
+        </div>
+      </div>
+      <!-- ************** -->
     </div>
     <!-- // -->
     <div v-else>
@@ -354,6 +390,12 @@ export default {
 };
 </script>
  <style scoped>
+header {
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 120%;
+  letter-spacing: 0.75px;
+}
 .empty-cart {
   margin-bottom: 269px;
 }
@@ -383,5 +425,75 @@ a.empty-link:hover {
   transition: 0.25s;
   /* font-size: 23px; */
   color: #fff;
+}
+.btn-quantity {
+  font-weight: 600px;
+  color: #fff;
+}
+td,
+tr {
+  font-size: 1.1em;
+  padding-top: 7px;
+  line-height: 150%;
+}
+.close {
+  background-color: #fff;
+  width: 24px;
+  height: 24px;
+  font-size: 1em;
+  font-weight: 700;
+  margin-top: 14px;
+  margin-right: 14px;
+  opacity: 0.6;
+  border: none;
+  text-align: center;
+  border-radius: 50%;
+  color: black;
+}
+.close:hover {
+  background-color: #000;
+  color: #fff;
+}
+.cart-img {
+  width: 80%;
+  max-height: 258px;
+  max-width: 258px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #ff3838;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  border-radius: 24px;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: red;
+}
+.btn-warning {
+  color: #093f84;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  border-radius: 24px;
+  border: none;
+}
+.btn-warning:hover {
+  background-color: #ffa801;
+}
+hr {
+  background-color: #fff;
+  height: 2px;
+  opacity: 0.1;
+}
+
+@media only screen and (max-width: 600px) {
+   .td-padding{
+    padding-left: 13%;
+  }
 }
 </style>
