@@ -8,11 +8,14 @@
         <div class="row  " v-if="thisProduct">
             <div class="col-lg-1 col-xs-12"></div>
             <div class="col-lg-5 col-xs-12">
-                <img :src="getImgUrl(thisProduct.p_image)" width="100%">
+                <img :src="getImgUrl(show_pic)" width="100%">
                 <br><br>
                 <div class="row">
+                    <div class="col-lg-3">
+                        <img :src="getImgUrl(thisProduct.p_image)" width="100%" @click="see_this_pic(thisProduct.p_image)">
+                    </div>
                     <div class="col-lg-3"  v-if="thisProduct_Image" v-for="(pi,index) in thisProduct_Image" :key="index">
-                        <img :src="getImgUrl(pi.pi_name)" width="100%">
+                        <img :src="getImgUrl(pi.pi_name)" width="100%" @click="see_this_pic(pi.pi_name)">
                         <br><br>
                     </div>
                 </div>
@@ -44,10 +47,14 @@ export default {
         return{
             amount:1,
             total:0,
-            nowcart:[]
+            nowcart:[],
+            show_pic:''
         }
     },
     methods:{
+        see_this_pic(select_pic){
+            this.show_pic = select_pic
+        },
         getImgUrl(pic) {
             return this.path_files+'Product/'+pic
         },
@@ -108,6 +115,7 @@ export default {
                 }     
         },
         path_files(){
+            this.show_pic = this.thisProduct.p_image
             return this.$store.getters.getPath_Files
         }
         
