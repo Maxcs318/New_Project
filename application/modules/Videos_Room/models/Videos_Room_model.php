@@ -20,7 +20,6 @@
         // get all Video_room
         public function get_all_video_room()
         {               
-            // $this->db->order_by('vr_id', 'DESC');
             $videosAll = $this->db->get($this->video_room)->result(); 
             return json_encode($videosAll);  
         }
@@ -57,8 +56,16 @@
         {
             return json_encode($this->db->where($where)->update($this->videos,$data));
         }
-        
-
+        // delete Room
+        public function delete_video_room($where=array())
+        {
+            return json_encode($this->db->where($where)->delete($this->video_room));
+        }
+        // delete Video
+        public function delete_video($where=array())
+        {
+            return json_encode($this->db->where($where)->delete($this->videos));
+        }
 
 
 

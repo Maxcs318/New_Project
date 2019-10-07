@@ -1,12 +1,15 @@
 <template>
   <div>
-    <div class="container" v-if="this.$store.state.statusPage == 'none' ">
+    
+    <div v-if="this.$store.state.statusPage == 'none' ">
       <loadingpage></loadingpage>          
     </div>
-    <div v-else>
+
+    <div v-else-if="this.$store.state.statusPage != 'none' && read_background" :style="BG">
       
       <navbar v-if="this.$store.state.the_user == ''"></navbar>
-      <navbarmember v-else-if="this.$store.state.the_user != ''"></navbarmember>
+      <navbarmember v-else-if="this.$store.state.the_user.m_status == 'user'"></navbarmember>
+      <navbaradmin v-else-if="this.$store.state.the_user.m_status == 'admin'"></navbaradmin>
       <div class="">
         
         <transition name="page" mode="out-in">
@@ -24,13 +27,37 @@
 <script>
   import Nav from './components/Navbar/nav';
   import Nav_Member from './components/Navbar/nav_member.vue';
+  import Nav_Admin from './components/Navbar/nav_admin.vue';
   import Footer from './components/Footer/foot.vue';
   import Loadingpage from './components/loadingpage/loadingData';
 
   export default {
+    data(){
+      return{
+        BG:'',
+        userBG:{
+          backgroundColor: "#01152E"
+        },
+        adminBG:{
+          backgroundColor: "white"
+        }
+      }
+    },
+    computed : {
+      read_background(){
+        var user = this.$store.state.the_user
+          if(user.m_status == 'admin'){
+            this.BG = this.adminBG
+          }else{
+            this.BG = this.userBG
+          }
+        return true
+      }
+    },
     components :{
       navbar : Nav,
       navbarmember : Nav_Member,
+      navbaradmin : Nav_Admin,
       foot : Footer,
       loadingpage : Loadingpage,
     },
@@ -64,7 +91,6 @@
 
           
     }
-    
   }
 
 </script>

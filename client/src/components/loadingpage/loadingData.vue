@@ -1,10 +1,17 @@
-<template>
+<template style="background-color: #ffffff">
     <div class="container x ">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <svg viewBox="0 0 960 300">
                     <symbol id="s-text">
-                        <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'none'"> G A M A </text>
+                        <text text-anchor="middle" x="50%" y="80%"
+                            v-if="this.$store.state.statusPage == 'none' && this.$store.state.the_user.m_status == 'user'">
+                         G A M A 
+                        </text>
+                        <text text-anchor="middle" x="50%" y="80%" 
+                            v-if="this.$store.state.statusPage == 'none' && this.$store.state.the_user.m_status == 'admin'">
+                         A D M I N 
+                        </text>
                         <text text-anchor="middle" x="50%" y="80%" v-if="this.$store.state.statusPage == 'save'">Saving . . .</text>
                     </symbol>
                     <g class = "g-ants">
@@ -22,7 +29,7 @@
 
 <style>
     /* @import url(https://fonts.googleapis.com/css?family=Montserrat); */
-
+    
     .x{
         height: 100%;
         font-weight: 100%;

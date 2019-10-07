@@ -278,6 +278,20 @@ const store = new Vuex.Store({
                 state.product.splice(index,1)
             }
         },
+        Delete_Video_Room(state,video_roomID){
+            let index = state.video_room.findIndex(v => v.vr_id == video_roomID)
+            if(index > -1){
+                // console.log(state.video_room[index])
+                state.video_room.splice(index,1)
+            }
+        },
+        Delete_Video(state,videoID){
+            let index = state.videos.findIndex(v => v.v_id == videoID)
+            if(index > -1){
+                // console.log(state.videos[index])
+                state.videos.splice(index,1)
+            }
+        },
         Delete_Academic_Article(state,academic_articleID){
             let index = state.academic_article.findIndex(a => a.aa_id == academic_articleID)
             if(index > -1){
@@ -845,6 +859,24 @@ const store = new Vuex.Store({
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
                     context.commit("Delete_Product",response.data)
+                }
+            })
+        },
+        Delete_Video_Room(context,this_video_room){
+            axios.post(base_url +'Videos_Room/delete_video_room',this_video_room)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Delete_Video_Room",response.data)
+                }
+            })
+        },
+        Delete_Video(context,this_video){
+            axios.post(base_url +'Videos_Room/delete_video',this_video)
+            .then(response =>{
+                // console.log('Response Data',response.data)
+                if(response.data != 'fail'){
+                    context.commit("Delete_Video",response.data)
                 }
             })
         },

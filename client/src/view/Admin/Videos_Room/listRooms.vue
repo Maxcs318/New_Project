@@ -26,7 +26,7 @@
                         <td>{{list.vr_update_date}}</td>
                         <td> <button class="form-control btn-success" @click="seethisRoom(list.vr_id)"> In Room </button> </td>
                         <td> <button class="form-control btn-warning" @click="editRoom(list.vr_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger">Delete</button> </td>
+                        <td> <button class="form-control btn-danger" @click="deleteRoom(list.vr_id)">Delete</button> </td>
                     </tr>
                 </table>
             </div>
@@ -45,7 +45,27 @@ export default {
         },
         editRoom(thisroom){
             this.$router.push({name:'editvideoroom',params:{RoomID:thisroom}});
-
+        },
+        deleteRoom(thisroom){
+            var FD  = new FormData()
+            FD.append('video_roomID',JSON.stringify(thisroom))
+            FD.append('creator',JSON.stringify(this.$store.state.log_on))
+            this.$swal({
+                title: "Are you sure?",
+                text: "You want delete this Video Room ID "+thisroom,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // console.log(thisroom)
+                    this.$store.dispatch("Delete_Video_Room",FD)
+                    swal({title: "Delete Success.",icon: "success",});
+                } else {
+                    // swal("Your imaginary file is safe!");
+                }
+            })
         }
     },
     computed:{

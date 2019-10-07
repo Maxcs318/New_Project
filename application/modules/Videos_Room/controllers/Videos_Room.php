@@ -125,7 +125,60 @@
                     echo json_encode($Video);
                 }      
         }
+        // delete Room
+        public function delete_video_room()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //do delete video_room
+            $video_roomID = json_decode($this->input->post('video_roomID'));
+            $video_room['vr_id'] = $video_roomID;
+            $do_delete = $this->Videos_Room_model->delete_video_room($video_room);
+            if($do_delete == true){
+                // delete video in this room
+                $video['v_room'] = $video_roomID;
+                $this->Videos_Room_model->delete_video($video);
 
+                echo json_encode($video_roomID);
+            }
+            //
+
+        }
+        // delete Video
+        public function delete_video()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit;
+            }
+            //do delete video
+            $videoID = json_decode($this->input->post('videoID'));
+            $video['v_id'] = $videoID;
+            $do_delete = $this->Videos_Room_model->delete_video($video);
+            // echo $do_delete;
+            if($do_delete == true){
+                echo json_encode($videoID);
+            }
+
+        }
 
 
 
