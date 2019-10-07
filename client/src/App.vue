@@ -39,7 +39,7 @@
           backgroundColor: "#01152E"
         },
         adminBG:{
-          backgroundColor: "white"
+          backgroundColor: "black"
         }
       }
     },
