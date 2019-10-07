@@ -10,7 +10,9 @@
             class="invite-text2"
           >สมัครสมาชิกสมาคมผู้จัดการและเจ้าของสำนักงานตัวแทนประกันชีวิต (GAMA)</label>
           <br />
-          <button type="button">สมัครสมาชิก</button>
+          <router-link to="/register">
+            <button type="button">สมัครสมาชิก</button>
+          </router-link>
           <br />
           <label class="invite-text3">ตรวจสอบสถานะสมาชิก</label>
           <br />

@@ -13,7 +13,9 @@
         <br />
         <label class="text3">สมัครสมาชิกสมาคมผู้จัดการและเจ้าของสำนักงานตัวแทนประกันชีวิต (GAMA)</label>
         <br />
-        <button class="btn register-btn">สมัครสมาชิก</button>
+        <router-link to="/register">
+          <button class="btn register-btn" @click="go_register">สมัครสมาชิก</button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -36,6 +38,9 @@ export default {
     },
     onSlideEnd(slide) {
       this.sliding = true;
+    },
+    go_register(){
+      this.$router.push('/register')
     }
   }
 };

@@ -5,7 +5,9 @@
         <div class="row">
           <header class="col-lg-10 col-xs-12 header">บทความ GAMA Thailand</header>
           <div class="col-lg-2">
-            <button class="btn-viewall">ดูทั้งหมด></button>
+            <router-link to="/articles">
+              <button type="button" class="btn-viewall">ดูทั้งหมด></button>
+            </router-link>
           </div>
         </div>
         <div class="row">
@@ -42,6 +44,10 @@ export default {
         name: "article",
         params: { ArticleID: thisarticle }
       });
+    },
+    seeArticleAll(){
+      // articles
+      this.$router.push('/articles')
     }
   },
   computed: {

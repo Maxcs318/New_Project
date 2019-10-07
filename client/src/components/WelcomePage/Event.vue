@@ -2,7 +2,9 @@
   <div>
     <div class="event">
       <div class="container">
-        <h1>ภาพกิจกรรมของ GAMA</h1>
+        <router-link to="/gallerylist">
+          <h1>ภาพกิจกรรมของ GAMA</h1>
+        </router-link>
         <div class="row">
           <div
             class="col-lg-3 col-6"

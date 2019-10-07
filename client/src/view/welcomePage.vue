@@ -46,7 +46,7 @@ import News from "../components/WelcomePage/News";
 import Article from "../components/WelcomePage/Article";
 import Book from "../components/WelcomePage/Book";
 import TrainingCourse from "../components/WelcomePage/TrainingCourse";
-import Event from "../components/WelcomePage/Event";
+import TheEvent from "../components/WelcomePage/Event";
 import Register from "../components/WelcomePage/Register";
 import Sponsor from "../components/WelcomePage/Sponsor";
 export default {
@@ -61,7 +61,7 @@ export default {
     thearticle: Article,
     book: Book,
     trainingCourse: TrainingCourse,
-    event: Event,
+    event: TheEvent,
     register: Register,
     sponsor: Sponsor
   },

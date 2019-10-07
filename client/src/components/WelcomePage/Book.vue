@@ -5,7 +5,9 @@
         <div class="row">
           <label class="col-lg-10 col-xs-12 header">หนังสือ</label>
           <div class="col-lg-2">
-            <button class="btn-viewall">ดูทั้งหมด></button>
+            <router-link to="/books">
+              <button class="btn-viewall" type="button" >ดูทั้งหมด></button>
+            </router-link>
           </div>
         </div>
         <div class="row justify-content-around">

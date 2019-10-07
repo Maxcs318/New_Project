@@ -5,7 +5,9 @@
         <div class="row">
           <header class="col-lg-10 col-xs-12 header">หลักสูตรอบรม</header>
           <div class="col-lg-2 col-xs-12">
-            <button class="btn-viewall">ดูทั้งหมด></button>
+            <router-link to="/training_courses">
+              <button class="btn-viewall">ดูทั้งหมด></button>
+            </router-link>
           </div>
         </div>
         <div class="row">
