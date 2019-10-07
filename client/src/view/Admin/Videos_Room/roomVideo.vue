@@ -1,5 +1,5 @@
 <template>
-    <div class="container ">
+    <div class="container " v-if="the_user">
         <div class="row">
             <div class="col-lg-12 col-xs-12" v-for="(video,index) in thisVideo" :key="index">
                 <h4>{{video.v_title}}</h4>    
@@ -26,6 +26,13 @@ export default {
                 }
             }
             return thisvideo
+        },
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
         }
    } 
 }

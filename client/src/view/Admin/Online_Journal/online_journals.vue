@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="the_user">
         <h4 class=" "> Online Journal ( ลำดับจาก ล่าสุด -> เก่า )</h4> <br>
         <div class="row">
             <div class="col-lg-9 col-xs-12"></div>
@@ -71,7 +71,11 @@ export default {
             return this.$store.getters.getOnline_Journal
         },
         the_user(){
-            return this.$store.getters.getThe_User
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
         }
     },
     created(){

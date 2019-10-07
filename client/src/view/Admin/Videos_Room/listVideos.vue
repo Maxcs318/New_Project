@@ -1,5 +1,5 @@
 <template>
-        <div class="container">
+        <div class="container" v-if="the_user">
         <h4 class=" " v-if="thisRoom">List Videos in -> {{thisRoom.vr_title}}</h4> <br>
         <div class="row">
             <div class="col-lg-9 col-xs-12"></div>
@@ -86,6 +86,13 @@ export default {
             }
             return room_now
         },
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
+        }
     }
 }
 </script>

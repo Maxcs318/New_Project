@@ -1,7 +1,7 @@
 <template>
-    <div class="container ">
+    <div class="container " v-if="thisOnline_Journal && the_user">
         <center><h4>Edit Online_Journal ID : {{ this.$route.params.Online_JournalID }}</h4></center>
-        <div class="row mt-5" v-if="thisOnline_Journal && the_user">
+        <div class="row mt-5" >
             <div class="col-lg-2 col-xs-12"></div>
             <div class="col-lg-8 col-xs-12">
                 <form @submit.prevent="submitOnline_Journal">                        
@@ -164,7 +164,7 @@ export default {
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.push('/')
+                this.$router.go(-1)
             }
             return user
         },

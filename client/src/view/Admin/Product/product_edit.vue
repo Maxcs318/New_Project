@@ -200,7 +200,7 @@ export default {
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.push('/')
+                this.$router.go(-1)
             }
             return user
         },

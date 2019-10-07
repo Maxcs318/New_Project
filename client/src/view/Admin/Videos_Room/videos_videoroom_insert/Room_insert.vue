@@ -1,5 +1,5 @@
 <template>
-    <div class="container ">
+    <div class="container " v-if="the_user">
         <center><h4>Create Room</h4></center>
         <div class="row">
             <div class="col-lg-3 col-xs-12"></div>
@@ -40,12 +40,20 @@ export default {
             FD.append('room',JSON.stringify(this.createR))
             FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("CreateRoom",FD)
-            // setTimeout(()=>{
-                // this.$router.push('/addvideosandroom')
-            // },1000)  
+            setTimeout(()=>{
+                this.$router.go(-1)
+            },1000)  
             this.$swal("Create Room Success .", "", "success")
         }
     },
-
+    computed:{
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
+        }
+    }
 }
 </script>

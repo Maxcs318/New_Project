@@ -1,5 +1,5 @@
 <template>
-    <div class="container ">
+    <div class="container " v-if="the_user">
         <center><h4>Add Video</h4></center>
         <div class="row">
             <div class="col-lg-3 col-xs-12"></div>
@@ -78,12 +78,22 @@ export default {
             FD.append('videos',JSON.stringify(this.addVideos))
             FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$store.dispatch("AddVideos",FD)
+            setTimeout(()=>{
+                this.$router.go(-1)
+            },1000) 
             this.$swal("Add Videos Success .", "", "success")
         }
     },
     computed:{
         ListRoom(){
             return this.$store.getters.getVideo_Room
+        },
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
         }
     }
 }

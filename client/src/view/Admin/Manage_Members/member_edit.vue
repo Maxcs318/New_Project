@@ -1,5 +1,5 @@
 <template>
-    <div class="container ">
+    <div class="container " v-if="the_user">
         <center><h4> Edit Profile </h4></center><br>
         <div class="row" v-if="this_user_edit">
             <div class="col-lg-3 col-xs-12"></div>      
@@ -173,6 +173,13 @@ export default {
         }
     },
     computed:{
+        the_user(){
+            var user = this.$store.getters.getThe_User
+            if( user.m_status != 'admin' ){
+                this.$router.go(-1)
+            }
+            return user
+        },
         MemberAll(){
             return this.$store.getters.getMembers
         },
