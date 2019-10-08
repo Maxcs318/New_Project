@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="padding-top: 151px;">
-      {{length_page}}
+      <!-- {{length_page}} -->
     <div class="row"> 
       <div
         class="col-lg-6 col-12"
@@ -12,7 +12,6 @@
         <img :src="getImgUrlArticle(article.a_image)" width="100%" height="370px" />
         <h5 class="head">{{article.a_title}}</h5>
         <p class="date">{{article.a_create_date.slice(0,-13)}}</p>
-        <!-- <p style="text-indent: 2em;">{{article.a_detail.slice(0,60)}}</p> -->
       </div>
     </div>
     <div class="row">
@@ -21,12 +20,15 @@
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="Second group">
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
-            <button type="button" class="btn btn-secondary" v-for=" run_page in length_page " @click="seenextPage(run_page)">{{run_page}}</button>
+            <button type="button" class="btn btn-secondary" 
+            v-for=" (run_page,index) in length_page " @click="seenextPage(run_page)" v-bind:class="{ active: isActive[index+1] }">
+              {{run_page}}
+            </button>
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>    
           </div>
         </div>
         
-        <nav aria-label="Page navigation example" style="cursor:pointer;">
+        <!-- <nav aria-label="Page navigation example" style="cursor:pointer;">
           <ul class="pagination justify-content-end">
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> << </h5></li>
 
@@ -37,6 +39,7 @@
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> >> </h5></li>
           </ul>
         </nav>
+        {{isActive}} -->
 
       </div>
     </div>
@@ -49,8 +52,8 @@ export default {
     return{
       page:0,
       length_page:0,
-      isActive:false
-    }
+      isActive:[]
+      }
   },
   methods: {
     getImgUrlArticle(pic) {
@@ -72,9 +75,18 @@ export default {
   computed: {
     the_article() {
       var setpage = this.$route.params.Page
+      var articles = this.$store.getters.getArticle
       this.page = setpage - 1
-      this.length_page = this.$store.getters.getArticle.length/6
-      return this.$store.getters.getArticle;
+      this.length_page = Math.ceil(articles.length/6) // set page all
+      this.isActive = []
+        for(var i=0; i<= Math.ceil(articles.length/6) ;i++){
+          if(i==this.$route.params.Page){
+            this.isActive.push(true)
+          }else{
+            this.isActive.push(false)
+          }
+        }
+      return articles
     },
     path_files() {
       return this.$store.getters.getPath_Files;
