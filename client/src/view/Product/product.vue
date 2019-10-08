@@ -72,8 +72,8 @@
     </div>
 
     <div class="row">
-      <book-interesting></book-interesting>
-      <training-courses-interesting></training-courses-interesting>
+      <book-interesting v-if="thisProduct.p_category == 'book'"></book-interesting>
+      <training-courses-interesting v-if="thisProduct.p_category == 'training_course'"></training-courses-interesting>
     </div>
 
   </div>

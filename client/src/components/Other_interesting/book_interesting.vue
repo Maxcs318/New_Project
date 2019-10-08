@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="container" style="padding-top: 151px;">
+    <div class="container">
       <div class="row">
         <div class="col-lg-12 col-xs-12">
           <h5 class="head">หนังสือเล่มอื่นที่หน้าสนใจ</h5>
-          <br />
+          <br/>
         </div>
       </div>
       <div class="row">
