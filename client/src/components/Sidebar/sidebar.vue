@@ -80,7 +80,7 @@ export default {
   font-weight: 100;
   background: #efefef;
   width: 250px;
-  height: 60%;
+  height: 500px;
   z-index: 100;
   padding-left: 30px;
   padding-right: 70px;
