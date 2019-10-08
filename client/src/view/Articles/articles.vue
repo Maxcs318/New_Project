@@ -18,15 +18,14 @@
     <div class="row">
       <div class="col-lg-xs-12"  style="margin:auto;">
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-
-          <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
-          </div>
           <div class="btn-group mr-2" role="group" aria-label="Second group">
+
+            <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
+
             <button type="button" class="btn btn-secondary" v-for=" run_page in length_page " @click="seenextPage(run_page)">{{run_page}}</button>
-          </div>
-          <div class="btn-group" role="group" aria-label="Third group">
+          
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>
+          
           </div>
         </div>
       </div>
