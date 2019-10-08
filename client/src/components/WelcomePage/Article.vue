@@ -5,7 +5,7 @@
         <div class="row">
           <header class="col-lg-10 col-xs-12 header">บทความ GAMA Thailand</header>
           <div class="col-lg-2">
-            <router-link to="/articles">
+            <router-link to="/articles/1">
               <button type="button" class="btn-viewall">ดูทั้งหมด></button>
             </router-link>
           </div>
@@ -45,10 +45,7 @@ export default {
         params: { ArticleID: thisarticle }
       });
     },
-    seeArticleAll(){
-      // articles
-      this.$router.push('/articles')
-    }
+    
   },
   computed: {
     the_article() {

@@ -98,7 +98,7 @@ export const router = new VueRouter({
         // start router in navbar
         { path : "/aboutmember",component : AboutMember },
         { path : "/newsandactivities",component : News },
-        { path : "/articles",component : Articles },
+        { path : "/articles/:Page",name : 'articles',component : Articles },
         { path : "/training_courses",component : TrainingCourses },
         { path : "/books",component : Books },
         { path : "/contact",component : Contact },

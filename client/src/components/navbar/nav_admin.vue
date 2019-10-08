@@ -38,7 +38,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/articles">
+          <router-link to="/articles/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">บทความ</h5>
