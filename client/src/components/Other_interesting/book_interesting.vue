@@ -2,6 +2,12 @@
   <div>
     <div class="container" style="padding-top: 151px;">
       <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <h5>หนังสือเล่มอื่นที่หน้าสนใจ</h5>
+            <br>
+          </div>
+      </div>
+      <div class="row">
         <div class="col-lg-3 col-6" v-for="(product,index) in book.slice().reverse().slice(0,4)" :key="index">
           <img class="book-img" :src="getImgUrlProduct(product.p_image)" @click="seethisPage(product.p_id)" />
           <h5 class="book-name">{{product.p_name}}</h5>

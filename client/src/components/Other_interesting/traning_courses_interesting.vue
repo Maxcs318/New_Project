@@ -1,5 +1,11 @@
 <template>
   <div class="container" style="padding-top: 151px;">
+      <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <h5>หลักสูตรและอบรมอื่น ๆ ที่หน้าสนใจ</h5>
+            <br>
+          </div>
+      </div>
     <div class="row">
       <div
         class="col-lg-4 col-12"
