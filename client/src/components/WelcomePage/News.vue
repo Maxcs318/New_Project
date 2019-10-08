@@ -125,7 +125,6 @@ export default {
   padding-left: 19px;
   padding-right: 19px;
   letter-spacing: 0.75px;
-  color: #fff;
 }
 
 .detail {
@@ -136,7 +135,6 @@ export default {
   padding-left: 19px;
   padding-right: 19px;
   line-height: 150%;
-  color: #fff;
 }
 
 .news-date1 {
@@ -201,7 +199,6 @@ export default {
   display: flex;
   align-items: flex-end;
   letter-spacing: 0.75px;
-  color: #fff;
 }
 
 .news-date {
@@ -260,7 +257,6 @@ export default {
     position: absolute;
     z-index: 1;
     margin-top: -25%;
-    color: #fff;
   }
 
   hr {

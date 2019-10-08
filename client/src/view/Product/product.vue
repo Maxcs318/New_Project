@@ -71,22 +71,18 @@
       </div>
     </div>
 
-
-
-
     <div class="row">
-      <h2>หลักสูตรและอบรมอื่น ๆ ที่น่าสนใจ</h2>
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4"></div>
+      <book-interesting></book-interesting>
+      <training-courses-interesting></training-courses-interesting>
     </div>
-
-
-
 
   </div>
 </template>
 <script>
+import axios from "axios";
+import bookinteresting from "./../../components/Other_interesting/book_interesting";
+import traningcoursesinteresting from "./../../components/Other_interesting/traning_courses_interesting";
+
 export default {
   data() {
     return {
@@ -171,6 +167,10 @@ export default {
       this.show_pic = this.thisProduct.p_image;
       return this.$store.getters.getPath_Files;
     }
+  },
+  components: {
+    BookInteresting: bookinteresting,
+    TrainingCoursesInteresting: traningcoursesinteresting
   }
 };
 </script>

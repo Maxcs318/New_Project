@@ -1,37 +1,31 @@
 <template>
-    <div class="container ">
 
-        <book-interesting></book-interesting>
-        <training-courses-interesting></training-courses-interesting>
+  <div class="container">
+  <sidebar></sidebar>
+    <book-interesting></book-interesting>
+    <training-courses-interesting></training-courses-interesting>
+  
 
-    </div>        
+  </div>
+  
 </template>
 <script>
-import axios from 'axios'  
-import bookinteresting from '../components/Other_interesting/book_interesting'
-import traningcoursesinteresting from '../components/Other_interesting/traning_courses_interesting'
+import axios from "axios";
+import bookinteresting from "../components/Other_interesting/book_interesting";
+import traningcoursesinteresting from "../components/Other_interesting/traning_courses_interesting";
+import sidebar from "./../components/Sidebar/sidebar";
 export default {
-    data(){
-        return{
-            
-        }
-    },  
-    components:{
-        BookInteresting : bookinteresting,
-        TrainingCoursesInteresting : traningcoursesinteresting
-
-    },
-    methods:{
-        
-    },
-    watch:{
-        
-    },
-    mounted () {
-    
-    },
-    computed:{
-    
-    }
-}
+  data() {
+    return {};
+  },
+  components: {
+    BookInteresting: bookinteresting,
+    TrainingCoursesInteresting: traningcoursesinteresting,
+    Sidebar: sidebar
+  },
+  methods: {},
+  watch: {},
+  mounted() {},
+  computed: {}
+};
 </script>

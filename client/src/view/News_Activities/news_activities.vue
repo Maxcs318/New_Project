@@ -107,7 +107,6 @@ export default {
   font-size: 29px;
   line-height: 100%;
   letter-spacing: 0.75px;
-  color: #fff;
 }
 .detail {
   font-style: normal;
@@ -115,7 +114,6 @@ export default {
   font-size: 18px;
   margin-top: 12px;
   line-height: 150%;
-  color: #fff;
 }
 .date {
   font-style: normal;
@@ -172,7 +170,6 @@ export default {
   display: flex;
   align-items: flex-end;
   letter-spacing: 0.75px;
-  color: #ffffff;
 }
 .activitiesall-date2 {
   position: absolute;

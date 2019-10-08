@@ -150,7 +150,6 @@ a:hover{
   display: flex;
   align-items: flex-end;
   letter-spacing: 0.75px;
-  color: #fff;
 }
 
 .activities-2-date {

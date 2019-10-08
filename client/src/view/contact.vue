@@ -89,7 +89,6 @@ textarea {
   border-radius: 5px;
   font-size: 18px;
   padding: 7px 7px 5px 12px;
-  color: #fff;
   margin-bottom: 16px;
 }
 input[type="submit"] {

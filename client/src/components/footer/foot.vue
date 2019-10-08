@@ -65,6 +65,7 @@ export default {
 <style>
 footer {
   position: relative;
+  z-index: 100;
   border-top: 1px solid rgba(142, 142, 142, 0.5);
   background-color: #fff;
 }

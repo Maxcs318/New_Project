@@ -1,18 +1,23 @@
 <template>
   <div class="container" style="padding-top: 151px;">
-      <div class="row">
-          <div class="col-lg-12 col-xs-12">
-            <h5>หลักสูตรและอบรมอื่น ๆ ที่หน้าสนใจ</h5>
-            <br>
-          </div>
+    <div class="row">
+      <div class="col-lg-12 col-xs-12">
+        <h5 class="head">หลักสูตรและอบรมอื่น ๆ ที่หน้าสนใจ</h5>
+        <br />
       </div>
+    </div>
     <div class="row">
       <div
         class="col-lg-4 col-12"
         v-for="(product,index) in trainingC.slice().reverse().slice(0,3)"
         :key="index"
       >
-        <img :src="getImgUrl(product.p_image)" width="100%" height="230px" @click="seethisPage(product.p_id)" />
+        <img
+          :src="getImgUrl(product.p_image)"
+          width="100%"
+          height="230px"
+          @click="seethisPage(product.p_id)"
+        />
         <h5 class="course-name2">{{product.p_name}}</h5>
         <p class="course-date2">{{product.p_create_date.slice(0,-13)}}</p>
         <br />
@@ -116,5 +121,13 @@ img,
 .course-date:hover,
 .course-date2:hover {
   transition: 0.25s;
+}
+.head {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 120%;
+  padding-bottom: 37px;
+  color: rgba(255, 255, 255, 0.3);
 }
 </style>
