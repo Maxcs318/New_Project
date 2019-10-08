@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-lg-xs-12"  style="margin:auto;">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="Second group">
 
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
@@ -27,7 +27,19 @@
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>
           
           </div>
-        </div>
+        </div> -->
+
+        <nav aria-label="Page navigation example" style="cursor:pointer;">
+          <ul class="pagination justify-content-end">
+            <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> << </h5></li>
+
+            <li class="page-item " v-bind:class="{ active: isActive }" v-for=" run_page in length_page " @click="seenextPage(run_page)">
+              <h5 class="page-link">{{run_page}}</h5>
+            </li>
+
+            <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> >> </h5></li>
+          </ul>
+        </nav>
       </div>
     </div>
     <br>
@@ -38,7 +50,8 @@ export default {
   data(){
     return{
       page:0,
-      length_page:0
+      length_page:0,
+      isActive:false
     }
   },
   methods: {
