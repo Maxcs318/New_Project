@@ -16,19 +16,16 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-xs-12"  style="margin:auto;">
-        <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="col-lg-12 col-xs-12" style="margin: auto 0;">
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="Second group">
-
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
-
             <button type="button" class="btn btn-secondary" v-for=" run_page in length_page " @click="seenextPage(run_page)">{{run_page}}</button>
-          
-            <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>
-          
+            <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>    
           </div>
-        </div> -->
-
+        </div>
+        
         <nav aria-label="Page navigation example" style="cursor:pointer;">
           <ul class="pagination justify-content-end">
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> << </h5></li>
@@ -40,6 +37,7 @@
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> >> </h5></li>
           </ul>
         </nav>
+
       </div>
     </div>
     <br>
