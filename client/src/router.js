@@ -124,7 +124,7 @@ export const router = new VueRouter({
         { path : "/gallerylist",component : GalleryList },
         { path : "/gallery/:GalleryID",name:"gallery",component : Gallery },
 
-        { path : "/academic_articles",component : Academic_Articles },
+        { path : "/academic_articles/:Page",name : 'academic_articles',component : Academic_Articles },
         { path : "/academic_article/:AcademicArticleID",name:"academic_article",component : Academic_Article },
 
         { path : "/online_journals",component : Online_jJurnals },
