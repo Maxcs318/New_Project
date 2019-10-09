@@ -8,7 +8,7 @@
           <div class="col-lg-12 col-12" v-for="news in the_news.slice().reverse().slice(0,1)">
             <div class="row">
               <div class="col-lg-2 col-12">
-                <hr>
+                <hr />
               </div>
               <div class="col-lg-4">
                 <h5 class="head">{{news.n_title}}</h5>
@@ -46,7 +46,7 @@
                 <h5 class="head" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
               </div>
               <div class="col-12">
-                <hr style="width:100%">
+                <hr style="width:100%" />
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
                 <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
               </div>
@@ -151,11 +151,13 @@ export default {
 .img-news {
   width: 100%;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 }
 
 .news1 {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   opacity: 0.2;
   border: 2px solid #ffffff;
   box-sizing: border-box;
@@ -167,7 +169,7 @@ export default {
 
 .news2 {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   opacity: 0.2;
   border: 2px solid #ffffff;
   box-sizing: border-box;
