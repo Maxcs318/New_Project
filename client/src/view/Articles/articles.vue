@@ -15,22 +15,27 @@
       </div>
     </div>
     <div class="row" v-if="length_page > 0">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
-            <button
-              type="button"
-              class="btn btn-light"
-              v-for=" (run_page,index) in length_page "
-              @click="seenextPage(run_page)"
-              v-bind:class="{ active: isActive[index+1] }"
-              v-if=" run_page >= page_start && run_page <= page_end "
-            >{{run_page}}</button>
-            <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
-          </div>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="Second group">
+          <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+          <button
+            type="button"
+            class="btn btn-light"
+            v-for=" (run_page,index) in length_page "
+            @click="seenextPage(run_page)"
+            v-bind:class="{ active: isActive[index+1] }"
+            v-if=" run_page >= page_start && run_page <= page_end "
+          >{{run_page}}</button>
+          <button
+            type="button"
+            class="btn btn-light"
+            @click="seenextPage(length_page)"
+            title="Last page"
+          >>></button>
         </div>
+      </div>
 
-        <!-- {{isActive}} -->
+      <!-- {{isActive}} -->
     </div>
     <br />
   </div>
@@ -138,9 +143,16 @@ img {
   line-height: 150%;
   color: #d8d8d8;
 }
-.btn-toolbar{
+.btn-toolbar {
+  /* cursor: pointer; */
   display: block;
   margin: 0 auto;
+  margin-top: 81px;
+}
+
+/* pagination active */
+.btn-light:not(:disabled):not(.disabled).active{
+  /* background-color: red; */
 }
 @media only screen and (max-width: 600px) {
   img {
