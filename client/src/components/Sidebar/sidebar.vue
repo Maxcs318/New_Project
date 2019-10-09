@@ -4,34 +4,59 @@
       <div class="title">MENU</div>
       <ul class="nav">
         <li>
-          <h6 href="#" @click="news">News & Activity</h6>
+          <h6 href="#" @click="home">
+            <i class="fas fa-home">&nbsp; Home</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="article" style="margin-right: 120px">Article</h6>
+          <h6 href="#" @click="news">
+            <i class="fas fa-newspaper">&nbsp; News & Activity</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="product">Product</h6>
+          <h6 href="#" @click="article">
+            <i class="fas fa-newspaper" style="margin-right: 50px;">&nbsp; Article</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="video_room">Video Room & Videos</h6>
+          <h6 href="#" @click="product">
+            <i class="fab fa-product-hunt">&nbsp; Product</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="list_order">Check Order</h6>
+          <h6 href="#" @click="video_room">
+            <i class="fas fa-video">&nbsp; Video Room & Videos</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="list_gallery">List Gallery</h6>
+          <h6 href="#" @click="list_order">
+            <i class="fas fa-tasks">&nbsp; Check order</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="academic_article">Academic Article</h6>
+          <h6 href="#" @click="list_gallery">
+            <i class="fas fa-images">&nbsp; Gallery list</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="online_journal">Online Journal</h6>
+          <h6 href="#" @click="academic_article">
+            <i class="fas fa-scroll">&nbsp; Academic article</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="manage_members">Manage Members</h6>
+          <h6 href="#" @click="online_journal">
+            <i class="fas fa-blog">&nbsp; Online journal</i>
+          </h6>
         </li>
         <li>
-          <h6 href="#" @click="research">Research</h6>
+          <h6 href="#" @click="manage_members">
+            <i class="fas fa-users-cog">&nbsp; Manage members</i>
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="research">
+            <i class="fas fa-search-plus">&nbsp; Research</i>
+          </h6>
         </li>
       </ul>
     </div>
@@ -40,6 +65,9 @@
 <script>
 export default {
   methods: {
+    home() {
+      this.$router.push("/");
+    },
     news() {
       this.$router.push("/AdminN");
     },
@@ -79,15 +107,15 @@ export default {
   margin-top: 90px;
   font-weight: 100;
   background: #efefef;
-  width: 250px;
-  height: 500px;
+  width: 270px;
+  height: 550px;
   z-index: 100;
   padding-left: 30px;
-  padding-right: 70px;
+  padding-right: 50px;
   position: fixed;
   -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
   box-shadow: -3px 0px 7px 8px rgba(0, 0, 0, 0.2);
-  left: -215px;
+  left: -235px;
   transition: 0.3s;
   color: #222;
   border-radius: 4px;
@@ -95,14 +123,15 @@ export default {
 
 .menu:hover,
 .menu:focus {
-  transform: translate3d(210px, 0, 0);
+  /* -5px for border-radius */
+  transform: translate3d(230px, 0, 0);
   animation-timing-function: 0.5s ease-in;
 }
 .title {
   top: 12%;
   position: absolute;
   transform: rotate(-270deg);
-  left: 205px;
+  left: 227px;
   font-weight: 800;
   font-size: 1.3em;
 }
