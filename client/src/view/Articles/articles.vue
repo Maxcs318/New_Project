@@ -5,7 +5,7 @@
       <div
         class="col-lg-6 col-12"
         @click="seethisPage(article.a_id)"
-        v-for="(article,index) in the_article.slice().reverse().slice((page*6),(page+1)*6)"
+        v-for="(article,index) in the_article.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)"
         :key="index"
         style="margin-bottom: 32px;"
       >
@@ -14,28 +14,29 @@
         <p class="date">{{article.a_create_date.slice(0,-13)}}</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 col-xs-12" style="margin: auto 0;">
+    <div class="row" v-if="length_page > 0">
+      <div class="col-lg-12 col-xs-12">
 
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group mr-2" role="group" aria-label="Second group">
             <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> << </button>
             <button type="button" class="btn btn-secondary" 
-            v-for=" (run_page,index) in length_page " @click="seenextPage(run_page)" v-bind:class="{ active: isActive[index+1] }">
+              v-for=" (run_page,index) in length_page " 
+              @click="seenextPage(run_page)" 
+              v-bind:class="{ active: isActive[index+1] }"
+              v-if=" run_page >= page_start && run_page <= page_end "
+            >
               {{run_page}}
             </button>
-            <button type="button" class="btn btn-secondary" @click="seenextPage(1)"> >> </button>    
+            <button type="button" class="btn btn-secondary" @click="seenextPage(length_page)"> >> </button>    
           </div>
         </div>
-        
         <!-- <nav aria-label="Page navigation example" style="cursor:pointer;">
           <ul class="pagination justify-content-end">
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> << </h5></li>
-
             <li class="page-item " v-bind:class="{ active: isActive }" v-for=" run_page in length_page " @click="seenextPage(run_page)">
               <h5 class="page-link">{{run_page}}</h5>
             </li>
-
             <li class="page-item"><h5 class="page-link" @click="seenextPage(1)"> >> </h5></li>
           </ul>
         </nav>
@@ -51,7 +52,9 @@ export default {
   data(){
     return{
       page:0,
+      data_in_page: 6,
       length_page:0,
+      page_start: 0 ,page_end: 0 ,
       isActive:[]
       }
   },
@@ -76,10 +79,27 @@ export default {
     the_article() {
       var setpage = this.$route.params.Page
       var articles = this.$store.getters.getArticle
+      var p_conpute = 2
+      var p_start = setpage
+      var p_end   = Math.ceil(setpage/1 + p_conpute)
+      
       this.page = setpage - 1
-      this.length_page = Math.ceil(articles.length/6) // set page all
+      this.length_page = Math.ceil(articles.length/this.data_in_page) // set page all
+        // set start && end paging
+        if(setpage > p_conpute){
+          p_start = setpage - p_conpute
+        }else{
+          p_start = -(setpage - p_conpute)-p_conpute
+          p_end = p_end + p_start + p_conpute+1
+        }
+        if(p_end >= this.length_page){
+          p_start = p_start + (this.length_page - setpage -p_conpute)
+        }
+      this.page_start = p_start
+      this.page_end   = p_end
+
       this.isActive = []
-        for(var i=0; i<= Math.ceil(articles.length/6) ;i++){
+        for(var i=0; i<= this.length_page ;i++){
           if(i==this.$route.params.Page){
             this.isActive.push(true)
           }else{

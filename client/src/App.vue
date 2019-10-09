@@ -8,7 +8,7 @@
       <navbar v-if="this.$store.state.the_user == ''"></navbar>
       <navbarmember v-else-if="this.$store.state.the_user.m_status == 'user'"></navbarmember>
       <navbaradmin v-else-if="this.$store.state.the_user.m_status == 'admin'"></navbaradmin>
-      <sidebar></sidebar>
+      <sidebar v-if="this.$store.state.the_user.m_status == 'admin'"></sidebar>
 
       <div class>
         <transition name="page" mode="out-in">
