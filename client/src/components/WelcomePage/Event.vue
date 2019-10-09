@@ -71,6 +71,7 @@ export default {
 
 .event img {
   position: relative;
+  z-index: 2;
   width: 100%;
   cursor: pointer;
   display: block;
@@ -83,12 +84,12 @@ export default {
 
 .event img:hover {
   transition: 0.5s;
-  border: 5px solid #fff;
+  /* border: 5px solid #fff; */
 }
 
 .training-block1 {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   box-sizing: border-box;
   left: 8%;
   top: 20%;
@@ -100,7 +101,7 @@ export default {
 
 .training-block2 {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   box-sizing: border-box;
   left: 12%;
   top: 25%;
