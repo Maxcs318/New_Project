@@ -121,7 +121,7 @@ export const router = new VueRouter({
         { path : "/listvideos/:RoomID",name:"listvideos",component : ListVideos },
         { path : "/roomvideo/:VideoID",name:"roomvideo",component : RoomVideo },
 
-        { path : "/gallerylist",component : GalleryList },
+        { path : "/gallerylist/:Page" ,name:"gallerylist",component : GalleryList },
         { path : "/gallery/:GalleryID",name:"gallery",component : Gallery },
 
         { path : "/academic_articles/:Page",name : 'academic_articles',component : Academic_Articles },
