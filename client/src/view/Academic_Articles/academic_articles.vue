@@ -29,8 +29,6 @@
             <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
           </div>
         </div>
-
-        <!-- {{isActive}} -->
     </div>
   </div>
 </template>

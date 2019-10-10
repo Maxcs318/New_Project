@@ -100,7 +100,7 @@ export const router = new VueRouter({
         { path : "/newsandactivities",component : News },
         { path : "/articles/:Page",name : 'articles',component : Articles },
         { path : "/training_courses",component : TrainingCourses },
-        { path : "/books",component : Books },
+        { path : "/books/:Page", name : 'books' ,component : Books },
         { path : "/contact",component : Contact },
 
         { path : "/my_cart",component : My_Cart },

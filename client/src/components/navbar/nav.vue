@@ -56,7 +56,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/books">
+          <router-link to="/books/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">หนังสือ</h5>

@@ -5,7 +5,7 @@
         <div class="row">
           <label class="col-lg-10 col-xs-12 header">หนังสือ</label>
           <div class="col-lg-2">
-            <router-link to="/books">
+            <router-link to="/books/1">
               <button class="btn-viewall" type="button" >ดูทั้งหมด></button>
             </router-link>
           </div>

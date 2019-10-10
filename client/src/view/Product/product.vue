@@ -140,7 +140,7 @@ export default {
   },
   computed: {
     thisProduct() {
-      var ProductAll = this.$store.getters.getProduct;
+      var ProductAll = this.$store.getters.getProduct_Set_Category;
       var product;
       for (var i = 0; i < ProductAll.length; i++) {
         if (ProductAll[i].p_id == this.$route.params.ProductID) {
