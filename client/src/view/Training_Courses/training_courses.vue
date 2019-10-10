@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="padding-top: 151px;">
-    <div class="row">
+    <!-- <div class="row">
       <div
         class="col-lg-6 col-12"
         v-for="(product,index) in trainingC.slice().reverse().slice(0,2)"
@@ -14,19 +14,15 @@
         />
         <h5 class="course-name" style="text-align:left;">{{product.p_name}}</h5>
         <p class="course-date" style="text-align:left;">{{product.p_create_date.slice(0,-13)}}</p>
-        <!-- <p style="text-align: center;">{{product.p_price}} ฿</p> -->
-        <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-        <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
+        <br />
+        <br />
         <br />
       </div>
-    </div>
-
-    <br />
-    <br />
+    </div> -->
     <div class="row">
       <div
         class="col-lg-4 col-12"
-        v-for="(product,index) in trainingC.slice().reverse().slice(2)"
+        v-for="(product,index) in trainingC.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)"
         :key="index"
       >
         <img
@@ -37,21 +33,50 @@
         />
         <h5 class="course-name2">{{product.p_name}}</h5>
         <p class="course-date2">{{product.p_create_date.slice(0,-13)}}</p>
-        <!-- <p>{{product.p_price}} ฿</p> -->
-        <!-- <p style="text-indent: 2em;">{{product.p_description.slice(0,60)}}</p> -->
-        <!-- <button class="form-control btn-primary"> สั่งซื้อ </button> -->
         <br />
         <br />
         <br />
       </div>
     </div>
+    <div class="row" v-if="length_page > 0">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group" role="group" aria-label="Second group">
+            <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+            <button
+              type="button"
+              class="btn btn-light"
+              v-for=" (run_page,index) in length_page "
+              @click="seenextPage(run_page)"
+              v-bind:class="{ active: isActive[index+1] }"
+              v-if=" run_page >= page_start && run_page <= page_end "
+            >{{run_page}}</button>
+            <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
+          </div>
+        </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
+  data() {
+    return {
+      page: 0,
+      data_in_page: 9,
+      length_page: 0,
+      page_start: 0,
+      page_end: 0,
+      isActive: []
+    };
+  },
   methods: {
     getImgUrl(pic) {
       return this.path_files + "Product/" + pic;
+    },
+    seenextPage(num_page) {
+      this.$router.push({
+        name: "training_courses",
+        params: { Page: num_page }
+      });
     },
     seethisPage(thisproduct) {
       this.$router.push({
@@ -67,6 +92,34 @@ export default {
       for (var i = 0; i < productAll.length; i++) {
         if (productAll[i].p_category == "training_course") {
           training_course.push(productAll[i]);
+        }
+      }
+      var setpage = this.$route.params.Page;
+      var p_conpute = 2;
+      var p_start = setpage;
+      var p_end = Math.ceil(setpage / 1 + p_conpute);
+
+      this.page = setpage - 1;
+      this.length_page = Math.ceil(training_course.length / this.data_in_page); // set page all
+      // set start && end paging
+      if (setpage > p_conpute) {
+        p_start = setpage - p_conpute;
+      } else {
+        p_start = -(setpage - p_conpute) - p_conpute;
+        p_end = p_end + p_start + p_conpute + 1;
+      }
+      if (p_end >= this.length_page) {
+        p_start = p_start + (this.length_page - setpage - p_conpute);
+      }
+      this.page_start = p_start;
+      this.page_end = p_end;
+
+      this.isActive = [];
+      for (var i = 0; i <= this.length_page; i++) {
+        if (i == this.$route.params.Page) {
+          this.isActive.push(true);
+        } else {
+          this.isActive.push(false);
         }
       }
       return training_course;
