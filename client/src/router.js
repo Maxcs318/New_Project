@@ -114,7 +114,7 @@ export const router = new VueRouter({
         { path : "/newsandactivity/:NewsID",name:"newsandactivity",component : thisNews },
         { path : "/article/:ArticleID",name:"article",component : thisArticle },
 
-        { path : "/productall",component : productall },
+        { path : "/productall/:Page",name:"productall",component : productall },
         { path : "/product/:ProductID",name:"product",component : product },
 
         { path : "/listroom",component : ListRoom },
