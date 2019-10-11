@@ -143,7 +143,7 @@ export const router = new VueRouter({
         { path : "/AdminListOrder_check_delivery",component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery",component : admin_Gallery },
-        { path : "/AdminAA",component : admin_Academic_Articles },
+        { path : "/AdminAA/:Page",name:'AdminAA',component : admin_Academic_Articles },
         { path : "/AdminOJ",component : admin_Online_Journal },
         { path : "/AdminR",component : admin_Research },
 
