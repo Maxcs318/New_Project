@@ -11,15 +11,15 @@
             <div class="col-lg-12 col-md-12">
                 <table style="width:100%" >
                     <tr style="width:100%">
-                        <th style="width:5%">ID</th>
+                        <th style="width:5%">No</th>
                         <th style="width:35%">Article Title</th>
                         <th style="width:20%">Create Date</th>
                         <th style="width:20%">Update Date</th>
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(article,index) in the_article.slice().reverse()" :key="index" >
-                        <td>{{article.a_id}}</td>
+                    <tr v-for="(article,index) in the_article.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index" >
+                        <td>{{the_article.length -(page*data_in_page) - index }}</td>
                         <td>{{article.a_title.slice(0,35)}}</td>
                         <td>{{article.a_create_date}}</td>
                         <td>{{article.a_update_date}}</td>
@@ -29,13 +29,45 @@
                 </table>
             </div>
         </div>
+        <div class="row" v-if="length_page > 0">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+                    <button
+                    type="button"
+                    class="btn btn-light"
+                    v-for=" (run_page,index) in length_page "
+                    @click="seenextPage(run_page)"
+                    v-bind:class="{ active: isActive[index+1] }"
+                    v-if=" run_page >= page_start && run_page <= page_end "
+                    >{{run_page}}</button>
+                    <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 export default {
+    data() {
+        return {
+            page: 0,
+            data_in_page: 10,
+            length_page: 0,
+            page_start: 0,
+            page_end: 0,
+            isActive: []
+        };
+    },
     methods:{
         addarticle(){
             this.$router.push('/addarticle')
+        },
+        seenextPage(num_page) {
+            this.$router.push({
+                name: "AdminA",
+                params: { Page: num_page }
+            });
         },
         editArticle(thisarticle){
             this.$router.push({name:'editarticle',params:{ArticleID:thisarticle}});
@@ -65,12 +97,41 @@ export default {
     },
     computed:{
         the_article(){
-            return this.$store.getters.getArticle
+            var setpage = this.$route.params.Page;
+            var articles = this.$store.getters.getArticle;
+            var p_conpute = 2;
+            var p_start = setpage;
+            var p_end = Math.ceil(setpage / 1 + p_conpute);
+
+            this.page = setpage - 1;
+            this.length_page = Math.ceil(articles.length / this.data_in_page); // set page all
+            // set start && end paging
+            if (setpage > p_conpute) {
+                p_start = setpage - p_conpute;
+            } else {
+                p_start = -(setpage - p_conpute) - p_conpute;
+                p_end = p_end + p_start + p_conpute + 1;
+            }
+            if (p_end >= this.length_page) {
+                p_start = p_start + (this.length_page - setpage - p_conpute);
+            }
+            this.page_start = p_start;
+            this.page_end = p_end;
+
+            this.isActive = [];
+            for (var i = 0; i <= this.length_page; i++) {
+                if (i == this.$route.params.Page) {
+                this.isActive.push(true);
+                } else {
+                this.isActive.push(false);
+                }
+            }
+            return articles
         },
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.go(-1)
+                // this.$router.go(-1)
             }
             return user
         }

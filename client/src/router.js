@@ -135,7 +135,7 @@ export const router = new VueRouter({
         { path : "/Admin",component : admin },
         
         { path : "/AdminN",component : admin_News },
-        { path : "/AdminA",component : admin_Article },
+        { path : "/AdminA/:Page",name:'AdminA',component : admin_Article },
         { path : "/AdminP",component : admin_Product },
         { path : "/AdminLR",component : admin_ListRooms },
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
@@ -165,17 +165,17 @@ export const router = new VueRouter({
         // stop insert
 
         // start edit 
-        { path : "/editnewsandactivity/:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
-        { path : "/editarticle/:ArticleID",name:"editarticle",component : EditArticle },
-        { path : "/editproduct/:ProductID",name:"editproduct",component : EditProduct },
-        { path : "/editvideoroom/:RoomID",name:"editvideoroom",component : EditVideo_room },
-        { path : "/editvideo/:VideoID",name:"editvideo",component : EditVideo },
-        { path : "/editgallery/:GalleryID",name:"editgallery",component : EditGallery },
-        { path : "/editacademicarticle/:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
-        { path : "/editonline_journal/:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
-        { path : "/editresearch/:ResearchID",name:"editresearch",component : EditResearch },
+        { path : "/editnewsandactivity/ID:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
+        { path : "/editarticle/id=:ArticleID",name:"editarticle",component : EditArticle },
+        { path : "/editproduct/ID:ProductID",name:"editproduct",component : EditProduct },
+        { path : "/editvideoroom/ID:RoomID",name:"editvideoroom",component : EditVideo_room },
+        { path : "/editvideo/ID:VideoID",name:"editvideo",component : EditVideo },
+        { path : "/editgallery/ID:GalleryID",name:"editgallery",component : EditGallery },
+        { path : "/editacademicarticle/ID:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
+        { path : "/editonline_journal/ID:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
+        { path : "/editresearch/ID:ResearchID",name:"editresearch",component : EditResearch },
 
-        { path : "/editmember_by_admin/:MemberID",name:"editmember_by_admin",component : admin_member_edit },
+        { path : "/editmember_by_admin/ID:MemberID",name:"editmember_by_admin",component : admin_member_edit },
         
         // stop edit
         
