@@ -19,7 +19,7 @@
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(list,index) in ListRoom" :key="index" >
+                    <tr v-for="(list,index) in ListRoom.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index" >
                         <td>{{list.vr_id}}</td>
                         <td>{{list.vr_title.slice(0,25)}}</td>
                         <td>{{list.vr_create_date}}</td>
@@ -31,14 +31,46 @@
                 </table>
             </div>
         </div>
+        <div class="row" v-if="length_page > 0">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+                    <button
+                    type="button"
+                    class="btn btn-light"
+                    v-for=" (run_page,index) in length_page "
+                    @click="seenextPage(run_page)"
+                    v-bind:class="{ active: isActive[index+1] }"
+                    v-if=" run_page >= page_start && run_page <= page_end "
+                    >{{run_page}}</button>
+                    <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            page: 0,
+            data_in_page: 10,
+            length_page: 0,
+            page_start: 0,
+            page_end: 0,
+            isActive: []
+        };
+    },
     methods:{
         addroom(){
             this.$router.push('/addroom')
+        },
+        seenextPage(num_page) {
+            this.$router.push({
+                name: "AdminLR",
+                params: { Page: num_page }
+            });
         },
         seethisRoom(thisroom){
             this.$router.push({name:'AdminLV',params:{RoomID:thisroom}});
@@ -70,12 +102,41 @@ export default {
     },
     computed:{
         ListRoom(){
-            return this.$store.getters.getVideo_Room
+            var setpage = this.$route.params.Page;
+            var roomAll = this.$store.getters.getVideo_Room;
+            var p_conpute = 2;
+            var p_start = setpage;
+            var p_end = Math.ceil(setpage / 1 + p_conpute);
+
+            this.page = setpage - 1;
+            this.length_page = Math.ceil(roomAll.length / this.data_in_page); // set page all
+            // set start && end paging
+            if (setpage > p_conpute) {
+                p_start = setpage - p_conpute;
+            } else {
+                p_start = -(setpage - p_conpute) - p_conpute;
+                p_end = p_end + p_start + p_conpute + 1;
+            }
+            if (p_end >= this.length_page) {
+                p_start = p_start + (this.length_page - setpage - p_conpute);
+            }
+            this.page_start = p_start;
+            this.page_end = p_end;
+
+            this.isActive = [];
+            for (var i = 0; i <= this.length_page; i++) {
+                if (i == this.$route.params.Page) {
+                this.isActive.push(true);
+                } else {
+                this.isActive.push(false);
+                }
+            }
+            return roomAll
         },
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.go(-1)
+                // this.$router.go(-1)
             }
             return user
         }
