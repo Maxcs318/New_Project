@@ -56,8 +56,17 @@ export default {
             length_page: 0,
             page_start: 0,
             page_end: 0,
-            isActive: []
+            isActive: [],
+            userstatus:''
         };
+    },
+    watch: {
+        userstatus: function () {
+            // console.log(this.userstatus)
+            if( this.the_user.m_status != 'admin' ){
+                // this.$router.go('/')
+            }
+        },
     },
     methods:{
         addarticle(){
@@ -130,9 +139,10 @@ export default {
         },
         the_user(){
             var user = this.$store.getters.getThe_User
-            if( user.m_status != 'admin' ){
+            // if( user.m_status != 'admin' ){
                 // this.$router.go(-1)
-            }
+            // }
+            this.userstatus = user.m_status
             return user
         }
     },

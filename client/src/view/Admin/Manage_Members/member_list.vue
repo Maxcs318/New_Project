@@ -38,7 +38,7 @@
                         <th style="width:15%">Member Type</th>                        
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(member,index) in listFilter" :key="index" >
+                    <tr v-for="(member,index) in listFilter_Paging.slice((page*data_in_page),(page+1)*data_in_page)" :key="index" >
                         <td>{{member.m_id}}</td>
                         <td>{{member.m_firstname.slice(0,35)}}</td>
                         <td>{{member.m_lastname}}</td>
@@ -57,6 +57,22 @@
                 <br>
             </div>
         </div>
+        <div class="row" v-if="length_page > 0">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+                    <button
+                    type="button"
+                    class="btn btn-light"
+                    v-for=" (run_page,index) in length_page "
+                    @click="seenextPage(run_page)"
+                    v-bind:class="{ active: isActive[index+1] }"
+                    v-if=" run_page >= page_start && run_page <= page_end "
+                    >{{run_page}}</button>
+                    <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -72,10 +88,23 @@ export default {
                 {file:'member_type'}
             ],
             selected:'',
-            search:''
+            search:'',
+            // paging //
+            page: 0,
+            data_in_page: 10,
+            length_page: 0,
+            page_start: 0,
+            page_end: 0,
+            isActive: []
         }
     },
     methods:{
+        seenextPage(num_page) {
+            this.$router.push({
+                name: "AdminM",
+                params: { Page: num_page }
+            });
+        },
         editMember(thismemberID){
             // console.log(thismemberID)
             this.$router.push({name:'editmember_by_admin',params:{MemberID:thismemberID}});
@@ -84,13 +113,14 @@ export default {
     watch:{
         selected :function (val) {
             this.search = ''
+            this.$route.params.Page = 1
         },
     },
     computed:{
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.go(-1)
+                // this.$router.go(-1)
             }
             return user
         },
@@ -125,6 +155,38 @@ export default {
                     // || item.m_type.indexOf(text) > - 1 
                 })
             }
+        },
+        listFilter_Paging(){
+            var setpage = this.$route.params.Page;
+            var memberlist = this.listFilter;
+            var p_conpute = 2;
+            var p_start = setpage;
+            var p_end = Math.ceil(setpage / 1 + p_conpute);
+
+            this.page = setpage - 1;
+            this.length_page = Math.ceil(memberlist.length / this.data_in_page); // set page all
+            // set start && end paging
+            if (setpage > p_conpute) {
+                p_start = setpage - p_conpute;
+            } else {
+                p_start = -(setpage - p_conpute) - p_conpute;
+                p_end = p_end + p_start + p_conpute + 1;
+            }
+            if (p_end >= this.length_page) {
+                p_start = p_start + (this.length_page - setpage - p_conpute);
+            }
+            this.page_start = p_start;
+            this.page_end = p_end;
+
+            this.isActive = [];
+            for (var i = 0; i <= this.length_page; i++) {
+                if (i == this.$route.params.Page) {
+                this.isActive.push(true);
+                } else {
+                this.isActive.push(false);
+                }
+            }
+            return memberlist
         }
     },
     created(){

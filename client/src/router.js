@@ -134,7 +134,7 @@ export const router = new VueRouter({
     //Admin - - - >
         { path : "/Admin",component : admin },
         
-        { path : "/AdminN",component : admin_News },
+        { path : "/AdminN/:Page",name:'AdminN',component : admin_News },
         { path : "/AdminA/:Page",name:'AdminA',component : admin_Article },
         { path : "/AdminP",component : admin_Product },
         { path : "/AdminLR",component : admin_ListRooms },
@@ -142,12 +142,12 @@ export const router = new VueRouter({
         { path : "/AdminListOrder",component : admin_ListOrder },
         { path : "/AdminListOrder_check_delivery",component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
-        { path : "/AdminListGallery",component : admin_Gallery },
+        { path : "/AdminListGallery/:Page",name:'AdminListGallery',component : admin_Gallery },
         { path : "/AdminAA/:Page",name:'AdminAA',component : admin_Academic_Articles },
         { path : "/AdminOJ",component : admin_Online_Journal },
         { path : "/AdminR",component : admin_Research },
 
-        { path : "/AdminM",component : admin_member_list },
+        { path : "/AdminM/:Page",name:'AdminM',component : admin_member_list },
 
 
         // start insert
@@ -165,17 +165,17 @@ export const router = new VueRouter({
         // stop insert
 
         // start edit 
-        { path : "/editnewsandactivity/ID:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
+        { path : "/editnewsandactivity/id=:NewsID",name:"editnewsandactivity",component : EditNewsandActivity },
         { path : "/editarticle/id=:ArticleID",name:"editarticle",component : EditArticle },
-        { path : "/editproduct/ID:ProductID",name:"editproduct",component : EditProduct },
-        { path : "/editvideoroom/ID:RoomID",name:"editvideoroom",component : EditVideo_room },
-        { path : "/editvideo/ID:VideoID",name:"editvideo",component : EditVideo },
-        { path : "/editgallery/ID:GalleryID",name:"editgallery",component : EditGallery },
-        { path : "/editacademicarticle/ID:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
-        { path : "/editonline_journal/ID:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
-        { path : "/editresearch/ID:ResearchID",name:"editresearch",component : EditResearch },
+        { path : "/editproduct/id=:ProductID",name:"editproduct",component : EditProduct },
+        { path : "/editvideoroom/id=:RoomID",name:"editvideoroom",component : EditVideo_room },
+        { path : "/editvideo/id=:VideoID",name:"editvideo",component : EditVideo },
+        { path : "/editgallery/id=:GalleryID",name:"editgallery",component : EditGallery },
+        { path : "/editacademicarticle/id=:AcademicArticleID",name:"editacademicarticle",component : EditAcademicArticle },
+        { path : "/editonline_journal/id=:Online_JournalID",name:"editonline_journal",component : EditOnline_Journal },
+        { path : "/editresearch/id=:ResearchID",name:"editresearch",component : EditResearch },
 
-        { path : "/editmember_by_admin/ID:MemberID",name:"editmember_by_admin",component : admin_member_edit },
+        { path : "/editmember_by_admin/id=:MemberID",name:"editmember_by_admin",component : admin_member_edit },
         
         // stop edit
         
