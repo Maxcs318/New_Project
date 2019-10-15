@@ -136,7 +136,7 @@ export const router = new VueRouter({
         
         { path : "/AdminN/:Page",name:'AdminN',component : admin_News },
         { path : "/AdminA/:Page",name:'AdminA',component : admin_Article },
-        { path : "/AdminP",component : admin_Product },
+        { path : "/AdminP/:Page",name:'AdminP',component : admin_Product },
         { path : "/AdminLR",component : admin_ListRooms },
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
         { path : "/AdminListOrder",component : admin_ListOrder },
