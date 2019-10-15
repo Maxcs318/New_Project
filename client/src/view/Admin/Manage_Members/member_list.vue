@@ -113,8 +113,18 @@ export default {
     watch:{
         selected :function (val) {
             this.search = ''
-            this.$route.params.Page = 1
+            // back to page 1
+            this.$router.push({
+                name: "AdminM",
+                params: { Page: 1 }
+            });
         },
+        search :function (val) {
+            this.$router.push({
+                name: "AdminM",
+                params: { Page: 1 }
+            });
+        }
     },
     computed:{
         the_user(){
