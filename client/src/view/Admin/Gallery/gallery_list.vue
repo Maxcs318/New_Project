@@ -19,7 +19,7 @@
                         <th style="width:10%">  </th>
                     </tr>
                     <tr v-for="(gallery,index) in Gallery.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index">
-                        <td>{{Gallery.length -(page*data_in_page) - index }}</td>
+                        <td>{{ gallery.g_id }}</td>
                         <td>{{gallery.g_name.slice(0,35)}}</td>
                         <td>{{gallery.g_create_date}}</td>
                         <td>{{gallery.g_update_date}}</td>

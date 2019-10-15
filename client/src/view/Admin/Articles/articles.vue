@@ -11,7 +11,7 @@
             <div class="col-lg-12 col-md-12">
                 <table style="width:100%" >
                     <tr style="width:100%">
-                        <th style="width:5%">No</th>
+                        <th style="width:5%">ID</th>
                         <th style="width:35%">Article Title</th>
                         <th style="width:20%">Create Date</th>
                         <th style="width:20%">Update Date</th>
@@ -19,7 +19,7 @@
                         <th style="width:10%">  </th>
                     </tr>
                     <tr v-for="(article,index) in the_article.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index" >
-                        <td>{{the_article.length -(page*data_in_page) - index }}</td>
+                        <td>{{ article.a_id }}</td>
                         <td>{{article.a_title.slice(0,35)}}</td>
                         <td>{{article.a_create_date}}</td>
                         <td>{{article.a_update_date}}</td>
