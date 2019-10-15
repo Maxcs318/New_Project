@@ -105,7 +105,7 @@ export const router = new VueRouter({
 
         { path : "/my_cart",component : My_Cart },
         { path : "/my_order",component : My_Order },
-        { path : "/my_order_history",component : My_Order_History },
+        { path : "/my_order_history/:Page",name:'my_order_history',component : My_Order_History },
         { path : "/order/:CodeOrder",name:"order",component : Order },
         { path : "/payment/:CodeOrder",name:"payment",component : Payment },
 

@@ -21,10 +21,10 @@
                         <th> Status Order </th>
                         <th> Create Date </th>
                     </tr>
-                    <tr v-for="(order,index) in Order " :key="index">
-                        <td>{{index+1}}</td>
+                    <tr v-for="(order,index) in Order.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page) " :key="index">
+                        <td>{{(Order.length - page*data_in_page) - index}}</td>
                         <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
-                        <td>{{order.o_total_price}}</td>
+                        <td>{{order.o_total_price}} ฿</td>
                         <td>
                             <div v-for=" os in Order_Status " v-if="os.os_id == order.o_status_id">
                                 {{os.os_title}}
@@ -35,16 +35,48 @@
                 </table> <br><br>
             </div>            
         </div>
+        <div class="row" v-if="length_page > 0">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+                    <button
+                    type="button"
+                    class="btn btn-light"
+                    v-for=" (run_page,index) in length_page "
+                    @click="seenextPage(run_page)"
+                    v-bind:class="{ active: isActive[index+1] }"
+                    v-if=" run_page >= page_start && run_page <= page_end "
+                    >{{run_page}}</button>
+                    <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 export default {
+    data() {
+        return {
+            page: 0,
+            data_in_page: 20,
+            length_page: 0,
+            page_start: 0,
+            page_end: 0,
+            isActive: []
+        };
+    },
     methods:{
+        seenextPage(num_page) {
+            this.$router.push({
+                name: "my_order_history",
+                params: { Page: num_page }
+            });
+        },
         page_order(){
-            this.$router.push('my_order')
+            this.$router.push('/my_order')
         },
         page_cart(){
-            this.$router.push('my_cart')
+            this.$router.push('/my_cart')
         },
         seethisOrder(this_order){
             this.$router.push({name:'order',params:{CodeOrder:this_order}});
@@ -52,7 +84,36 @@ export default {
     },
     computed:{
         Order(){
-            return this.$store.getters.getMy_Order[1]
+            var setpage = this.$route.params.Page;
+            var my_order_all = this.$store.getters.getMy_Order[1];
+            var p_conpute = 2;
+            var p_start = setpage;
+            var p_end = Math.ceil(setpage / 1 + p_conpute);
+
+            this.page = setpage - 1;
+            this.length_page = Math.ceil(my_order_all.length / this.data_in_page); // set page all
+            // set start && end paging
+            if (setpage > p_conpute) {
+                p_start = setpage - p_conpute;
+            } else {
+                p_start = -(setpage - p_conpute) - p_conpute;
+                p_end = p_end + p_start + p_conpute + 1;
+            }
+            if (p_end >= this.length_page) {
+                p_start = p_start + (this.length_page - setpage - p_conpute);
+            }
+            this.page_start = p_start;
+            this.page_end = p_end;
+
+            this.isActive = [];
+            for (var i = 0; i <= this.length_page; i++) {
+                if (i == this.$route.params.Page) {
+                this.isActive.push(true);
+                } else {
+                this.isActive.push(false);
+                }
+            }
+            return my_order_all
         },
         Order_Status(){
             return this.$store.getters.getOrder_Status          
