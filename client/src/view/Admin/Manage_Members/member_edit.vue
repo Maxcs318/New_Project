@@ -161,7 +161,7 @@ export default {
                         this.$store.dispatch("Edit_Profile_BY_Admin",FD)
 
                         setTimeout(()=>{
-                            this.$router.push('/AdminM')
+                            this.$router.go(-1)
                         },2000)  
                     this.$swal("Edit Profile Success .", "", "success")
                     this.passwordCheck = ''

@@ -29,7 +29,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/newsandactivities">
+          <router-link to="/newsandactivities/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">ข่าวกิจกรรม</h5>
@@ -47,7 +47,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/training_courses">
+          <router-link to="/training_courses/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">หลักสูตร & อบรม</h5>
@@ -83,10 +83,6 @@
           >Log in</button>
           <b-nav-item-dropdown style="color:red;" right v-if="this.$store.state.the_user != '' ">
             <template slot="button-content">{{this.$store.state.the_user.m_username}}</template>
-            <b-dropdown-item
-              @click="admin"
-              v-if="this.$store.state.the_user.m_status == 'admin' "
-            >Admin</b-dropdown-item>
             <b-dropdown-item @click="profile">Profile</b-dropdown-item>
             <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
             <b-dropdown-item @click="productall">Product All</b-dropdown-item>
@@ -127,13 +123,10 @@ export default {
       this.$router.push("/myProfile");
     },
     videosroom() {
-      this.$router.push("/listroom");
+      this.$router.push("/listroom/1");
     },
     productall() {
-      this.$router.push("/productall");
-    },
-    admin() {
-      this.$router.push("/Admin");
+      this.$router.push("/productall/1");
     },
     my_cart() {
       this.$router.push("/my_cart");

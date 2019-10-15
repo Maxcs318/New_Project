@@ -148,8 +148,8 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Article",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminA')
-                    },5000)  
+                        this.$router.go(-1)
+                    },2000)  
                 this.$swal("Save Article Success .", "", "success")
             }else{
                 this.$swal("Please Choose Image .", "", "error")

@@ -148,7 +148,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Academic_Article",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminAA')
+                        this.$router.go(-1)
                     },2000)  
                 this.$swal("Save Academic Article Success .", "", "success")
             }else{

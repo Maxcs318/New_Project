@@ -127,7 +127,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Edit_Online_Journal",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminOJ')
+                        this.$router.go(-1)
                     },2000)  
                 this.$swal("Edit Online_Journal Success .", "", "success")
         }

@@ -29,7 +29,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/newsandactivities">
+          <router-link to="/newsandactivities/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">ข่าวกิจกรรม</h5>
@@ -47,7 +47,7 @@
           </router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/training_courses">
+          <router-link to="/training_courses/1">
             <b-navbar-brand>
               <b-nav-text>
                 <h5 class="text-test">หลักสูตร & อบรม</h5>
@@ -127,10 +127,10 @@ export default {
       this.$router.push("/myProfile");
     },
     videosroom() {
-      this.$router.push("/listroom");
+      this.$router.push("/listroom/1");
     },
     productall() {
-      this.$router.push("/productall");
+      this.$router.push("/productall/1");
     },
     admin() {
       this.$router.push("/Admin");

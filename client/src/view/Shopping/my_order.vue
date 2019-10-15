@@ -52,7 +52,7 @@ export default {
             this.$router.push('my_cart')
         },
         page_order_history(){
-            this.$router.push('my_order_history')
+            this.$router.push('my_order_history/1')
         },
         seethisOrder(this_order){
             this.$router.push({name:'order',params:{CodeOrder:this_order}});

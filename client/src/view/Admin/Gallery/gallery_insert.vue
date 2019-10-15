@@ -127,7 +127,7 @@ export default {
                     FD.append('creator',JSON.stringify(this.$store.state.log_on))
                     this.$store.dispatch("Add_Gallery",FD)
                     setTimeout(()=>{
-                        this.$router.push('/AdminListGallery')
+                        this.$router.go(-1)
                     },2000)  
                 this.$swal("Save Gallery Success .", "", "success")
             }else{

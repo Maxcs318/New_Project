@@ -38,34 +38,34 @@
 export default {
     methods:{
         news(){
-            this.$router.push('/AdminN')
+            this.$router.push('/AdminN/1')
         },
         article(){
-            this.$router.push('/AdminA')
+            this.$router.push('/AdminA/1')
         },
         product(){
-            this.$router.push('/AdminP')
+            this.$router.push('/AdminP/1')
         },
         video_room(){
-            this.$router.push('/AdminLR')
+            this.$router.push('/AdminLR/1')
         },
         list_order(){
-            this.$router.push('/AdminListOrder')
+            this.$router.push('/AdminListOrder/1')
         },
         list_gallery(){
-            this.$router.push('/AdminListGallery')
+            this.$router.push('/AdminListGallery/1')
         },
         academic_article(){
-            this.$router.push('/AdminAA')
+            this.$router.push('/AdminAA/1')
         },
         online_journal(){
-            this.$router.push('/AdminOJ')
+            this.$router.push('/AdminOJ/1')
         },
         manage_members(){
-            this.$router.push('/AdminM')
+            this.$router.push('/AdminM/1')
         },
         research(){
-            this.$router.push('/AdminR')
+            this.$router.push('/AdminR/1')
         }
     }
 }

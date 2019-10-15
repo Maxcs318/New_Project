@@ -127,7 +127,7 @@ export default {
                         this.$store.dispatch("Edit_Profile",FD)
 
                         setTimeout(()=>{
-                            this.$router.push('/myProfile')
+                            this.$router.go(-1)
                         },2000)  
                     this.$swal("Edit Profile Success .", "", "success")
                     this.passwordCheck = ''
