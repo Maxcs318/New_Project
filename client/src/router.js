@@ -138,8 +138,10 @@ export const router = new VueRouter({
         { path : "/AdminA/:Page",name:'AdminA',component : admin_Article },
         { path : "/AdminP/:Page",name:'AdminP',component : admin_Product },
         { path : "/AdminLR/:Page",name:'AdminLR',component : admin_ListRooms },
+
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
-        { path : "/AdminListOrder",component : admin_ListOrder },
+
+        { path : "/AdminListOrder/:Page",name:'AdminListOrder',component : admin_ListOrder },
         { path : "/AdminListOrder_check_delivery",component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery/:Page",name:'AdminListGallery',component : admin_Gallery },
