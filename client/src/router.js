@@ -142,7 +142,7 @@ export const router = new VueRouter({
         { path : "/AdminLV/:RoomID",name:"AdminLV",component : admin_ListVideos },
 
         { path : "/AdminListOrder/:Page",name:'AdminListOrder',component : admin_ListOrder },
-        { path : "/AdminListOrder_check_delivery",component : check_delivery },
+        { path : "/AdminListOrder_check_delivery/:Page",name:'AdminListOrder_check_delivery',component : check_delivery },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery/:Page",name:'AdminListGallery',component : admin_Gallery },
         { path : "/AdminAA/:Page",name:'AdminAA',component : admin_Academic_Articles },

@@ -80,7 +80,7 @@ export default {
             });
         },
         check_delivery(){
-            this.$router.push('/AdminListOrder_check_delivery')
+            this.$router.push('/AdminListOrder_check_delivery/1')
         },
         check_this_order(this_order){
             this.$router.push({name:'check_order',params:{CodeOrder:this_order}})
