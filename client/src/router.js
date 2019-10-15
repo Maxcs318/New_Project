@@ -144,7 +144,7 @@ export const router = new VueRouter({
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery/:Page",name:'AdminListGallery',component : admin_Gallery },
         { path : "/AdminAA/:Page",name:'AdminAA',component : admin_Academic_Articles },
-        { path : "/AdminOJ",component : admin_Online_Journal },
+        { path : "/AdminOJ/:Page",name:'AdminOJ',component : admin_Online_Journal },
         { path : "/AdminR",component : admin_Research },
 
         { path : "/AdminM/:Page",name:'AdminM',component : admin_member_list },
