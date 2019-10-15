@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-6 col-12"> </div>
       <div 
         class="col-lg-6 col-12"
@@ -12,7 +12,7 @@
           <h5 class="activitiesall-text2">{{news.n_title}}</h5>
           <p class="activitiesall-date2">{{news.n_create_date.slice(0,-13)}}</p>
       </div>
-    </div>
+    </div> -->
     <div class="row"> 
       <!-- activities all pc-scale -->
       <!-- <div class="activities-pc">
