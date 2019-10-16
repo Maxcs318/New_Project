@@ -3,7 +3,7 @@
     <div class="modal-content animate" v-if="log_on">
       <form @submit.prevent="onSubmitLogin">
         <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
+          <span @click="Close_Login" class="close">&times;</span>
         </div>
 
         <div class="container">
@@ -87,6 +87,9 @@ export default {
     };
   },
   methods: {
+    Close_Login() {
+      document.getElementById("loginpopup").style.display = "none";
+    },
     onSubmitLogin() {
       this.user.m_password = md5(this.password_normal);
       this.user.m_username = this.username;
@@ -211,6 +214,17 @@ span.psw {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   padding-top: 60px;
 }
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #1a2a3e;
+  margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  border-radius: 6px;
+  width: 442px; /* Could be more or less, depending on screen size */
+  height: 355px;
+}
+
 .forgot-pass {
   font-size: 18px;
   color: #6cadfd;
@@ -221,16 +235,6 @@ span.psw {
 .forgot-pass:hover {
   color: #888;
   text-decoration: none;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #1a2a3e;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  border-radius: 6px;
-  width: 442px; /* Could be more or less, depending on screen size */
-  height: 355px;
 }
 
 /* The Close Button (x) */
@@ -279,7 +283,21 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  form{
+    margin-top: 100px;
+  }
   span.psw {
     display: block;
     float: none;

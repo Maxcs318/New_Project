@@ -125,9 +125,6 @@ export default {
     PopupLogin1() {
       document.getElementById("loginpopup").style.display = "block";
     },
-     Close_Login() {
-      document.getElementById("loginpopup").style.display = "none";
-    },
     Log_Out() {
       this.$store.dispatch("Log_Out").then(() => {
         // this.$router.go()
