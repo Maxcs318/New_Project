@@ -102,6 +102,9 @@ export default {
     },
     research() {
       this.$router.push("/AdminR/1");
+    },
+    award() {
+      this.$router.push("/");
     }
   }
 };
