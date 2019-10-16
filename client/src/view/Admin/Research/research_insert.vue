@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-    compute:{
+    computed:{
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
