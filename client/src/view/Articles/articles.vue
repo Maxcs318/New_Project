@@ -143,15 +143,9 @@ img {
   line-height: 150%;
   color: #d8d8d8;
 }
-.btn-toolbar {
-  /* cursor: pointer; */
-  display: block;
-  margin: 0 auto;
-  margin-top: 81px;
-}
 
 /* pagination active */
-.btn-light:not(:disabled):not(.disabled).active{
+.btn-light:not(:disabled):not(.disabled).active {
   /* background-color: red; */
 }
 @media only screen and (max-width: 600px) {
