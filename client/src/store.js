@@ -15,6 +15,7 @@ const store = new Vuex.Store({
         article:[],article_category:[],
         academic_article:[],academic_article_category:[],
         online_journal:[],
+        research:[],
         files:[],
 
         product:[],product_category:[],product_image:[],
@@ -102,7 +103,9 @@ const store = new Vuex.Store({
         Online_Journal(state,oj){
             state.online_journal = oj
         },
-
+        Research(state,research){
+            state.research = research
+        },
 
         LoadingPage(state,statusP){
             state.statusPage = statusP
@@ -631,7 +634,13 @@ const store = new Vuex.Store({
                 context.commit("Online_Journal",response.data)
             })
         },
-
+        initDataResearch(context){
+            axios.get(base_url +"research/get_all_research")
+            .then(response => {
+                // console.log(response)
+                context.commit("Research",response.data)
+            })
+        },
 
         // End Load Data
         // load page
@@ -1188,7 +1197,17 @@ const store = new Vuex.Store({
                 }
             return oj_user
         },
-
+        getResearch(state){
+            var research = state.research
+            var user = state.the_user
+            var research_cansee = []
+            for(var i=0; i<research.length; i++){
+                if( user.m_type >= research[i].r_permission ){
+                    research_cansee.push(research[i])
+                }
+            }
+            return research_cansee
+        },
         
     }
 

@@ -87,6 +87,8 @@ export default {
     this.$store.dispatch("initDataAcademic_Article_Category");
     this.$store.dispatch("initDataOnline_Journal");
     this.$store.dispatch("initDataMember_Upgrade_Date");
+    this.$store.dispatch("initDataResearch");
+    
   }
 };
 </script>

@@ -20,7 +20,7 @@
                     <br>
                     
                     <div class="row" v-if="thisGallery_Image">
-                        <h5 class="col-lg-12">Another Image(old)</h5>
+                        <h5 class="col-lg-12">Another Image</h5>
                         <div class="col-lg-3" v-for="(gi,run) in thisGallery_Image" :key="run">
                             <img :src="getImgUrl(gi.gi_image)" width="100%"> 
                             <button type="button" class="form-control btn-danger" @click="DeleteGallery_Image(gi.gi_id)">Delete</button>
@@ -29,18 +29,17 @@
                     </div>
                     <br>
                     <!--  -->
-                            <h5> Another Image (new) [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
+                            <h5>New Another Image  [ {{files.length}} ] Size Files All [ {{max_size_file}} byte ]</h5>
                                 <input type="file" ref="files" style="display: none;" id="anotherImage" @change="handleFileUpload" multiple>
                             <br>
-                            <div class="row" v-for="(f,index) in files" :key="index">
-                                <div class="col-lg-10">
-                                    <b> {{index+1}}. File  </b> {{files[index].name }}
-                                    <b> Size </b>{{files[index].size}} byte
-                                    <br><br>
-                                </div>
-                                <div class="col-lg-2">
+                            <div class="row">
+                                <div class="col-6" v-for="(f,index) in files" :key="index">
+                                    <img :src="another_image_pre[index]" width="100%"/>
+                                    <h5></h5>
+                                    <b> {{index+1}}. </b> {{files[index].name }}
+                                    <!-- <b> Size </b>{{files[index].size}} byte -->
                                     <button type="button" class="form-control btn-danger" 
-                                    @click="RemoveRow(index)">X</button> <br>
+                                    @click="RemoveRow(index)"> Remove </button> <br>
                                 </div>
                             </div>
                     <!--  -->
@@ -67,6 +66,7 @@ export default {
         return{
             galleryE:'',
             url: null,
+            another_image_pre:[],
             fileimage:'',
             files : [],
             max_size_file : 0,
@@ -104,15 +104,18 @@ export default {
         },
         handleFileUpload(event){
             this.files = []
+            this.another_image_pre = []
              
             var i=0
             let uploadedFiles = this.$refs.files.files;
             for( var i = 0; i < uploadedFiles.length; i++ ){
                 this.files.push( uploadedFiles[i] );
+                this.another_image_pre.push(URL.createObjectURL(uploadedFiles[i]))
                 this.max_size_file = this.max_size_file + uploadedFiles[i].size
             }
             if(this.max_size_file>10000000){
                 this.files = []
+                this.another_image_pre = []
                 this.max_size_file = 0
                     // alert
                     this.$swal('Your file is larger than 10 MB. Sorry Choose Again !!!')
@@ -121,6 +124,7 @@ export default {
         RemoveRow: function(index){
             this.max_size_file = this.max_size_file - this.files[index].size
             this.files.splice(index,1)
+            this.another_image_pre.splice(index,1)
         },
         // submit
         submitGallery(){
@@ -176,7 +180,7 @@ export default {
         the_user(){
             var user = this.$store.getters.getThe_User
             if( user.m_status != 'admin' ){
-                this.$router.go(-1)
+                // this.$router.go(-1)
             }
             return user
         }

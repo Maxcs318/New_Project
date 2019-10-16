@@ -1,11 +1,12 @@
 <template>
 
   <div class="container">
-  <sidebar></sidebar>
+
+  <!-- <sidebar></sidebar>
     <book-interesting></book-interesting>
     <training-courses-interesting></training-courses-interesting>
-  
-
+   -->
+  {{Research}}
   </div>
   
 </template>
@@ -26,6 +27,10 @@ export default {
   methods: {},
   watch: {},
   mounted() {},
-  computed: {}
+  computed: {
+    Research(){
+      return this.$store.getters.getResearch
+    },
+  }
 };
 </script>
