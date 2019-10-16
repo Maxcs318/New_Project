@@ -1,306 +1,200 @@
 <template>
-  <div>
-    <div class="menu">
-      <div class="title">MENU</div>
-      <ul class="nav">
-        <li>
-          <h6 href="#" @click="news">News & Activity</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="article" style="margin-right: 120px">Article</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="product">Product</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="video_room">Video Room & Videos</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="list_order">Check Order</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="list_gallery">List Gallery</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="academic_article">Academic Article</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="online_journal">Online Journal</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="manage_members">Manage Members</h6>
-        </li>
-        <li>
-          <h6 href="#" @click="research">Research</h6>
-        </li>
-      </ul>
-    </div>
+<div>
+  <body>
+    <button @click="PopupLogin" style="width:auto;">Login</button>
+    <div id="id02" class="modal">
+      <login></login>
+      <!-- <form
+        class="modal-content animate"
+        action="./../components/Login_Register/loginPage.vue"
+        method="post"
+      >
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
+        </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-primary" @click="news">News & Activity</button>
+        <div class="container">
+          <input type="text" placeholder="ชื่อ" name="uname" required />
           <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-success" @click="article">Article</button>
+          <input type="password" placeholder="อีเมล์" name="psw" required />
           <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="product">Product</button>
           <br />
+          <center>
+            <button type="submit">เข้าสู่ระบบ</button>
+            <br />
+            <a href="#" class="forgot-pass">ลืมรหัสผ่าน</a>
+          </center>
         </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="video_room"
-          >Video Room & Videos</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-warning" @click="list_order">Check Order</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="list_gallery">List Gallery</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="academic_article">Academic Article</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-warning"
-            @click="online_journal"
-          >Online Journal</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="manage_members"
-          >Manage Members</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="research">Research</button>
-          <br />
-        </div>
-      </div>
+      </form>-->
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-primary" @click="news">News & Activity</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-success" @click="article">Article</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="product">Product</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="video_room"
-          >Video Room & Videos</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-warning" @click="list_order">Check Order</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="list_gallery">List Gallery</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="academic_article">Academic Article</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-warning"
-            @click="online_journal"
-          >Online Journal</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="manage_members"
-          >Manage Members</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="research">Research</button>
-          <br />
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-primary" @click="news">News & Activity</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-success" @click="article">Article</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="product">Product</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="video_room"
-          >Video Room & Videos</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-warning" @click="list_order">Check Order</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="list_gallery">List Gallery</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control" @click="academic_article">Academic Article</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-warning"
-            @click="online_journal"
-          >Online Journal</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button
-            type="button"
-            class="form-control btn-danger"
-            @click="manage_members"
-          >Manage Members</button>
-          <br />
-        </div>
-        <div class="col-lg-6 col-xs-12">
-          <button type="button" class="form-control btn-dark" @click="research">Research</button>
-          <br />
-        </div>
-      </div>
-    </div>
-  </div>
+  </body>
+</div>
 </template>
 <script>
+import logintest from "./../components/Login_Register/loginPage";
+// Get the modal
+// var modal = document.getElementById("id01");
 export default {
-  data() {
-    return {
-      search: ""
-    };
+  components: {
+    login: logintest
   },
   methods: {
-    getImgUrlProduct(picP) {
-      return this.path_files + "Product/" + picP;
-    },
-    seethisPageProduct(thisproduct) {
-      this.$router.push({ name: "test02", params: { TestID: thisproduct } });
-    },
-    news() {
-      this.$router.push("/AdminN");
+    PopupLogin() {
+      document.getElementById("id02").style.display = "block";
     }
-  },
-  computed: {
-    Test() {
-      return this.$store.getters.getMembers;
-    },
-    ProductAll() {
-      return this.$store.getters.getProduct_Set_Category;
-    },
-    path_files() {
-      return this.$store.getters.getPath_Files;
-    },
-    listFilter() {
-      let text = this.search.trim();
-      return this.Test.filter(item => {
-        return item.m_username.indexOf(text) > -1;
-      });
-    }
-  },
-  created() {
-    this.$store.dispatch("initMembers");
-    this.$store.dispatch("initDataProduct");
-    this.$store.dispatch("initDataProduct_Category");
-    this.$store.dispatch("initDataProduct_Image");
   }
 };
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "block";
+//   }
+// };
 </script>
-
 <style scoped>
-.menu {
-  margin-top: 90px;
-  font-weight: 100;
-  background: #efefef;
-  width: 250px;
-  height: 70%;
-  z-index: 100;
-  padding-left: 30px;
-  padding-right: 70px;
-  position: fixed;
-  -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: -3px 0px 7px 8px rgba(0, 0, 0, 0.2);
-  left: -210px;
-  transition: 0.3s;
-  color: #222;
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  padding: 8px 16px;
+  margin: auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: none;
+  color: #e0e0e0;
+  opacity: 0.7;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+::placeholder {
+  color: #e0e0e0;
+  opacity: 0.7;
 }
 
-.menu:hover,
-.menu:focus {
-  transform: translate3d(210px, 0, 0);
-  animation-timing-function: 0.5s ease-in;
-}
-.title {
-  top: 12%;
-  position: absolute;
-  transform: rotate(-270deg);
-  left: 205px;
-  font-weight: 800;
-  font-size: 1.3em;
-}
-.nav {
-  vertical-align: absolute;
-  font-weight: 100;
-}
-ul {
-  margin-top: 33px;
-}
-li {
-  padding-bottom: 19px;
-  list-style-type: none;
-}
-h6 {
-  display: block;
-  text-decoration: none;
-  color: inherit;
+/* Set a style for all buttons */
+button {
+  background-color: #eecd02;
+  border-radius: 14px;
+  color: #093f84;
+  padding: 9px 32px;
+  font-size: 18px;
   font-weight: 600;
-  transition: 0.2s;
+  line-height: 150%;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.forgot-pass {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600px;
+}
+.forgot-pass:hover {
+  color: gray;
+  text-decoration: none;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #1a2a3e;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  border-radius: 6px;
+  width: 442px; /* Could be more or less, depending on screen size */
+  height: 355px;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  opacity: 0.5;
   cursor: pointer;
 }
-.nav h6:hover {
-  color: #aaa;
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
 }
 </style>

@@ -77,10 +77,15 @@
         <b-navbar-nav>
           <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
           <button
+            class="login-btn"
             v-if="this.$store.state.the_user == '' "
-            class="form-control btn-outline-primary"
-            @click="Log_in"
+            @click="PopupLogin1"
           >Log in</button>
+
+          <div id="loginpopup" class="modal">
+            <loginpop></loginpop>
+          </div>
+
           <b-nav-item-dropdown style="color:red;" right v-if="this.$store.state.the_user != '' ">
             <template slot="button-content">{{this.$store.state.the_user.m_username}}</template>
             <b-dropdown-item
@@ -100,7 +105,12 @@
   </div>
 </template>
 <script>
+import logintest from "../Login_Register/loginPage";
+
 export default {
+  components: {
+    loginpop: logintest
+  },
   data() {
     return {
       active: false
@@ -112,6 +122,12 @@ export default {
     }
   },
   methods: {
+    PopupLogin1() {
+      document.getElementById("loginpopup").style.display = "block";
+    },
+     Close_Login() {
+      document.getElementById("loginpopup").style.display = "none";
+    },
     Log_Out() {
       this.$store.dispatch("Log_Out").then(() => {
         // this.$router.go()
@@ -159,7 +175,7 @@ export default {
   font-size: 17px;
   line-height: 27px;
   margin-right: 25px;
-margin-top: 8px;  
+  margin-top: 8px;
   color: #757575;
 }
 
@@ -178,6 +194,25 @@ margin-top: 8px;
 
 .btn-outline-primary {
   background: none;
+}
+
+/* Set a style for all buttons */
+button.login-btn {
+  background-color: #eecd02;
+  border-radius: 6px;
+  color: #093f84;
+  padding: 6px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 150%;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+button.login-btn:hover {
+  opacity: 0.7;
 }
 
 @media only screen and (max-width: 600px) {
@@ -199,3 +234,9 @@ margin-top: 8px;
   }
 }
 </style>
+
+
+
+
+
+
