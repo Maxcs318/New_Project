@@ -108,7 +108,7 @@ export default {
   font-weight: 100;
   background: #efefef;
   width: 270px;
-  height: 550px;
+  height: 520px;
   z-index: 100;
   padding-left: 30px;
   padding-right: 50px;
