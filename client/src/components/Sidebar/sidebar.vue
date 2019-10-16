@@ -55,7 +55,12 @@
         </li>
         <li>
           <h6 href="#" @click="research">
-            <i class="fas fa-search-plus">&nbsp; Research</i>
+            <i class="fas fa-search-plus" style="margin-right: 50px;">&nbsp; Research</i>
+          </h6>
+        </li>
+         <li>
+          <h6 href="#" @click="award">
+            <i class="fas fa-trophy">&nbsp; Award</i>
           </h6>
         </li>
       </ul>
@@ -108,9 +113,9 @@ export default {
   font-weight: 100;
   background: #efefef;
   width: 270px;
-  height: 520px;
+  height: 480px;
   z-index: 100;
-  padding-left: 30px;
+  padding-left: 20px;
   padding-right: 50px;
   position: fixed;
   -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
@@ -143,7 +148,7 @@ ul {
   margin-top: 23px;
 }
 li {
-  padding-bottom: 19px;
+  padding-bottom: 9px;
   list-style-type: none;
 }
 h6 {
