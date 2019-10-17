@@ -132,7 +132,7 @@ a:hover {
 }
 .article-title {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 70%;
   padding-left: 19px;
   padding-right: 19px;
@@ -146,7 +146,7 @@ a:hover {
 }
 .article-date {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 90%;
   padding-left: 19px;
   padding-right: 19px;

@@ -196,9 +196,9 @@ export default {
 /* Set a style for all buttons */
 button.login-btn {
   background-color: #eecd02;
-  border-radius: 6px;
+  border-radius: 2px;
   color: #093f84;
-  padding: 6px 20px;
+  padding: 4px 25px;
   font-size: 18px;
   font-weight: 600;
   line-height: 150%;

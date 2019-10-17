@@ -81,7 +81,7 @@ export default {
 
 .text {
   position: absolute;
-  top: 110px;
+  top: 120px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
@@ -96,7 +96,7 @@ export default {
 
 .date {
   position: absolute;
-  top: 198px;
+  top: 215px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
