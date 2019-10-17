@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2019 at 11:09 AM
+-- Generation Time: Oct 17, 2019 at 01:03 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -49,7 +49,8 @@ INSERT INTO `academic_article` (`aa_id`, `aa_title`, `aa_detail`, `aa_category`,
 (6, 'test aa +', 'aAfdtth + - x skill', '1', '30 กันยายน 2562 time 15:00:00', '300920191500008dbYLgjztU.jpg', '30 กันยายน 2562 time 15:00:20', 'AA30092019150000jZJBNlpS9U'),
 (7, 'บทความวิชาการ ++', '+ test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + + test + ', '1', '30 กันยายน 2562 time 15:20:59', '30092019152059miNgPSuLo6.jpg', '', 'AA30092019152059ROkEsZ9NrQ'),
 (8, 'check test บทความวิชาการ', '๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ๙๙๙ ', '2', '30 กันยายน 2562 time 15:50:30', '30092019155030nax8ISleTh.png', '04 ตุลาคม 2562 time 15:55:52', 'AA30092019155030Q2lOzQJA2Z'),
-(9, 'S2 Academic Article', 'ก็มาดิคร้าบบบบ', '1', '04 ตุลาคม 2562 time 16:03:32', '04102019160332IlhayQm8lT.jpg', '', 'AA04102019160332OpXbbmv9pU');
+(9, 'S2 Academic Article', 'ก็มาดิคร้าบบบบ', '1', '04 ตุลาคม 2562 time 16:03:32', '04102019160332IlhayQm8lT.jpg', '', 'AA04102019160332OpXbbmv9pU'),
+(10, 'test page Academic Article', '++', '1', '09 ตุลาคม 2562 time 15:59:51', '09102019155951f5cFMXOnDM.jpg', '', 'AA09102019155951yv6O6t9cEW');
 
 -- --------------------------------------------------------
 
@@ -96,7 +97,6 @@ CREATE TABLE `article` (
 --
 
 INSERT INTO `article` (`a_id`, `a_title`, `a_detail`, `a_category`, `a_create_date`, `a_image`, `a_update_date`, `a_file_key`) VALUES
-(26, 'dff', 'GH', '', '28 สิงหาคม 2562 time 14:30:57', '28082019143057gfIsFtqvdG.jpg', '', 'A28082019143057nRGwRLrMhr'),
 (27, 'gr', 'een', '', '28 สิงหาคม 2562 time 14:34:58', '28082019143458YRshJqMn9b.jpg', '', 'A28082019143458VGArYsy4IT'),
 (28, 'gt', 'eet', '', '28 สิงหาคม 2562 time 14:36:06', '28082019143606Jc6B8lobDE.png', '', 'A28082019143606uSLrfYRDZH'),
 (29, 'gt', 'eet', '', '28 สิงหาคม 2562 time 14:41:27', '28082019144127craeSAHeiv.png', '', 'A28082019144127s5602gASdF'),
@@ -131,8 +131,9 @@ INSERT INTO `article` (`a_id`, `a_title`, `a_detail`, `a_category`, `a_create_da
 (66, 'h', 'a', '1', '05 กันยายน 2562 time 15:20:21', '05092019152021lwPf3yBGag.png', '', 'A05092019152021czgkzE7zkG'),
 (67, 'Head Ar III', 'DD', '2', '05 กันยายน 2562 time 15:21:49', '16092019120746zCr1JTv4li.png', '16 กันยายน 2562 time 12:07:46', 'A05092019152149bgqDejkcA9'),
 (68, 'Article New test ++', '++ test image cat03', '2', '16 กันยายน 2562 time 12:09:24', '16092019120924tOroJ8igeS.jpg', '16 กันยายน 2562 time 12:11:48', 'A160920191209243PkJnsU6FV'),
-(70, '70', '++', '1', '16 กันยายน 2562 time 12:19:54', '16092019121954DW0ysfhJNO.jpg', '04 ตุลาคม 2562 time 15:55:00', 'A16092019121954HaQJkqUtTi'),
-(71, 'S15 is comming for you', 'G o o G l e', '1', '04 ตุลาคม 2562 time 16:01:39', '041020191601394pRCzM7XeW.jpg', '', 'A04102019160139sXUmJtrx05');
+(70, '70', '++', '1', '16 กันยายน 2562 time 12:19:54', '16092019121954DW0ysfhJNO.jpg', '07 ตุลาคม 2562 time 16:24:30', 'A16092019121954HaQJkqUtTi'),
+(71, 'test page ++', 'test page', '1', '08 ตุลาคม 2562 time 14:59:41', '08102019145940FNgLfJInJa.jpg', '', 'A08102019145940VTBX7mnDU2'),
+(72, 'test page 2 ++', 'test page again ++', '2', '08 ตุลาคม 2562 time 15:00:07', '08102019150007ZSUbweX2iE.png', '', 'A08102019150007AmgQfkvnAJ');
 
 -- --------------------------------------------------------
 
@@ -209,10 +210,21 @@ INSERT INTO `files_upload` (`f_id`, `f_name`, `f_title`, `f_key`, `f_create_date
 (164, '04102019155951Ir7LcAuQpE.rar', 'max 1', 'N04102019155841qd1WH1053g', '04 ตุลาคม 2562 time 15:59:51', ''),
 (165, '04102019155951hjP2mCpGnQ.fa19f1cc.rar', 'max 2', 'N04102019155841qd1WH1053g', '04 ตุลาคม 2562 time 15:59:51', ''),
 (166, '04102019155951Q2IbbHSYyu.fa19f1cc.rar', 'max 3', 'N04102019155841qd1WH1053g', '04 ตุลาคม 2562 time 15:59:51', ''),
-(167, '04102019160139zWFFWwfkdp.fa19f1cc.rar', 'Article real', 'A04102019160139sXUmJtrx05', '04 ตุลาคม 2562 time 16:01:39', ''),
-(168, '04102019160139CstrLSMiG9.fa19f1cc.rar', 'Article test', 'A04102019160139sXUmJtrx05', '04 ตุลาคม 2562 time 16:01:39', ''),
 (169, '041020191603327tSDMEU2qC.3.1-dist.zip', 'บูทสแตรบ สี่ จุด สาม จุด หนึ่ง', 'AA04102019160332OpXbbmv9pU', '04 ตุลาคม 2562 time 16:03:33', ''),
-(170, '04102019160442Nf9Q2tiQtK.1.1.zip', 'bootstrap 4.1.1', 'OJ04102019160442abSsv8YpFA', '04 ตุลาคม 2562 time 16:04:42', '');
+(170, '04102019160442Nf9Q2tiQtK.1.1.zip', 'bootstrap 4.1.1', 'OJ04102019160442abSsv8YpFA', '04 ตุลาคม 2562 time 16:04:42', ''),
+(171, '07102019162430nVIjH6Dter.rar', 'max test', 'A16092019121954HaQJkqUtTi', '07 ตุลาคม 2562 time 16:24:31', ''),
+(172, '09102019155951w6gYTAymcp.sql', 'sql ++', 'AA09102019155951yv6O6t9cEW', '09 ตุลาคม 2562 time 15:59:51', ''),
+(177, '17102019122150bco32aNSh9.sql', 'zsql', 'R17102019122150UWmgVDG0g6', '17 ตุลาคม 2562 time 12:21:51', ''),
+(180, '17102019152324OI03gAxGcz.rar', '1', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 15:23:24', ''),
+(181, '17102019152324d2w1OUeCLD.fa19f1cc.rar', '2', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 15:23:24', ''),
+(182, '17102019152324nTlcFbytpW.fa19f1cc.rar', '3', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 15:23:24', ''),
+(183, '17102019152344AJcec5VXw9.rar', '4', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 15:23:44', ''),
+(184, '17102019152344srGYa01ekh.fa19f1cc.rar', '5', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 15:23:44', ''),
+(185, '17102019152611PYJY7AEgok.png', 'Image Gang Rocket', '001', '17 ตุลาคม 2562 time 15:26:11', ''),
+(186, '17102019152721KnDO0m1dGN.rar', 'q', '002', '17 ตุลาคม 2562 time 15:27:21', ''),
+(187, '17102019152721aIs9RSRbo0.fa19f1cc.rar', 'qq', '002', '17 ตุลาคม 2562 time 15:27:21', ''),
+(188, '17102019152721qBqmyF4sc4.fa19f1cc.rar', 'qqq', '002', '17 ตุลาคม 2562 time 15:27:21', ''),
+(189, '17102019152721dhL6I8isQ9.fa19f1cc.rar', 'qqqq', '002', '17 ตุลาคม 2562 time 15:27:21', '');
 
 -- --------------------------------------------------------
 
@@ -239,7 +251,9 @@ INSERT INTO `gallery` (`g_id`, `g_name`, `g_release_date`, `g_image`, `g_descrip
 (3, 'test C++', '', '26092019170656k7EocbONbQ.png', 'C', '26 กันยายน 2562 time 17:06:56', '27 กันยายน 2562 time 15:15:34'),
 (4, 'test D', '', '26092019170748oZTW7X6CwH.jpg', 'D', '26 กันยายน 2562 time 17:07:48', ''),
 (5, 'cat test', '', '27092019132727TkpNiF8cq0.jpg', '++', '27 กันยายน 2562 time 13:27:27', ''),
-(6, 'test ppaa test cat ++ test again', '', '27092019164733UEF2WaqXA6.jpg', 'test test', '27 กันยายน 2562 time 13:31:59', '27 กันยายน 2562 time 16:47:33');
+(6, 'test ppaa test cat ++ test again', '', '27092019164733UEF2WaqXA6.jpg', 'test test', '27 กันยายน 2562 time 13:31:59', '27 กันยายน 2562 time 16:47:33'),
+(7, 'GALLERY TEST', '', '16102019114247nZ6E1QuD4k.png', '++ test test test ++', '16 ตุลาคม 2562 time 11:42:47', '16 ตุลาคม 2562 time 11:45:39'),
+(8, 'cat HD', '', '16102019115401jXwG8fWe5u.jpg', '++ CAT NOOB ++', '16 ตุลาคม 2562 time 11:47:45', '16 ตุลาคม 2562 time 11:54:01');
 
 -- --------------------------------------------------------
 
@@ -282,7 +296,14 @@ INSERT INTO `gallery_image` (`gi_id`, `gi_image`, `gi_gallery_id`, `gi_create_da
 (31, '27092019151236mdF3nRieLf.jpg', '6', '27 กันยายน 2562 time 15:12:36', ''),
 (32, '270920191514010wZdnpmcBB.png', '3', '27 กันยายน 2562 time 15:14:01', ''),
 (33, '27092019151401zx9hNbaQt6.jpg', '3', '27 กันยายน 2562 time 15:14:01', ''),
-(35, '27092019151534gG3MWazP31.png', '3', '27 กันยายน 2562 time 15:15:34', '');
+(35, '27092019151534gG3MWazP31.png', '3', '27 กันยายน 2562 time 15:15:34', ''),
+(36, '16102019114247YUXPcKWWOR.jpg', '7', '16 ตุลาคม 2562 time 11:42:47', ''),
+(37, '16102019114247ytu5I0nS3F.jpg', '7', '16 ตุลาคม 2562 time 11:42:47', ''),
+(38, '16102019114247dHPW0TmSUQ.png', '7', '16 ตุลาคม 2562 time 11:42:47', ''),
+(39, '16102019114247fXn6HdiWAC.jpg', '7', '16 ตุลาคม 2562 time 11:42:47', ''),
+(40, '16102019114247w2bGyRvC7l.jpg', '7', '16 ตุลาคม 2562 time 11:42:47', ''),
+(41, '16102019114539CSOj2Npn5q.jpg', '7', '16 ตุลาคม 2562 time 11:45:39', ''),
+(42, '16102019114539EvY8CdZvjY.jpg', '7', '16 ตุลาคม 2562 time 11:45:39', '');
 
 -- --------------------------------------------------------
 
@@ -306,7 +327,7 @@ INSERT INTO `logged` (`l_id`, `time`, `l_id_m_id`, `token`) VALUES
 (80, '2019-09-10 09:22:07', '14', '1009201916220714jAvdCmR5yq'),
 (94, '2019-09-13 07:56:35', '12', '1309201914563512rnE3l5Q8MY'),
 (106, '2019-09-19 06:02:47', '12', '19092019130247125WoMG2YNDf'),
-(139, '2019-10-04 09:08:10', '1', '041020191608101NF5t1JWReK');
+(230, '2019-10-16 09:43:36', '1', '161020191643361mnxEoOoRSO');
 
 -- --------------------------------------------------------
 
@@ -341,8 +362,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`m_id`, `m_id_number`, `m_firstname`, `m_lastname`, `m_firstname_eng`, `m_lastname_eng`, `m_username`, `m_status`, `m_password`, `m_imageprofile`, `m_type`, `m_upgrade_date_id`, `m_company`, `m_phone`, `m_email`, `m_institute`, `m_address`, `m_create_date`, `m_update_date`) VALUES
-(1, '100', 'ดวงดี Admin +123', 'มูลคำ', 'Dusngdee ENG', 'Moolkham ENG', 'max', 'admin', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', '03102019120654RipxfeHYIt.png', '3', '25', '123', '0980980980', 'MAXMAIL@Mail.com', 'ดาวอังคาร', 'The Moon', '', '04 ตุลาคม 2562 time 11:23:20 ( Edit By Admin )'),
-(2, '', 'JPEG IS Real ?', 'm', '', '', 'xxx', 'user', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', '12092019171138y16v7uQcds.png', '2', '17', '', '', '', '', '', '', '02 ตุลาคม 2562 time 16:10:16 ( Edit By Admin )'),
+(1, '100', 'ดวงดี Admin +123', 'มูลคำ', 'Dusngdee ENG', 'Moolkham ENG', 'max', 'admin', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', '03102019120654RipxfeHYIt.png', '3', '25', '123', '0980980980', 'MAXMAIL@Mail.com', 'ดาวอังคาร', 'The Moon', '', '17 ตุลาคม 2562 time 11:48:57 ( Edit By Admin )'),
+(2, '', 'JPEG IS Real ?', 'm', '', '', 'xxx', 'user', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', '12092019171138y16v7uQcds.png', '2', '17', '', '', '', '', '', '', '17 ตุลาคม 2562 time 11:45:07 ( Edit By Admin )'),
 (3, '', 'zzz First ++', 'zzz Last', 'FZeng', 'LZeng', 'zzz', 'admin', 'f3abb86bd34cf4d52698f14c0da1dc60', '02092019120759BSL755Z3iP.jpg', '3', '18', 'no', '0987654321', 'Z@g', 'no have', 'no have too', '', '02 ตุลาคม 2562 time 16:10:30 ( Edit By Admin )'),
 (4, '10101011', 'ดวงดี ---', 'มูลคำ', 'Duangdee', 'Moolkham', 'corazon', 'user', 'f561aaf6ef0bf14d4208bb46a4ccb3ad', 'jpg.png', '3', '26', 'company', '1234567890', 'max@mail', 'institute', 'address', 'C Date', '03 ตุลาคม 2562 time 14:23:49 ( Edit By Admin )'),
 (5, '', 'เอ', 'เอเอ', 'A', 'AA', 'aaa', 'user', '47bce5c74f589f4867dbd57e9ca9f808', '02092019125206JP3ilnGpRZ.png', '1', '', '', '0192837465', 'a@amail.com', 'No', 'ad ee', '02 กันยายน 2562 time 12:09:53', '02 ตุลาคม 2562 time 15:45:18 ( Edit By Admin )'),
@@ -350,7 +371,7 @@ INSERT INTO `member` (`m_id`, `m_id_number`, `m_firstname`, `m_lastname`, `m_fir
 (7, '', 'eeee', 'eee', '', '', 'eee', 'user', 'd2f2297d6e829cd3493aa7de4416a18f', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:09:37', ''),
 (8, '', 'rrrF', 'rrrL', '', '', 'rrr', 'user', '44f437ced647ec3f40fa0841041871cd', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:12:10', ''),
 (9, '', 'ooo', 'ooo', '', '', 'ooo', 'user', '7f94dd413148ff9ac9e9e4b6ff2b6ca9', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:14:24', ''),
-(10, '', 'sss', 'sss', '', '', 'sss', 'user', '9f6e6800cfae7749eb6c486619254b9c', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:18:01', '03 ตุลาคม 2562 time 11:59:24 ( Edit By Admin )'),
+(10, '', 'sss', 'sss', '', '', 'sss', 'user', '9f6e6800cfae7749eb6c486619254b9c', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:18:01', '17 ตุลาคม 2562 time 11:45:37 ( Edit By Admin )'),
 (11, '', 'www', 'www', '', '', 'www', 'user', '4eae35f1b35977a00ebd8086c259d4c9', '', '2', '', '', '', '', '', '', '02 กันยายน 2562 time 14:23:34', '02 ตุลาคม 2562 time 13:09:20 ( Edit By Admin )'),
 (12, '', 'iii', 'iii', '', '', 'iii', 'user', '36347412c7d30ae6fde3742bbc4f21b9', '', '1', '', '', '', '', '', '', '02 กันยายน 2562 time 14:24:11', ''),
 (13, '', '', '', '', '', 'x', 'user', '000', '', '1', '', '', '', '', '', '', '10 กันยายน 2562 time 16:18:23', ''),
@@ -359,7 +380,8 @@ INSERT INTO `member` (`m_id`, `m_id_number`, `m_firstname`, `m_lastname`, `m_fir
 (16, '', 'lll', 'lll', '', '', 'loop', 'user', 'e48b981fb62db33b98a27fc6cf8bf40a', '', '1', '', '', '', '', '', '', '10 กันยายน 2562 time 16:43:26', ''),
 (17, '', '', '', '', '', 'xw', 'user', '000', '', '1', '', '', '', '', '', '', '10 กันยายน 2562 time 16:48:03', ''),
 (18, '', 'pl', 'll', '', 'a', 'root', 'user', 'c6f057b86584942e415435ffb1fa93d4', '', '1', '', '', '', '', '', '', '11 กันยายน 2562 time 18:21:25', '03 ตุลาคม 2562 time 16:23:01 ( Edit By Admin )'),
-(19, '', 'ทดสอบ', '๙๙', 'test', '99', 'mmm', 'user', '000', '03102019120802Fq7Qqap4ei.png', '3', '23', '', '', '', '', '', '11 กันยายน 2562 time 18:21:44', '03 ตุลาคม 2562 time 16:12:22 ( Edit By Admin )');
+(19, '', 'ทดสอบ', '๙๙', 'test', '99', 'mmm', 'user', '000', '03102019120802Fq7Qqap4ei.png', '3', '23', '', '', '', '', '', '11 กันยายน 2562 time 18:21:44', '03 ตุลาคม 2562 time 16:12:22 ( Edit By Admin )'),
+(20, '', '', '', '', '', '999', 'user', '000', '', '', '', '', '', '', '', '', '16 ตุลาคม 2562 time 15:36:34', '');
 
 -- --------------------------------------------------------
 
@@ -509,7 +531,7 @@ INSERT INTO `news` (`n_id`, `n_title`, `n_detail`, `n_create_date`, `n_image`, `
 (22, 'ข่าวใหม่ ๆ ๆ ๆ ๆ ', ' ม ม ม', '05 กันยายน 2562 time 15:14:11', '05092019151411YVxuPqWhNj.png', '', 'N05092019151411VtEegyNed7'),
 (23, 'หัวเรื่อง 123 test Edit', 'รายละเอียด', '11 กันยายน 2562 time 18:33:01', '16092019121553iuSRLz2Qyl.jpg', '16 กันยายน 2562 time 12:15:53', 'N11092019183301zZY7cGuhuI'),
 (24, 'Green W', 'GG', '16 กันยายน 2562 time 12:16:53', '16092019121653Y2Q8hpwShc.jpg', '04 ตุลาคม 2562 time 15:54:31', 'N16092019121653a46KDb8723'),
-(25, 'cat test files news', '++', '04 ตุลาคม 2562 time 15:58:41', '04102019155841HpRm4MYF5D.jpg', '04 ตุลาคม 2562 time 15:59:51', 'N04102019155841qd1WH1053g');
+(25, 'tete', '++', '04 ตุลาคม 2562 time 15:58:41', '04102019155841HpRm4MYF5D.jpg', '07 ตุลาคม 2562 time 16:12:24', 'N04102019155841qd1WH1053g');
 
 -- --------------------------------------------------------
 
@@ -815,7 +837,8 @@ INSERT INTO `product` (`p_id`, `p_name`, `p_description`, `p_price`, `p_price2`,
 (20, 'test multi files 4', 'test 4', '500', '499', '06092019142142yXIKRsJ0XZ.jpg', '10', '2', 'P06092019142142opY1m2Todl', '06 กันยายน 2562 time 14:21:42', '11 กันยายน 2562 time 12:45:51'),
 (21, 'lll', 'g', '220', '101', '13092019141613CaGVjJbCHM.png', '99', '1', 'P11092019184056Da75d152BE', '11 กันยายน 2562 time 18:40:56', '16 กันยายน 2562 time 12:02:55'),
 (22, 'test new product ++', '++', '100', '99', '160920191204130Ejv5omKga.jpg', '150', '1', 'P16092019120413f6JxAHxTa8', '16 กันยายน 2562 time 12:04:13', '16 กันยายน 2562 time 12:04:41'),
-(23, 'P test TT', ' ++ --', '100', '90', '2709201911352055bciV2IaV.png', '1000', '1', 'P16092019122057B9fvfGzeuS', '16 กันยายน 2562 time 12:20:57', '27 กันยายน 2562 time 11:35:20');
+(23, 'P test TT', ' ++ --', '100', '90', '2709201911352055bciV2IaV.png', '1000', '1', 'P16092019122057B9fvfGzeuS', '16 กันยายน 2562 time 12:20:57', '27 กันยายน 2562 time 11:35:20'),
+(24, 'test', '++', '100', '500', '16102019113101Y43mMpAwkA.png', '10000', '1', 'P16102019113101F8bPr03V1x', '16 ตุลาคม 2562 time 11:31:01', '16 ตุลาคม 2562 time 11:35:28');
 
 -- --------------------------------------------------------
 
@@ -875,7 +898,52 @@ INSERT INTO `product_image` (`pi_id`, `pi_name`, `pi_create_date`, `pi_update_da
 (22, '27092019113520KeqEO3pJh5.jpg', '27 กันยายน 2562 time 11:35:20', '', 'P16092019122057B9fvfGzeuS'),
 (23, '27092019113520PUWXaIoswj.jpg', '27 กันยายน 2562 time 11:35:20', '', 'P16092019122057B9fvfGzeuS'),
 (24, '27092019113520OV1e2Epwfq.jpg', '27 กันยายน 2562 time 11:35:20', '', 'P16092019122057B9fvfGzeuS'),
-(25, '27092019113520DYQAQCCIIf.jpg', '27 กันยายน 2562 time 11:35:20', '', 'P16092019122057B9fvfGzeuS');
+(25, '27092019113520DYQAQCCIIf.jpg', '27 กันยายน 2562 time 11:35:20', '', 'P16092019122057B9fvfGzeuS'),
+(26, '16102019113101LaYbhgDPWG.jpg', '16 ตุลาคม 2562 time 11:31:01', '', 'P16102019113101F8bPr03V1x'),
+(27, '161020191131010CppCmi71N.jpg', '16 ตุลาคม 2562 time 11:31:01', '', 'P16102019113101F8bPr03V1x'),
+(28, '16102019113101s9Qyme37M1.jpg', '16 ตุลาคม 2562 time 11:31:01', '', 'P16102019113101F8bPr03V1x'),
+(29, '16102019113101VePp2yd2Eg.jpg', '16 ตุลาคม 2562 time 11:31:01', '', 'P16102019113101F8bPr03V1x'),
+(30, '16102019113528WFbwGwixoe.jpg', '16 ตุลาคม 2562 time 11:35:28', '', 'P16102019113101F8bPr03V1x'),
+(31, '16102019113528NYXeKRacZV.jpg', '16 ตุลาคม 2562 time 11:35:28', '', 'P16102019113101F8bPr03V1x'),
+(32, '16102019113528bPQn5sN9NT.jpg', '16 ตุลาคม 2562 time 11:35:28', '', 'P16102019113101F8bPr03V1x'),
+(33, '16102019113528KyrETrVVAY.jpg', '16 ตุลาคม 2562 time 11:35:28', '', 'P16102019113101F8bPr03V1x');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `research`
+--
+
+CREATE TABLE `research` (
+  `r_id` int(11) NOT NULL,
+  `r_title` varchar(250) NOT NULL,
+  `r_titlealternative` varchar(250) NOT NULL,
+  `r_subject` varchar(250) NOT NULL,
+  `r_description` text NOT NULL,
+  `r_publisher` text NOT NULL,
+  `r_createddate` varchar(50) NOT NULL,
+  `r_modifieddate` varchar(50) NOT NULL,
+  `r_issueddate` varchar(50) NOT NULL,
+  `r_type` varchar(250) NOT NULL,
+  `r_format` varchar(250) NOT NULL,
+  `r_source` varchar(250) NOT NULL,
+  `r_language` varchar(250) NOT NULL,
+  `r_rights` varchar(250) NOT NULL,
+  `r_permission` varchar(50) NOT NULL,
+  `r_file_key` varchar(50) NOT NULL,
+  `r_create_date` varchar(50) NOT NULL,
+  `r_update_date` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `research`
+--
+
+INSERT INTO `research` (`r_id`, `r_title`, `r_titlealternative`, `r_subject`, `r_description`, `r_publisher`, `r_createddate`, `r_modifieddate`, `r_issueddate`, `r_type`, `r_format`, `r_source`, `r_language`, `r_rights`, `r_permission`, `r_file_key`, `r_create_date`, `r_update_date`) VALUES
+(1, 'test', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '1', '001', '', '17 ตุลาคม 2562 time 15:26:11'),
+(2, 'test2', '2', '\'', ';', 'l', 'k', 'j', 'h', 'g', 'f', 'd', 's', 'a', '2', '002', '', '17 ตุลาคม 2562 time 15:27:21'),
+(4, 'a2', 'a', 'a', 'ggg', 'hhh', 'a', 'sg', '', 'sf', 'dgf', 'sgsd', 'sdfb', 'sdf', '1', 'R17102019122150UWmgVDG0g6', '17 ตุลาคม 2562 time 12:21:50', '17 ตุลาคม 2562 time 15:26:30'),
+(6, 'test Edit', 'aaa', 'ttt', 'www', 'qqq\n', 'sss', 'hhh', '', 'kkk', 'yyy', 'iii', 'lll', 'ddd', '2', 'R17102019124610EzRAIsw7dq', '17 ตุลาคม 2562 time 12:46:10', '17 ตุลาคม 2562 time 15:23:44');
 
 -- --------------------------------------------------------
 
@@ -935,24 +1003,10 @@ CREATE TABLE `videos` (
 INSERT INTO `videos` (`v_id`, `v_title`, `v_description`, `v_link`, `v_room`, `v_create_date`, `v_update_date`) VALUES
 (1, 'videos 1', 'no description', 'https://www.youtube.com/embed/pNNMr5glICM', '1', '', ''),
 (2, 'videos 2', 'no description 2', 'https://www.youtube.com/embed/Y1QZOprK7PQ', '1', '', ''),
-(3, 'videos 3', 'no description 3', 'coming soon', '1', '', ''),
 (4, 'videos new 1', 'no description new 1', 'https://www.youtube.com/embed/JZELmUooBlY', '2', '', ''),
 (5, 'videos new 2', 'no description new 2', 'coming soon new', '2', '', ''),
-(37, 'new 1', 'Marshmello ft. Bastille - Happier (Legendado PT/BR)', 'https://www.youtube.com/embed/k5DZBdL6qnA', '11', '', ''),
-(38, 'new 2', 'Khalid - Talk (Audio)', 'https://www.youtube.com/embed/Y1QZOprK7PQ', '11', '', ''),
-(39, 'DMT', '...', 'https://www.youtube.com/embed/c40lDlK-Gk8', '11', '', ''),
-(40, 'The Chainsmokers - Closer / Lauv - I Like Me Better [Mashup]', '... wtf?', 'https://www.youtube.com/embed/XT_MY30IeY4', '11', '', ''),
-(41, 'Khalid - Young Dumb & Broke (Official Music Video)', 'Young Dumb and Broke', 'https://www.youtube.com/embed/IPfJnp1guPc', '11', '', ''),
-(42, 'Louis Tomlinson - Back to You (Official Video) ft. Bebe Rexha, Digital Farm Animals', 'Back to you', 'https://www.youtube.com/embed/-HjpL-Ns6_A', '11', '', ''),
 (43, 'Louis Tomlinson - Back to You (Official Video) ft. Bebe Rexha, Digital Farm Animals', 'Back to you', 'https://www.youtube.com/embed/-HjpL-Ns6_A', '3', '', ''),
-(44, 'Lauv & Troye Sivan - i\'m so tired... [Official Audio]', 'descriptions Lauv & Troye Sivan - i\'m so tired... [Official Audio]\n', 'https://www.youtube.com/embed/fvjpE_wFL5A', '12', '', ''),
-(45, 'Test Edit', 'Test Des', 'soon test', '13', '', '27 สิงหาคม 2562 time 16:45:15'),
-(46, 'fffNEs', 'asdEZ', 'soon2GOGOGO', '13', '', '27 สิงหาคม 2562 time 16:42:03'),
-(47, 'aGGG', 'fGGG', 'sGGG', '13', '27 สิงหาคม 2562 time 16:07:22', '27 สิงหาคม 2562 time 16:43:37'),
-(48, 'SSS', 'SSSSSSA', 'AAAAAS', '13', '27 สิงหาคม 2562 time 16:07:56', '27 สิงหาคม 2562 time 16:44:30'),
-(49, 'soon name', 'no more', 'soon', '13', '27 สิงหาคม 2562 time 16:07:56', '27 สิงหาคม 2562 time 16:42:35'),
-(50, 'ADFFGA', 'fff', 'AAA', '14', '27 สิงหาคม 2562 time 16:50:09', '27 สิงหาคม 2562 time 16:50:35'),
-(51, 'zz ++', '++', 'Now. no videos.', '15', '16 กันยายน 2562 time 12:46:43', '26 กันยายน 2562 time 10:33:49');
+(44, 'No Videos', 'no video', '++', '4', '10 ตุลาคม 2562 time 14:25:43', '');
 
 -- --------------------------------------------------------
 
@@ -977,11 +1031,16 @@ INSERT INTO `video_room` (`vr_id`, `vr_title`, `vr_description`, `vr_owner`, `vr
 (1, 'New Videos One', 'description video 1', '1', '16 สิงหาคม 2562', '09 กันยายน 2562 time 10:30:46'),
 (2, 'New Videos2 edit', 'description 2', '1', '16 สิงหาคม 2562', '11 กันยายน 2562 time 11:43:46'),
 (3, 'the video training 1', 'training one', '1', '19 สิงหาคม 2562', '2019-08-23 16:09:19'),
-(11, 'NEW Room 20/8/ 14:18', 'nwewasda', '3', '20 สิงหาคม 2562', '2019-08-23 16:09:19'),
-(12, 'RoooTH edit0', 'R p g TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT TT ', '1', '22 สิงหาคม 2562', '2019-08-27 14:58:33'),
-(13, '15 04 ', 'new room 27819', '1', '27 สิงหาคม 2562', '27 สิงหาคม 2562 time 16:13:51'),
-(14, 'last ID 14', 'aa', '1', '27 สิงหาคม 2562 time 16:14:07', '11 กันยายน 2562 time 11:44:46'),
-(15, 'New Room ZZZ', 'my room  zzz', '3', '16 กันยายน 2562 time 12:46:09', '');
+(4, '++ 1', '+ = = = = +', '1', '10 ตุลาคม 2562 time 14:23:56', ''),
+(5, '++ 2', 'two', '1', '10 ตุลาคม 2562 time 14:24:13', ''),
+(6, '++ 3', '', '1', '10 ตุลาคม 2562 time 14:24:20', ''),
+(7, '++ 4', '', '1', '10 ตุลาคม 2562 time 14:24:25', ''),
+(8, '++ 5', '', '1', '10 ตุลาคม 2562 time 14:24:32', ''),
+(9, '++ 6', '', '1', '10 ตุลาคม 2562 time 14:25:55', ''),
+(10, '++ 7', '', '1', '10 ตุลาคม 2562 time 14:26:01', ''),
+(11, '++ 8', '', '1', '10 ตุลาคม 2562 time 14:26:08', ''),
+(12, '++ 9', '', '1', '10 ตุลาคม 2562 time 14:26:13', ''),
+(13, '++ 10', '', '1', '10 ตุลาคม 2562 time 14:26:19', '');
 
 --
 -- Indexes for dumped tables
@@ -1120,6 +1179,12 @@ ALTER TABLE `product_image`
   ADD PRIMARY KEY (`pi_id`);
 
 --
+-- Indexes for table `research`
+--
+ALTER TABLE `research`
+  ADD PRIMARY KEY (`r_id`);
+
+--
 -- Indexes for table `shipping_address`
 --
 ALTER TABLE `shipping_address`
@@ -1145,7 +1210,7 @@ ALTER TABLE `video_room`
 -- AUTO_INCREMENT for table `academic_article`
 --
 ALTER TABLE `academic_article`
-  MODIFY `aa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `aa_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `academic_article_category`
@@ -1157,7 +1222,7 @@ ALTER TABLE `academic_article_category`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `article_category`
@@ -1175,31 +1240,31 @@ ALTER TABLE `banking`
 -- AUTO_INCREMENT for table `files_upload`
 --
 ALTER TABLE `files_upload`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `g_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `gallery_image`
 --
 ALTER TABLE `gallery_image`
-  MODIFY `gi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `gi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `logged`
 --
 ALTER TABLE `logged`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=231;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `m_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `member_type`
@@ -1259,7 +1324,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -1271,7 +1336,13 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `pi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `pi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `research`
+--
+ALTER TABLE `research`
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `shipping_address`
@@ -1283,13 +1354,13 @@ ALTER TABLE `shipping_address`
 -- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `video_room`
 --
 ALTER TABLE `video_room`
-  MODIFY `vr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `vr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
