@@ -7,6 +7,7 @@
     <training-courses-interesting></training-courses-interesting>
    -->
   {{Research}}
+  
   </div>
   
 </template>
