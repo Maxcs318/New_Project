@@ -151,7 +151,7 @@
             $Do_edit = $this->user_model->edit_profile($profile,$Edit_ID);
             $profile['m_id'] = $ownID;
             if($Do_edit == true){
-                $profile['m_id'] = $ownID;
+                $profile['m_id'] = $Edit_ID['m_id'];
                 echo json_encode($profile);
             }
 

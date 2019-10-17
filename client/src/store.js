@@ -218,7 +218,10 @@ const store = new Vuex.Store({
             state.the_user = Eprofile
         },
         Edit_Profile_BY_Admin(state,Eprofile){
-            // state.the_user = Eprofile
+            let index = state.members.findIndex(m => m.m_id == Eprofile.m_id)
+            if(index > -1){
+                state.members[index] = Eprofile
+            }
         },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
@@ -440,6 +443,10 @@ const store = new Vuex.Store({
         },
         Add_Online_Journal(state,NewOJ){
             state.news.push(NewOJ.online_journal)
+        },
+        Add_Research(state,New_research){
+            console.log(New_research)
+            state.research.push(New_research.research)
         }
         
 
@@ -1023,7 +1030,16 @@ const store = new Vuex.Store({
                     context.commit('Delete_Gallery_Image',response.data)
                 }
             })
-        }
+        },
+        Add_Research(context,research){
+            axios.post(base_url +'research/insert_research',research)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit('Add_Research',response.data[0])
+                }
+            })
+        },
         
         
     },

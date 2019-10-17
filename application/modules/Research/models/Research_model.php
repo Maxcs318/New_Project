@@ -15,6 +15,16 @@
             $ResearchAll = $this->db->get($this->research)->result(); 
             return json_encode($ResearchAll);  
         }
+        // insert 
+        public function insert_research($data = array())
+        {
+            $lastID;
+            $ins = $this->db->insert($this->research,$data);
+            if($ins){
+                $lastID = $this->db->insert_id();
+                }
+            return json_encode($lastID);
+        }
         
         
 
