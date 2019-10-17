@@ -6,7 +6,7 @@
         <br />
         <br />
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-4">
             <img
               :src="getImgUrl(thisProduct.p_image)"
               width="100%"
@@ -14,7 +14,7 @@
             />
           </div>
           <div
-            class="col-lg-3"
+            class="col-lg-3 col-4"
             v-if="thisProduct_Image"
             v-for="(pi,index) in thisProduct_Image"
             :key="index"
