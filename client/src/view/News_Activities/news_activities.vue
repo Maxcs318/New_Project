@@ -232,8 +232,8 @@ export default {
 }
 .activitiesall-text2 {
   position: absolute;
-  z-index: 1;
-  top: 64%;
+  z-index: 0;
+  top: 44%;
   padding-left: 19px;
   padding-right: 19px;
   font-style: normal;
@@ -246,8 +246,8 @@ export default {
 }
 .activitiesall-date2 {
   position: absolute;
-  z-index: 1;
-  top: 82%;
+  z-index: 0;
+  top: 57%;
   padding-left: 19px;
   padding-right: 19px;
   font-style: normal;

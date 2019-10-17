@@ -13,6 +13,7 @@
         <div class="row">
           <div
             class="col-lg-4 col-md-6"
+            style="padding:0;"
             v-for="(article,index) in the_article.slice().reverse().slice(0,3)"
             :key="index"
           >

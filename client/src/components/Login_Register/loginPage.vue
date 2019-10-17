@@ -217,6 +217,8 @@ span.psw {
 
 /* Modal Content/Box */
 .modal-content {
+  position: relative;
+  z-index: 100;
   background-color: #1a2a3e;
   margin: 15% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;

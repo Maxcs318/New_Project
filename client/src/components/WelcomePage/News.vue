@@ -152,12 +152,12 @@ export default {
   width: 100%;
   cursor: pointer;
   position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 
 .news1 {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   opacity: 0.2;
   border: 2px solid #ffffff;
   box-sizing: border-box;
@@ -169,7 +169,7 @@ export default {
 
 .news2 {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   opacity: 0.2;
   border: 2px solid #ffffff;
   box-sizing: border-box;
