@@ -218,7 +218,10 @@ const store = new Vuex.Store({
             state.the_user = Eprofile
         },
         Edit_Profile_BY_Admin(state,Eprofile){
-            // state.the_user = Eprofile
+            let index = state.members.findIndex(m => m.m_id == Eprofile.m_id)
+            if(index > -1){
+                state.members[index] = Eprofile
+            }
         },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
@@ -440,6 +443,29 @@ const store = new Vuex.Store({
         },
         Add_Online_Journal(state,NewOJ){
             state.news.push(NewOJ.online_journal)
+        },
+        Add_Research(state,New_research){
+            // console.log(New_research)
+            state.research.push(New_research.research)
+        },
+        Edit_Research(state,Edit_research){
+            var Editresearch = Edit_research.research
+            let index = state.research.findIndex(r => r.r_id == Editresearch.r_id)
+            if(index > -1){
+                state.research[index] = Editresearch
+            }
+            var addFiles = Edit_research.files
+            if(addFiles != null){
+                for(var i=0; i<addFiles.length; i++){
+                    state.files.push(addFiles[i])
+                }
+            }
+        },
+        Delete_Research(state,researchID){
+            let index = state.research.findIndex(r => r.r_id == researchID)
+            if(index > -1){
+                state.research.splice(index,1)
+            }
         }
         
 
@@ -1021,6 +1047,33 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit('Delete_Gallery_Image',response.data)
+                }
+            })
+        },
+        Add_Research(context,research){
+            axios.post(base_url +'research/insert_research',research)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit('Add_Research',response.data[0])
+                }
+            })
+        },
+        Edit_Research(context,research){
+            axios.post(base_url +'research/update_research',research)
+            .then(response =>{
+                // console.log('Response Data',response.data[0])
+                if(response.data != 'fail'){
+                    context.commit("Edit_Research",response.data[0])
+                }
+            })
+        },
+        Delete_Research(context,researchID){
+            axios.post(base_url +'research/delete_research',researchID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Research',response.data)
                 }
             })
         }

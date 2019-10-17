@@ -91,7 +91,7 @@ export default {
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    // this.$store.dispatch("Delete_Research",FD)
+                    this.$store.dispatch("Delete_Research",FD)
                     swal({title: "Delete Success.",icon: "success",});
                     // console.log(FD)
                 } else {
