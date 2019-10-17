@@ -143,7 +143,6 @@ export default {
         },
         //submit
         submitResearch(){
-            // console.log(this.research)
                 var jsonResearch = JSON.stringify(this.research)
                 var jsonFiles_Title = JSON.stringify(this.file_title)
                 var FD  = new FormData()
