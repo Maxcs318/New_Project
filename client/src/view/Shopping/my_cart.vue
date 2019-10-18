@@ -13,7 +13,8 @@
       </div>
       <div class="empty-cart" v-if="thisMyCart.length==0">
         <div class="row">
-          <i class="fas fa-shopping-basket"></i>
+          <!-- <i class="fas fa-shopping-basket"></i> -->
+          <img :src="path_files+'logo_img/Cart.png'" />
           <h5 class="empty-text">ยังไม่มีของในตะกร้าของคุณ</h5>
         </div>
         <br />
@@ -399,6 +400,12 @@ header {
 .empty-cart {
   margin-bottom: 269px;
 }
+.empty-cart img {
+  display: block;
+  margin: 36px auto;
+  width: 15%;
+  height: 15%;
+}
 .fa-shopping-basket {
   font-size: 130px;
   margin: 64px auto 35px auto;
@@ -492,8 +499,12 @@ hr {
 }
 
 @media only screen and (max-width: 600px) {
-   .td-padding{
+  .td-padding {
     padding-left: 13%;
   }
+  .empty-cart img {
+  width: 35%;
+  height: 35%;
+}
 }
 </style>
