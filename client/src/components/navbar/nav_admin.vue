@@ -159,7 +159,7 @@ export default {
   font-size: 17px;
   line-height: 27px;
   margin-right: 25px;
-margin-top: 8px;  
+  margin-top: 8px;
   color: #757575;
 }
 
@@ -178,6 +178,13 @@ margin-top: 8px;
 
 .btn-outline-primary {
   background: none;
+}
+.dropdown-menu {
+  background-color: #1a2a3e;
+  text-align: center;
+}
+.dropdown-item {
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
