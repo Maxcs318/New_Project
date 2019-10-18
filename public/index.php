@@ -16,17 +16,17 @@ if(FALSE !== strpos($_SERVER['HTTP_HOST'], 'gamaproject.')){
 }
 
 
-$host_names = explode('.', $_SERVER['HTTP_HOST']);
-$site_name = $host_names[count($host_names) - 2];
-define('SITE_NAME', $site_name);
+// $host_names = explode('.', $_SERVER['HTTP_HOST']);
+// $site_name = $host_names[count($host_names) - 2];
+// define('SITE_NAME', $site_name);
 
 
-if (SYSTEM_NAME == SITE_NAME) {
-    $uri = explode('/', $_SERVER['REQUEST_URI']);
-    if (isset($uri[1])) {
-        $site_name = $uri[1];
-    }
-}
+// if (SYSTEM_NAME == SITE_NAME) {
+//     $uri = explode('/', $_SERVER['REQUEST_URI']);
+//     if (isset($uri[1])) {
+//         $site_name = $uri[1];
+//     }
+// }
 
 // if (isset($uri[1]) && $uri[1] === APP_API) {
 //     define('SITE_PATH', @$uri[2]);
@@ -36,31 +36,31 @@ if (SYSTEM_NAME == SITE_NAME) {
 
 
 
-switch (ENVIRONMENT)
-{
-	case 'development':
-		error_reporting(-1);
-		ini_set('display_errors', 1);
-	break;
+// switch (ENVIRONMENT)
+// {
+// 	case 'development':
+// 		error_reporting(-1);
+// 		ini_set('display_errors', 1);
+// 	break;
 
-	case 'testing':
-	case 'production':
-		ini_set('display_errors', 0);
-		if (version_compare(PHP_VERSION, '5.3', '>='))
-		{
-			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-		}
-		else
-		{
-			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
-		}
-	break;
+// 	case 'testing':
+// 	case 'production':
+// 		ini_set('display_errors', 0);
+// 		if (version_compare(PHP_VERSION, '5.3', '>='))
+// 		{
+// 			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+// 		}
+// 		else
+// 		{
+// 			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+// 		}
+// 	break;
 
-	default:
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'The application environment is not set correctly.';
-		exit(1); // EXIT_ERROR
-}
+// 	default:
+// 		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+// 		echo 'The application environment is not set correctly.';
+// 		exit(1); // EXIT_ERROR
+// }
 
 /*
  *---------------------------------------------------------------
