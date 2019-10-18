@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="display:none;">
       <div class="col-lg-6">
         <input type="text" class="col-12" placeholder="ชื่อ" />
         <input type="text" class="col-12" placeholder="อีเมล์" />
