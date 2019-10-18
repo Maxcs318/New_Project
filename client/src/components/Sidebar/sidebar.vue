@@ -6,73 +6,73 @@
         <li>
           <h6 href="#" @click="home">
             <!-- <i class="fas fa-home">&nbsp; Home</i> -->
-            Home
+            <img class="sidebar-logo" :src="path_files+'logo_img/home.png'" /> Home
           </h6>
         </li>
         <li>
           <h6 href="#" @click="news">
             <!-- <i class="fas fa-newspaper">&nbsp; News & Activity</i> -->
-            News & Activity
+            <img class="sidebar-logo" :src="path_files+'logo_img/news.png'" /> News & Activity
           </h6>
         </li>
         <li>
           <h6 href="#" @click="article">
             <!-- <i class="fas fa-newspaper">&nbsp; Article</i> -->
-            Article
+            <img class="sidebar-logo" :src="path_files+'logo_img/article.png'" /> Article
           </h6>
         </li>
         <li>
           <h6 href="#" @click="product">
             <!-- <i class="fab fa-product-hunt">&nbsp; Product</i> -->
-            Product
+            <img class="sidebar-logo" :src="path_files+'logo_img/product.png'" /> Product
           </h6>
         </li>
         <li>
           <h6 href="#" @click="video_room">
             <!-- <i class="fas fa-video">&nbsp; Video Room & Videos</i> -->
-            Video Room & Videos
+            <img class="sidebar-logo" :src="path_files+'logo_img/video.png'" /> Video Room & Videos
           </h6>
         </li>
         <li>
           <h6 href="#" @click="list_order">
             <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
-            Check order
+            <img class="sidebar-logo" :src="path_files+'logo_img/check-order.png'" /> Check order
           </h6>
         </li>
         <li>
           <h6 href="#" @click="list_gallery">
             <!-- <i class="fas fa-images">&nbsp; Gallery list</i> -->
-            Gallery list
+            <img class="sidebar-logo" :src="path_files+'logo_img/gallery.png'" /> Gallery list
           </h6>
         </li>
         <li>
           <h6 href="#" @click="academic_article">
             <!-- <i class="fas fa-scroll">&nbsp; Academic article</i> -->
-            Academic article
+            <img class="sidebar-logo" :src="path_files+'logo_img/academic-article.png'" /> Academic article
           </h6>
         </li>
         <li>
           <h6 href="#" @click="online_journal">
             <!-- <i class="fas fa-blog">&nbsp; Online journal</i> -->
-            Online journal
+            <img class="sidebar-logo" :src="path_files+'logo_img/online-journal.png'" /> Online journal
           </h6>
         </li>
         <li>
           <h6 href="#" @click="manage_members">
             <!-- <i class="fas fa-users-cog">&nbsp; Manage members</i> -->
-            Manage members
+            <img class="sidebar-logo" :src="path_files+'logo_img/member.png'" /> Manage members
           </h6>
         </li>
         <li>
           <h6 href="#" @click="research">
             <!-- <i class="fas fa-search-plus">&nbsp; Research</i> -->
-            Research
+            <img class="sidebar-logo" :src="path_files+'logo_img/research.png'" /> Research
           </h6>
         </li>
         <li>
           <h6 href="#" @click="award">
             <!-- <i class="fas fa-trophy">&nbsp; Award</i> -->
-            Award
+            <img class="sidebar-logo" :src="path_files+'logo_img/award.png'" /> Award
           </h6>
         </li>
       </ul>
@@ -117,6 +117,11 @@ export default {
     },
     award() {
       this.$router.push("/");
+    }
+  },
+  computed: {
+    path_files() {
+      return this.$store.getters.getPath_Files;
     }
   }
 };
@@ -174,6 +179,12 @@ h6 {
   font-weight: 800;
   transition: 0.2s;
   cursor: pointer;
+}
+
+.sidebar-logo{
+  margin: auto;
+  width: 10%;
+  height: 10%;
 }
 .nav h6:hover {
   color: #aaa;
