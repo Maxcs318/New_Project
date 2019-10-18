@@ -30,9 +30,6 @@
             zoom="10"
             scrolling="no"
           ></iframe>
-          <!-- <a
-              href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"
-          >temas de embedgooglemap.net gratis</a>-->
         </div>
       </div>
     </div>
@@ -44,7 +41,7 @@
         <input type="text" class="col-12" placeholder="หัวเรื่อง" />
         <textarea class="col-12" cols="30" rows="5" placeholder="ข้อความ"></textarea>
         <br />
-        <input type="submit" value="ติดต่อเรา" class="col-3 btn btn-warning" />
+        <input type="submit" value="ติดต่อเรา" class="btn btn-warning" />
       </div>
     </div>
   </div>
@@ -94,6 +91,7 @@ textarea {
 input[type="submit"] {
   float: right;
   color: #093f84;
+  padding: 8px 32px;
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;

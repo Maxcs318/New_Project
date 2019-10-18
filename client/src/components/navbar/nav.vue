@@ -212,6 +212,9 @@ button.login-btn:hover {
   opacity: 0.7;
 }
 
+.active{
+  color: #eecd02;
+}
 @media only screen and (max-width: 600px) {
   .navbar {
     position: relative;
