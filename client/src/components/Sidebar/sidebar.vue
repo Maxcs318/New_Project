@@ -5,62 +5,74 @@
       <ul class="nav">
         <li>
           <h6 href="#" @click="home">
-            <i class="fas fa-home">&nbsp; Home</i>
+            <!-- <i class="fas fa-home">&nbsp; Home</i> -->
+            Home
           </h6>
         </li>
         <li>
           <h6 href="#" @click="news">
-            <i class="fas fa-newspaper">&nbsp; News & Activity</i>
+            <!-- <i class="fas fa-newspaper">&nbsp; News & Activity</i> -->
+            News & Activity
           </h6>
         </li>
         <li>
           <h6 href="#" @click="article">
-            <i class="fas fa-newspaper" style="margin-right: 50px;">&nbsp; Article</i>
+            <!-- <i class="fas fa-newspaper">&nbsp; Article</i> -->
+            Article
           </h6>
         </li>
         <li>
           <h6 href="#" @click="product">
-            <i class="fab fa-product-hunt">&nbsp; Product</i>
+            <!-- <i class="fab fa-product-hunt">&nbsp; Product</i> -->
+            Product
           </h6>
         </li>
         <li>
           <h6 href="#" @click="video_room">
-            <i class="fas fa-video">&nbsp; Video Room & Videos</i>
+            <!-- <i class="fas fa-video">&nbsp; Video Room & Videos</i> -->
+            Video Room & Videos
           </h6>
         </li>
         <li>
           <h6 href="#" @click="list_order">
-            <i class="fas fa-tasks">&nbsp; Check order</i>
+            <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
+            Check order
           </h6>
         </li>
         <li>
           <h6 href="#" @click="list_gallery">
-            <i class="fas fa-images">&nbsp; Gallery list</i>
+            <!-- <i class="fas fa-images">&nbsp; Gallery list</i> -->
+            Gallery list
           </h6>
         </li>
         <li>
           <h6 href="#" @click="academic_article">
-            <i class="fas fa-scroll">&nbsp; Academic article</i>
+            <!-- <i class="fas fa-scroll">&nbsp; Academic article</i> -->
+            Academic article
           </h6>
         </li>
         <li>
           <h6 href="#" @click="online_journal">
-            <i class="fas fa-blog">&nbsp; Online journal</i>
+            <!-- <i class="fas fa-blog">&nbsp; Online journal</i> -->
+            Online journal
           </h6>
         </li>
         <li>
           <h6 href="#" @click="manage_members">
-            <i class="fas fa-users-cog">&nbsp; Manage members</i>
+            <!-- <i class="fas fa-users-cog">&nbsp; Manage members</i> -->
+            Manage members
           </h6>
         </li>
         <li>
           <h6 href="#" @click="research">
-            <i class="fas fa-search-plus" style="margin-right: 50px;">&nbsp; Research</i>
+            <!-- <i class="fas fa-search-plus">&nbsp; Research</i> -->
+            Research
           </h6>
         </li>
-         <li>
+        <li>
           <h6 href="#" @click="award">
-            <i class="fas fa-trophy">&nbsp; Award</i>
+            <!-- <i class="fas fa-trophy">&nbsp; Award</i> -->
+            Award
           </h6>
         </li>
       </ul>
@@ -151,6 +163,7 @@ ul {
   margin-top: 23px;
 }
 li {
+  width: 100%;
   padding-bottom: 9px;
   list-style-type: none;
 }
@@ -158,7 +171,7 @@ h6 {
   display: block;
   text-decoration: none;
   color: inherit;
-  font-weight: 600;
+  font-weight: 800;
   transition: 0.2s;
   cursor: pointer;
 }
