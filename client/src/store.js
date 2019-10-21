@@ -4,18 +4,18 @@ import axios from "axios"
 
 Vue.use(Vuex)
 // Web Data
-// const base_url = 'https://elite-shoponline.com/gama/'
+const base_url = 'https://elite-shoponline.com/gama/public/'
 
 // PC Xampp
-const base_url = 'http://gamaproject.vue.com/'
+// const base_url = 'http://gamaproject.vue.com/'
 
 const store = new Vuex.Store({
     state : {
         // Web Data
-        // file_image_path:'https://elite-shoponline.com/gama/public/assets/',
+        file_image_path:'https://elite-shoponline.com/gama/public/assets/',
 
         // PC Xampp
-        file_image_path:'http://gamaproject.vue.com/assets/',
+        // file_image_path:'http://gamaproject.vue.com/assets/',
 
 
         statusPage:'',
@@ -238,7 +238,7 @@ const store = new Vuex.Store({
         },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
-            console.log(Edit_AA.aa_id)
+            console.log(Edit_AA)
             let index = state.academic_article.findIndex(a => a.aa_id == Edit_AA.aa_id)
             if(index > -1){
                 state.academic_article[index] = Edit_AA

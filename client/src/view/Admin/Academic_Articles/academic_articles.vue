@@ -98,7 +98,7 @@ export default {
     computed:{
         the_academic_article(){
             var setpage = this.$route.params.Page;
-            var academic_articles = this.$store.getters.getAcademic_Article_Set_Category;
+            var academic_articles = this.$store.getters.getAcademic_Article;
             var p_conpute = 2;
             var p_start = setpage;
             var p_end = Math.ceil(setpage / 1 + p_conpute);
