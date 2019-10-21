@@ -3,10 +3,20 @@ import Vuex from "vuex"
 import axios from "axios"
 
 Vue.use(Vuex)
+// Web Data
+// const base_url = 'https://elite-shoponline.com/gama/'
+
+// PC Xampp
 const base_url = 'http://gamaproject.vue.com/'
+
 const store = new Vuex.Store({
     state : {
+        // Web Data
+        // file_image_path:'https://elite-shoponline.com/gama/public/assets/',
+
+        // PC Xampp
         file_image_path:'http://gamaproject.vue.com/assets/',
+
 
         statusPage:'',
         statusRegister:'',
@@ -158,6 +168,7 @@ const store = new Vuex.Store({
             }
         },
         Add_Academic_Article(state,Newacademic_article){
+
             state.academic_article.push(Newacademic_article.academic_article)    
         },
         
@@ -176,7 +187,9 @@ const store = new Vuex.Store({
         },
         Edit_Article(state,E_article){
             var Editarticle = E_article.article
-            let index = state.article.findIndex(a => a.a_id == Editarticle.a_id)
+            var AID = Editarticle.a_id
+            
+            let index = state.article.findIndex(a => a.a_id == AID)
             if(index > -1){
                 state.article[index] = Editarticle
             }
@@ -225,6 +238,7 @@ const store = new Vuex.Store({
         },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
+            console.log(Edit_AA.aa_id)
             let index = state.academic_article.findIndex(a => a.aa_id == Edit_AA.aa_id)
             if(index > -1){
                 state.academic_article[index] = Edit_AA
@@ -483,7 +497,7 @@ const store = new Vuex.Store({
             if(this.state.log_on !== null){
                 var user = { token : this.state.log_on}
                 // console.log(user)
-                axios.post(base_url +"user/loadLogin", JSON.stringify(user))
+                axios.post(base_url +"User/loadLogin", JSON.stringify(user))
                 .then(response => {
                     context.commit("Log_On",response.data)
                 })
@@ -492,42 +506,42 @@ const store = new Vuex.Store({
             }
         },
         initMembers(context){
-            axios.get(base_url +"user/get_all_datamember")
+            axios.get(base_url +"User/get_all_datamember")
             .then(response => {
                 // console.log(response.data)
                 context.commit("initMembers",response.data)
             })
         },
         initDataMember_Upgrade_Date(context){
-            axios.get(base_url +"user/get_all_member_upgrade")
+            axios.get(base_url +"User/get_all_member_upgrade")
             .then(response => {
                 // console.log(response.data)
                 context.commit("Members_Upgrade_date",response.data)
             })
         },
         initDataMember_Type(context){
-            axios.get(base_url +"user/get_all_member_type")
+            axios.get(base_url +"User/get_all_member_type")
                 .then(response => {
                     // console.log(response)
                     context.commit("Member_Type",response.data)
                 })
         },
         initDataNews(context){
-            axios.get(base_url +"news/get_all_news")
+            axios.get(base_url +"News/get_all_news")
                 .then(response => {
                     // console.log(response)
                     context.commit("NewsAll",response.data)
             })
         },
         initDataArticle(context){
-            axios.get(base_url +"article/get_all_article")
+            axios.get(base_url +"Article/get_all_article")
                 .then(response => {
                     // console.log(response)
                     context.commit("ArticleAll",response.data)
             })
         },
         initDataArticle_Category(context){
-            axios.get(base_url +"article/get_all_article_category")
+            axios.get(base_url +"Article/get_all_article_category")
                 .then(response => {
                     // console.log(response)
                     context.commit("Article_Category",response.data)
@@ -541,21 +555,21 @@ const store = new Vuex.Store({
         },
         initDataProduct(context){
             // get product
-            axios.get(base_url +"product/get_all_product")
+            axios.get(base_url +"Product/get_all_product")
                 .then(response => {
                     // console.log(response)
                     context.commit("ProductAll",response.data)
             })
         },
         initDataProduct_Category(context){
-            axios.get(base_url +"product/get_all_product_category")
+            axios.get(base_url +"Product/get_all_product_category")
                 .then(response => {
                     // console.log(response)
                     context.commit("Product_CategoryAll",response.data)
             })
         },
         initDataProduct_Image(context){
-            axios.get(base_url +"product/get_all_product_image")
+            axios.get(base_url +"Product/get_all_product_image")
                 .then(response => {
                     // console.log(response)
                     context.commit("Product_ImageAll",response.data)
@@ -577,21 +591,21 @@ const store = new Vuex.Store({
         },
         // = = =
         initDataOrders(context){
-            axios.get(base_url +"order/get_all_order")
+            axios.get(base_url +"Order/get_all_order")
                 .then(response => {
                     // console.log(response)
                     context.commit("Orders",response.data)
             })
         },
         initDataOrder_Items(context){
-            axios.get(base_url +"order/get_all_order_items")
+            axios.get(base_url +"Order/get_all_order_items")
                 .then(response => {
                     // console.log(response)
                     context.commit("Order_Items",response.data)
             })
         },
         initDataOrder_Status(context){
-            axios.get(base_url +"order/get_all_order_status")
+            axios.get(base_url +"Order/get_all_order_status")
                 .then(response => {
                     // console.log(response)
                     context.commit("Order_Status",response.data)
@@ -640,28 +654,28 @@ const store = new Vuex.Store({
             })
         },
         initDataAcademic_Article(context){
-            axios.get(base_url +"academic_article/get_all_academic_article")
+            axios.get(base_url +"Academic_Article/get_all_academic_article")
             .then(response => {
                 // console.log(response)
                 context.commit("Academic_ArticleAll",response.data)
             })
         },
         initDataAcademic_Article_Category(context){
-            axios.get(base_url +"academic_article/get_all_academic_article_category")
+            axios.get(base_url +"Academic_Article/get_all_academic_article_category")
             .then(response => {
                 // console.log(response)
                 context.commit("Academic_Article_Category",response.data)
             })
         },
         initDataOnline_Journal(context){
-            axios.get(base_url +"online_journal/get_all_online_journal")
+            axios.get(base_url +"Online_Journal/get_all_online_journal")
             .then(response => {
                 // console.log(response)
                 context.commit("Online_Journal",response.data)
             })
         },
         initDataResearch(context){
-            axios.get(base_url +"research/get_all_research")
+            axios.get(base_url +"Research/get_all_research")
             .then(response => {
                 // console.log(response)
                 context.commit("Research",response.data)
@@ -676,7 +690,7 @@ const store = new Vuex.Store({
         // login
         Logining_in(context,user){
             // console.log(user)            
-            axios.post(base_url +"user/checkLogin", JSON.stringify(user))
+            axios.post(base_url +"User/checkLogin", JSON.stringify(user))
             .then(response => {
                 // console.log(response)
                     if(response.data != '' && response.data != null){
@@ -689,7 +703,7 @@ const store = new Vuex.Store({
         },
         Log_Out(context){
             var user_logout = { token : this.state.log_on}
-            axios.post(base_url +"user/log_out", JSON.stringify(user_logout))
+            axios.post(base_url +"User/log_out", JSON.stringify(user_logout))
             .then(response => {
                 localStorage.removeItem('The_User')
                 context.commit("Log_Out")
@@ -697,7 +711,7 @@ const store = new Vuex.Store({
             })
         },
         Register(context,newuser){
-            axios.post(base_url +"user/save", JSON.stringify(newuser))
+            axios.post(base_url +"User/save", JSON.stringify(newuser))
             .then(response => {
                 // console.log(response.data)
                 context.commit("addMember",response.data)
@@ -705,16 +719,16 @@ const store = new Vuex.Store({
         },
         // Start Add data
         Add_News(context,news){
-            axios.post(base_url +'news/insert_news',news)
+            axios.post(base_url +'News/insert_news',news)
             .then(response =>{
                 if(response.data != 'fail'){
-                    // console.log('Response Data',response.data[0])
+                    console.log('Response Data',response.data)
                     context.commit("Add_News",response.data[0])
                 }
             })
         },
         Add_Article(context,article){
-            axios.post(base_url +'article/insert_article',article)
+            axios.post(base_url +'Article/insert_article',article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -723,7 +737,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Product(context,product){
-            axios.post(base_url +'product/insert_product',product)
+            axios.post(base_url +'Product/insert_product',product)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -750,7 +764,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Academic_Article(context,academic_article){
-            axios.post(base_url +'academic_article/insert_academic_article',academic_article)
+            axios.post(base_url +'Academic_Article/insert_academic_article',academic_article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -759,7 +773,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Online_Journal(context,online_journal){
-            axios.post(base_url +'online_journal/insert_online_journal',online_journal)
+            axios.post(base_url +'Online_Journal/insert_online_journal',online_journal)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -772,7 +786,7 @@ const store = new Vuex.Store({
         // End Add Data
         // Start Edit Data
         Edit_News(context,news){
-            axios.post(base_url +'news/update_news',news)
+            axios.post(base_url +'News/update_news',news)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -781,7 +795,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Article(context,article){
-            axios.post(base_url +'article/update_article',article)
+            axios.post(base_url +'Article/update_article',article)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -790,7 +804,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Product(context,product){
-            axios.post(base_url +'product/update_product',product)
+            axios.post(base_url +'Product/update_product',product)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -817,7 +831,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Profile(context,profile){
-            axios.post(base_url +'user/edit_profile',profile)
+            axios.post(base_url +'User/edit_profile',profile)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -826,7 +840,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Profile_BY_Admin(context,profile){
-            axios.post(base_url +'user/edit_profile',profile)
+            axios.post(base_url +'User/edit_profile',profile)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -835,7 +849,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Academic_Article(context,academic_article){
-            axios.post(base_url +'academic_article/update_academic_article',academic_article)
+            axios.post(base_url +'Academic_Article/update_academic_article',academic_article)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -844,7 +858,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Online_Journal(context,online_journal){
-            axios.post(base_url +'online_journal/update_online_journal',online_journal)
+            axios.post(base_url +'Online_Journal/update_online_journal',online_journal)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -853,7 +867,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_News(context,this_news){
-            axios.post(base_url +'news/delete_news',this_news)
+            axios.post(base_url +'News/delete_news',this_news)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -862,7 +876,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Article(context,this_article){
-            axios.post(base_url +'article/delete_article',this_article)
+            axios.post(base_url +'Article/delete_article',this_article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -880,7 +894,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Product_Image(context,product_imageID){
-            axios.post(base_url +'product/delete_product_image',product_imageID)
+            axios.post(base_url +'Product/delete_product_image',product_imageID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -889,7 +903,7 @@ const store = new Vuex.Store({
             })            
         },
         Delete_Product(context,this_product){
-            axios.post(base_url +'product/delete_product',this_product)
+            axios.post(base_url +'Product/delete_product',this_product)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -916,7 +930,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Academic_Article(context,academic_articleID){
-            axios.post(base_url +'academic_article/delete_academic_article',academic_articleID)
+            axios.post(base_url +'Academic_Article/delete_academic_article',academic_articleID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -925,7 +939,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Online_Journal(context,OJID){
-            axios.post(base_url +'online_journal/delete_online_journal',OJID)
+            axios.post(base_url +'Online_Journal/delete_online_journal',OJID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -960,7 +974,7 @@ const store = new Vuex.Store({
 
         // Order
         Create_Order(context,order){
-            axios.post(base_url +'order/create_order',order)
+            axios.post(base_url +'Order/create_order',order)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -969,7 +983,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_My_Order(context,orderID){
-            axios.post(base_url +'order/delete_order',orderID)
+            axios.post(base_url +'Order/delete_order',orderID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -988,7 +1002,7 @@ const store = new Vuex.Store({
             })
         },
         Confirm_Order(context,order_code){
-            axios.post(base_url +'order/confirm_order',order_code)
+            axios.post(base_url +'Order/confirm_order',order_code)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -997,7 +1011,7 @@ const store = new Vuex.Store({
             })
         },
         Discard_Order(context,order_code){
-            axios.post(base_url +'order/discard_order',order_code)
+            axios.post(base_url +'Order/discard_order',order_code)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1006,7 +1020,7 @@ const store = new Vuex.Store({
             })
         },
         Delivery_Order(context,order_code){
-            axios.post(base_url +'order/confirm_order_delivery',order_code)
+            axios.post(base_url +'Order/confirm_order_delivery',order_code)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1015,7 +1029,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Gallery(context,gallery){
-            axios.post(base_url +'gallery/insert_gallery',gallery)
+            axios.post(base_url +'Gallery/insert_gallery',gallery)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -1024,7 +1038,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Gallery(context,gallery){
-            axios.post(base_url +'gallery/update_gallery',gallery)
+            axios.post(base_url +'Gallery/update_gallery',gallery)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1033,7 +1047,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Gallery(context,gallery){
-            axios.post(base_url +'gallery/delete_gallery',gallery)
+            axios.post(base_url +'Gallery/delete_gallery',gallery)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1042,7 +1056,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Gallery_Image(context,gallery_imageID){
-            axios.post(base_url +'gallery/delete_gallery_image',gallery_imageID)
+            axios.post(base_url +'Gallery/delete_gallery_image',gallery_imageID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1051,7 +1065,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Research(context,research){
-            axios.post(base_url +'research/insert_research',research)
+            axios.post(base_url +'Research/insert_research',research)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data[0])
@@ -1060,7 +1074,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Research(context,research){
-            axios.post(base_url +'research/update_research',research)
+            axios.post(base_url +'Research/update_research',research)
             .then(response =>{
                 // console.log('Response Data',response.data[0])
                 if(response.data != 'fail'){
@@ -1069,7 +1083,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Research(context,researchID){
-            axios.post(base_url +'research/delete_research',researchID)
+            axios.post(base_url +'Research/delete_research',researchID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)

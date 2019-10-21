@@ -54,7 +54,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'   => './../public/assets/Article/',
+                    'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -85,7 +85,7 @@
                     $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                     // End Set FileName
                     $configFiles = array(
-                        'upload_path'   => './../public/assets/Article_Files_Upload/',
+                        'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article_Files_Upload/',
                         'allowed_types' => '*',
                         'max_size'      => '0',
                     );
@@ -141,7 +141,7 @@
                 $typeF = strrev($nameF);
                 $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
                 $config = array(
-                    'upload_path'   => './../public/assets/Article/',
+                    'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article/',
                     'allowed_types' => '*',
                     'max_size'      => '0',
                 );
@@ -181,7 +181,7 @@
                         $_FILES['userfileupload'.$x]['name'] = $ranSTR.'.'.$typeF;
                         // End Set FileName
                         $configFiles = array(
-                            'upload_path'   => './../public/assets/Article_Files_Upload/',
+                            'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article_Files_Upload/',
                             'allowed_types' => '*',
                             'max_size'      => '0',
                         );
