@@ -183,6 +183,7 @@ h6 {
 
 .sidebar-logo{
   margin: auto;
+  margin-right: 14px;
   width: 10%;
   height: 10%;
 }
