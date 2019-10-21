@@ -13,7 +13,7 @@
               <div class="col-lg-4">
                 <h5 class="head">{{news.n_title}}</h5>
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
-                <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
+                <p class="news-date1" style="text-align: left;">{{news.n_create_date}}</p>
               </div>
               <div class="col-lg-6">
                 <div class="news1"></div>
@@ -48,7 +48,7 @@
               <div class="col-12">
                 <hr style="width:100%" />
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
-                <p class="news-date1" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
+                <p class="news-date1" style="text-align: left;">{{news.n_create_date}}</p>
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
             <div class="news-2">
               <img :src="getImgUrl(news.n_image)" width="100%" />
               <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
-              <p class="news-date" style="text-align: left;">{{news.n_create_date.slice(0,-13)}}</p>
+              <p class="news-date" style="text-align: left;">{{news.n_create_date}}</p>
             </div>
           </div>
         </div>

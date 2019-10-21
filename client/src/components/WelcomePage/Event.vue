@@ -91,10 +91,10 @@ export default {
   position: absolute;
   z-index: 0;
   box-sizing: border-box;
-  left: 9%;
-  top: 20%;
-  width: 89%;
-  height: 61%;
+  left: 8%;
+  top: 19%;
+  width: 90%;
+  height: 85%;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
@@ -103,10 +103,10 @@ export default {
   position: absolute;
   z-index: 0;
   box-sizing: border-box;
-  left: 12%;
-  top: 25%;
-  width: 89%;
-  height: 60%;
+  left: 11%;
+  top: 23%;
+  width: 90%;
+  height: 85%;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
@@ -117,17 +117,17 @@ export default {
   }
 
   .shadow-block1 {
-    left: 11%;
-    top: 21%;
-    width: 85%;
-    height: 61%;
+    left: 5%;
+    top: 18%;
+    width: 90%;
+    height: 85%;
   }
 
   .shadow-block2 {
-    left: 15%;
-    top: 28%;
-    width: 85%;
-    height: 58%;
+    left: 7%;
+    top: 21%;
+    width: 90%;
+    height: 85%;
   }
 }
 </style>

@@ -14,7 +14,7 @@
           <router-link to="/">
             <b-navbar-brand>
               <b-nav-text>
-                <h5 class="text-test">Admin</h5>
+                <h5 class="text-test">หน้าหลัก</h5>
               </b-nav-text>
             </b-navbar-brand>
           </router-link>

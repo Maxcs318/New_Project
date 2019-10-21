@@ -14,7 +14,7 @@
           <router-link to="/">
             <b-navbar-brand>
               <b-nav-text>
-                <h5 class="text-test">ก็มาดิคร้าบบบ</h5>
+                <h5 class="text-test">หน้าหลัก</h5>
               </b-nav-text>
             </b-navbar-brand>
           </router-link>
@@ -152,7 +152,7 @@ export default {
   font-size: 17px;
   line-height: 27px;
   margin-right: 25px;
-margin-top: 8px;  
+  margin-top: 8px;
   color: #757575;
 }
 
@@ -171,6 +171,13 @@ margin-top: 8px;
 
 .btn-outline-primary {
   background: none;
+}
+.dropdown-menu {
+  background-color: #1a2a3e;
+  text-align: center;
+}
+.dropdown-item {
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
