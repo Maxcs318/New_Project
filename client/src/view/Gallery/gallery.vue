@@ -3,17 +3,30 @@
         <div class="row" v-if="thisGallery">
             <div class="col-lg-12 col-xs-12">
             <h5><center>Gallery Event : {{thisGallery.g_name}}</center></h5>
-                <!-- {{Gallery}} -->
                 <div class="row">
-                    <div class="col-lg-3 col-lg-xs-12">
-                        <!-- รูปแรกที่ใช้ prview -->
-                        <img :src="getImgUrlGallery(thisGallery.g_image)" width="100%"/><br><br>
-                    </div>
                     <div class="col-lg-3 col-lg-xs-12" v-for="(gi,index) in thisGallery_image" :key="index">
-                        <!-- รูปอื่นๆ -->
                         <img :src="getImgUrlGallery(gi.gi_image)" width="100%"/><br><br>
                     </div>
                 </div>
+                <!-- <div class="row">
+                    <div class="col-12">
+                        <b-carousel id="carousel1"
+                            style="text-shadow: 1px 1px 2px #333;"
+                            controls
+                            indicators
+                            :interval="1500"
+                            img-width="100%"
+                            v-model="slide"
+                            @sliding-start="onSlideStart"
+                            @sliding-end="onSlideEnd"
+                        >
+                            <b-carousel-slide caption="Blank Image" img-blank v-for=" (gallery_slide,index) in thisGallery_image " :key="index">
+                                <img :src="getImgUrlGallery(gallery_slide.gi_image)" width="100%"/>
+                            </b-carousel-slide>
+                        </b-carousel>
+                    </div>
+                </div> -->
+                
             <br>
             Description : {{thisGallery.g_description}}<br>
             Create On : {{thisGallery.g_create_date}}<br>
@@ -30,10 +43,22 @@
 </template>
 <script>
 export default {
+    data () {
+        return {
+            slide: 0,
+            sliding: null
+        }
+    },
     methods:{
         getImgUrlGallery(pic) {
             return this.path_files + "Gallery/" + pic;
         },
+        onSlideStart (slide) {
+            this.sliding = true
+        },
+        onSlideEnd (slide) {
+            this.sliding = false
+        }
     },
     computed:{
         path_files() {
@@ -52,6 +77,10 @@ export default {
         thisGallery_image(){
             var gallery_imageall = this.$store.getters.getGallery_Image
             var gallery_image = []
+            // set first image
+            var first_image = {gi_image : this.thisGallery.g_image}
+                gallery_image.push(first_image)
+            // ===============
                 for(var i=0;i<gallery_imageall.length;i++){
                     if(gallery_imageall[i].gi_gallery_id == this.$route.params.GalleryID){
                         gallery_image.push(gallery_imageall[i])
