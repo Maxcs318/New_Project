@@ -57,7 +57,7 @@
             <button
               class="form-control btn-primary"
               @click="add_to_cart(thisProduct.p_id)"
-            >Add to Cart</button>
+            >เพิ่มลงตะกร้า</button>
             <br />
           </div>
           <div class="col-lg-12 col-12">
@@ -75,7 +75,6 @@
       <book-interesting v-if="thisProduct.p_category == 'book'"></book-interesting>
       <training-courses-interesting v-if="thisProduct.p_category == 'training_course'"></training-courses-interesting>
     </div>
-
   </div>
 </template>
 <script>
