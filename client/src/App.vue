@@ -17,7 +17,7 @@
           </div>
         </transition>
       </div>
-      <!-- <foot></foot> -->
+      <foot></foot>
     </div>
   </div>
 </template>

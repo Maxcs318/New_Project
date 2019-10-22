@@ -19,8 +19,6 @@
             <div class="training-img">
               <img
                 :src="getImgUrlProduct(product.p_image)"
-                width="100%"
-                height="370px"
                 @click="seethisPageCourse(product.p_id)"
                 caption="First slide"
               />
@@ -92,6 +90,10 @@ export default {
   margin-top: 34px;
   cursor: pointer;
 }
+.training-img img {
+  width: 100%;
+  height: 370px;
+}
 .training-img:hover {
   transition: 0.25s;
   opacity: 0.7;
@@ -149,11 +151,17 @@ export default {
   .training {
     margin-top: 0;
   }
+  .training-img {
+    margin-top: 18px;
+  }
+  .training-img img {
+    height: 230px;
+  }
   .course-text {
-    top: 175px;
+    top: 125px;
   }
   .course-date {
-    top: 267px;
+    top: 217px;
   }
   .header {
     margin-bottom: 16px;
