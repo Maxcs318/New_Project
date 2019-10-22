@@ -10,8 +10,8 @@
           <news></news>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-12 col-xs-12" style="margin-top: 81px;">
+      <div class="row" style="margin-top: 81px;">
+        <div class="col-lg-12 col-xs-12">
           <thearticle></thearticle>
         </div>
       </div>
@@ -25,7 +25,7 @@
           <training-course></training-course>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top: 131px;">
         <div class="col-lg-12 col-xs-12">
           <event></event>
         </div>

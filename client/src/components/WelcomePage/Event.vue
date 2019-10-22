@@ -50,7 +50,6 @@ export default {
 </script>
 <style scoped>
 .event {
-  margin-top: 131px;
   height: 331px;
   background: linear-gradient(
     180deg,
