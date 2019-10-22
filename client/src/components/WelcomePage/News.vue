@@ -1,6 +1,5 @@
 <template>
   <div>
-    <br />
     <div class="news">
       <div class="container">
         <!-- pc page -->
@@ -62,7 +61,7 @@
             v-for="news in the_news.slice().reverse().slice(1,3)"
           >
             <div class="news-2">
-              <img :src="getImgUrl(news.n_image)" width="100%" />
+              <img :src="getImgUrl(news.n_image)" width="100%" height="360px"/>
               <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
               <p class="news-date" style="text-align: left;">{{news.n_create_date}}</p>
             </div>
@@ -101,8 +100,6 @@ export default {
 <style scoped>
 .news {
   position: relative;
-  top: 427px;
-  bottom: 60px;
 }
 
 .news-pc {
@@ -216,11 +213,11 @@ export default {
   color: #d8d8d8;
 }
 
-@media only screen and (max-width: 1440px) {
+/* @media only screen and (max-width: 1440px) {
   .news {
     top: 77px;
   }
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .news {

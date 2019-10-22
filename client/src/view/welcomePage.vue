@@ -1,7 +1,10 @@
 <template>
-  <div class>
+  <div>
     <carousel></carousel>
     <div class="container-fluid">
+      <!-- <div class="col-lg-12">
+        <carousel></carousel>
+      </div>-->
       <div class="row">
         <div class="col-lg-12 col-xs-12">
           <news></news>

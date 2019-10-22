@@ -39,8 +39,8 @@ export default {
     onSlideEnd(slide) {
       this.sliding = true;
     },
-    go_register(){
-      this.$router.push('/register')
+    go_register() {
+      this.$router.push("/register");
     }
   }
 };
@@ -48,12 +48,14 @@ export default {
 <!-- carousel-1.vue -->
 <style scoped>
 .box1 {
+  position: absolute;
+  z-index: 1;
   padding-left: 106px;
-  padding-top: 74px;
+  margin-top: -700px;
 }
 
 .img-box {
-  position: absolute;
+  position: relative;
   width: 100%;
   margin: 0;
   padding: 0;

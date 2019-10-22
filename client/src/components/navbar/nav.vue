@@ -162,7 +162,8 @@ export default {
 .navbar {
   border-top: 4px solid #eecd02;
   background: none;
-  z-index: 1;
+  position: absolute;
+  z-index: 100;
   width: 100%;
 }
 

@@ -21,6 +21,7 @@
               <img
                 :src="getImgUrlArticle(article.a_image)"
                 width="100%"
+                height="250px"
                 @click="seethisPageArticle(article.a_id)"
               />
               <h5 class="text">{{article.a_title}}</h5>
@@ -64,7 +65,7 @@ export default {
 <style scoped>
 .article {
   position: relative;
-  margin-top: 512px;
+  margin-top: 81px;
 }
 .article img{
   cursor: pointer;
