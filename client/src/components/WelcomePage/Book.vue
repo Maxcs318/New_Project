@@ -23,7 +23,7 @@
               width="75%"
               @click="seethisPageBook(product.p_id)"
             />
-            <h5 class="book-detail">{{product.p_name}}</h5>
+            <h5 class="book-detail">{{product.p_name.slice(0,50)+"..."}}</h5>
             <p class="price" style="text-align: center;">฿ {{product.p_price}}</p>
           </div>
         </div>
