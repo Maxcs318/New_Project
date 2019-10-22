@@ -5,13 +5,13 @@
       <!-- <div class="col-lg-12">
         <carousel></carousel>
       </div>-->
-      <div class="row">
+      <div class="row" style="margin-top: 50px;">
         <div class="col-lg-12 col-xs-12">
           <news></news>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-xs-12" style="margin-top: 81px;">
           <thearticle></thearticle>
         </div>
       </div>

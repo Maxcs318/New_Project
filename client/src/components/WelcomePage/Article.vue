@@ -65,7 +65,6 @@ export default {
 <style scoped>
 .article {
   position: relative;
-  margin-top: 81px;
 }
 .article img{
   cursor: pointer;
@@ -121,11 +120,11 @@ export default {
   color: #fff;
 }
 
-@media only screen and (max-width: 1440px) {
+/* @media only screen and (max-width: 1440px) {
   .article {
     margin-top: 170px;
   }
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .article {
