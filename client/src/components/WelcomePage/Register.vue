@@ -90,10 +90,9 @@ export default {
   text-align: center;
 }
 
-.invite button:hover{
-  transition: .25s;
-  background: #ff9f1a;
-  color: #fff;
+.invite button:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .invite .invite-text3 {
