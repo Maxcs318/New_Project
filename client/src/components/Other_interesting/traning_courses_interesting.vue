@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12 col-xs-12">
         <h5 class="head">หลักสูตรและอบรมอื่น ๆ ที่หน้าสนใจ</h5>
-        <br/>
+        <br />
       </div>
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
           height="230px"
           @click="seethisPage(product.p_id)"
         />
-        <h5 class="course-name2">{{product.p_name}}</h5>
+        <h5 class="course-name2">{{product.p_name.slice(0,40)+"..."}}</h5>
         <p class="course-date2">{{product.p_create_date.slice(0,-13)}}</p>
         <br />
         <br />
@@ -61,12 +61,24 @@ export default {
 };
 </script>
 <style scoped>
+.head {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 120%;
+  margin-top: 102px;
+  color: rgba(255, 255, 255, 0.3);
+}
 img,
 .course-name,
 .course-name2,
 .course-date,
 .course-date2 {
   cursor: pointer;
+}
+img:hover {
+  transition: .25s;
+  opacity: 0.7;
 }
 .course-name {
   position: absolute;
@@ -121,13 +133,5 @@ img,
 .course-date:hover,
 .course-date2:hover {
   transition: 0.25s;
-}
-.head {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 29px;
-  line-height: 120%;
-  padding-bottom: 37px;
-  color: rgba(255, 255, 255, 0.3);
 }
 </style>

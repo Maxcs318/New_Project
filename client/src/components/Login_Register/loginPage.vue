@@ -251,7 +251,7 @@ span.psw {
 
 .close:hover,
 .close:focus {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: pointer;
 }
 

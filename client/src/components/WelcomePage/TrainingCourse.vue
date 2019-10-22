@@ -24,7 +24,10 @@
                 @click="seethisPageCourse(product.p_id)"
                 caption="First slide"
               />
-              <h5 class="course-text" @click="seethisPageCourse(product.p_id)">{{product.p_name.slice(0,70)+"..."}}</h5>
+              <h5
+                class="course-text"
+                @click="seethisPageCourse(product.p_id)"
+              >{{product.p_name.slice(0,70)+"..."}}</h5>
               <p
                 class="course-date"
                 style="text-align: left;"
@@ -88,6 +91,10 @@ export default {
   top: 12px;
   margin-top: 34px;
   cursor: pointer;
+}
+.training-img:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 /* .training-img2 {

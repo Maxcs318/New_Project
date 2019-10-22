@@ -87,17 +87,19 @@ export default {
   /* border: 5px solid #fff; */
 }
 
-.shadow-block1,.shadow-block2 {
+.shadow-block1,
+.shadow-block2 {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   box-sizing: border-box;
   margin-top: 29px;
   width: 253px;
   height: 190px;
+  margin-left: auto;
+  margin-right: auto;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
-
 
 /* .shadow-block2 {
   position: absolute;
@@ -110,19 +112,14 @@ export default {
   border-radius: 4px;
 } */
 
-/* @media only screen and (max-width: 600px) {
-  .shadow-block1 {
-    left: 12%;
-    top: 18%;
-    width: 81%;
-    height: 55%;
+@media only screen and (max-width: 600px) {
+  .event img {
+    width: 100%;
+    height: 80%;
   }
-
+  .shadow-block1,
   .shadow-block2 {
-    left: 7%;
-    top: 21%;
-    width: 90%;
-    height: 85%;
+    display: none;
   }
-} */
+}
 </style>

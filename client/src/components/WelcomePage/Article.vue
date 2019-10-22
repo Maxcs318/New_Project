@@ -12,7 +12,7 @@
         </div>
         <div class="row">
           <div
-            class="col-lg-4 col-md-6"
+            class="col-lg-4 col-md-6 article-img"
             style="padding:0;"
             v-for="(article,index) in the_article.slice().reverse().slice(0,3)"
             :key="index"
@@ -46,8 +46,7 @@ export default {
         name: "article",
         params: { ArticleID: thisarticle }
       });
-    },
-    
+    }
   },
   computed: {
     the_article() {
@@ -66,8 +65,14 @@ export default {
 .article {
   position: relative;
 }
-.article img{
+.article img,
+.text,
+.date {
   cursor: pointer;
+}
+.article-img:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .header {

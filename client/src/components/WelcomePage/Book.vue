@@ -6,7 +6,7 @@
           <label class="col-lg-10 col-xs-12 header">หนังสือ</label>
           <div class="col-lg-2">
             <router-link to="/books/1">
-              <button class="btn-viewall" type="button" >ดูทั้งหมด></button>
+              <button class="btn-viewall" type="button">ดูทั้งหมด></button>
             </router-link>
           </div>
         </div>
@@ -18,7 +18,6 @@
           >
             <img
               class="rounded mx-auto d-block"
-              
               :src="getImgUrlProduct(product.p_image)"
               width="75%"
               @click="seethisPageBook(product.p_id)"
@@ -76,8 +75,12 @@ export default {
   );
 }
 
-.book img{
+.book img {
   cursor: pointer;
+}
+.book img:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .rounded {
@@ -133,10 +136,9 @@ export default {
     margin-top: 66px;
   }
   .header {
-  margin-bottom: 16px;
-
-}
-  .btn-viewall{
+    margin-bottom: 16px;
+  }
+  .btn-viewall {
     margin-left: 0;
     margin-top: 0;
     margin-bottom: 34px;
