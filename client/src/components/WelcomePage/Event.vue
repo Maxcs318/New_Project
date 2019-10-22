@@ -72,6 +72,7 @@ export default {
   position: relative;
   z-index: 0;
   width: 100%;
+  height: 85%;
   cursor: pointer;
   display: block;
   margin-top: 29px;
@@ -111,15 +112,13 @@ export default {
 }
 
 @media only screen and (max-width: 600px) {
-  .event img {
-    width: 100%;
-  }
-
   .shadow-block1 {
-    left: 5%;
+    left: 12%;
+    z-index: 3;
+    background-color: red;
     top: 18%;
-    width: 90%;
-    height: 85%;
+    width: 81%;
+    height: 55%;
   }
 
   .shadow-block2 {
