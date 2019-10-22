@@ -35,7 +35,6 @@ export default {
 .invite {
   position: relative;
   height: 383px;
-  margin-top: 131px;
   text-align: center;
 }
 

@@ -30,7 +30,7 @@
           <event></event>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="margin-top: 48px;">
         <div class="col-lg-12 col-xs-12">
           <register></register>
         </div>
