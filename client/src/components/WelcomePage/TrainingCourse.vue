@@ -71,7 +71,6 @@ export default {
 <style scoped>
 .training {
   position: relative;
-  margin-top: 131px;
 }
 
 .header {
