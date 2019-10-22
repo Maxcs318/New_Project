@@ -51,7 +51,7 @@ export default {
   position: absolute;
   z-index: 1;
   padding-left: 106px;
-  margin-top: 0px;
+  margin-top: 90px;
 }
 
 .img-box {
