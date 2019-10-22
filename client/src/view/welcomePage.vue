@@ -17,27 +17,27 @@
       </div>
       <div class="row">
         <div class="col-lg-12 col-xs-12">
-          <book></book>
+          <!-- <book></book> -->
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 col-xs-12">
-          <training-course></training-course>
+          <!-- <training-course></training-course> -->
         </div>
       </div>
       <div class="row" style="margin-top: 131px;">
         <div class="col-lg-12 col-xs-12">
-          <event></event>
+          <!-- <event></event> -->
         </div>
       </div>
       <div class="row" style="margin-top: 48px;">
         <div class="col-lg-12 col-xs-12">
-          <register></register>
+          <!-- <register></register> -->
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12 col-xs-12">
-          <sponsor></sponsor>
+          <!-- <sponsor></sponsor> -->
         </div>
       </div>
     </div>

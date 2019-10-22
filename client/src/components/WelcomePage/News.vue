@@ -32,6 +32,7 @@
           <div class="col-lg-12 col-12" v-for="news in the_news.slice().reverse().slice(0,1)">
             <div class="row">
               <div class="col-xs-12">
+                <h5 class="head" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
                 <div class="news1"></div>
                 <div class="news2"></div>
                 <img
@@ -41,9 +42,7 @@
                   @click="seethisPageNews(news.n_id)"
                 />
               </div>
-              <div class="col-12">
-                <h5 class="head" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
-              </div>
+              <div class="col-12"></div>
               <div class="col-12">
                 <hr style="width:100%" />
                 <p class="detail" style="text-align: left;">{{news.n_detail.slice(0,158)}}</p>
@@ -61,8 +60,11 @@
             v-for="news in the_news.slice().reverse().slice(1,3)"
           >
             <div class="news-2">
-              <img :src="getImgUrl(news.n_image)" width="100%" height="360px"/>
-              <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title.slice(0,70)+"..."}}</h5>
+              <img :src="getImgUrl(news.n_image)" width="100%" height="360px" />
+              <h5
+                class="news-text"
+                @click="seethisPageNews(news.n_id)"
+              >{{news.n_title.slice(0,70)+"..."}}</h5>
               <p class="news-date" style="text-align: left;">{{news.n_create_date.slice(0,15)}}</p>
             </div>
           </div>
@@ -147,9 +149,15 @@ export default {
 
 .img-news {
   width: 100%;
+  height: 360px;
   cursor: pointer;
   position: relative;
   z-index: 0;
+}
+
+.img-news:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .news1 {
@@ -183,6 +191,10 @@ export default {
 
 .news-2 img {
   width: 100%;
+}
+.news-2:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .news-text {
@@ -221,7 +233,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .news {
-    top: 177px;
+    top: 637px;
   }
 
   .news-pc {
@@ -236,26 +248,28 @@ export default {
   .img-news {
     left: 0;
     width: 100%;
+    height: 230px;
   }
 
   .news1 {
-    width: 80%;
-    height: 40%;
+    width: 90%;
+    height: 180px;
     left: -2%;
-    top: 24%;
+    top: 12%;
   }
 
   .news2 {
-    width: 80%;
-    height: 40%;
+    width: 90%;
+    height: 180px;
     left: -4%;
-    top: 26%;
+    top: 14%;
   }
 
   .head {
     position: absolute;
     z-index: 1;
-    margin-top: -25%;
+    margin-top: 100px;
+    padding-right: 0;
   }
 
   hr {
@@ -271,7 +285,7 @@ export default {
   }
 
   .news-date1 {
-    margin-top: 27px;
+    margin-top: 0px;
     padding-left: 0px;
   }
 
@@ -283,14 +297,18 @@ export default {
     margin-top: 32px;
   }
 
+  .news-2 img {
+    height: 230px;
+  }
+
   .news-text {
-    top: 175px;
+    top: 140px;
     left: 19px;
     right: 19px;
   }
 
   .news-date {
-    top: 267px;
+    top: 230px;
     left: 19px;
   }
 }

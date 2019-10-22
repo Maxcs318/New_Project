@@ -126,6 +126,7 @@ export default {
   }
 
   .box1 {
+    margin-top: 0%;
     padding-left: 10px;
     padding-top: 24px;
   }
