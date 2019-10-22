@@ -21,7 +21,7 @@
               <img
                 :src="getImgUrlArticle(article.a_image)"
                 width="100%"
-                height="250px"
+                height="230px"
                 @click="seethisPageArticle(article.a_id)"
               />
               <h5 class="text">{{article.a_title.slice(0,50)+"..."}}</h5>
@@ -86,7 +86,7 @@ export default {
 
 .text {
   position: absolute;
-  top: 120px;
+  top: 130px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
@@ -101,7 +101,7 @@ export default {
 
 .date {
   position: absolute;
-  top: 215px;
+  top: 195px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
@@ -133,7 +133,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .article {
-    margin-top: 240px;
+    margin-top: 657px;
   }
   .header {
     margin-bottom: 16px;
@@ -143,19 +143,17 @@ export default {
     margin-bottom: 36px;
   }
   .article-col img {
-    margin-bottom: 16px;
-    /* width: 396px; */
   }
   .mb-margin {
     margin-top: 244px;
   }
   .text {
-    top: 140px;
-    left: 19px;
-    right: 29px;
+    top: 134px;
+    padding-left: 9px;
+    padding-right: 9px;
   }
   .date {
-    top: 230px;
+    top: 197px;
     padding-left: 9px;
     padding-right: 9px;
   }
