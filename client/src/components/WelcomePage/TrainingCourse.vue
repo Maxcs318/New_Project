@@ -24,7 +24,7 @@
                 @click="seethisPageCourse(product.p_id)"
                 caption="First slide"
               />
-              <h5 class="course-text" @click="seethisPageCourse(product.p_id)">{{product.p_name.slice(0,70)+" ....."}}</h5>
+              <h5 class="course-text" @click="seethisPageCourse(product.p_id)">{{product.p_name.slice(0,70)+"..."}}</h5>
               <p
                 class="course-date"
                 style="text-align: left;"
