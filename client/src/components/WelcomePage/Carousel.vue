@@ -57,7 +57,7 @@ export default {
 .img-box {
   position: relative;
   width: 100%;
-  margin: 0;
+  margin-top: -120px;
   padding: 0;
 }
 
@@ -123,6 +123,7 @@ export default {
     position: absolute;
     display: block;
     width: 100%;
+    margin-top: -160px;
   }
 
   .box1 {

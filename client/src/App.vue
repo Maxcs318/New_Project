@@ -10,7 +10,7 @@
       <navbaradmin v-else-if="this.$store.state.the_user.m_status == 'admin'"></navbaradmin>
       <sidebar v-if="this.$store.state.the_user.m_status == 'admin'"></sidebar>
 
-      <div class>
+      <div style="padding-top: 120px;">
         <transition name="page" mode="out-in">
           <div>
             <router-view></router-view>

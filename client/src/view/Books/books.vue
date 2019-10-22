@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container" style="padding-top: 151px;">
+    <div class="container">
       <div class="row">
         <div class="col-lg-3 col-6" v-for="(product,index) in book.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index">
           <img

@@ -76,6 +76,9 @@
 
         <b-navbar-nav>
           <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
+
+          <!-- <img :src="path_files+'logo_img/nav-Cart.png'" class="nav-cart" /> -->
+
           <button
             class="login-btn"
             v-if="this.$store.state.the_user == '' "
@@ -177,6 +180,9 @@ export default {
   color: #757575;
 }
 
+.nav-cart img{
+  width: 20px;
+}
 .navbar.text-test:focus {
   color: #eecd02;
 }
@@ -213,7 +219,7 @@ button.login-btn:hover {
   opacity: 0.7;
 }
 
-.active{
+.active {
   color: #eecd02;
 }
 @media only screen and (max-width: 600px) {

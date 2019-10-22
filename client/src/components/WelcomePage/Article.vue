@@ -142,8 +142,6 @@ export default {
     margin-left: 0px;
     margin-bottom: 36px;
   }
-  .article-col img {
-  }
   .mb-margin {
     margin-top: 244px;
   }

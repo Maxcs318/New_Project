@@ -2,9 +2,6 @@
   <div>
     <carousel></carousel>
     <div class="container-fluid">
-      <!-- <div class="col-lg-12">
-        <carousel></carousel>
-      </div>-->
       <div class="row" style="margin-top: 50px;">
         <div class="col-lg-12 col-xs-12">
           <news></news>

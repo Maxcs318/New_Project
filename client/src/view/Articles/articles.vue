@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="padding-top: 151px;">
+  <div class="container">
     <!-- {{length_page}} -->
     <div class="row">
       <div

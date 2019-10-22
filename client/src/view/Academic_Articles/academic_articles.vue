@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="padding-top: 151px;">
+  <div class="container">
     <h4>บทความวิชาการ</h4>
     <div class="row">
       <div
