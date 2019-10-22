@@ -2,7 +2,7 @@
   <div>
     <div class="event">
       <div class="container">
-        <router-link to="/gallerylist">
+        <router-link to="/gallerylist" title="กิจกรรมทั้งหมดของ GAMA">
           <h1>ภาพกิจกรรมของ GAMA</h1>
         </router-link>
         <div class="row">
@@ -83,14 +83,14 @@ export default {
 }
 
 .event img:hover {
-  transition: 0.5s;
-  /* border: 5px solid #fff; */
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .shadow-block1,
 .shadow-block2 {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   box-sizing: border-box;
   margin-top: 29px;
   width: 253px;
@@ -99,6 +99,9 @@ export default {
   margin-right: auto;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
+}
+.shadow-block1:hover,
+.shadow-block2:hover {
 }
 
 /* .shadow-block2 {
