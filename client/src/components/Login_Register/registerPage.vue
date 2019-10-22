@@ -1,8 +1,8 @@
 <template>
 <div class="container">
     <div class="row" >
-        <div class="col-lg-4 col-2"></div>
-        <div class="col-lg-4 col-8" >
+        <div class="col-lg-4 col-1"></div>
+        <div class="col-lg-4 col-10" >
             
             <form @submit.prevent="onSubmitRegister">
                 <center><h3> Register </h3></center>
@@ -38,7 +38,7 @@
 
         </div>
 
-        <div class="col-lg-4 col-2"></div>
+        <div class="col-lg-4 col-1"></div>
     </div>
 </div>
 </template>
