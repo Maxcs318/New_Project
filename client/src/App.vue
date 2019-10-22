@@ -88,6 +88,10 @@ export default {
     this.$store.dispatch("initDataOnline_Journal");
     this.$store.dispatch("initDataMember_Upgrade_Date");
     this.$store.dispatch("initDataResearch");
+    this.$store.dispatch("initDataAward_List")
+    this.$store.dispatch("initDataAward_Type")
+    this.$store.dispatch("initDataAward_years")
+    this.$store.dispatch("initDataCompany")
     
   }
 };

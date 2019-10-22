@@ -138,7 +138,6 @@ export default {
             return this.$store.getters.getMember_Type
         },
         Members(){
-
             return this.$store.getters.getMembers
         },
         listFilter () {
