@@ -114,6 +114,7 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .invite .invite-text {
+    padding-bottom: 44px;
     padding-left: 21px;
     padding-right: 21px;
   }
