@@ -105,6 +105,11 @@ export default {
   border-radius: 29px;
 }
 
+.register-btn:hover {
+  transition: 0.25s;
+  opacity: 0.7;
+}
+
 .mb-bg {
   display: none;
 }
