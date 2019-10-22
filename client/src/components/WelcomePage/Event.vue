@@ -71,11 +71,11 @@ export default {
 .event img {
   position: relative;
   z-index: 0;
-  width: 100%;
-  height: 85%;
+  margin-top: 29px;
+  width: 253px;
+  height: 190px;
   cursor: pointer;
   display: block;
-  margin-top: 29px;
   margin-left: auto;
   margin-right: auto;
   background: rgba(56, 105, 173, 0.131938);
@@ -87,29 +87,27 @@ export default {
   /* border: 5px solid #fff; */
 }
 
-.shadow-block1 {
+.shadow-block1,.shadow-block2 {
   position: absolute;
   z-index: 0;
   box-sizing: border-box;
-  /* left: 8%;
-  top: 19%;
-  width: 90%;
-  height: 85%; */
+  margin-top: 29px;
+  width: 253px;
+  height: 190px;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
 }
 
-.shadow-block2 {
+/* .shadow-block2 {
   position: absolute;
   z-index: 0;
   box-sizing: border-box;
-  /* left: 11%;
-  top: 23%;
-  width: 90%;
-  height: 85%; */
+  margin-top: 29px;
+  width: 253px;
+  height: 190px;
   background: rgba(255, 255, 255, 0.131938);
   border-radius: 4px;
-}
+} */
 
 /* @media only screen and (max-width: 600px) {
   .shadow-block1 {
