@@ -62,7 +62,7 @@
           >
             <div class="news-2">
               <img :src="getImgUrl(news.n_image)" width="100%" height="360px"/>
-              <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
+              <h5 class="news-text" @click="seethisPageNews(news.n_id)">{{news.n_title.slice(0,70)+" ....."}}</h5>
               <p class="news-date" style="text-align: left;">{{news.n_create_date.slice(0,15)}}</p>
             </div>
           </div>
