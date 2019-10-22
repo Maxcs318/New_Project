@@ -1,9 +1,9 @@
 <template>
 <div class="container">
-    <div class="row mt-5" v-if="log_on">
-        <div class="col-lg-4 col-xs-12"></div>
-        <div class="col-lg-4 col-xs-12" >
-            <!-- /// -->
+    <div class="row" >
+        <div class="col-lg-4 col-2"></div>
+        <div class="col-lg-4 col-8" >
+            
             <form @submit.prevent="onSubmitRegister">
                 <center><h3> Register </h3></center>
                 <br>
@@ -21,21 +21,24 @@
                 <br>
                 <br>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <button type="button" class="form-control col-12 btn-danger" @click="back_login"> Back to Login </button>
+                    <div class="col-6">
+                        <button type="button" class="form-control col-12 btn-danger" @click="back_1"> Back </button>
                     </div>
                     <br>
                     <br>
                     <br>
-                    <div class="col-lg-6">
+                    <div class="col-6">
                         <button type="submit" class="form-control col-12 btn-primary"> Save </button>
                     </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </form>
-            <!-- /// -->
+
         </div>
 
-        <div class="col-lg-4 col-xs-12"></div>
+        <div class="col-lg-4 col-2"></div>
     </div>
 </div>
 </template>
@@ -86,8 +89,8 @@ export default {
                         
         },
         //
-        back_login(){
-            this.$router.push('/login')
+        back_1(){
+            this.$router.go(-1)
         }
     },
     computed:{
