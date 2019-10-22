@@ -24,7 +24,7 @@
                 height="250px"
                 @click="seethisPageArticle(article.a_id)"
               />
-              <h5 class="text">{{article.a_title}}</h5>
+              <h5 class="text">{{article.a_title.slice(0,50)+" ....."}}</h5>
               <p class="date" style="text-align: left;">{{article.a_create_date.slice(0,-13)}}</p>
               <!-- <p style="text-indent: 2em;">{{article.a_detail.slice(0,60)}}</p> -->
               <!-- <p style="text-align: right;">อ่านเพิ่มเติม</p> -->
