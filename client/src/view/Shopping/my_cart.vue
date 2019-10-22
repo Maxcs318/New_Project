@@ -205,7 +205,12 @@
   </div>
 </template>
 <script>
+import logintest from "../../components/Login_Register/loginPage";
+
 export default {
+  components: {
+    loginpop: logintest
+  },
   data() {
     return {
       select_sa: "",
@@ -227,11 +232,16 @@ export default {
       return this.path_files + "Product/" + pic;
     },
     check_out() {
-      if (this.address_show == "OFF") {
-        this.address_show = "ON";
-      } else {
-        this.address_show = "OFF";
+      if(this.$store.state.the_user=='' || this.$store.state.the_user == null){
+        document.getElementById("loginpopup").style.display = "block";
+      }else{
+        if (this.address_show == "OFF") {
+          this.address_show = "ON";
+        } else {
+          this.address_show = "OFF";
+        }
       }
+      
     },
     click_select_sa() {
       if (this.select_sa == "") {

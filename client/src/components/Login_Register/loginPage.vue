@@ -99,7 +99,7 @@ export default {
           if (this.$store.state.log_on != null) {
             this.$store.commit("LoadingPage", "none");
             setTimeout(() => {
-              this.$router.push("/");
+              // this.$router.push("/");
               this.$store.commit("LoadingPage", "show");
             }, 3000);
           } else {
