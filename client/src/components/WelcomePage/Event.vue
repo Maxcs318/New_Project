@@ -98,6 +98,7 @@ export default {
   border-radius: 4px;
 }
 
+
 /* .shadow-block2 {
   position: absolute;
   z-index: 0;
