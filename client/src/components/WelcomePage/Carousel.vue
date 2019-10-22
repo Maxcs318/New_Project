@@ -1,7 +1,5 @@
 <template>
   <div>
-    <img class="img-box" :src="path_files+'background_img/Backgroundbox.png'" />
-    <img class="mb-bg" :src="path_files+'background_img/mb-bg.png'" />
     <!-- <div class="row"> -->
     <div class="box1">
       <div class="col-lg-5 col-xs-12">
@@ -18,6 +16,8 @@
         </router-link>
       </div>
     </div>
+    <img class="img-box" :src="path_files+'background_img/Backgroundbox.png'" />
+    <img class="mb-bg" :src="path_files+'background_img/mb-bg.png'" />
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
   position: absolute;
   z-index: 1;
   padding-left: 106px;
-  margin-top: -700px;
+  margin-top: 0px;
 }
 
 .img-box {
