@@ -4,18 +4,18 @@ import axios from "axios"
 
 Vue.use(Vuex)
 // Web Data
-const base_url = 'https://elite-shoponline.com/gama/public/'
+// const base_url = 'https://elite-shoponline.com/gama/public/'
 
 // PC Xampp
-// const base_url = 'http://gamaproject.vue.com/'
+const base_url = 'http://gamaproject.vue.com/'
 
 const store = new Vuex.Store({
     state : {
         // Web Data
-        file_image_path:'https://elite-shoponline.com/gama/public/assets/',
+        // file_image_path:'https://elite-shoponline.com/gama/public/assets/',
 
         // PC Xampp
-        // file_image_path:'http://gamaproject.vue.com/assets/',
+        file_image_path:'http://gamaproject.vue.com/assets/',
 
 
         statusPage:'',
@@ -39,8 +39,9 @@ const store = new Vuex.Store({
         members : [],member_type:[],member_upgrade_date:[],
         the_user:'',
         log_on: localStorage.getItem('The_User') || null,
-        videos:[],
-        video_room:[]
+        videos:[], video_room:[],
+
+        award_list:[],award_type:[],award_years:[],company:[]
     },
 //==========================================================================================================
 //==========================================================================================================
@@ -149,8 +150,10 @@ const store = new Vuex.Store({
         },
         Add_Product(state,Newproduct){
             state.product.push(Newproduct.product)
-            for(var i=0; i<Newproduct.product_image.length; i++){
-                state.product_image.push(Newproduct.product_image[i])
+            if(Newproduct.product_image.length>0){
+                for(var i=0; i<Newproduct.product_image.length; i++){
+                    state.product_image.push(Newproduct.product_image[i])
+                }
             }
         },
         VideosAll(state,videosall){
@@ -171,7 +174,6 @@ const store = new Vuex.Store({
 
             state.academic_article.push(Newacademic_article.academic_article)    
         },
-        
         Edit_News(state,E_news){
             var Editnews = E_news.news
             let index = state.news.findIndex(n => n.n_id == Editnews.n_id)
@@ -480,8 +482,36 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.research.splice(index,1)
             }
+        },
+        Award_List(state,award){
+            state.award_list = award
+        },
+        Award_Type(state,award_type){
+            state.award_type = award_type
+        },
+        Award_years(state,award_years){
+            state.award_years = award_years
+        },
+        Company(state,company){
+            state.company = company
+        },
+        Add_Award_list(state,awardInsert){
+            state.award_list.push(awardInsert)
+        },
+        Edit_Award_list(state,awardEdit){
+            let index = state.award_list.findIndex(al => al.al_id == awardEdit.al_id)
+            if(index > -1){
+                state.award_list[index] = awardEdit
+            }
+        },
+        Delete_Award_list(state,awardID){
+            let index = state.award_list.findIndex(al => al.al_id == awardID)
+            if(index > -1){
+                state.award_list.splice(index,1)
+            }
         }
-        
+
+
 
 
     },
@@ -679,6 +709,34 @@ const store = new Vuex.Store({
             .then(response => {
                 // console.log(response)
                 context.commit("Research",response.data)
+            })
+        },
+        initDataAward_List(context){
+            axios.get(base_url +"Award/get_all_award_list")
+            .then(response => {
+                // console.log(response)
+                context.commit("Award_List",response.data)
+            })
+        },
+        initDataAward_Type(context){
+            axios.get(base_url +"Award/get_all_award_type")
+            .then(response => {
+                // console.log(response)
+                context.commit("Award_Type",response.data)
+            })
+        },
+        initDataAward_years(context){
+            axios.get(base_url +"Award/get_all_award_years")
+            .then(response => {
+                // console.log(response)
+                context.commit("Award_years",response.data)
+            })
+        },
+        initDataCompany(context){
+            axios.get(base_url +"Award/get_all_company")
+            .then(response => {
+                // console.log(response)
+                context.commit("Company",response.data)
             })
         },
 
@@ -1090,6 +1148,33 @@ const store = new Vuex.Store({
                     context.commit('Delete_Research',response.data)
                 }
             })
+        },
+        Add_Award_list(context,award){
+            axios.post(base_url +'Award/insert_award_list',award)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Add_Award_list',response.data)
+                }
+            })
+        },
+        Edit_Award_list(context,awardEdit){
+            axios.post(base_url +'Award/update_award_list',awardEdit)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Edit_Award_list',response.data)
+                }
+            })
+        },
+        Delete_Award_list(context,awardID){
+            axios.post(base_url +'Award/delete_award_list',awardID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Award_list',response.data)
+                }
+            })
         }
         
         
@@ -1275,7 +1360,18 @@ const store = new Vuex.Store({
             }
             return research_cansee
         },
-        
+        getAward_List(state){
+            return state.award_list
+        }, 
+        getAward_Type(state){
+            return state.award_type
+        }, 
+        getAward_Years(state){
+            return state.award_years
+        }, 
+        getCompany(state){
+            return state.company
+        },       
     }
 
 })

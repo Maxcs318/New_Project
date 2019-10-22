@@ -51,6 +51,8 @@ import admin_Research from "./view/Admin/Research/researchs.vue"
 
 import admin_member_list from "./view/Admin/Manage_Members/member_list.vue"
 
+import admin_award_list from "./view/Admin/Award/Award_list/award_lists.vue"
+
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
 import addArticle from "./view/Admin/Articles/article_insert.vue"
@@ -61,6 +63,7 @@ import addGallery from "./view/Admin/Gallery/gallery_insert.vue"
 import addAcademicArticle from "./view/Admin/Academic_Articles/academic_article_insert.vue"
 import addOnline_Journal from "./view/Admin/Online_Journal/online_journal_insert.vue"
 import addResearch from "./view/Admin/Research/research_insert.vue"
+import addAward_list from "./view/Admin/Award/Award_list/award_insert.vue"
 
 // end insert page
 // start edit page
@@ -76,6 +79,8 @@ import EditResearch from "./view/Admin/Research/research_edit.vue"
 
 
 import admin_member_edit from "./view/Admin/Manage_Members/member_edit.vue"
+import admin_award_list_edit from "./view/Admin/Award/Award_list/award_edit.vue"
+
 
 // end edit page
 
@@ -151,6 +156,8 @@ export const router = new VueRouter({
 
         { path : "/AdminM/:Page",name:'AdminM',component : admin_member_list },
 
+        { path : "/AdminAw/:Page",name:'AdminAw',component : admin_award_list },
+
 
         // start insert
         { path : "/addnews",component : addNews },
@@ -162,6 +169,7 @@ export const router = new VueRouter({
         { path : "/add_academicarticle",component : addAcademicArticle },
         { path : "/addonline_journal",component : addOnline_Journal },
         { path : "/addresearch",component : addResearch },
+        { path : "/addaward_list",component : addAward_list },
 
         
         // stop insert
@@ -179,6 +187,8 @@ export const router = new VueRouter({
 
         { path : "/editmember_by_admin/id=:MemberID",name:"editmember_by_admin",component : admin_member_edit },
         
+        { path : "/editaward_list/id=:Award_listID",name:"editaward_list",component : admin_award_list_edit },
+
         // stop edit
         
         // start profile
