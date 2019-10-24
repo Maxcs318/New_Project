@@ -525,7 +525,22 @@ const store = new Vuex.Store({
             if(index > -1){
                 state.company.splice(index,1)
             }
-        }
+        },
+        Add_Award_type(state,award_typeInsert){
+            state.award_type.push(award_typeInsert)
+        },
+        Edit_Award_type(state,award_typeEdit){
+            let index = state.award_type.findIndex(at => at.at_id == award_typeEdit.at_id)
+            if(index > -1){
+                state.award_type[index] = award_typeEdit
+            }
+        },
+        Delete_Award_type(state,award_typeID){
+            let index = state.award_type.findIndex(at => at.at_id == award_typeID)
+            if(index > -1){
+                state.award_type.splice(index,1)
+            }
+        },
 
 
 
@@ -1218,7 +1233,34 @@ const store = new Vuex.Store({
                     context.commit('Delete_Company',response.data)
                 }
             })
-        }
+        },
+        Add_Award_type(context,award_type){
+            axios.post(base_url +'Award/insert_award_type',award_type)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Add_Award_type',response.data)
+                }
+            }) 
+        },
+        Edit_Award_type(context,award_type){
+            axios.post(base_url +'Award/update_award_type',award_type)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Edit_Award_type',response.data)
+                }
+            })
+        },
+        Delete_Award_type(context,award_typeID){
+            axios.post(base_url +'Award/delete_award_type',award_typeID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Award_type',response.data)
+                }
+            })
+        },
         
         
     },

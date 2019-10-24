@@ -42,6 +42,24 @@
             $award_list_All = $this->db->get($this->award_type)->result(); 
             return json_encode($award_list_All);      
         }
+        // insert award type
+        public function insert_award_type($data=array())
+        {
+            $ins = $this->db->insert($this->award_type,$data);
+            if($ins){
+                $data['at_id'] = $this->db->insert_id();
+            }
+            return json_encode($data);
+        }
+        // update award_type
+        public function update_award_type($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->award_type,$data));
+        }
+        // delete award_type
+        public function delete_award_type($where = array()){
+            return json_encode($this->db->where($where)->delete($this->award_type));
+        }
 
 
 

@@ -11,11 +11,11 @@
                 <br>
             </div>
             <div class="col-lg-3 col-xs-12">
-                <router-link to="/">
+                <router-link to="/AdminAwt">
                     <button class="form-control btn-primary">Award Type</button>
                 </router-link>            </div>
             <div class="col-lg-3 col-xs-12">
-                <router-link to="/">
+                <router-link to="/AdminAwy">
                     <button class="form-control btn-primary">Award Years</button>
                 </router-link>            </div>
             <div class="col-lg-3 col-xs-12">

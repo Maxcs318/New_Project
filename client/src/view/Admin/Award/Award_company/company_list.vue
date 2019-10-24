@@ -2,9 +2,7 @@
     <div class="container" v-if="the_user">
         <h3><center> List Company </center></h3>
         <div class="row">
-            <div class="col-lg-9 col-xs-12">
-                
-            </div>
+            <div class="col-lg-9 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">
                 <button class="form-control btn-primary" @click="addcompany">Add Company</button> <br>
             </div>
@@ -36,22 +34,6 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            page: 0,
-            data_in_page: 20,
-            length_page: 0,
-            page_start: 0,
-            page_end: 0,
-            isActive: [],
-            userstatus:'',
-            // search data
-            selected:'',
-            search:'',
-
-            
-        };
-    },
     methods:{
         addcompany(){
             this.$router.push('/addcompany')
