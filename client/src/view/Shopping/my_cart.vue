@@ -232,16 +232,18 @@ export default {
       return this.path_files + "Product/" + pic;
     },
     check_out() {
-      if(this.$store.state.the_user=='' || this.$store.state.the_user == null){
+      if (
+        this.$store.state.the_user == "" ||
+        this.$store.state.the_user == null
+      ) {
         document.getElementById("loginpopup").style.display = "block";
-      }else{
+      } else {
         if (this.address_show == "OFF") {
           this.address_show = "ON";
         } else {
           this.address_show = "OFF";
         }
       }
-      
     },
     click_select_sa() {
       if (this.select_sa == "") {
@@ -488,9 +490,7 @@ tr {
   border-radius: 24px;
   border: none;
 }
-.btn-danger:hover {
-  background-color: red;
-}
+
 .btn-warning {
   color: #093f84;
   font-weight: 600;
@@ -499,9 +499,12 @@ tr {
   border-radius: 24px;
   border: none;
 }
+
+.btn-danger:hover,
 .btn-warning:hover {
-  background-color: #ffa801;
+  opacity: 0.7;
 }
+
 hr {
   background-color: #fff;
   height: 2px;
@@ -513,8 +516,8 @@ hr {
     padding-left: 13%;
   }
   .empty-cart img {
-  width: 35%;
-  height: 35%;
-}
+    width: 35%;
+    height: 35%;
+  }
 }
 </style>

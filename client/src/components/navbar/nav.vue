@@ -3,14 +3,14 @@
     <b-navbar toggleable="lg" type="dark" class="navbar float-right">
       <router-link to="/">
         <b-navbar-brand>
-          <img :src="path_files+'logo_img/logo-white.png'" />
+          <img :src="path_files+'logo_img/logo-white.png'" class="nav-logo" />
         </b-navbar-brand>
       </router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="ml-auto">
+      <b-collapse id="nav-collapse" is-nav style="margin-left:44px;">
+        <b-navbar-nav>
           <router-link to="/">
             <b-navbar-brand>
               <b-nav-text>
@@ -74,13 +74,17 @@
           </router-link>
         </b-navbar-nav>
 
+        <b-navbar-nav class="ml-auto">
+          <button class="nav-cart">
+            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" title="ดูตะกร้าสินค้า"/>
+          </button>
+        </b-navbar-nav>
+
         <b-navbar-nav>
           <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
 
-          <!-- <img :src="path_files+'logo_img/nav-Cart.png'" class="nav-cart" /> -->
-
           <button
-            class="login-btn"
+            class="form-control login-btn"
             v-if="this.$store.state.the_user == '' "
             @click="PopupLogin1"
           >Log in</button>
@@ -180,8 +184,14 @@ export default {
   color: #757575;
 }
 
-.nav-cart img{
-  width: 20px;
+.nav-cart {
+  background: none;
+  border: none;
+  margin-right: 24px;
+}
+
+.nav-cart:hover {
+  opacity: 0.7;
 }
 .navbar.text-test:focus {
   color: #eecd02;
@@ -191,7 +201,7 @@ export default {
   color: #eecd02;
 }
 
-.navbar img {
+.nav-logo {
   width: 150px;
   margin-left: 86px;
 }
