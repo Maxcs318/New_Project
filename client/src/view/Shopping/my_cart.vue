@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="padding-top: 154px; margin-bottom: 143px;">
+  <div class="container" style="margin-bottom: 143px;">
     <!-- // -->
     <div v-if="address_show == 'OFF'">
       <div class="row">
@@ -410,7 +410,7 @@ header {
   letter-spacing: 0.75px;
 }
 .empty-cart {
-  margin-bottom: 269px;
+  margin-bottom: 119px;
 }
 .empty-cart img {
   display: block;
