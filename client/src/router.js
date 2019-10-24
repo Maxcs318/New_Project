@@ -22,8 +22,9 @@ import GalleryList from './view/Gallery/gallery_list.vue';
 import Gallery from './view/Gallery/gallery.vue';
 import Academic_Articles from './view/Academic_Articles/academic_articles.vue';
 import Academic_Article from './view/Academic_Articles/academic_article.vue';
-import Online_jJurnals from './view/Online_Journal/online_journals.vue';
+import Online_Jurnals from './view/Online_Journal/online_journals.vue';
 import Online_Journal from './view/Online_Journal/online_journal.vue';
+import Award_Show from './view/Award/award.vue';
 
 
 
@@ -138,8 +139,9 @@ export const router = new VueRouter({
         { path : "/academic_articles/:Page",name : 'academic_articles',component : Academic_Articles },
         { path : "/academic_article/:AcademicArticleID",name:"academic_article",component : Academic_Article },
 
-        { path : "/online_journals/:Page",name:"online_journals",component : Online_jJurnals },
+        { path : "/online_journals/:Page",name:"online_journals",component : Online_Jurnals },
         { path : "/online_journal/:Online_JournalID",name:"online_journal",component : Online_Journal },
+        { path : "/Awards/:Page",name:'Awards',component : Award_Show },
 
 
     //Admin - - - >

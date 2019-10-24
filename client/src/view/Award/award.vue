@@ -4,25 +4,6 @@
         <center> ประกาศรายชื่อผู้ที่ได้รับรางวัล Gama Awards </center>
         <center> ประจำปี {{year_show.ay_title}} </center> <br>
         <div class="row">
-            <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminC">
-                    <button class="form-control btn-primary">Company</button>
-                </router-link>
-                <br>
-            </div>
-            <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminAwt">
-                    <button class="form-control btn-primary">Award Type</button>
-                </router-link>            </div>
-            <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminAwy">
-                    <button class="form-control btn-primary">Award Years</button>
-                </router-link>            </div>
-            <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="addaward">Add Award</button> <br>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-5">
                 Search Name : {{search}}
@@ -51,15 +32,13 @@
             <div class="col-lg-12 col-md-12">
                 <table style="width:100%" >
                     <tr style="width:100%">
-                        <th style="width:5%">ID</th>
+                        <th style="width:5%">#</th>
                         <th style="width:35%">รายชื่อ</th>
                         <th style="width:20%">บริษัท</th>
                         <th style="width:20%">ประเภทรางวัล</th>
-                        <th style="width:10%">  </th>
-                        <th style="width:10%">  </th>
                     </tr>
                     <tr v-for="(award,index) in the_award_list.slice((page*data_in_page),(page+1)*data_in_page)" :key="index" >
-                        <td>{{award.al_id }}</td>
+                        <td>{{ (data_in_page*page)+ index+1 }}</td>
                         <td>{{award.al_recipient}}</td>
                         <td>
                             <div v-for="company in Company" v-if="company.c_id == award.al_company_id">
@@ -71,8 +50,6 @@
                                 {{at.at_title}}
                             </div>
                         </td>
-                        <td> <button class="form-control btn-warning" @click="editAward_list(award.al_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteAward_list(award.al_id)">Delete</button> </td>
                     </tr>
                 </table>
             </div>
@@ -112,56 +89,29 @@ export default {
 
             year_show:[]
 
+            
         };
     },
     methods:{
-        addaward(){
-            this.$router.push('/addaward_list')
-        },
         seenextPage(num_page) {
             this.$router.push({
-                name: "AdminAw",
+                name: "Awards",
                 params: { Page: num_page }
             });
         },
-        editAward_list(thisaward){
-            this.$router.push({name:'editaward_list',params:{Award_listID:thisaward}});
-        },
-        deleteAward_list(thisaward){
-            // console.log(thisaward)
-            var FD  = new FormData()
-            FD.append('awardID',JSON.stringify(thisaward))
-            FD.append('creator',JSON.stringify(this.$store.state.log_on))
-            this.$swal({
-                title: "Are you sure?",
-                text: "You want delete this Award ID "+thisaward,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    this.$store.dispatch("Delete_Award_list",FD)
-                    swal({title: "Delete Success.",icon: "success",});
-                    // console.log(FD)
-                } else {
-                    // swal("Your imaginary file is safe!");
-                }
-            })
-        }
     },
     watch:{
         selected :function (val) {
             this.search = ''
             // back to page 1
             this.$router.push({
-                name: "AdminAw",
+                name: "Awards",
                 params: { Page: 1 }
             });
         },
         search :function (val) {
             this.$router.push({
-                name: "AdminAw",
+                name: "Awards",
                 params: { Page: 1 }
             });
         }
