@@ -2,12 +2,24 @@
     <div class="container" v-if="the_user">
         <h3><center> Gama Awards ++++ Winners  </center></h3>
         <center> ประกาศรายชื่อผู้ที่ได้รับรางวัล Gama Awards </center>
-        <center> ประจำปี ++++ </center>
-        
+        <center> ประจำปี ++++ </center> <br>
         <div class="row">
-            <div class="col-lg-9 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="addaward">Add Award</button>
+                <router-link to="/AdminC">
+                    <button class="form-control btn-primary">Company</button>
+                </router-link>
+                <br>
+            </div>
+            <div class="col-lg-3 col-xs-12">
+                <router-link to="/">
+                    <button class="form-control btn-primary">Award Type</button>
+                </router-link>            </div>
+            <div class="col-lg-3 col-xs-12">
+                <router-link to="/">
+                    <button class="form-control btn-primary">Award Years</button>
+                </router-link>            </div>
+            <div class="col-lg-3 col-xs-12">
+                <button class="form-control btn-primary" @click="addaward">Add Award</button> <br>
             </div>
         </div>
         <div class="row">

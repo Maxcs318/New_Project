@@ -240,7 +240,7 @@ const store = new Vuex.Store({
         },
         Edit_Academic_Article(state,E_academic_article){
             var Edit_AA = E_academic_article.academic_article
-            console.log(Edit_AA)
+            // console.log(Edit_AA)
             let index = state.academic_article.findIndex(a => a.aa_id == Edit_AA.aa_id)
             if(index > -1){
                 state.academic_article[index] = Edit_AA
@@ -381,6 +381,7 @@ const store = new Vuex.Store({
         },
         Create_Order(state,order){
             state.order.push(order)
+            // localStorage.removeItem('Cart')
         },
         Delete_My_Order(state,order){
             var order_id = order.o_id 
@@ -508,6 +509,21 @@ const store = new Vuex.Store({
             let index = state.award_list.findIndex(al => al.al_id == awardID)
             if(index > -1){
                 state.award_list.splice(index,1)
+            }
+        },
+        Add_Company(state,companyInsert){
+            state.company.push(companyInsert)
+        },
+        Edit_Company(state,companyEdit){
+            let index = state.company.findIndex(c => c.c_id == companyEdit.c_id)
+            if(index > -1){
+                state.company[index] = companyEdit
+            }
+        },
+        Delete_Company(state,companyID){
+            let index = state.company.findIndex(c => c.c_id == companyID)
+            if(index > -1){
+                state.company.splice(index,1)
             }
         }
 
@@ -1173,6 +1189,33 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit('Delete_Award_list',response.data)
+                }
+            })
+        },
+        Add_Company(context,company){
+            axios.post(base_url +'Award/insert_company',company)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Add_Company',response.data)
+                }
+            })
+        },
+        Edit_Company(context,company){
+            axios.post(base_url +'Award/update_company',company)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Edit_Company',response.data)
+                }
+            })
+        },
+        Delete_Company(context,companyID){
+            axios.post(base_url +'Award/delete_company',companyID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Company',response.data)
                 }
             })
         }

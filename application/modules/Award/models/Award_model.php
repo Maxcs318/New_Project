@@ -36,16 +36,6 @@
         public function delete_award_list($where = array()){
             return json_encode($this->db->where($where)->delete($this->award_list));
         }
-
-
-
-
-
-
-
-
-
-
         // ====================================================
         public function get_all_award_type()
         {
@@ -78,9 +68,28 @@
         // =====================================================
         public function get_all_company()
         {
-            $award_list_All = $this->db->get($this->company)->result(); 
-            return json_encode($award_list_All);      
+            $company_All = $this->db->get($this->company)->result(); 
+            return json_encode($company_All);      
         }
+        // insert company
+        public function insert_company($data=array())
+        {
+            $ins = $this->db->insert($this->company,$data);
+            if($ins){
+                $data['c_id'] = $this->db->insert_id();
+            }
+            return json_encode($data);
+        }
+        // update company
+        public function update_company($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->company,$data));
+        }
+        // delete company
+        public function delete_company($where = array()){
+            return json_encode($this->db->where($where)->delete($this->company));
+        }
+
 
 
 
