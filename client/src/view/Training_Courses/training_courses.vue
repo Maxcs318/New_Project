@@ -31,7 +31,7 @@
           height="230px"
           @click="seethisPage(product.p_id)"
         />
-        <h5 class="course-name2">{{product.p_name}}</h5>
+        <h5 class="course-name2">{{product.p_name.slice(0,35)+"..."}}</h5>
         <p class="course-date2">{{product.p_create_date.slice(0,-13)}}</p>
         <br />
         <br />
@@ -167,7 +167,7 @@ img,
 }
 .course-name2 {
   position: absolute;
-  top: 50%;
+  top: 45%;
   padding-left: 21px;
   padding-right: 21px;
   font-style: normal;

@@ -12,8 +12,8 @@
           <h5 class="activitiesall-text2">{{news.n_title}}</h5>
           <p class="activitiesall-date2">{{news.n_create_date.slice(0,-13)}}</p>
       </div>
-    </div> -->
-    <div class="row"> 
+    </div>-->
+    <div class="row">
       <!-- activities all pc-scale -->
       <!-- <div class="activities-pc">
         <div
@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>-->
 
       <!-- activities all mb-scale -->
       <!-- <div class="activities-mb">
@@ -71,7 +71,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>-->
       <div
         class="col-lg-6 col-12"
         @click="seethisPage(news.n_id)"
@@ -84,20 +84,25 @@
       </div>
     </div>
     <div class="row" v-if="length_page > 0">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-          <div class="btn-group" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
-            <button
-              type="button"
-              class="btn btn-light"
-              v-for=" (run_page,index) in length_page "
-              @click="seenextPage(run_page)"
-              v-bind:class="{ active: isActive[index+1] }"
-              v-if=" run_page >= page_start && run_page <= page_end "
-            >{{run_page}}</button>
-            <button type="button" class="btn btn-light" @click="seenextPage(length_page)" title="Last page">>></button>
-          </div>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="Second group">
+          <button type="button" class="btn btn-light" @click="seenextPage(1)" title="First page"><<</button>
+          <button
+            type="button"
+            class="btn btn-light"
+            v-for=" (run_page,index) in length_page "
+            @click="seenextPage(run_page)"
+            v-bind:class="{ active: isActive[index+1] }"
+            v-if=" run_page >= page_start && run_page <= page_end "
+          >{{run_page}}</button>
+          <button
+            type="button"
+            class="btn btn-light"
+            @click="seenextPage(length_page)"
+            title="Last page"
+          >>></button>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -226,16 +231,16 @@ export default {
 }
 .img-activities2 {
   width: 100%;
-  height: auto;
-  margin-bottom: 32px;
+  height: 370px;
+  margin-bottom: 12px;
   cursor: pointer;
 }
 .activitiesall-text2 {
-  position: absolute;
-  z-index: 0;
-  top: 44%;
-  padding-left: 19px;
-  padding-right: 19px;
+  /* position: absolute; */
+  /* z-index: 0; */
+  /* top: 44%; */
+  /* padding-left: 19px;
+  padding-right: 19px; */
   font-style: normal;
   font-weight: 600;
   font-size: 29px;
@@ -245,20 +250,22 @@ export default {
   letter-spacing: 0.75px;
 }
 .activitiesall-date2 {
-  position: absolute;
+  /* position: absolute;
   z-index: 0;
   top: 57%;
   padding-left: 19px;
-  padding-right: 19px;
+  padding-right: 19px; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 150%;
   color: #d8d8d8;
 }
+
 .activities-pc {
   display: block;
 }
+
 .activities-mb {
   display: none;
 }

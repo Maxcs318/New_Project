@@ -62,7 +62,6 @@ export default {
 }
 
 .box1 .text1 {
-  margin-top: 146px;
   font-style: normal;
   font-weight: normal;
   font-size: 29px;

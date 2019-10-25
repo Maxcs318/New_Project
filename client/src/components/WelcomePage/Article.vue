@@ -133,7 +133,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .article {
-    margin-top: 657px;
+    margin-top: 497px;
   }
   .header {
     margin-bottom: 16px;

@@ -118,11 +118,12 @@ img {
 }
 
 .head {
-  position: absolute;
+  /* position: absolute;
   z-index: 0;
   top: 70%;
   padding-left: 19px;
-  padding-right: 19px;
+  padding-right: 19px; */
+  margin-top: 12px;
   font-style: normal;
   font-weight: 600;
   font-size: 2em;
@@ -132,11 +133,11 @@ img {
   letter-spacing: 0.75px;
 }
 .date {
-  position: absolute;
+  /* position: absolute;
   z-index: 0;
   top: 90%;
   padding-left: 19px;
-  padding-right: 19px;
+  padding-right: 19px; */
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

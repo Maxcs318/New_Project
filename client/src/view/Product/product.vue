@@ -1,7 +1,7 @@
 <template>
-  <div class="container" style="padding-top: 154px" v-if="thisProduct">
+  <div class="container" v-if="thisProduct">
     <div class="row" v-if="thisProduct">
-      <div class="col-lg-5 col-xs-12">
+      <div class="col-lg-3 col-xs-12">
         <img :src="getImgUrl(show_pic)" width="100%" />
         <br />
         <br />
