@@ -38,7 +38,7 @@ export default {
         backgroundColor: "#01152E"
       },
       adminBG: {
-        backgroundColor: "black"
+        backgroundColor: "#01152E"
       }
     };
   },
@@ -88,11 +88,10 @@ export default {
     this.$store.dispatch("initDataOnline_Journal");
     this.$store.dispatch("initDataMember_Upgrade_Date");
     this.$store.dispatch("initDataResearch");
-    this.$store.dispatch("initDataAward_List")
-    this.$store.dispatch("initDataAward_Type")
-    this.$store.dispatch("initDataAward_years")
-    this.$store.dispatch("initDataCompany")
-    
+    this.$store.dispatch("initDataAward_List");
+    this.$store.dispatch("initDataAward_Type");
+    this.$store.dispatch("initDataAward_years");
+    this.$store.dispatch("initDataCompany");
   }
 };
 </script>
