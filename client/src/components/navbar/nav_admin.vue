@@ -11,25 +11,39 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <router-link to="/" class="nav-menu">หน้าหลัก</router-link>
+          <b-nav-item>
+            <router-link to="/" class="nav-menu">หน้าหลัก</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/aboutmember" class="nav-menu">เกี่ยวกับสมาชิก</router-link>
+          <b-nav-item>
+            <router-link to="/aboutmember" class="nav-menu">เกี่ยวกับสมาชิก</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/newsandactivities/1" class="nav-menu">ข่าวกิจกรรม</router-link>
+          <b-nav-item>
+            <router-link to="/newsandactivities/1" class="nav-menu">ข่าวกิจกรรม</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/articles/1" class="nav-menu">บทความ</router-link>
+          <b-nav-item>
+            <router-link to="/articles/1" class="nav-menu">บทความ</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/training_courses/1" class="nav-menu">หลักสูตร & อบรม</router-link>
+          <b-nav-item>
+            <router-link to="/training_courses/1" class="nav-menu">หลักสูตร & อบรม</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/books/1" class="nav-menu">หนังสือ</router-link>
+          <b-nav-item>
+            <router-link to="/books/1" class="nav-menu">หนังสือ</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
+          <b-nav-item>
+            <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
