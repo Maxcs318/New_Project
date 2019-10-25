@@ -1,5 +1,40 @@
 <template>
   <div>
+    <!-- <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item href="#">Link</b-nav-item>
+        <b-nav-item href="#" disabled>Disabled</b-nav-item>
+      </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto">
+        <b-nav-form>
+          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+        </b-nav-form>
+
+        <b-nav-item-dropdown text="Lang" right>
+          <b-dropdown-item href="#">EN</b-dropdown-item>
+          <b-dropdown-item href="#">ES</b-dropdown-item>
+          <b-dropdown-item href="#">RU</b-dropdown-item>
+          <b-dropdown-item href="#">FA</b-dropdown-item>
+        </b-nav-item-dropdown>
+
+        <b-nav-item-dropdown right>
+          <template v-slot:button-content>
+            <em>User</em>
+          </template>
+          <b-dropdown-item href="#">Profile</b-dropdown-item>
+          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-collapse>
+    </b-navbar>-->
+
     <b-navbar toggleable="lg" type="dark" class="navbar float-right">
       <router-link to="/">
         <b-navbar-brand>
@@ -8,27 +43,42 @@
       </router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <router-link to="/" class="nav-menu">หน้าหลัก</router-link>
+          <b-nav-item>
+            <router-link to="/" class="nav-menu">หน้าหลัก</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/aboutmember" class="nav-menu">เกี่ยวกับสมาชิก</router-link>
+          <b-nav-item>
+            <router-link to="/aboutmember" class="nav-menu">เกี่ยวกับสมาชิก</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/newsandactivities/1" class="nav-menu">ข่าวกิจกรรม</router-link>
+          <b-nav-item>
+            <router-link to="/newsandactivities/1" class="nav-menu">ข่าวกิจกรรม</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/articles/1" class="nav-menu">บทความ</router-link>
+          <b-nav-item>
+            <router-link to="/articles/1" class="nav-menu">บทความ</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/training_courses/1" class="nav-menu">หลักสูตร & อบรม</router-link>
+          <b-nav-item>
+            <router-link to="/training_courses/1" class="nav-menu">หลักสูตร & อบรม</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/books/1" class="nav-menu">หนังสือ</router-link>
+          <b-nav-item>
+            <router-link to="/books/1" class="nav-menu">หนังสือ</router-link>
+          </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
+          <b-nav-item>
+            <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
+          </b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
@@ -38,13 +88,11 @@
         </b-navbar-nav>
 
         <b-navbar-nav>
-          <!-- <button class="form-control btn-light" v-if="this.$store.state.the_user == '' " @click="register"> Register </button> -->
-
           <button
             class="form-control login-btn"
             v-if="this.$store.state.the_user == '' "
             @click="PopupLogin1"
-          >Log in</button>
+          >เข้าสู่ระบบ</button>
 
           <div id="loginpopup" class="modal">
             <loginpop></loginpop>
@@ -55,13 +103,13 @@
             <b-dropdown-item
               @click="admin"
               v-if="this.$store.state.the_user.m_status == 'admin' "
-            >Admin</b-dropdown-item>
-            <b-dropdown-item @click="profile">Profile</b-dropdown-item>
-            <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
-            <b-dropdown-item @click="productall">Product All</b-dropdown-item>
-            <b-dropdown-item @click="my_cart">My Cart</b-dropdown-item>
+            >แอดมิน</b-dropdown-item>
+            <b-dropdown-item @click="profile">โปรไฟล์</b-dropdown-item>
+            <b-dropdown-item @click="videosroom">วีดีโอ</b-dropdown-item>
+            <b-dropdown-item @click="productall">สินค้าทั้งหมด</b-dropdown-item>
+            <b-dropdown-item @click="my_cart">ตะกร้าของฉัน</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
-            <b-dropdown-item @click="Log_Out">Log Out</b-dropdown-item>
+            <b-dropdown-item @click="Log_Out">ออกจากระบบ</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -138,7 +186,7 @@ export default {
   z-index: 100;
   width: 100%;
 }
-#nav-collapse{
+#nav-collapse {
   margin-left: 48px;
 }
 .navbar .nav-menu {
@@ -210,6 +258,7 @@ a.router-link-exact-active.router-link-active {
 
   .nav-logo {
     width: 150px;
+    padding-left: 17px;
   }
 
   .navbar-toggler {
@@ -231,7 +280,7 @@ a.router-link-exact-active.router-link-active {
   .nav-cart {
     width: 20px;
     padding: 0;
-    margin: auto;
+    margin: 10px auto;
   }
 
   .nav-logo {
@@ -242,6 +291,13 @@ a.router-link-exact-active.router-link-active {
   .btn {
     margin: 0px;
     margin-top: 7px;
+  }
+
+  .navbar .nav-menu {
+    margin-right: 0;
+  }
+  .navbar .nav-item {
+    padding: 16px 0px;
   }
 
   button.login-btn {
