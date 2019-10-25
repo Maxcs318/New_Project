@@ -5,19 +5,14 @@
         <center> ประจำปี {{year_show.ay_title}} </center> <br>
         <div class="row">
             <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminC">
-                    <button class="form-control btn-primary">Company</button>
-                </router-link>
-                <br>
+                <button class="form-control btn-primary" @click="company">Company</button> <br>
             </div>
             <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminAwt">
-                    <button class="form-control btn-primary">Award Type</button>
-                </router-link>            </div>
+                <button class="form-control btn-primary" @click="award_type">Award Type</button> <br>
+            </div>
             <div class="col-lg-3 col-xs-12">
-                <router-link to="/AdminAwy">
-                    <button class="form-control btn-primary">Award Years</button>
-                </router-link>            </div>
+                <button class="form-control btn-primary" @click="award_years">Award Years</button> <br>
+            </div>
             <div class="col-lg-3 col-xs-12">
                 <button class="form-control btn-primary" @click="addaward">Add Award</button> <br>
             </div>
@@ -115,6 +110,15 @@ export default {
         };
     },
     methods:{
+        award_type(){
+            this.$router.push('/AdminAwt')
+        },
+        award_years(){
+            this.$router.push('/AdminAwy')
+        },
+        company(){
+            this.$router.push('/AdminC')
+        },
         addaward(){
             this.$router.push('/addaward_list')
         },

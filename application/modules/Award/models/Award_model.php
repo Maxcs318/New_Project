@@ -37,6 +37,8 @@
             return json_encode($this->db->where($where)->delete($this->award_list));
         }
         // ====================================================
+
+        // get award type
         public function get_all_award_type()
         {
             $award_list_All = $this->db->get($this->award_type)->result(); 
@@ -60,30 +62,35 @@
         public function delete_award_type($where = array()){
             return json_encode($this->db->where($where)->delete($this->award_type));
         }
-
-
-
-
-
-
-
-
         // =====================================================
+        
+        // get award years
         public function get_all_award_years()
         {
             $award_list_All = $this->db->get($this->award_year)->result(); 
             return json_encode($award_list_All);      
         }
-
-
-
-
-
-
-
-
-
+        // insert award year
+        public function insert_award_year($data=array())
+        {
+            $ins = $this->db->insert($this->award_year,$data);
+            if($ins){
+                $data['ay_id'] = $this->db->insert_id();
+            }
+            return json_encode($data);
+        }
+        // update award_year
+        public function update_award_year($data = array(), $where = array())
+        {
+            return json_encode($this->db->where($where)->update($this->award_year,$data));
+        }
+        // delete award_year
+        public function delete_award_year($where = array()){
+            return json_encode($this->db->where($where)->delete($this->award_year));
+        }
         // =====================================================
+        
+        // get company
         public function get_all_company()
         {
             $company_All = $this->db->get($this->company)->result(); 

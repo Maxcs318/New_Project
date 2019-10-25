@@ -41,7 +41,7 @@ export default {
                 setTimeout(()=>{
                     this.$router.go(-1)
                 },2000)  
-            this.$swal("Save Award Type Success .", "", "success")
+            this.$swal("Edit Award Type Success .", "", "success")
         }
     },
     computed:{

@@ -541,6 +541,21 @@ const store = new Vuex.Store({
                 state.award_type.splice(index,1)
             }
         },
+        Add_Award_year(state,award_yearInsert){
+            state.award_years.push(award_yearInsert)
+        },
+        Edit_Award_year(state,award_yearEdit){
+            let index = state.award_years.findIndex(ay => ay.ay_id == award_yearEdit.ay_id)
+            if(index > -1){
+                state.award_years[index] = award_yearEdit
+            }
+        },
+        Delete_Award_year(state,award_yearID){
+            let index = state.award_years.findIndex(ay => ay.ay_id == award_yearID)
+            if(index > -1){
+                state.award_years.splice(index,1)
+            }
+        },
 
 
 
@@ -1258,6 +1273,33 @@ const store = new Vuex.Store({
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
                     context.commit('Delete_Award_type',response.data)
+                }
+            })
+        },
+        Add_Award_year(context,award_year){
+            axios.post(base_url +'Award/insert_award_year',award_year)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Add_Award_year',response.data)
+                }
+            }) 
+        },
+        Edit_Award_year(context,award_year){
+            axios.post(base_url +'Award/update_award_year',award_year)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Edit_Award_year',response.data)
+                }
+            })
+        },
+        Delete_Award_year(context,award_yearID){
+            axios.post(base_url +'Award/delete_award_year',award_yearID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit('Delete_Award_year',response.data)
                 }
             })
         },

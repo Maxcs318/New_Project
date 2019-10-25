@@ -132,7 +132,7 @@
             }
             $award_type = (array)json_decode($this->input->post('award_type'));
             $award_typeID['at_id'] = $award_type['at_id'];
-            unset($award_type['al_id']); 
+            unset($award_type['at_id']); 
             $award_type['at_update_date'] = $this->Check__model->date_time_now();
             $award_type_Update = $this->Award_model->update_award_type($award_type,$award_typeID);
             if($award_type_Update==true){
@@ -162,21 +162,82 @@
                 echo json_encode($award_typeID);
             }
         }
-        
-
-
-
         // =====================================================
+        
         // get all award years
         public function get_all_award_years()
         {
             echo $this->Award_model->get_all_award_years();   
         }
-
-
-
-
+        // insert award year
+        public function insert_award_year()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $award_year = (array)json_decode($this->input->post('award_year'));
+            $award_year['ay_create_date'] = $this->Check__model->date_time_now();
+            $award_yearInsert = $this->Award_model->insert_award_year($award_year);
+            echo json_encode($award_yearInsert);
+        }
+        // update award_year
+        public function update_award_year()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $award_year = (array)json_decode($this->input->post('award_year'));
+            $award_yearID['ay_id'] = $award_year['ay_id'];
+            unset($award_year['ay_id']); 
+            $award_year['ay_update_date'] = $this->Check__model->date_time_now();
+            $award_year_Update = $this->Award_model->update_award_year($award_year,$award_yearID);
+            if($award_year_Update==true){
+                $award_year['ay_id'] = $award_yearID['ay_id'];
+                echo json_encode($award_year);
+            }
+        }
+        // delete award_year
+        public function delete_award_year()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $award_yearID = json_decode($this->input->post('award_yearID'));
+            $award_year['ay_id'] = $award_yearID;
+            $award_year_delete = $this->Award_model->delete_award_year($award_year);
+            if($award_year_delete == true){
+                echo json_encode($award_yearID);
+            }
+        }
         // =====================================================
+
         // get all company
         public function get_all_company()
         {
