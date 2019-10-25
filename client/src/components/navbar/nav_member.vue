@@ -60,7 +60,8 @@
             @click="Log_in"
           >Log in</button>
           <b-nav-item-dropdown style="color:red;" right v-if="this.$store.state.the_user != '' ">
-            <template slot="button-content">User : {{this.$store.state.the_user.m_username}}</template>
+            <template slot="button-content" v-if="this.$store.state.the_user.m_status == 'user'">User : {{this.$store.state.the_user.m_username}}</template>
+            <template slot="button-content" v-else-if="this.$store.state.the_user.m_status == 'admin'">Admin : {{this.$store.state.the_user.m_username}}</template>
             <b-dropdown-item @click="profile">Profile</b-dropdown-item>
             <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
             <b-dropdown-item @click="productall">Product All</b-dropdown-item>

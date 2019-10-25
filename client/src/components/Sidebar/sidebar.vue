@@ -116,7 +116,7 @@ export default {
       this.$router.push("/AdminR/1");
     },
     award() {
-      this.$router.push("/");
+      this.$router.push("/AdminAw/1");
     }
   },
   computed: {

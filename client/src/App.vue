@@ -6,8 +6,8 @@
 
     <div v-else-if="this.$store.state.statusPage != 'none' && read_background" :style="BG">
       <navbar v-if="this.$store.state.the_user == ''"></navbar>
-      <navbarmember v-else-if="this.$store.state.the_user.m_status == 'user'"></navbarmember>
-      <navbaradmin v-else-if="this.$store.state.the_user.m_status == 'admin'"></navbaradmin>
+      <navbarmember v-else-if="this.$store.state.the_user.m_status != ''"></navbarmember>
+      <!-- <navbaradmin v-else-if="this.$store.state.the_user.m_status == 'admin'"></navbaradmin> -->
       <sidebar v-if="this.$store.state.the_user.m_status == 'admin'"></sidebar>
 
       <div style="padding-top: 120px;">
@@ -25,7 +25,7 @@
 <script>
 import Nav from "./components/Navbar/nav";
 import Nav_Member from "./components/Navbar/nav_member.vue";
-import Nav_Admin from "./components/Navbar/nav_admin.vue";
+// import Nav_Admin from "./components/Navbar/nav_admin.vue";
 import Footer from "./components/Footer/foot.vue";
 import Loadingpage from "./components/loadingpage/loadingData";
 import sidebar from "./components/Sidebar/sidebar";
@@ -56,7 +56,7 @@ export default {
   components: {
     navbar: Nav,
     navbarmember: Nav_Member,
-    navbaradmin: Nav_Admin,
+    // navbaradmin: Nav_Admin,
     foot: Footer,
     loadingpage: Loadingpage,
     Sidebar: sidebar
