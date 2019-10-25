@@ -8,75 +8,32 @@
       </router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav style="margin-left:44px;">
+      <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <router-link to="/">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">หน้าหลัก</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/" class="nav-menu">หน้าหลัก</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/aboutmember">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">เกี่ยวกับสมาชิก</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/aboutmember" class="nav-menu">เกี่ยวกับสมาชิก</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/newsandactivities/1">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">ข่าวกิจกรรม</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/newsandactivities/1" class="nav-menu">ข่าวกิจกรรม</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/articles/1">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">บทความ</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/articles/1" class="nav-menu">บทความ</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/training_courses/1">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">หลักสูตร & อบรม</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/training_courses/1" class="nav-menu">หลักสูตร & อบรม</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/books/1">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">หนังสือ</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/books/1" class="nav-menu">หนังสือ</router-link>
         </b-navbar-nav>
         <b-navbar-nav>
-          <router-link to="/contact">
-            <b-navbar-brand>
-              <b-nav-text>
-                <h5 class="text-test">ติดต่อเรา</h5>
-              </b-nav-text>
-            </b-navbar-brand>
-          </router-link>
+          <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
           <button class="nav-cart">
-            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" title="ดูตะกร้าสินค้า"/>
+            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" title="ดูตะกร้าสินค้า" />
           </button>
         </b-navbar-nav>
 
@@ -111,6 +68,14 @@
     </b-navbar>
   </div>
 </template>
+
+<script>
+function myFunction() {
+  var element = document.getElementById("myDIV");
+  element.classList.add("active");
+}
+</script>
+
 <script>
 import logintest from "../Login_Register/loginPage";
 
@@ -173,15 +138,22 @@ export default {
   z-index: 100;
   width: 100%;
 }
-
-.navbar h5 {
+#nav-collapse{
+  margin-left: 48px;
+}
+.navbar .nav-menu {
   font-style: normal;
   font-weight: 600;
   font-size: 17px;
   line-height: 27px;
-  margin-right: 25px;
-  margin-top: 8px;
-  color: #757575;
+  margin-right: 3em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.navbar .nav-menu:hover {
+  color: #eecd02;
+  text-decoration: none;
 }
 
 .nav-cart {
@@ -193,9 +165,6 @@ export default {
 .nav-cart:hover {
   opacity: 0.7;
 }
-.navbar.text-test:focus {
-  color: #eecd02;
-}
 
 .navbar .text-test:hover {
   color: #eecd02;
@@ -203,7 +172,7 @@ export default {
 
 .nav-logo {
   width: 150px;
-  margin-left: 86px;
+  margin-left: 26px;
 }
 
 .btn-outline-primary {
@@ -229,25 +198,55 @@ button.login-btn:hover {
   opacity: 0.7;
 }
 
-.active {
+a.router-link-exact-active.router-link-active {
   color: #eecd02;
 }
 @media only screen and (max-width: 600px) {
   .navbar {
-    position: relative;
-    z-index: 1;
     text-align: center;
+    padding: 0;
+    padding-top: 10px;
   }
-  .navbar img {
+
+  .nav-logo {
+    width: 150px;
+  }
+
+  .navbar-toggler {
+    margin-right: 17px;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+  }
+
+  #nav-collapse {
+    width: 100%;
+    height: 1000px;
+    margin: 0;
+    padding: 0;
+    background-color: #01152e;
+  }
+
+  .nav-cart {
+    width: 20px;
+    padding: 0;
+    margin: auto;
+  }
+
+  .nav-logo {
     width: 150px;
     margin-left: 0px;
   }
+
   .btn {
     margin: 0px;
     margin-top: 7px;
   }
-  .navbar h5 {
-    margin-right: 0;
+
+  button.login-btn {
+    width: 129px;
+    margin: 24px auto;
   }
 }
 </style>

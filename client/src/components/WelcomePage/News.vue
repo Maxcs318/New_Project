@@ -233,7 +233,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .news {
-    top: 637px;
+    top: 507px;
   }
 
   .news-pc {

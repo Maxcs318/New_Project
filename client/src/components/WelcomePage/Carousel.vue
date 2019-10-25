@@ -123,7 +123,7 @@ export default {
     position: absolute;
     display: block;
     width: 100%;
-    margin-top: -160px;
+    margin-top: -175px;
   }
 
   .box1 {
@@ -131,7 +131,9 @@ export default {
     padding-left: 10px;
     padding-top: 24px;
   }
-
+  .box1 .text1 {
+    margin-top: 0;
+  }
   .box1 .text2 {
     font-size: 33px;
   }
