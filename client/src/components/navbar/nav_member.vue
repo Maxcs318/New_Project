@@ -63,9 +63,14 @@
             <template slot="button-content" v-if="this.$store.state.the_user.m_status == 'user'">User : {{this.$store.state.the_user.m_username}}</template>
             <template slot="button-content" v-else-if="this.$store.state.the_user.m_status == 'admin'">Admin : {{this.$store.state.the_user.m_username}}</template>
             <b-dropdown-item @click="profile">Profile</b-dropdown-item>
+            <b-dropdown-item @click="my_cart">My Cart</b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="videosroom">Video Room</b-dropdown-item>
             <b-dropdown-item @click="productall">Product All</b-dropdown-item>
-            <b-dropdown-item @click="my_cart">My Cart</b-dropdown-item>
+            <b-dropdown-item @click="academic_articles">Academic Article</b-dropdown-item>
+            <b-dropdown-item @click="online_journals">Online Journal</b-dropdown-item>
+            <b-dropdown-item @click="research">Research</b-dropdown-item>
+            <b-dropdown-item @click="awards">Awards Winners</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="Log_Out">Log Out</b-dropdown-item>
           </b-nav-item-dropdown>
@@ -109,6 +114,18 @@ export default {
     },
     my_cart() {
       this.$router.push("/my_cart");
+    },
+    academic_articles() {
+      this.$router.push("/academic_articles/1");
+    },
+    online_journals() {
+      this.$router.push("/online_journals/1");
+    },
+    research() {
+      this.$router.push("/research_list/1");
+    },
+    awards() {
+      this.$router.push("Awards/1");
     }
   }
 };

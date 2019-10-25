@@ -25,6 +25,8 @@ import Academic_Article from './view/Academic_Articles/academic_article.vue';
 import Online_Jurnals from './view/Online_Journal/online_journals.vue';
 import Online_Journal from './view/Online_Journal/online_journal.vue';
 import Award_Show from './view/Award/award.vue';
+import Reserach_List from './view/Research/research_list.vue';
+import Reserach from './view/Research/research.vue';
 
 
 
@@ -144,6 +146,10 @@ export const router = new VueRouter({
 
         { path : "/online_journals/:Page",name:"online_journals",component : Online_Jurnals },
         { path : "/online_journal/:Online_JournalID",name:"online_journal",component : Online_Journal },
+        { path : "/research_list/:Page",name:"research_list",component : Reserach_List },
+        { path : "/research/:ResearchID",name:"research",component : Reserach },
+        
+        
         { path : "/Awards/:Page",name:'Awards',component : Award_Show },
 
 

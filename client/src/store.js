@@ -1480,6 +1480,9 @@ const store = new Vuex.Store({
             var research = state.research
             var user = state.the_user
             var research_cansee = []
+            if(user.m_status == 'admin'){
+                return research
+            }
             for(var i=0; i<research.length; i++){
                 if( user.m_type >= research[i].r_permission ){
                     research_cansee.push(research[i])
