@@ -131,7 +131,7 @@ export default {
       this.$router.push("/research_list/1");
     },
     awards() {
-      this.$router.push("Awards/1");
+      this.$router.push("/Awards/1");
     }
   }
 };
