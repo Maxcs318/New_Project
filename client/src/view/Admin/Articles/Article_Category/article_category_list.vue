@@ -1,10 +1,10 @@
 <template>
     <div class="container" v-if="the_user">
-        <h4 class=" ">ประเภท บทความวิชาการ</h4> <br>
+        <h4 class=" ">ประเภท บทความ</h4> <br>
         <div class="row">
             <div class="col-lg-9 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="add_academicarticle_category">Add Academic Article Category</button>
+                <button class="form-control btn-primary" @click="add_article_category">Add Article Category</button>
             </div>
         </div>
         <div class="row">
@@ -12,19 +12,19 @@
                 <table style="width:100%" >
                     <tr style="width:100%">
                         <th style="width:5%">ID</th>
-                        <th style="width:35%">Academic Article Category Title</th>
+                        <th style="width:35%">Article Category Title</th>
                         <th style="width:20%">Create Date</th>
                         <th style="width:20%">Update Date</th>
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(article,index) in academic_article_category" :key="index" >
-                        <td>{{article.aac_id}}</td>
-                        <td>{{article.aac_title.slice(0,35)}}</td>
-                        <td>{{article.aac_create_date}}</td>
-                        <td>{{article.aac_update_date}}</td>
-                        <td> <button class="form-control btn-warning" @click="editAcademicArticle_Category(article.aac_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle_Category(article.aac_id)">Delete</button> </td>
+                    <tr v-for="(article,index) in article_category" :key="index" >
+                        <td>{{article.ac_id}}</td>
+                        <td>{{article.ac_title.slice(0,35)}}</td>
+                        <td>{{article.ac_create_date}}</td>
+                        <td>{{article.ac_update_date}}</td>
+                        <td> <button class="form-control btn-warning" @click="editArticle_Category(article.ac_id)">Edit</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteArticle_Category(article.ac_id)">Delete</button> </td>
                     </tr>
                 </table>
                 <br>
@@ -40,27 +40,27 @@ export default {
         };
     },
     methods:{
-        add_academicarticle_category(){
-            this.$router.push('/add_academicarticle_category')
+        add_article_category(){
+            this.$router.push('/add_article_category')
         },
-        editAcademicArticle_Category(this_academicarticle){
-            this.$router.push({name:'editacademicarticle_category',params:{AcademicArticle_CategoryID:this_academicarticle}});
+        editArticle_Category(this_article){
+            this.$router.push({name:'editarticle_category',params:{Article_CategoryID:this_article}});
         },
-        deleteAcademicArticle_Category(this_academicarticle){
-            // console.log(this_academicarticle)
+        deleteArticle_Category(this_article){
+            // console.log(this_article)
             var FD  = new FormData()
-            FD.append('academic_article_categoryID',JSON.stringify(this_academicarticle))
+            FD.append('article_categoryID',JSON.stringify(this_article))
             FD.append('creator',JSON.stringify(this.$store.state.log_on))
             this.$swal({
                 title: "Are you sure?",
-                text: "You want delete this Academic Article Category ID "+this_academicarticle,
+                text: "You want delete this Article Category ID "+this_article,
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    this.$store.dispatch("Delete_Academic_Article_Category",FD)
+                    this.$store.dispatch("Delete_Article_Category",FD)
                     swal({title: "Delete Success.",icon: "success",});
                 } else {
                     // swal("Your imaginary file is safe!");
@@ -76,12 +76,12 @@ export default {
             }            
             return user
         },
-        academic_article_category(){
-            return this.$store.getters.getAcademic_Article_Category
+        article_category(){
+            return this.$store.getters.getArticle_Category
         }
     },
     created(){
-        this.$store.dispatch("initDataAcademic_Article_Category");
+        this.$store.dispatch("initDataArticle_Category");
     }
 }
 </script>

@@ -2,7 +2,10 @@
     <div class="container" v-if="the_user">
         <h4 class=" ">บทความต่างๆ</h4> <br>
         <div class="row">
-            <div class="col-lg-9 col-xs-12"></div>
+            <div class="col-lg-6 col-xs-12"></div>
+            <div class="col-lg-3 col-xs-12">
+                <button class="form-control btn-primary" @click="article_category">Article Category</button>
+            </div>
             <div class="col-lg-3 col-xs-12">
                 <button class="form-control btn-primary" @click="addarticle">Add Article</button>
             </div>
@@ -69,6 +72,9 @@ export default {
         },
     },
     methods:{
+        article_category(){
+            this.$router.push('/AdminAC')
+        },
         addarticle(){
             this.$router.push('/addarticle')
         },
