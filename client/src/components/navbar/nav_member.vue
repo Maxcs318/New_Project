@@ -60,8 +60,14 @@
             @click="Log_in"
           >Log in</button>
           <b-nav-item-dropdown style="color:red;" right v-if="this.$store.state.the_user != '' ">
-            <template slot="button-content" v-if="this.$store.state.the_user.m_status == 'user'">User : {{this.$store.state.the_user.m_username}}</template>
-            <template slot="button-content" v-else-if="this.$store.state.the_user.m_status == 'admin'">Admin : {{this.$store.state.the_user.m_username}}</template>
+            <template
+              slot="button-content"
+              v-if="this.$store.state.the_user.m_status == 'user'"
+            >User : {{this.$store.state.the_user.m_username}}</template>
+            <template
+              slot="button-content"
+              v-else-if="this.$store.state.the_user.m_status == 'admin'"
+            >Admin : {{this.$store.state.the_user.m_username}}</template>
             <b-dropdown-item @click="profile">Profile</b-dropdown-item>
             <b-dropdown-item @click="my_cart">My Cart</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
@@ -133,7 +139,7 @@ export default {
 <style>
 .dropdown-menu,
 .dropdown-item {
-  background-color: #01152e;
+  background-color: #1a2a3e;
   color: #fff;
   text-align: center;
 }

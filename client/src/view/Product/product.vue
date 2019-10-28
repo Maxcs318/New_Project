@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="thisProduct">
     <div class="row" v-if="thisProduct">
-      <div class="col-lg-3 col-xs-12">
+      <div class="col-lg-3 col-12">
         <img :src="getImgUrl(show_pic)" width="100%" />
         <br />
         <br />
@@ -28,31 +28,25 @@
       <div class="col-lg-7 col-xs-12" v-if="thisProduct">
         <p class="course-name">Name : {{thisProduct.p_name}}</p>
         <!-- <p class="course-category">Category : {{thisProduct.p_category}}</p> -->
-        <p class="course-price">{{thisProduct.p_price}} บาท</p>
-        <p class="course-member-price">ราคาพิเศษสำหรับสมาชิก {{thisProduct.p_price2}} บาท</p>
+        <p class="course-price">฿{{thisProduct.p_price}}</p>
+        <p class="course-member-price">ราคาพิเศษสำหรับสมาชิก : ฿{{thisProduct.p_price2}}</p>
         <!-- <p class="course-date">{{thisProduct.p_date}}</p> -->
         <hr />
+        
         <div class="row">
-          <!-- ---------------------- -->
-          <div class="col-lg-2 col-2">
-            <button class="form-control btn-danger" @click="removeproduct">
-              <i class="fas fa-minus"></i>
-            </button>
+          <!-- <div class="minus-btn col-lg-2 col-2">
+            <input type="button" value="-" class="form-control btn-danger" @click="removeproduct" />
             <br />
           </div>
-          <div class="col-lg-4 col-8">
+          <div class="col-lg-8 col-8">
             <input type="text" class="form-control" v-model="amount" style="text-align:center" />
             <br />
           </div>
 
-          <!-- +++++++++++++++++++++ -->
-          <div class="col-lg-2 col-2">
-            <button class="form-control btn-success" @click="addproduct">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+          <div class="add-btn col-lg-2 col-2">
+            <input type="button" value="+" class="form-control btn-success" @click="addproduct" />
             <br />
-          </div>
-          <div class="col-4"></div>
+          </div> -->
           <div class="col-lg-4 col-12">
             <button
               class="form-control btn-primary"
@@ -65,6 +59,7 @@
             <p class="course-detail">Description : {{thisProduct.p_description}}</p>
           </div>
         </div>
+
         <div v-if="total!=0">
           <p>ราคารวมทั้งหมด {{total}} บาท</p>
         </div>

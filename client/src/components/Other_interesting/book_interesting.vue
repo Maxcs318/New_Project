@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" style="margin-top: 109px">
       <div class="row">
         <div class="col-lg-12 col-xs-12">
           <h5 class="head">หนังสือเล่มอื่นที่หน้าสนใจ</h5>
-          <br/>
+          <br />
         </div>
       </div>
       <div class="row">
@@ -61,7 +61,8 @@ export default {
 </script>
 <style scoped>
 .book-img {
-  width: 80%;
+  width: 70%;
+  height: 244px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -72,6 +73,7 @@ export default {
   font-size: 18px;
   line-height: 150%;
   text-align: center;
+  margin-top: 22px;
 }
 .book-price {
   font-style: normal;
@@ -88,5 +90,19 @@ export default {
   line-height: 120%;
   padding-bottom: 37px;
   color: rgba(255, 255, 255, 0.3);
+}
+
+@media only screen and (max-width: 600px) {
+  .book-img {
+    width: auto;
+    height: 195px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .book-img {
+    width: auto;
+    height: 175px;
+  }
 }
 </style>

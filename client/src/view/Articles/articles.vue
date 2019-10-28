@@ -10,7 +10,7 @@
         style="margin-bottom: 32px;"
       >
         <img :src="getImgUrlArticle(article.a_image)" width="100%" height="370px" />
-        <h5 class="head">{{article.a_title}}</h5>
+        <h5 class="head">{{article.a_title.slice(0,50)+"..."}}</h5>
         <p class="date">{{article.a_create_date.slice(0,-13)}}</p>
       </div>
     </div>
@@ -118,12 +118,11 @@ img {
 }
 
 .head {
-  /* position: absolute;
+  position: absolute;
   z-index: 0;
   top: 70%;
   padding-left: 19px;
-  padding-right: 19px; */
-  margin-top: 12px;
+  padding-right: 19px;
   font-style: normal;
   font-weight: 600;
   font-size: 2em;
@@ -133,11 +132,11 @@ img {
   letter-spacing: 0.75px;
 }
 .date {
-  /* position: absolute;
+  position: absolute;
   z-index: 0;
   top: 90%;
   padding-left: 19px;
-  padding-right: 19px; */
+  padding-right: 19px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -154,7 +153,16 @@ img {
     height: auto;
   }
   .head {
-    top: 45%;
+    top: 40%;
+  }
+  .date {
+    top: 85%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .head {
+    top: 15%;
   }
   .date {
     top: 85%;

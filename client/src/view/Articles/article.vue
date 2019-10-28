@@ -29,8 +29,11 @@
               height="360px"
               @click="seethisPageArticle(article.a_id)"
             />
-            <h5 class="article-title" @click="seethisPageNews(article.a_id)">{{article.a_title}}</h5>
-            <p class="article-date" style="text-align: left;">{{article.a_create_date}}</p>
+            <h5
+              class="article-title"
+              @click="seethisPageNews(article.a_id)"
+            >{{article.a_title.slice(0,50)+"..."}}</h5>
+            <p class="article-date" style="text-align: left;">{{article.a_create_date.slice(0,-13)}}</p>
           </div>
         </div>
       </div>
@@ -164,10 +167,19 @@ a:hover {
     margin-bottom: 32px;
   }
   .article-title {
-    top: 55%;
+    top: 45%;
   }
   .article-date {
     top: 77%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .article-title {
+    top: 35%;
+  }
+  .article-date {
+    top: 72%;
   }
 }
 </style>

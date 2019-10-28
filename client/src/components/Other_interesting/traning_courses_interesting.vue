@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" style="margin-top: 109px">
     <div class="row">
       <div class="col-lg-12 col-xs-12">
         <h5 class="head">หลักสูตรและอบรมอื่น ๆ ที่หน้าสนใจ</h5>
@@ -77,7 +77,7 @@ img,
   cursor: pointer;
 }
 img:hover {
-  transition: .25s;
+  transition: 0.25s;
   opacity: 0.7;
 }
 .course-name {
@@ -133,5 +133,11 @@ img:hover {
 .course-date:hover,
 .course-date2:hover {
   transition: 0.25s;
+}
+
+@media only screen and (max-width: 370px) {
+  .course-name2 {
+    top: 35%;
+  }
 }
 </style>

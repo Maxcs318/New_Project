@@ -47,9 +47,15 @@
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
-          <button class="nav-cart">
-            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" title="ดูตะกร้าสินค้า" />
-          </button>
+          <b-nav-item>
+            <button class="nav-cart">
+              <img
+                :src="path_files+'logo_img/nav-Cart.png'"
+                @click="my_cart"
+                title="ดูตะกร้าสินค้า"
+              />
+            </button>
+          </b-nav-item>
         </b-navbar-nav>
 
         <b-navbar-nav>
@@ -75,7 +81,7 @@
             <b-dropdown-item @click="my_cart">ตะกร้าของฉัน</b-dropdown-item>
             <b-dropdown-divider></b-dropdown-divider>
             <b-dropdown-item @click="Log_Out">ออกจากระบบ</b-dropdown-item>
-          </b-nav-item-dropdown> -->
+          </b-nav-item-dropdown>-->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -83,10 +89,10 @@
 </template>
 
 <script>
-  function myFunction() {
-    var element = document.getElementById("myDIV");
-    element.classList.add("active");
-  }
+function myFunction() {
+  var element = document.getElementById("myDIV");
+  element.classList.add("active");
+}
 </script>
 
 <script>
@@ -151,15 +157,17 @@ export default {
   z-index: 100;
   width: 100%;
 }
+
 #nav-collapse {
-  margin-left: 48px;
+  margin-left: 2%;
 }
+
 .navbar .nav-menu {
   font-style: normal;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 1em;
   line-height: 27px;
-  margin-right: 3em;
+  padding-right: 10px;
   text-transform: uppercase;
   color: #fff;
 }
@@ -172,11 +180,16 @@ export default {
 .nav-cart {
   background: none;
   border: none;
-  margin-right: 24px;
+  margin-right: 14px;
+  width: 20px;
 }
 
 .nav-cart:hover {
   opacity: 0.7;
+}
+
+.nav-cart img {
+  width: 20px;
 }
 
 .navbar .text-test:hover {
@@ -184,7 +197,7 @@ export default {
 }
 
 .nav-logo {
-  width: 150px;
+  width: 130px;
   margin-left: 26px;
 }
 
@@ -192,19 +205,17 @@ export default {
   background: none;
 }
 
-/* Set a style for all buttons */
 button.login-btn {
   background-color: #eecd02;
   border-radius: 2px;
   color: #093f84;
-  padding: 4px 25px;
   font-size: 18px;
   font-weight: 600;
   line-height: 150%;
-  margin: 8px 0;
+  margin: 14px 0;
   border: none;
   cursor: pointer;
-  width: auto;
+  width: 100px;
 }
 
 button.login-btn:hover {
@@ -214,6 +225,7 @@ button.login-btn:hover {
 a.router-link-exact-active.router-link-active {
   color: #eecd02;
 }
+
 @media only screen and (max-width: 600px) {
   .navbar {
     text-align: center;
@@ -236,16 +248,19 @@ a.router-link-exact-active.router-link-active {
 
   #nav-collapse {
     width: 100%;
-    height: 1000px;
     margin: 0;
     padding: 0;
-    background-color: #01152e;
+    background-color: #1a2a3e;
   }
 
   .nav-cart {
-    width: 20px;
+    width: 50px;
     padding: 0;
-    margin: 10px auto;
+    margin: 0px auto;
+  }
+
+  .nav-cart img {
+    width: 25px;
   }
 
   .nav-logo {
@@ -259,7 +274,7 @@ a.router-link-exact-active.router-link-active {
   }
 
   .navbar .nav-menu {
-    margin-right: 0;
+    padding-right: 0;
   }
   .navbar .nav-item {
     padding: 16px 0px;

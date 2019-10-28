@@ -103,7 +103,7 @@
           <br />
           <button
             type="button"
-            class="col-lg-5 form-control btn-danger float-right"
+            class="col-lg-5 form-control btn-danger clear-cart float-right"
             @click="clear_cart"
           >ล้างตะกร้า</button>
           <br />
@@ -474,14 +474,13 @@ tr {
   color: #fff;
 }
 .cart-img {
-  width: 80%;
   max-height: 258px;
   max-width: 258px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.btn-danger {
+.clear-cartz {
   color: #fff;
   background-color: #ff3838;
   font-weight: 600;
@@ -515,6 +514,7 @@ hr {
   .td-padding {
     padding-left: 13%;
   }
+
   .empty-cart img {
     width: 35%;
     height: 35%;

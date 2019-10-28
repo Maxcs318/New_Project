@@ -17,9 +17,8 @@
             :key="index"
           >
             <img
-              class="rounded mx-auto d-block"
+              class="mx-auto d-block book-img"
               :src="getImgUrlProduct(product.p_image)"
-              width="75%"
               @click="seethisPageBook(product.p_id)"
             />
             <h5 class="book-detail">{{product.p_name.slice(0,50)+"..."}}</h5>
@@ -75,17 +74,16 @@ export default {
   );
 }
 
-.book img {
+.book-img {
   cursor: pointer;
-}
-.book img:hover {
-  transition: 0.25s;
-  opacity: 0.7;
-}
-
-.rounded {
   background: #d8d8d8;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+  width: auto;
+  height: 244px;
+}
+.book-img:hover {
+  transition: 0.25s;
+  opacity: 0.7;
 }
 
 .header {
@@ -142,6 +140,10 @@ export default {
     margin-left: 0;
     margin-top: 0;
     margin-bottom: 34px;
+  }
+  .book-img {
+    width: 100%;
+    height: 192px;
   }
 }
 </style>

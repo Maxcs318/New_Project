@@ -63,7 +63,7 @@
               <h5
                 class="news-text"
                 @click="seethisPageNews(news.n_id)"
-              >{{news.n_title.slice(0,70)+"..."}}</h5>
+              >{{news.n_title.slice(0,50)+"..."}}</h5>
               <p class="news-date" style="text-align: left;">{{news.n_create_date.slice(0,15)}}</p>
             </div>
           </div>

@@ -9,16 +9,16 @@
           </div>
           <div class="col-lg-2 col-0"></div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat1.png'" />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat1.png'" />
           </div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat2.png'" />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat2.png'" />
           </div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat3.png'" />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat3.png'" />
           </div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat4.png'" />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat4.png'" />
           </div>
           <div class="col-lg-2 col-0"></div>
 
@@ -26,12 +26,12 @@
             <p>Gold</p>
           </div>
           <div class="col-lg-4 col-0"></div>
-          <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat5.png'" alt />
+          <div class="col-lg-4 col-12">
+            <img class="sponsor-img2" :src="path_files+'sponsor_img/sponsor-plat5.png'" width="100%"/>
           </div>
-          <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat6.png'" alt />
-          </div>
+          <!-- <div class="col-lg-2 col-6">
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat6.png'" alt />
+          </div> -->
           <div class="col-lg-4 col-0"></div>
 
           <div class="col-lg-12">
@@ -40,7 +40,7 @@
           <div class="col-lg-5 col-3"></div>
           <div class="col-lg-2 col-6">
             <center>
-              <img :src="path_files+'sponsor_img/sponsor-plat7.png'" alt />
+              <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat7.png'" alt />
             </center>
           </div>
           <div class="col-lg-5 col-3"></div>
@@ -50,10 +50,10 @@
           </div>
           <div class="col-lg-4 col-0"></div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat8.png'" alt />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat8.png'" alt />
           </div>
           <div class="col-lg-2 col-6">
-            <img :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
+            <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
           </div>
           <div class="col-lg-4 col-0"></div>
         </div>
@@ -99,7 +99,7 @@ export default {
   color: #686868;
 }
 
-.sponsor img {
+.sponsor-img {
   width: 158px;
   height: 158px;
   display: block;
@@ -107,10 +107,22 @@ export default {
   margin-left: auto;
 }
 
+.sponsor-img2 {
+  width: auto;
+  height: 138px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @media only screen and (max-width: 600px) {
-  .sponsor img {
+  .sponsor-img {
     width: 100%;
     height: auto;
   }
+  /* .sponsor-img2 {
+    width: 100%;
+    height: auto;
+  } */
 }
 </style>

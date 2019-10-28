@@ -13,7 +13,9 @@
             @click="seethisPage(product.p_id)"
           />
           <h5 class="book-name">{{product.p_name}}</h5>
-          <div class="row">
+          <p class="book-price">{{product.p_price}} ฿</p>
+
+          <!-- <div class="row">
             <div class="col-lg-4">
               <p class="book-price">{{product.p_price}} ฿</p>
             </div>
@@ -21,7 +23,7 @@
               <button class="form-control btn-primary">เพิ่มลงตะกร้า</button>
               <br />
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
       <div class="row" v-if="length_page > 0">
@@ -150,7 +152,16 @@ export default {
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;
-  text-align: right;
+  text-align: center;
+  /* text-align: right; */
   color: #f56b6b;
+}
+@media only screen and (max-width: 600px) {
+  .book-img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 195px;
+  }
 }
 </style>

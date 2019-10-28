@@ -30,7 +30,7 @@
               height="360px"
               @click="seethisPageNews(news.n_id)"
             />
-            <h5 class="activities-2-title" @click="seethisPageNews(news.n_id)">{{news.n_title}}</h5>
+            <h5 class="activities-2-title" @click="seethisPageNews(news.n_id)">{{news.n_title.slice(0,50)+"..."}}</h5>
             <p
               class="activities-2-date"
               style="text-align: left;"

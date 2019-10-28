@@ -21,7 +21,7 @@
               <img
                 :src="getImgUrlArticle(article.a_image)"
                 width="100%"
-                height="230px"
+                height="250px"
                 @click="seethisPageArticle(article.a_id)"
               />
               <h5 class="text">{{article.a_title.slice(0,50)+"..."}}</h5>
@@ -86,7 +86,7 @@ export default {
 
 .text {
   position: absolute;
-  top: 130px;
+  top: 135px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
@@ -101,7 +101,7 @@ export default {
 
 .date {
   position: absolute;
-  top: 195px;
+  top: 215px;
   padding-left: 9px;
   padding-right: 9px;
   font-style: normal;
@@ -146,12 +146,12 @@ export default {
     margin-top: 244px;
   }
   .text {
-    top: 134px;
+    top: 120px;
     padding-left: 9px;
     padding-right: 9px;
   }
   .date {
-    top: 197px;
+    top: 215px;
     padding-left: 9px;
     padding-right: 9px;
   }

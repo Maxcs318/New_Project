@@ -79,7 +79,7 @@
         :key="index"
       >
         <img class="img-activities2" :src="getImgUrl(news.n_image)" />
-        <h5 class="activitiesall-text2">{{news.n_title}}</h5>
+        <h5 class="activitiesall-text2">{{news.n_title.slice(0,60)+"..."}}</h5>
         <p class="activitiesall-date2">{{news.n_create_date.slice(0,-13)}}</p>
       </div>
     </div>
@@ -236,11 +236,11 @@ export default {
   cursor: pointer;
 }
 .activitiesall-text2 {
-  /* position: absolute; */
-  /* z-index: 0; */
-  /* top: 44%; */
-  /* padding-left: 19px;
-  padding-right: 19px; */
+  position: absolute;
+  z-index: 0;
+  top: 70%;
+  padding-left: 19px;
+  padding-right: 19px;
   font-style: normal;
   font-weight: 600;
   font-size: 29px;
@@ -250,11 +250,11 @@ export default {
   letter-spacing: 0.75px;
 }
 .activitiesall-date2 {
-  /* position: absolute;
+  position: absolute;
   z-index: 0;
-  top: 57%;
+  top: 87%;
   padding-left: 19px;
-  padding-right: 19px; */
+  padding-right: 19px;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -308,10 +308,22 @@ export default {
     margin-bottom: 32px;
   }
   .activitiesall-text2 {
-    top: 56%;
+    top: 45%;
   }
   .activitiesall-date2 {
     top: 78%;
   }
+}
+
+@media only screen and (max-width: 370px) {
+
+  .activitiesall-text2 {
+    top: 23%;
+  }
+
+  .activitiesall-date2 {
+    top: 73%;
+  }
+
 }
 </style>
