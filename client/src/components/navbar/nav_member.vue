@@ -42,6 +42,11 @@
         </b-navbar-nav>
         <b-navbar-nav>
           <b-nav-item>
+            <router-link to="/Awards/1" class="nav-menu">รางวัล</router-link>
+          </b-nav-item>
+        </b-navbar-nav>
+        <b-navbar-nav>
+          <b-nav-item>
             <router-link to="/contact" class="nav-menu">ติดต่อเรา</router-link>
           </b-nav-item>
         </b-navbar-nav>
