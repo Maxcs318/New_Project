@@ -12,6 +12,8 @@
                     <br>
                     Title Alternative : {{researchE.r_titlealternative}}
                     <br>
+                    <!-- Creator : {{researchE.r_creator}}
+                    <br> -->
                     subject : {{researchE.r_subject}}
                     <br>
                     Description : {{researchE.r_description}}
@@ -21,6 +23,8 @@
                     Created Date : {{researchE.r_createddate}}
                     <br>
                     Modified Date : {{researchE.r_modifieddate}}
+                    <br>
+                    Issued Date : {{researchE.r_issueddate}}
                     <br>
                     Type : {{researchE.r_type}}
                     <br>

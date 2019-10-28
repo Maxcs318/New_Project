@@ -15,6 +15,9 @@
                     Title Alternative
                     <input type="text" v-model="research.r_titlealternative" class="form-control" required>
                     <br>
+                    <!-- Creator
+                    <input type="text" v-model="research.r_creator" class="form-control" required>
+                    <br> -->
                     subject
                     <input type="text" v-model="research.r_subject" class="form-control" required>
                     <br>
@@ -30,6 +33,9 @@
                     Modified Date
                     <input type="text" v-model="research.r_modifieddate" class="form-control" required>
                     <br>
+                    Issued Date
+                    <input type="text" v-model="research.r_issueddate" class="form-control" required>
+                    <br> 
                     Type
                     <input type="text" v-model="research.r_type" class="form-control" required>
                     <br>
@@ -45,9 +51,7 @@
                     Rights
                     <textarea v-model="research.r_rights" class="form-control" rows="2" ></textarea>
                     <br>
-                    Permission ( ** ระดับที่เลือกและระดับที่สูงกว่าจะสามารถเข้าดูได้ )
-                    <!-- <input type="text" v-model="research.r_permission" class="form-control" required>
-                    <br>     -->
+                    Permission ( ** ระดับที่เลือกและระดับที่สูงกว่าจะสามารถเข้าดูได้ )   
                     <select v-model="research.r_permission" class="form-control" required>
                         <option selected disabled value=''>Select Permission</option>
                         <option v-for="(mt,index) in Member_Type" :key="index" :value="mt.mt_id" >
@@ -95,6 +99,7 @@ export default {
             research:{
                 r_title:'',
                 r_titlealternative:'',
+                // r_creator:'',
                 r_subject:'',
                 r_description:'',
                 r_publisher:'',
