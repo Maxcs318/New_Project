@@ -158,10 +158,15 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .book-img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 195px;
+    width: 100%;
+    height: 195px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .book-img {
+    width: 100%;
+    height: 135px;
   }
 }
 </style>

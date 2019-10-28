@@ -53,7 +53,7 @@
 
         <b-navbar-nav class="ml-auto">
           <button class="nav-cart">
-            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" title="ดูตะกร้าสินค้า" />
+            <img :src="path_files+'logo_img/nav-Cart.png'" @click="my_cart" />
           </button>
         </b-navbar-nav>
 

@@ -57,7 +57,6 @@
               <img
                 :src="path_files+'logo_img/nav-Cart.png'"
                 @click="my_cart"
-                title="ดูตะกร้าสินค้า"
               />
             </button>
           </b-nav-item>
