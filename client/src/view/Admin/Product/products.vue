@@ -2,7 +2,10 @@
     <div class="container" v-if="the_user">
         <h4 class=" ">สินค้า ทั้งหมด</h4> <br>
         <div class="row">
-            <div class="col-lg-9 col-xs-12"></div>
+            <div class="col-lg-6 col-xs-12"></div>
+            <div class="col-lg-3 col-xs-12">
+                <button class="form-control btn-primary" @click="product_category">Product Category</button>
+            </div>
             <div class="col-lg-3 col-xs-12">
                 <button class="form-control btn-primary" @click="addproduct">Add Product</button>
             </div>
@@ -61,7 +64,10 @@ export default {
         };
     },
     methods:{
-        addproduct(thisproduct){
+        product_category(){
+            this.$router.push('/AdminPC');
+        },
+        addproduct(){
             this.$router.push('/addproduct');
         },
         seenextPage(num_page) {

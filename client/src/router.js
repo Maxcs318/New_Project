@@ -59,6 +59,9 @@ import admin_company from "./view/Admin/Award/Award_company/company_list.vue"
 import admin_award_type from "./view/Admin/Award/Award_type/award_types.vue"
 import admin_award_year from "./view/Admin/Award/Award_year/award_years.vue"
 
+import admin_Article_Category from "./view/Admin/Articles/Article_Category/article_category_list.vue"
+import admin_Academic_Article_Category from "./view/Admin/Academic_Articles/Academic_Article_Category/academic_article_category_list.vue"
+import admin_Product_Category from "./view/Admin/Product/Product_Category/product_category_list.vue"
 // start insert page
 import addNews from "./view/Admin/News_Activities/news_activity_insert.vue"
 import addArticle from "./view/Admin/Articles/article_insert.vue"
@@ -177,6 +180,10 @@ export const router = new VueRouter({
         { path : "/AdminC",name:'AdminC',component : admin_company },
         { path : "/AdminAwt",name:'AdminAwt',component : admin_award_type },
         { path : "/AdminAwy",name:'AdminAwy',component : admin_award_year },
+
+        { path : "/AdminAC",name:'AdminAC',component : admin_Article_Category },
+        { path : "/AdminAAC",name:'AdminAAC',component : admin_Academic_Article_Category },
+        { path : "/AdminPC",name:'AdminPC',component : admin_Product_Category },
 
 
         // start insert

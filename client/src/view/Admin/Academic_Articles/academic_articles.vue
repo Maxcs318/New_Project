@@ -2,7 +2,10 @@
     <div class="container" v-if="the_user">
         <h4 class=" ">บทความวิชาการ</h4> <br>
         <div class="row">
-            <div class="col-lg-9 col-xs-12"></div>
+            <div class="col-lg-6 col-xs-12"></div>
+            <div class="col-lg-3 col-xs-12">
+                <button class="form-control btn-primary" @click="academicarticle_category">Academic Article Category</button>
+            </div>
             <div class="col-lg-3 col-xs-12">
                 <button class="form-control btn-primary" @click="add_academicarticle">Add Academic Article</button>
             </div>
@@ -61,6 +64,9 @@ export default {
         };
     },
     methods:{
+        academicarticle_category(){
+            this.$router.push('/AdminAAC')
+        },
         add_academicarticle(){
             this.$router.push('/add_academicarticle')
         },
