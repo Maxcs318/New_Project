@@ -16,7 +16,7 @@
                     <input type="text" v-model="researchE.r_titlealternative" class="form-control" required>
                     <br>
                     <!-- Creator
-                    <input type="text" v-model="research.r_creator" class="form-control" required>
+                    <input type="text" v-model="researchE.r_creator" class="form-control" required>
                     <br> -->
                     subject
                     <input type="text" v-model="researchE.r_subject" class="form-control" required>
