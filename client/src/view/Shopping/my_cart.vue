@@ -480,10 +480,9 @@ tr {
   margin-left: auto;
   margin-right: auto;
 }
-.clear-cartz {
+.clear-cart {
   color: #fff;
   background-color: #ff3838;
-  font-weight: 600;
   font-size: 18px;
   line-height: 150%;
   border-radius: 24px;

@@ -97,7 +97,7 @@ footer .contact {
   font-weight: 500;
   font-size: 13px;
   padding-top: 33px;
-  margin-bottom: 58px;
+  margin-bottom: 38px;
   line-height: 18px;
   color: #6a6a6a;
 }
