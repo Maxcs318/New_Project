@@ -44,10 +44,30 @@
             return json_encode($this->db->where($where)->update($this->academic_article,$data));
         }
         // delete academic_article
-        public function delete_academic_article($where = array()){
+        public function delete_academic_article($where = array())
+        {
             return json_encode($this->db->where($where)->delete($this->academic_article));
         }
-
+        // insert_academic article category
+        public function insert_academic_article_category($data = array())
+        {
+            $lastID;
+            $ins = $this->db->insert($this->academic_article_category,$data);
+            if($ins){
+                $lastID = $this->db->insert_id();
+                }
+            return json_encode($lastID);
+        }
+        // update_academic article category
+        public function update_academic_article_category ($data=array(),$where=array())
+        {
+            return json_encode($this->db->where($where)->update($this->academic_article_category,$data));   
+        }
+        // delete academic article category
+        public function delete_academic_article_category($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->academic_article_category));
+        }
 
 
 

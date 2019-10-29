@@ -77,6 +77,27 @@
         {
             return json_encode($this->db->where($where)->delete($this->product));
         }
+        // insert product category
+        public function insert_product_category($data = array())
+        {
+            $lastID;
+            $ins = $this->db->insert($this->product_category,$data);
+            if($ins){
+                $lastID = $this->db->insert_id();
+                }
+            return json_encode($lastID);
+        }
+        // update product category
+        public function update_product_category ($data=array(),$where=array())
+        {
+            return json_encode($this->db->where($where)->update($this->product_category,$data));   
+        }
+        // delete product category
+        public function delete_product_category($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->product_category));
+        }
+
 
 
 

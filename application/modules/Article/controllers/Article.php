@@ -242,6 +242,126 @@
                 echo $articleID ;
             }        
         }
+        // insert_article_category
+        public function insert_article_category()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $article_category = (array)json_decode($this->input->post('article_category'));
+                // insert image
+                $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                $typeF = strrev($nameF);
+                $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+                $config = array(
+                    'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article_Category/',
+                    'allowed_types' => '*',
+                    'max_size'      => '0',
+                );
+                $this->load->library('upload', $config,'file_image');
+                $this->file_image->initialize($config);
+                if ($this->file_image->do_upload('userfile')){
+                    $data = array('upload_data' => $this->file_image->data());  
+                    // set image name and for put it in DB
+                    $article_category['ac_image'] = $_FILES['userfile']['name'];
+ 
+                }else{
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                }
+                
+                $article_category['ac_create_date'] = $this->Check__model->date_time_now();
+                $thisID = $this->article_model->insert_article_category($article_category);
+                $article_category['ac_id']=$thisID;
+
+                echo json_encode($article_category);
+        }
+        //update article category
+        public function update_article_category()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            // update 
+            $article_category = (array)json_decode($this->input->post('article_category'));
+
+                $article_categoryEditID['ac_id'] = $article_category['ac_id'];
+                unset($article_category['ac_id']); 
+                $article_category['ac_update_date'] = $this->Check__model->date_time_now();
+                
+                if(isset($_FILES['userfile'])){
+                    $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                    $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                    $typeF = strrev($nameF);
+                    $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+                    $config = array(
+                        'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Article_Category/',
+                        'allowed_types' => '*',
+                        'max_size'      => '0',
+                    );
+                    $this->load->library('upload', $config,'file_image');
+                    $this->file_image->initialize($config);
+                    if ($this->file_image->do_upload('userfile')){
+                        $data = array('upload_data' => $this->file_image->data());  
+                        // set image name and for put it in DB
+                        $article_category['ac_image'] = $_FILES['userfile']['name'];
+    
+                    }else{
+                        $error = array('error' => $this->upload->display_errors());
+                        print_r($error);
+                    }
+                }
+                $thisUpdate = $this->article_model->update_article_category($article_category,$article_categoryEditID);
+                if($thisUpdate == true){
+                    $article_category['ac_id'] = $article_categoryEditID['ac_id'];
+                    echo json_encode($article_category);
+                }else{
+                    echo 'fail';
+                }
+            }
+        // delete article category
+        public function delete_article_category()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //delete
+            $article_categoryID = json_decode($this->input->post('article_categoryID'));
+            $article_category['ac_id'] = $article_categoryID;
+            $AC_status = $this->article_model->delete_article_category($article_category);
+            if($AC_status == true){
+                echo $article_categoryID ;
+            } 
+
+        }
 
 
 

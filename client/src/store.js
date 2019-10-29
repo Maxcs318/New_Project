@@ -556,6 +556,52 @@ const store = new Vuex.Store({
                 state.award_years.splice(index,1)
             }
         },
+        Add_Academic_Article_Category(state,newAAC){
+            state.academic_article_category.push(newAAC)
+        },
+        Add_Article_Category(state,newAC){
+            state.article_category.push(newAC)
+        },
+        Add_Product_Category(state,newPC){
+            state.product_category.push(newPC)
+        },
+        Edit_Academic_Article_Category(state,EditAAC){
+            let index = state.academic_article_category.findIndex(aac => aac.aac_id == EditAAC.aac_id)
+            if(index > -1){
+                state.academic_article_category[index] = EditAAC
+            }
+        },
+        Edit_Article_Category(state,EditAC){
+            let index = state.article_category.findIndex(ac => ac.ac_id == EditAC.ac_id)
+            if(index > -1){
+                state.article_category[index] = EditAC
+            }
+        },
+        Edit_Product_Category(state,EditPC){
+            let index = state.product_category.findIndex(pc => pc.pc_id == EditPC.pc_id)
+            if(index > -1){
+                state.product_category[index] = EditPC
+            }
+        },
+        Delete_Academic_Article_Category(state,AAC_ID){
+            let index = state.academic_article_category.findIndex(aac => aac.aac_id == AAC_ID)
+            if(index > -1){
+                state.academic_article_category.splice(index,1)
+            }
+        },
+        Delete_Article_Category(state,AC_ID){
+            let index = state.article_category.findIndex(ac => ac.ac_id == AC_ID)
+            if(index > -1){
+                state.article_category.splice(index,1)
+            }
+        },
+        Delete_Product_Category(state,PC_ID){
+            let index = state.product_category.findIndex(pc => pc.pc_id == PC_ID)
+            if(index > -1){
+                state.product_category.splice(index,1)
+            }
+        }
+
 
 
 
@@ -868,7 +914,7 @@ const store = new Vuex.Store({
             })
         },
         Add_Academic_Article(context,academic_article){
-            axios.post(base_url +'Academic_Article/insert_academic_article',academic_article)
+            axios.post(base_url +'Academic_article/insert_academic_article',academic_article)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -953,7 +999,7 @@ const store = new Vuex.Store({
             })
         },
         Edit_Academic_Article(context,academic_article){
-            axios.post(base_url +'Academic_Article/update_academic_article',academic_article)
+            axios.post(base_url +'Academic_article/update_academic_article',academic_article)
             .then(response =>{
                 // console.log('Response Data',response.data)
                 if(response.data != 'fail'){
@@ -1034,7 +1080,7 @@ const store = new Vuex.Store({
             })
         },
         Delete_Academic_Article(context,academic_articleID){
-            axios.post(base_url +'Academic_Article/delete_academic_article',academic_articleID)
+            axios.post(base_url +'Academic_article/delete_academic_article',academic_articleID)
             .then(response =>{
                 if(response.data != 'fail'){
                     // console.log('Response Data',response.data)
@@ -1100,7 +1146,7 @@ const store = new Vuex.Store({
             axios.post(base_url +'Money_Transfer/money_trasfer_insert',mtf_i)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit('Money_Transfer_Insert',response.data)
                 }
             })
@@ -1303,7 +1349,87 @@ const store = new Vuex.Store({
                 }
             })
         },
-        
+        Add_Academic_Article_Category(context,AAC_Insert){
+            axios.post(base_url +'Academic_article/insert_academic_article_category',AAC_Insert)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Academic_Article_Category",response.data)
+                }
+            })
+        },
+        Add_Article_Category(context,AC_Insert){
+            axios.post(base_url +'Article/insert_article_category',AC_Insert)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Add_Article_Category",response.data)
+                }
+            })
+        },
+        Add_Product_Category(context,PC_Insert){
+            axios.post(base_url +'Product/insert_product_category',PC_Insert)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Add_Product_Category",response.data)
+                }
+            })            
+        },
+        Edit_Academic_Article_Category(context,AAC_Update){
+            axios.post(base_url +'Academic_article/update_academic_article_category',AAC_Update)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Edit_Academic_Article_Category",response.data)
+                }
+            })
+        },
+        Edit_Article_Category(context,AC_Update){
+            axios.post(base_url +'Article/update_article_category',AC_Update)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Edit_Article_Category",response.data)
+                }
+            })
+        },
+        Edit_Product_Category(context,PC_Update){
+            axios.post(base_url +'Product/update_product_category',PC_Update)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data)
+                    context.commit("Edit_Product_Category",response.data)
+                }
+            })            
+        },
+        Delete_Academic_Article_Category(context,AAC_ID){
+            axios.post(base_url +'Academic_article/delete_academic_article_category',AAC_ID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Delete_Academic_Article_Category",response.data)
+                }
+            })
+        },
+        Delete_Article_Category(context,AC_ID){
+            axios.post(base_url +'Article/delete_article_category',AC_ID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Delete_Article_Category",response.data)
+                }
+            })
+        },
+        Delete_Product_Category(context,PC_ID){
+            axios.post(base_url +'Product/delete_product_category',PC_ID)
+            .then(response =>{
+                if(response.data != 'fail'){
+                    // console.log('Response Data',response.data[0])
+                    context.commit("Delete_Product_Category",response.data)
+                }
+            })
+        },
         
     },
 //==========================================================================================================

@@ -41,7 +41,7 @@ export default {
     },
     methods:{
         add_product_category(){
-            this.$router.push('/add_product_category')
+            this.$router.push('/addproduct_category')
         },
         editProduct_Category(this_product_category){
             this.$router.push({name:'editproduct_category',params:{Product_CategoryID:this_product_category}});

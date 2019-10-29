@@ -44,8 +44,29 @@
             return json_encode($this->db->where($where)->update($this->article,$data));
         }
         // delete article
-        public function delete_article($where = array()){
+        public function delete_article($where = array())
+        {
             return json_encode($this->db->where($where)->delete($this->article));
+        }
+        // insert article category
+        public function insert_article_category($data = array())
+        {
+            $lastID;
+            $ins = $this->db->insert($this->article_category,$data);
+            if($ins){
+                $lastID = $this->db->insert_id();
+                }
+            return json_encode($lastID);
+        }
+        // update article category
+        public function update_article_category ($data=array(),$where=array())
+        {
+            return json_encode($this->db->where($where)->update($this->article_category,$data));   
+        }
+        // delete article category
+        public function delete_article_category($where = array())
+        {
+            return json_encode($this->db->where($where)->delete($this->article_category));
         }
 
 

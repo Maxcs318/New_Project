@@ -18,13 +18,13 @@
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
-                    <tr v-for="(article,index) in academic_article_category" :key="index" >
-                        <td>{{article.aac_id}}</td>
-                        <td>{{article.aac_title.slice(0,35)}}</td>
-                        <td>{{article.aac_create_date}}</td>
-                        <td>{{article.aac_update_date}}</td>
-                        <td> <button class="form-control btn-warning" @click="editAcademicArticle_Category(article.aac_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle_Category(article.aac_id)">Delete</button> </td>
+                    <tr v-for="(AA,index) in academic_article_category" :key="index" >
+                        <td>{{AA.aac_id}}</td>
+                        <td>{{AA.aac_title.slice(0,35)}}</td>
+                        <td>{{AA.aac_create_date}}</td>
+                        <td>{{AA.aac_update_date}}</td>
+                        <td> <button class="form-control btn-warning" @click="editAcademicArticle_Category(AA.aac_id)">Edit</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle_Category(AA.aac_id)">Delete</button> </td>
                     </tr>
                 </table>
                 <br>
@@ -34,14 +34,9 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            
-        };
-    },
     methods:{
         add_academicarticle_category(){
-            this.$router.push('/add_academicarticle_category')
+            this.$router.push('/addacademicarticle_category')
         },
         editAcademicArticle_Category(this_academicarticle){
             this.$router.push({name:'editacademicarticle_category',params:{AcademicArticle_CategoryID:this_academicarticle}});

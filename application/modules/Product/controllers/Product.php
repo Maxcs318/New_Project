@@ -115,7 +115,8 @@
 
         }
         // update Product
-        public function update_product(){
+        public function update_product()
+        {
             // check status for insert
             $creator = json_decode($this->input->post('creator'));
             if($creator==null || $creator==''){
@@ -259,6 +260,125 @@
             if($productstatus == true){
                 echo $productID ;
             }
+        }
+        // insert product category
+        public function insert_product_category()
+        {
+            // check status for insert
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            $product_category = (array)json_decode($this->input->post('product_category'));
+                // insert image
+                $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                $typeF = strrev($nameF);
+                $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+                $config = array(
+                    'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Product_Category/',
+                    'allowed_types' => '*',
+                    'max_size'      => '0',
+                );
+                $this->load->library('upload', $config,'file_image');
+                $this->file_image->initialize($config);
+                if ($this->file_image->do_upload('userfile')){
+                    $data = array('upload_data' => $this->file_image->data());  
+                    // set image name and for put it in DB
+                    $product_category['pc_image'] = $_FILES['userfile']['name'];
+ 
+                }else{
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                }
+                
+                $product_category['pc_create_date'] = $this->Check__model->date_time_now();
+                $thisID = $this->product_model->insert_product_category($product_category);
+                $product_category['pc_id']=$thisID;
+
+                echo json_encode($product_category);
+        }
+        //update product category
+        public function update_product_category()
+        {
+            // check status for update
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            // update 
+            $product_category = (array)json_decode($this->input->post('product_category'));
+
+                $product_categoryEditID['pc_id'] = $product_category['pc_id'];
+                unset($product_category['pc_id']); 
+                $product_category['pc_update_date'] = $this->Check__model->date_time_now();
+                
+                if(isset($_FILES['userfile'])){
+                    $ranSTR = date('dmYHis').substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', mt_rand(1,10))), 1, 10);
+                    $nameF = substr(strrev($_FILES['userfile']['name']), 0, strrpos(strrev($_FILES['userfile']['name']),"."));
+                    $typeF = strrev($nameF);
+                    $_FILES['userfile']['name'] = $ranSTR.'.'.$typeF;
+                    $config = array(
+                        'upload_path'   => $_SERVER["DOCUMENT_ROOT"].'assets/Product_Category/',
+                        'allowed_types' => '*',
+                        'max_size'      => '0',
+                    );
+                    $this->load->library('upload', $config,'file_image');
+                    $this->file_image->initialize($config);
+                    if ($this->file_image->do_upload('userfile')){
+                        $data = array('upload_data' => $this->file_image->data());  
+                        // set image name and for put it in DB
+                        $product_category['pc_image'] = $_FILES['userfile']['name'];
+    
+                    }else{
+                        $error = array('error' => $this->upload->display_errors());
+                        print_r($error);
+                    }
+                }
+                $thisUpdate = $this->product_model->update_product_category($product_category,$product_categoryEditID);
+                if($thisUpdate == true){
+                    $product_category['pc_id'] = $product_categoryEditID['pc_id'];
+                    echo json_encode($product_category);
+                }else{
+                    echo 'fail';
+                }
+            }
+        // delete product category
+        public function delete_product_category()
+        {
+            // check status for delete
+            $creator = json_decode($this->input->post('creator'));
+            if($creator==null || $creator==''){
+                echo 'fail';
+                exit;
+            }
+            $creatorID  = $this->Check__model->chk_token($creator);
+            $statusUser = $this->Check__model->chk_status($creatorID);
+            if( $statusUser != 'admin' ){
+                echo 'fail';
+                exit ;
+            }
+            //delete
+            $product_categoryID = json_decode($this->input->post('product_categoryID'));
+            $product_category['pc_id'] = $product_categoryID;
+            $PC_status = $this->product_model->delete_product_category($product_category);
+            if($PC_status == true){
+                echo $product_categoryID ;
+            } 
         }
 
 

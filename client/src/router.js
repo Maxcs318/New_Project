@@ -77,6 +77,9 @@ import addCompany from "./view/Admin/Award/Award_company/company_insert.vue"
 import addAward_type from "./view/Admin/Award/Award_type/award_type_insert.vue"
 import addAward_year from "./view/Admin/Award/Award_year/award_year_insert.vue"
 
+import addAcademicArticle_Category from "./view/Admin/Academic_Articles/Academic_Article_Category/academic_article_category_insert.vue"
+import addArticle_Category from "./view/Admin/Articles/Article_Category/article_category_insert.vue"
+import addProduct_Category from "./view/Admin/Product/Product_Category/product_category_insert.vue"
 // end insert page
 // start edit page
 import EditNewsandActivity from './view/Admin/News_Activities/news_activity_edit.vue';
@@ -96,6 +99,9 @@ import admin_company_edit from "./view/Admin/Award/Award_company/company_edit.vu
 import admin_award_type_edit from "./view/Admin/Award/Award_type/award_type_edit.vue"
 import admin_award_year_edit from "./view/Admin/Award/Award_year/award_year_edit.vue"
 
+import admin_academicarticle_category_edit from "./view/Admin/Academic_Articles/Academic_Article_Category/academic_article_category_edit.vue"
+import admin_article_category_edit from "./view/Admin/Articles/Article_Category/article_category_edit.vue"
+import admin_product_category_edit from "./view/Admin/Product/Product_Category/product_category_edit.vue"
 
 // end edit page
 
@@ -201,6 +207,10 @@ export const router = new VueRouter({
         { path : "/addaward_type",component : addAward_type },
         { path : "/addaward_year",component : addAward_year },
 
+        { path : "/addacademicarticle_category",component : addAcademicArticle_Category },
+        { path : "/addarticle_category",component : addArticle_Category },
+        { path : "/addproduct_category",component : addProduct_Category },
+
         
         // stop insert
 
@@ -222,6 +232,9 @@ export const router = new VueRouter({
         { path : "/editaward_type/id=:Award_typeID",name:"editaward_type",component : admin_award_type_edit },
         { path : "/editaward_year/id=:Award_yearID",name:"editaward_year",component : admin_award_year_edit },
 
+        { path : "/editacademicarticle_category/id=:AcademicArticle_CategoryID",name:"editacademicarticle_category",component : admin_academicarticle_category_edit },
+        { path : "/editarticle_category/id=:Article_CategoryID",name:"editarticle_category",component : admin_article_category_edit },
+        { path : "/editproduct_category/id=:Product_CategoryID",name:"editproduct_category",component : admin_product_category_edit },
         // stop edit
         
         // start profile

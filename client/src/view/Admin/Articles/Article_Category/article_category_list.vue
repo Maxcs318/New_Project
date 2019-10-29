@@ -41,7 +41,7 @@ export default {
     },
     methods:{
         add_article_category(){
-            this.$router.push('/add_article_category')
+            this.$router.push('/addarticle_category')
         },
         editArticle_Category(this_article){
             this.$router.push({name:'editarticle_category',params:{Article_CategoryID:this_article}});
