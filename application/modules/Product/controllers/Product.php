@@ -323,6 +323,10 @@
             // update 
             $product_category = (array)json_decode($this->input->post('product_category'));
 
+            if($product_category['pc_id']==1 || $product_category['pc_id']==2){
+                echo 'fail';
+                exit;
+            }
                 $product_categoryEditID['pc_id'] = $product_category['pc_id'];
                 unset($product_category['pc_id']); 
                 $product_category['pc_update_date'] = $this->Check__model->date_time_now();
@@ -375,6 +379,10 @@
             //delete
             $product_categoryID = json_decode($this->input->post('product_categoryID'));
             $product_category['pc_id'] = $product_categoryID;
+            if($product_category['pc_id']==1 || $product_category['pc_id']==2){
+                echo 'fail';
+                exit;
+            }
             $PC_status = $this->product_model->delete_product_category($product_category);
             if($PC_status == true){
                 echo $product_categoryID ;

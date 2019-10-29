@@ -23,8 +23,14 @@
                         <td>{{product.pc_title.slice(0,35)}}</td>
                         <td>{{product.pc_create_date}}</td>
                         <td>{{product.pc_update_date}}</td>
-                        <td> <button class="form-control btn-warning" @click="editProduct_Category(product.pc_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteProduct_Category(product.pc_id)">Delete</button> </td>
+                        <td> 
+                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-warning" @click="editProduct_Category(product.pc_id)">Edit</button> 
+                            <button v-else class="form-control btn-dark">Don't edit</button> 
+                        </td>
+                        <td> 
+                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-danger"  @click="deleteProduct_Category(product.pc_id)">Delete</button> 
+                            <button v-else class="form-control btn-dark"> Don't delete </button> 
+                        </td>
                     </tr>
                 </table>
                 <br>
@@ -34,11 +40,11 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
+    // data() {
+    //     return {
             
-        };
-    },
+    //     };
+    // },
     methods:{
         add_product_category(){
             this.$router.push('/addproduct_category')

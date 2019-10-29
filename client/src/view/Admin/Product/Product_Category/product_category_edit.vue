@@ -105,6 +105,9 @@ export default {
         Product_Category(){
             var PC_All = this.$store.getters.getProduct_Category
             var PC 
+            if( this.$route.params.Product_CategoryID == 1 || this.$route.params.Product_CategoryID == 2 ){
+                this.$router.go(-1)
+            }
             for(var i=0; i<PC_All.length; i++){
                 if(PC_All[i].pc_id == this.$route.params.Product_CategoryID){
                     PC = PC_All[i]
