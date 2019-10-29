@@ -41,10 +41,10 @@ export default {
   },
   computed: {
     book() {
-      var productAll = this.$store.getters.getProduct_Set_Category;
+      var productAll = this.$store.getters.getProduct;
       var book = [];
       for (var i = 0; i < productAll.length; i++) {
-        if (productAll[i].p_category == "book") {
+        if (productAll[i].p_category == 1) {
           book.push(productAll[i]);
         }
       }

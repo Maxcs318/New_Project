@@ -42,10 +42,10 @@ export default {
   },
   computed: {
     trainingC() {
-      var productAll = this.$store.getters.getProduct_Set_Category;
+      var productAll = this.$store.getters.getProduct;
       var training_course = [];
       for (var i = 0; i < productAll.length; i++) {
-        if (productAll[i].p_category == "training_course") {
+        if (productAll[i].p_category == 2) {
           training_course.push(productAll[i]);
         }
       }

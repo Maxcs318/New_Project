@@ -6,7 +6,11 @@
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageProduct(product.p_id)">
                 <h5 @click="seethisPageProduct(product.p_id)">{{product.p_name}}</h5>
                 <p style="text-align: center;">{{product.p_price}} ฿</p>
-                <p style="text-align: right;">{{product.p_category}}</p>
+                    <div v-for="PC in Product_Category">
+                        <p style="text-align: right;" v-if="product.p_category == PC.pc_id">
+                            {{PC.pc_title}}
+                        </p>
+                    </div>
                 <br>
             </div>
         </div>
@@ -57,9 +61,12 @@ export default {
         },
     },
     computed:{
+        Product_Category(){
+            return this.$store.getters.getProduct_Category;
+        },
         ProductAll(){
             var setpage = this.$route.params.Page;
-            var product_all = this.$store.getters.getProduct_Set_Category;
+            var product_all = this.$store.getters.getProduct;
             var p_conpute = 2;
             var p_start = setpage;
             var p_end = Math.ceil(setpage / 1 + p_conpute);

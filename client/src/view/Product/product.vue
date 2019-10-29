@@ -67,8 +67,10 @@
     </div>
 
     <div class="row">
-      <book-interesting v-if="thisProduct.p_category == 'book'"></book-interesting>
-      <training-courses-interesting v-if="thisProduct.p_category == 'training_course'"></training-courses-interesting>
+      <div class="clo-lg-12">
+        <book-interesting v-if="thisProduct.p_category == 1"></book-interesting>
+        <training-courses-interesting v-if="thisProduct.p_category == 2"></training-courses-interesting>
+      </div>
     </div>
   </div>
 </template>
@@ -134,7 +136,7 @@ export default {
   },
   computed: {
     thisProduct() {
-      var ProductAll = this.$store.getters.getProduct_Set_Category;
+      var ProductAll = this.$store.getters.getProduct;
       var product;
       for (var i = 0; i < ProductAll.length; i++) {
         if (ProductAll[i].p_id == this.$route.params.ProductID) {

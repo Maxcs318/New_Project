@@ -368,7 +368,7 @@ export default {
         cart = [];
       }
       var now_cart = [];
-      var product_all = this.$store.getters.getProduct_Set_Category;
+      var product_all = this.$store.getters.getProduct;
       var user = this.$store.getters.getThe_User;
       var the_price = null; // set price for user
       for (var i = 0; i < cart.length; i++) {

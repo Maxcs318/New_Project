@@ -94,7 +94,7 @@ export default {
         Order_Items(){
             var odi = this.$store.getters.getOrder_Item
             var order_i=[]
-            var product_all = this.$store.getters.getProduct_Set_Category
+            var product_all = this.$store.getters.getProduct
                 for(var i=0;i<odi.length; i++){
                     if(odi[i].oi_order_id == this.Order.o_id){
                         // chang product id -> product name
