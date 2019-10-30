@@ -145,6 +145,14 @@
               :disabled="click_select_sa()"
               required
             />
+            Name
+            <input
+              type="text"
+              v-model="shipping_address.sa_first_name"
+              class="form-control"
+              :disabled="click_select_sa()"
+              required
+            />
             Address
             <textarea
               class="form-control"
@@ -217,6 +225,7 @@ export default {
       address_show: "OFF",
       shipping_address: {
         sa_title: "",
+        sa_first_name:'',
         sa_address: "",
         sa_postcode: "",
         sa_phone: "",

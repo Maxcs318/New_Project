@@ -2,20 +2,49 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h5><center> Code Order : {{this.$route.params.CodeOrder}} </center></h5>
+                <h5><center> Bill : {{this.$route.params.CodeOrder}} </center></h5>
                 <!-- {{Order_Status}} -->
             </div>
         </div>
-        <div class="row" v-if="Order!=0 && Shipping_Address">
+        <div class="row" id="print"
+             v-if="Order!=0 && Shipping_Address && Moneytransfer && Payment" 
+             style="background-color: white; color:black;">
             <div class="col-lg-12 col-xs-12">
+                <br>
+                <center><h3> Gama Thailand </h3></center>
+                <center> Address Bla Bla Bla </center>
+                <br>
+                <center><h4> ใบเสร็จรับเงิน </h4></center>
+                <div class="row">
+                    <div class="col-lg-8"></div>
+                    <div class="col-lg-4">
+                        Order Code : {{this.$route.params.CodeOrder}}   <br>
+                        วันที่จ่าย : {{Moneytransfer.mtf_date}}   <br>
+                        ชำระผ่าน : {{Payment.pm_title}}  <br>
+                        <div v-if=" Banking && Banking != 'No'"> Banking : {{Banking.b_name}} </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-xs-12" v-if="Shipping_Address">
+                        ชื่อ : {{Shipping_Address.sa_first_name}} <br>
+                        ที่อยู่ : {{Shipping_Address.sa_address}} <br>
+                        รหัสไปรษณีย์ : {{Shipping_Address.sa_postcode}} <br>
+                        บริษัท : {{Shipping_Address.sa_company}} <br>
+                        เบอร์โทร : {{Shipping_Address.sa_phone}} <br>
+                        E-mail : {{Shipping_Address.sa_email}} <br>
+                    </div>
+                </div>
+                <br>                    
                 <table style="width:100%; text-align: center;" v-if="Order">
                     <tr>
-                        <th> Product </th>
-                        <th> Price </th>
-                        <th> Quantity </th>
-                        <th> Total Price </th>
+                        <th> # </th>
+                        <th> รายการ </th>
+                        <th> ราคา ( บาท ) </th>
+                        <th> จำนวน </th>
+                        <th> เป็นเงิน </th>
                     </tr>
-                    <tr v-for="order_item in Order_Items">
+                    <tr v-for="(order_item,index) in Order_Items" :key="index">
+                        <td>{{index+1}}</td>
                         <td>{{order_item.oi_product_id}}</td>
                         <td>{{order_item.oi_product_price}}</td>
                         <td>{{order_item.oi_quantity}}</td>
@@ -24,46 +53,9 @@
                 </table>
                 <br>
                 <center>
-                Total Price : {{ Order.o_total_price }} ฿ <br>
-                <div v-for="os in Order_Status" v-if="os.os_id == Order.o_status_id">Status : {{os.os_title}} </div>
-                <!-- Order Create Date : {{ Order.o_create_date }}<br> -->
+                รวมทั้งสิ้น  {{ Order.o_total_price }} บาท <br>
                 </center>
                 <br>
-                    <div class="row">
-                        <div class="col-lg-4 col-xs-12" v-if="Moneytransfer && Banking && Payment">
-                            <img :src="getImgUrl(Moneytransfer.mtf_slip)" width="100%"> 
-                        </div>
-                        <div class="col-lg-4 col-xs-12" v-if="Moneytransfer && Banking && Payment">
-                            <h5>Money Transfer</h5>
-                            TiTle : {{Moneytransfer.mtf_title}}<br>
-                            Payment : {{Payment.pm_title}}<br>
-                            <div v-if="Banking != 'No'"> Banking : {{Banking.b_name}} </div>
-                            Payment Date : {{Moneytransfer.mtf_date}}<br>
-                            Comment : {{Moneytransfer.mtf_comment}}<br>
-                        </div>
-                        <div class="col-lg-4 col-xs-12" v-if="Shipping_Address">
-                            <h5>Shipping Address</h5>
-                            Title : {{Shipping_Address.sa_title}} <br>
-                            Address : {{Shipping_Address.sa_address}} <br>
-                            Postcode : {{Shipping_Address.sa_postcode}} <br>
-                            Company : {{Shipping_Address.sa_company}} <br>
-                            E-mail : {{Shipping_Address.sa_email}} <br>
-                            Phone : {{Shipping_Address.sa_phone}} <br>
-                        </div>
-                        <div class="col-lg-12 col-xs-12">   <br>
-                            Order Create On : {{Order.o_create_date}}<br>
-                            Status Order Last Update : {{Order.o_update_date}}
-                        </div>
-                    </div>
-                <br>
-            </div>
-            <div class="col-lg-12 col-xs-12">
-                <div class="row">
-                    <div class="col-lg-9"></div>
-                    <div class="col-lg-3">
-                        <button class="form-control btn-primary" @click="show_bill"> Bill </button> <br>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -71,6 +63,14 @@
             <div class="col-lg-12 col-xs-12">
                 <br>
                 <h5><center> Order Error. Order May Not Have .  </center></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3" v-if="Order && Order.o_status_id >= 3">
+                <br>
+                <button class="form-control btn-primary" @click="show_bill"> Print Bill </button> 
+                <br>
             </div>
         </div>
     </div>
@@ -82,7 +82,12 @@ export default {
             return this.path_files+'Slip/'+pic
         },
         show_bill(){
-            this.$router.push({name:'bill',params:{CodeOrder:this.$route.params.CodeOrder}});
+            let pdfName = 'test_PDF'; 
+            var doc = new jsPDF();
+            doc.fromHTML(document.getElementById('print'), 15, 15, {
+                'width': 170
+            });
+            doc.save(pdfName + '.pdf');
         },
         
     },
@@ -122,9 +127,10 @@ export default {
         },
         Shipping_Address(){
             var my_sa = this.$store.getters.getShipping_Address
+            var OD = this.Order
             var sa_this_order
             for(var i=0; i<my_sa.length; i++){
-                if(my_sa[i].sa_id == this.Order.o_shipping_address_id){
+                if(my_sa[i].sa_id == OD.o_shipping_address_id){
                     sa_this_order = my_sa[i]
                 }
             }
