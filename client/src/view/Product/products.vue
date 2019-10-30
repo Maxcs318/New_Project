@@ -2,6 +2,15 @@
     <div class="container ">
         <h4>Product</h4> 
         <div class="row">
+            <div class="col-lg-12">
+                <select v-model="selected" class="form-control">
+                    <option selected value>สินค้าทั้งหมด</option>
+                    <option v-for=" pc in Product_Category " :value="pc.pc_id">{{pc.pc_title}}</option>
+                </select>
+                <br />
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-3 col-xs-12" v-for="(product,index) in ProductAll.slice().reverse().slice((page*data_in_page),(page+1)*data_in_page)" :key="index">
                 <img :src="getImgUrlProduct(product.p_image)" width="100%" @click="seethisPageProduct(product.p_id)">
                 <h5 @click="seethisPageProduct(product.p_id)">{{product.p_name}}</h5>
@@ -14,7 +23,6 @@
                 <br>
             </div>
         </div>
-        
         <div class="row" v-if="length_page > 0">
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Second group">
@@ -43,7 +51,9 @@ export default {
             length_page: 0,
             page_start: 0,
             page_end: 0,
-            isActive: []
+            isActive: [],
+
+            selected:''
         };
     },
     methods:{
@@ -64,9 +74,20 @@ export default {
         Product_Category(){
             return this.$store.getters.getProduct_Category;
         },
+        ProductSelected(){
+            var products = this.$store.getters.getProduct
+            var product_selected = products
+                if (this.selected == '') {
+                    return products
+                } else {
+                    return products.filter(item => {
+                        return item.p_category.indexOf(this.selected) > -1;
+                    });                
+                }
+        },
         ProductAll(){
             var setpage = this.$route.params.Page;
-            var product_all = this.$store.getters.getProduct;
+            var product_all = this.ProductSelected
             var p_conpute = 2;
             var p_start = setpage;
             var p_end = Math.ceil(setpage / 1 + p_conpute);
