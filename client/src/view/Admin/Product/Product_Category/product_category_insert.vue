@@ -4,7 +4,7 @@
             <div class="container " v-if="the_user">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4><center>เพิ่ม ประเภท ของสินค้า</center></h4>
+                        <h4 class="header"><center>เพิ่ม ประเภท ของสินค้า</center></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -12,17 +12,17 @@
                     <div class="col-lg-6 col-xs-12">
                         <form @submit.prevent="submitProduct_Category">
                             <center>                            
-                                <img v-if="url"  :src="url" width="100%"/>
+                                <img v-if="url"  :src="url" class="admin-img" />
                             </center>
                             <br>
-                            <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
+                            <button type="button" class="block-center form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
                             <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
                             <br>
                             ชื่อ ประเภท ของสินค้า
-                            <input type="text" v-model="productC.pc_title" class="form-control" required>
+                            <input type="text" v-model="productC.pc_title" class="form-control" placeholder="ชื่อ ประเภท ของสินค้า" required>
                             <br>
-                            รายระเอียด
-                            <textarea v-model="productC.pc_description" class="form-control" rows="6" ></textarea>
+                            รายละเอียด
+                            <textarea v-model="productC.pc_description" class="form-control textarea" rows="6" placeholder="รายละเอียด" ></textarea>
                             <br>
             
                             <br>

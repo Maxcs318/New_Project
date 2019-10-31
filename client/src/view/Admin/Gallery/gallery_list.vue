@@ -1,6 +1,6 @@
 <template>
     <div class="container" v-if="the_user">
-        <h5>List Gallery</h5> <br>
+        <h5 class="header">List Gallery</h5> <br>
         <div class="row">
             <div class="col-lg-9 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">

@@ -2,7 +2,7 @@
     <div class="container" v-if="the_user">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h4><center>Research</center></h4> 
+                <h4 class="header"><center>Research</center></h4> 
             </div>
         </div>
         <div class="row">

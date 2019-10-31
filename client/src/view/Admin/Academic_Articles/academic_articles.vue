@@ -1,6 +1,6 @@
 <template>
     <div class="container" v-if="the_user">
-        <h4 class=" ">บทความวิชาการ</h4> <br>
+        <h4 class="header">บทความวิชาการ</h4> <br>
         <div class="row">
             <div class="col-lg-6 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">

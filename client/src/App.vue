@@ -104,4 +104,85 @@ export default {
 .page-leave-active {
   transition: all 0.5s;
 }
+
+.header {
+  font-weight: 600;
+  font-size: 29px;
+  line-height: 120%;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+table {
+  margin: 24px auto;
+}
+
+th {
+  padding: 7px 0;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 150%;
+  border-bottom: 3px solid #3f4d63;
+}
+td {
+  color: #bdbdbd;
+  border-bottom: 1px solid #3f4d63;
+  padding: 7px 0;
+}
+
+input[type="text"],
+input[type="text"]:focus,
+input[type="email"],
+input[type="email"]:focus,
+input[type="password"],
+input[type="password"]:focus {
+  background-color: #1a2a3e;
+  color: #e0e0e0;
+  border: 1px solid #3f4d63;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.textarea,
+.textarea:focus {
+  background-color: #1a2a3e;
+  color: #e0e0e0;
+  border: 1px solid #3f4d63;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.admin-img {
+  max-width: 250px;
+  height: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-circle {
+  border-radius: 24px;
+}
+
+select,
+option {
+  background-color: #1a2a3e;
+  color: #eecd02;
+  border: 1px solid #3f4d63;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+select:focus {
+  background-color: #1a2a3e;
+  color: #eecd02;
+}
 </style>

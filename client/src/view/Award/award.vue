@@ -265,6 +265,7 @@ select:focus {
   color: #eecd02;
 }
 
+/* 
 table {
   margin: 0 auto;
 }
@@ -280,7 +281,7 @@ td {
   color: #bdbdbd;
   border-bottom: 1px solid #3f4d63;
   padding: 7px 0;
-}
+} */
 
 @media only screen and (max-width: 600px) {
   input[type="text"] {

@@ -128,21 +128,4 @@ export default {
   font-size: 29px;
   line-height: 120%;
 }
-
-table {
-  margin: 33px auto;
-}
-
-th {
-  padding: 7px 0;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 150%;
-  border-bottom: 3px solid #3f4d63;
-}
-td {
-  color: #bdbdbd;
-  border-bottom: 1px solid #3f4d63;
-  padding: 7px 0;
-}
 </style>

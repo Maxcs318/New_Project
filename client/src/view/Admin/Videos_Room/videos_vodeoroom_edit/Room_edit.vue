@@ -1,15 +1,15 @@
 <template>
     <div class="container ">
-        <center><h4>Edit Video Room</h4></center>
+        <center><h4 class="header">Edit Video Room</h4></center>
         <div class="row mt-5" v-if="thisVideo_Room && the_user">
             <div class="col-lg-3 col-xs-12"></div>
             <div class="col-lg-6 col-xs-12">
                 <form @submit.prevent="submitEditRoom">
-                    <h5>Room Name</h5>
-                    <input v-model="videoroom.vr_title" type="text" class="form-control">
+                    <h5>ชื่อห้อง</h5>
+                    <input v-model="videoroom.vr_title" type="text" class="form-control" placeholder="ชื่อห้อง">
                     <br>
-                    <h5>Description</h5>
-                    <textarea v-model="videoroom.vr_description" class="form-control" rows="6" ></textarea>
+                    <h5>รายละเอียด</h5>
+                    <textarea v-model="videoroom.vr_description" class="form-control textarea" placeholder="รายละเอียด" rows="6" ></textarea>
                     <br>
                     <div class="row">
                         <div class="col-lg-6 col-xs-6"></div>

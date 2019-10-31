@@ -4,7 +4,7 @@
             <div class="container " v-if="the_user && Academic_Article_Category">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4><center>แก้ไข ประเภท ของบทความวิชาการ</center></h4>
+                        <h4 class="header"><center>แก้ไข ประเภท ของบทความวิชาการ</center></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -12,18 +12,18 @@
                     <div class="col-lg-6 col-xs-12">
                         <form @submit.prevent="submitAcademicArticle_Category">
                             <center>                            
-                            <img v-if="url"  :src="url" width="100%"/>
-                            <img v-else :src="getImgUrl(academic_article.aac_image)" width="100%">
+                            <img class="admin-img" v-if="url"  :src="url" width="100%"/>
+                            <img class="admin-img" v-else :src="getImgUrl(academic_article.aac_image)" width="100%">
                             </center>
                             <br>
-                            <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
+                            <button type="button" class="form-control btn-success block-center col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
                             <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
                             <br>
                             ชื่อ ประเภท ของบทความวิชาการ
-                            <input type="text" v-model="academic_article.aac_title" class="form-control" required>
+                            <input type="text" v-model="academic_article.aac_title" class="form-control" placeholder="ชื่อ ประเภท ของบทความวิชาการ" required>
                             <br>
-                            รายระเอียด
-                            <textarea v-model="academic_article.aac_description" class="form-control" rows="6" ></textarea>
+                            รายละเอียด
+                            <textarea v-model="academic_article.aac_description" class="form-control textarea" placeholder="รายละเอียด" rows="6" ></textarea>
                             <br>
             
                             <br>

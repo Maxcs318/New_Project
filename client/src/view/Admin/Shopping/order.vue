@@ -2,7 +2,7 @@
     <div class="container" v-if="the_user">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h5><center> Code Order : {{this.$route.params.CodeOrder}} </center></h5>
+                <h5 class="header"><center> Code Order : {{this.$route.params.CodeOrder}} </center></h5>
                 <!-- {{Order_Status}} -->
             </div>
         </div>

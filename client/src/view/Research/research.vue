@@ -36,7 +36,7 @@
         <br />
         <p>ภาษา : {{researchE.r_language}}</p>
         <br />
-        <p>สิทธิมนุษยชน : {{researchE.r_rights}}</p>
+        <p>สิทธิประโยชน์ : {{researchE.r_rights}}</p>
         <br />
         <hr />
         <center>
