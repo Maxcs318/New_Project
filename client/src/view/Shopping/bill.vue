@@ -3,32 +3,42 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <h5><center> Bill : {{this.$route.params.CodeOrder}} </center></h5>
+                <button class="form-control btn-primary" @click="show_bill"> Print Bill </button> 
                 <!-- {{Order_Status}} -->
             </div>
         </div>
-        <div class="row" id="print"
-             v-if="Order!=0 && Shipping_Address && Moneytransfer && Payment" 
-             style="background-color: white; color:black;">
-            <div class="col-lg-12 col-xs-12">
+        <div id="print" v-if="Order!=0 && Shipping_Address && Moneytransfer && Payment"
+        style="
+                width: 21cm;
+                min-height: 29.7cm;
+                background-color: white; color:black;
+                margin: auto;
+            ">
+<!-- ================================================================================= -->
+<!-- ================================================================================= -->
+       <div class="">
+            <div class="col-12">
                 <br>
                 <center><h3> Gama Thailand </h3></center>
                 <center> Address Bla Bla Bla </center>
                 <br>
-                <center><h4> ใบเสร็จรับเงิน </h4></center>
+                <h4 style="padding-left:13.2em"> ใบเสร็จรับเงิน </h4>
                 <div class="row">
-                    <div class="col-lg-8"></div>
-                    <div class="col-lg-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
                         Order Code : {{this.$route.params.CodeOrder}}   <br>
                         วันที่จ่าย : {{Moneytransfer.mtf_date}}   <br>
                         ชำระผ่าน : {{Payment.pm_title}}  <br>
                         <div v-if=" Banking && Banking != 'No'"> Banking : {{Banking.b_name}} </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-xs-12" v-if="Shipping_Address">
+                <div class="row" v-if="Shipping_Address">
+                    <div class="col-6 ">
                         ชื่อ : {{Shipping_Address.sa_first_name}} <br>
                         ที่อยู่ : {{Shipping_Address.sa_address}} <br>
                         รหัสไปรษณีย์ : {{Shipping_Address.sa_postcode}} <br>
+                    </div>
+                    <div class="col-6">
                         บริษัท : {{Shipping_Address.sa_company}} <br>
                         เบอร์โทร : {{Shipping_Address.sa_phone}} <br>
                         E-mail : {{Shipping_Address.sa_email}} <br>
@@ -52,12 +62,39 @@
                     </tr>
                 </table>
                 <br>
-                <center>
-                รวมทั้งสิ้น  {{ Order.o_total_price }} บาท <br>
-                </center>
+                <div class="row">
+                    <div class="col-12">
+                        <table style="width:100%;">
+                            <tr>
+                                <th> # </th>
+                                <th> รายการ </th>
+                                <th> ราคา </th>
+                                <th> จำนวน </th>
+                                <th> เป็นเงิน </th>                            
+                            </tr>
+                            <tr v-for="(order_item,index) in Order_Items" :key="index">
+                                <td>{{index+1}}</td>
+                                <td> {{order_item.oi_product_id}} </td>
+                                <td> {{order_item.oi_product_price}} </td>
+                                <td> {{order_item.oi_quantity}} </td>
+                                <td> {{order_item.oi_total_price}} </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
                 <br>
+                <div class="row">
+                    <div class="col-12">
+                        <br>
+                        <p style="padding-left:19.2em"> รวมทั้งสิ้น  {{ Order.o_total_price }} บาท</p>                        
+                        <br> 
+                    </div>
+                </div>
             </div>
 
+        </div>
+<!-- ================================================================================= -->
+<!-- ================================================================================= -->
         </div>
         <div class="row" v-else>
             <div class="col-lg-12 col-xs-12">
@@ -82,12 +119,35 @@ export default {
             return this.path_files+'Slip/'+pic
         },
         show_bill(){
-            let pdfName = 'test_PDF'; 
-            var doc = new jsPDF();
-            doc.fromHTML(document.getElementById('print'), 15, 15, {
-                'width': 170
+            // let pdfName = this.$route.params.CodeOrder; 
+            // var doc = new jsPDF('p', 'mm', 'a4');
+            // doc.fromHTML(document.getElementById('print'), 15, 15);
+            // doc.save(pdfName + '.pdf');
+
+            // ===========================================================
+
+            html2canvas(document.getElementById("print"), {
+                useCORS: true,
+                onrendered: function(canvas) {
+                    var imgData = canvas.toDataURL('image/jpeg');
+                    // console.log('Report Image URL: '+imgData);
+                    var doc = new jsPDF('p', 'mm', 'a4');
+                    doc.addImage(imgData, 'jpeg', 0, 0);
+                    doc.save('sample.pdf');
+                }
             });
-            doc.save(pdfName + '.pdf');
+
+            // ===========================================================
+        
+            // const filename  = 'ThisIsYourPDFFilename.pdf';
+            // html2canvas(document.querySelector('#print'),{
+            //     onrendered: function(canvas) {
+            //         let pdf = new jsPDF('p', 'mm', 'a4');
+            //         pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 0, 0);
+            //         pdf.save(filename);
+            //     }
+            // });
+         
         },
         
     },
@@ -182,3 +242,8 @@ export default {
     
 }
 </script>
+<style>
+    #print{
+        font-family: Arial;
+    }
+</style>
