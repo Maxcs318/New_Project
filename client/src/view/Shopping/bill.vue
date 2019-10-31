@@ -44,23 +44,6 @@
                         E-mail : {{Shipping_Address.sa_email}} <br>
                     </div>
                 </div>
-                <br>                    
-                <table class="table" style="width:100%; text-align: center;" v-if="Order">
-                    <tr>
-                        <th> # </th>
-                        <th> รายการ </th>
-                        <th> ราคา ( บาท ) </th>
-                        <th> จำนวน </th>
-                        <th> เป็นเงิน </th>
-                    </tr>
-                    <tr v-for="(order_item,index) in Order_Items" :key="index">
-                        <td>{{index+1}}</td>
-                        <td>{{order_item.oi_product_id}}</td>
-                        <td>{{order_item.oi_product_price}}</td>
-                        <td>{{order_item.oi_quantity}}</td>
-                        <td>{{order_item.oi_total_price}}</td>
-                    </tr>
-                </table>
                 <br>
                 <div class="row">
                     <div class="col-12">
