@@ -8,7 +8,7 @@
         </div>
         <div class="row" v-if="Order!=0 && Shipping_Address">
             <div class="col-lg-12 col-xs-12">
-                <table style="width:100%; text-align: center;" v-if="Order">
+                <table class="table" style="width:100%; text-align: center;" v-if="Order">
                     <tr>
                         <th> Product </th>
                         <th> Price </th>

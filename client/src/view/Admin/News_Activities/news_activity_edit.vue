@@ -29,10 +29,16 @@
             type="text"
             v-model="newsE.n_title"
             class="form-control"
+            placeholder="หัวเรื่อง"
             required
           />
           <br />รายละเอียด
-          <textarea v-model="newsE.n_detail" class="form-control textarea" rows="6"></textarea>
+          <textarea
+            v-model="newsE.n_detail"
+            class="form-control textarea"
+            placeholder="รายละเอียด"
+            rows="6"
+          ></textarea>
           <br />
           <div v-if="thisFiles != null" v-for="(file,run) in thisFiles">
             <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
@@ -61,7 +67,7 @@
               <br />
             </div>
             <div class="col-lg-2 col-xs-12">
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -79,11 +85,11 @@
                 type="button"
                 class="form-control btn-primary col-lg-12"
                 @click="ChooseFiles"
-              >Choose Files</button>
+              >เลือกไฟล์</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-lg-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-lg-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>

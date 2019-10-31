@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <center>
-      <h4 class="header">Edit Academic Article</h4>
+      <h4 class="header">แก้ไขบทความวิชาการ</h4>
     </center>
     <div class="row mt-5" v-if="thisAcademic_Article && the_user">
       <div class="col-lg-2 col-xs-12"></div>
@@ -14,7 +14,7 @@
           type="button"
           class="form-control btn-success col-lg-12"
           @click="ChooseFilesImage"
-        >Change Image</button>
+        >เลือกรูป</button>
         <br />
         <form @submit.prevent="submitArticle">
           <input
@@ -35,18 +35,30 @@
           <br />ประเภทของบทความ
           <select
             v-model="academic_articleE.aa_category"
-            class="form-control"
+            class="form-control select"
             required
           >
-            <option v-for="aac in academic_article_category" :value="aac.aac_id">{{ aac.aac_title }}</option>
+            <option
+              class="option"
+              v-for="aac in academic_article_category"
+              :value="aac.aac_id"
+            >{{ aac.aac_title }}</option>
           </select>
           <br />รายละเอียด
-          <textarea v-model="academic_articleE.aa_detail" class="form-control textarea" rows="6"></textarea>
+          <textarea
+            v-model="academic_articleE.aa_detail"
+            class="form-control textarea"
+            rows="6"
+          ></textarea>
           <br />
           <div v-if="thisFiles != null" v-for="(file,run) in thisFiles">
-            <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
             <a :href="loadFile(file.f_name)" download>Dowload File</a>
             {{file.f_title}}
+            <button
+              type="button"
+              class="btn btn-danger col-lg-1"
+              @click="RemoveFile(file.f_id)"
+            >ลบ</button>
             <br />
             <br />
           </div>
@@ -70,7 +82,7 @@
               <br />
             </div>
             <div class="col-lg-2 col-xs-12">
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -89,11 +101,11 @@
                 type="button"
                 class="form-control btn-primary col-lg-12"
                 @click="ChooseFiles"
-              >Choose Files</button>
+              >เลือกไฟล์</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-lg-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-lg-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>
@@ -239,16 +251,15 @@ export default {
 </script>
 
 <style scoped>
-select,
-option {
+.select,
+.option {
   background-color: #1a2a3e;
   color: #e0e0e0;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
-
-select:focus {
+.select:focus {
   background-color: #1a2a3e;
   color: #e0e0e0;
 }

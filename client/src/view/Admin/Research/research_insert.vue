@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12 col-xs-12">
         <h4 class="header">
-          <center>Research Insert</center>
+          <center>เพิ่มงานวิจัย</center>
         </h4>
       </div>
     </div>
@@ -114,16 +114,17 @@
             v-model="research.r_rights"
             class="form-control textarea"
             placeholder="สิทธิประโยชน์"
-            rows="2"
+            rows="5"
           ></textarea>
           <br />สิทธิ์การเข้าถึง ( ** ระดับที่เลือกและระดับที่สูงกว่าจะสามารถเข้าดูได้ )
           <select
             v-model="research.r_permission"
-            class="form-control"
+            class="form-control select"
             required
           >
-            <option selected disabled value>กำหนด สิทธิ์การเข้าถึง</option>
+            <option class="option" selected disabled value>กำหนด สิทธิ์การเข้าถึง</option>
             <option
+              class="option"
               v-for="(mt,index) in Member_Type"
               :key="index"
               :value="mt.mt_id"
@@ -158,7 +159,7 @@
               <br />
             </div>
             <div class="col-lg-2">
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -169,11 +170,11 @@
                 type="button"
                 class="form-control btn-primary col-lg-12"
                 @click="ChooseFiles"
-              >Choose Files</button>
+              >เลือกไฟล์</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>
@@ -270,19 +271,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

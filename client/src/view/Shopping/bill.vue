@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <br>                    
-                <table style="width:100%; text-align: center;" v-if="Order">
+                <table class="table" style="width:100%; text-align: center;" v-if="Order">
                     <tr>
                         <th> # </th>
                         <th> รายการ </th>

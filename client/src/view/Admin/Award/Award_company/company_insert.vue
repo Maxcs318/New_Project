@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <h3 class="header">
-      <center>Add Company</center>
+      <center>เพิ่มบริษัท</center>
     </h3>
     <div class="row">
       <div class="col-lg-3 col-xs-12"></div>
@@ -27,7 +27,7 @@
           <div class="row">
             <div class="col-lg-6"></div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>

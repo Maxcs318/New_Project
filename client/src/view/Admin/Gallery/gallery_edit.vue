@@ -1,20 +1,20 @@
 <template>
   <div class="container" v-if="the_user">
     <center>
-      <h4 class="header">Edit Gallery</h4>
+      <h4 class="header">แก้ไขกิจกรรม</h4>
     </center>
     <div class="row" v-if="thisGallery">
       <div class="col-lg-3 col-xs-12"></div>
       <div class="col-lg-6 col-xs-12">
-        <img class="admin-img" v-if="url" :src="url" width="100%" />
-        <img class="admin-img" v-else :src="getImgUrl(thisGallery.g_image)" width="100%" />
+        <img class="admin-img" v-if="url" :src="url" />
+        <img class="admin-img" v-else :src="getImgUrl(thisGallery.g_image)" />
         <br />
         <br />
         <button
           type="button"
           class="form-control btn-success col-lg-12"
           @click="ChooseFilesImage"
-        >Change Preview Image</button>
+        >เปลี่ยนรูป</button>
         <br />
         <form @submit.prevent="submitGallery">
           <input
@@ -24,7 +24,7 @@
             type="file"
             @change="handleFilesImage"
           />
-          ชื่อ ภาพกิจกรรม
+          ชื่อภาพกิจกรรม
           <input
             type="text"
             v-model="galleryE.g_name"
@@ -42,14 +42,14 @@
           <br />
 
           <div class="row" v-if="thisGallery_Image">
-            <h5 class="col-lg-12">Another Image</h5>
+            <h5 class="col-lg-12">รูปกิจกรรมอื่นๆ</h5>
             <div class="col-lg-6 block-center" v-for="(gi,run) in thisGallery_Image" :key="run">
               <img class="admin-img" :src="getImgUrl(gi.gi_image)" />
               <button
                 type="button"
                 class="form-control btn-danger"
                 @click="DeleteGallery_Image(gi.gi_id)"
-              >Delete</button>
+              >ลบ</button>
               <br />
               <br />
             </div>
@@ -73,7 +73,7 @@
               <b>{{index+1}}.</b>
               {{files[index].name }}
               <!-- <b> Size </b>{{files[index].size}} byte -->
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">Remove</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -84,11 +84,11 @@
                 type="button"
                 class="form-control btn-success col-lg-12"
                 @click="ChooseFiles"
-              >Add Another Image</button>
+              >เพิ่มรูปอื่น</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-lg-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-lg-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>

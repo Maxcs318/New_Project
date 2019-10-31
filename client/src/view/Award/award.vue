@@ -10,20 +10,25 @@
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
         <!-- ค้นหาชื่อ : {{search}} -->
-        <input type="text" class="form-control" v-model="search" placeholder="ค้นหารายชื่อ..." />
+        <input
+          type="text"
+          class="form-control select"
+          v-model="search"
+          placeholder="ค้นหารายชื่อ..."
+        />
       </div>
       <div class="col-lg-3">
         <!-- ประเภทรางวัล : {{selected}} -->
-        <select v-model="selected" class="form-control">
-          <option selected value>รางวัลทุกประเภท</option>
-          <option v-for=" at in Award_type " :value="at.at_id">{{at.at_title}}</option>
+        <select v-model="selected" class="form-control select-award">
+          <option class="option-award" selected value>รางวัลทุกประเภท</option>
+          <option class="option-award" v-for=" at in Award_type " :value="at.at_id">{{at.at_title}}</option>
         </select>
         <br />
       </div>
       <div class="col-lg-2">
         <!-- ประจำปี : {{year_show.ay_title}} -->
-        <select v-model="year_show" class="form-control">
-          <option v-for=" ay in year_preview " :value="ay">{{ay.ay_title}}</option>
+        <select v-model="year_show" class="form-control select-award">
+          <option class="option-award" v-for=" ay in year_preview " :value="ay">{{ay.ay_title}}</option>
         </select>
         <br />
       </div>
@@ -34,15 +39,13 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-12">
-        <table style="width:85%">
-          <thead>
-            <tr style="width:100%">
-              <th style="width:5%; text-align:center;">#</th>
-              <th style="width:35%">รายชื่อ</th>
-              <th style="width:20%">บริษัท</th>
-              <th style="width:20%">ประเภทรางวัล</th>
-            </tr>
-          </thead>
+        <table class="table" style="width:85%">
+          <tr style="width:100%">
+            <th style="width:5%; text-align:center;">#</th>
+            <th style="width:35%">รายชื่อ</th>
+            <th style="width:20%">บริษัท</th>
+            <th style="width:20%">ประเภทรางวัล</th>
+          </tr>
           <tbody>
             <tr
               v-for="(award,index) in the_award_list.slice((page*data_in_page),(page+1)*data_in_page)"
@@ -252,15 +255,15 @@ input[type="text"] {
   border-radius: 5px;
 }
 
-select,
-option {
+.select-award,
+.option-award {
   background-color: #1a2a3e;
   color: #eecd02;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
-select:focus {
+.select-award:focus {
   background-color: #1a2a3e;
   color: #eecd02;
 }
@@ -285,7 +288,7 @@ td {
 
 @media only screen and (max-width: 600px) {
   input[type="text"] {
-      margin-bottom: 24px;
+    margin-bottom: 24px;
   }
 }
 </style>

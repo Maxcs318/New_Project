@@ -3,7 +3,7 @@
         <h4 class=" "> Online Journal ( ลำดับจาก ล่าสุด -> เก่า )</h4> <br>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <table style="width:100%" >
+                <table class="table" style="width:100%" >
                     <tr style="width:100%">
                         <th style="width:5%">No</th>
                         <th style="width:35%">Online Journal Title</th>

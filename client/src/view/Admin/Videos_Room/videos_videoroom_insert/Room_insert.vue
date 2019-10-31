@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <center>
-      <h4 class="header">Create Room</h4>
+      <h4 class="header">เพิ่มห้องวีดีโอ</h4>
     </center>
     <div class="row">
       <div class="col-lg-3 col-xs-12"></div>
@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-lg-6 col-xs-6"></div>
             <div class="col-lg-6 col-xs-6">
-              <button class="form-control btn-primary" type="submit">Create</button>
+              <button class="form-control btn-primary" type="submit">ดำเนินการต่อ</button>
             </div>
           </div>
         </form>

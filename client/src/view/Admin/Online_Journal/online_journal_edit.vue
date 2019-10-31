@@ -1,7 +1,11 @@
 <template>
   <div class="container" v-if="thisOnline_Journal && the_user">
     <center>
-      <h4 class="header">Edit Online_Journal ID : {{ this.$route.params.Online_JournalID }}</h4>
+      <h4 class="header">
+        แก้ไขวารสารออนไลน์
+        <br />
+        ID : {{ this.$route.params.Online_JournalID }}
+      </h4>
     </center>
     <div class="row mt-5">
       <div class="col-lg-2 col-xs-12"></div>
@@ -32,8 +36,9 @@
           <br />สิทธิ์การเข้าถึง
           <div class="row">
             <div class="col-lg-6 col-xs-12">
-              <select v-model="online_journalE.oj_permission" class="form-control" required>
+              <select v-model="online_journalE.oj_permission" class="form-control select" required>
                 <option
+                  class="option"
                   v-for="(mt,index) in Member_Type"
                   :key="index"
                   :value="mt.mt_id"
@@ -43,9 +48,13 @@
           </div>
           <br />
           <div v-if="thisFiles != null" v-for="(file,run) in thisFiles">
-            <button type="button" class="btn btn-danger" @click="RemoveFile(file.f_id)">delete</button>
             <a :href="loadFile(file.f_name)" download>Dowload File {{run+1}}</a>
             {{file.f_title}}
+            <button
+              type="button"
+              class="btn btn-danger col-lg-1"
+              @click="RemoveFile(file.f_id)"
+            >ลบ</button>
             <br />
             <br />
           </div>
@@ -69,7 +78,7 @@
               <br />
             </div>
             <div class="col-lg-2 col-xs-12">
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -87,11 +96,11 @@
                 type="button"
                 class="form-control btn-primary col-lg-12"
                 @click="ChooseFiles"
-              >Choose Files</button>
+              >เลือกไฟล์</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-lg-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-lg-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>
@@ -213,19 +222,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

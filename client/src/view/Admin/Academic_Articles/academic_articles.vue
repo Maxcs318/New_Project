@@ -4,20 +4,20 @@
         <div class="row">
             <div class="col-lg-6 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="academicarticle_category">Academic Article Category</button>
+                <button class="form-control btn-primary" @click="academicarticle_category">ประเภทบทความวิชาการ</button>
             </div>
             <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="add_academicarticle">Add Academic Article</button>
+                <button class="form-control btn-primary" @click="add_academicarticle">เพิ่มบทความวิชาการ</button>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <table style="width:100%" >
+                <table class="table" style="width:100%" >
                     <tr style="width:100%">
-                        <th style="width:5%">ID</th>
-                        <th style="width:35%">Academic Article Title</th>
-                        <th style="width:20%">Create Date</th>
-                        <th style="width:20%">Update Date</th>
+                        <th style="width:5%">ลำดับ</th>
+                        <th style="width:35%">หัวข้อบทความวิชาการ</th>
+                        <th style="width:20%">วันที่สร้าง</th>
+                        <th style="width:20%">วันที่แก้ไข</th>
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
@@ -26,8 +26,8 @@
                         <td>{{article.aa_title.slice(0,35)}}</td>
                         <td>{{article.aa_create_date}}</td>
                         <td>{{article.aa_update_date}}</td>
-                        <td> <button class="form-control btn-warning" @click="editAcademicArticle(article.aa_id)">Edit</button> </td>
-                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle(article.aa_id)">Delete</button> </td>
+                        <td> <button class="form-control btn-warning" @click="editAcademicArticle(article.aa_id)">แก้ไข</button> </td>
+                        <td> <button class="form-control btn-danger"  @click="deleteAcademicArticle(article.aa_id)">ลบ</button> </td>
                     </tr>
                 </table>
                 <br>

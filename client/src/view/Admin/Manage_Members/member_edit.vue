@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <center>
-      <h4 class="header">Edit Profile</h4>
+      <h4 class="header">แก้ไขโปรไฟล์</h4>
     </center>
     <br />
     <div class="row" v-if="this_user_edit">
@@ -22,7 +22,7 @@
         <img class="admin-img" v-if="url" :src="url" width="100%" />
         <br />
         <br />
-        <button type="button" class="btn btn-primary block-center" @click="ChooseFiles">Change Image</button>
+        <button type="button" class="btn btn-success block-center" @click="ChooseFiles">เปลี่ยนรูป</button>
         <br />
         <br />
         <form @submit.prevent="submitEditProfile">
@@ -72,18 +72,19 @@
             v-if="m_up.mud_id == this_user_edit.m_upgrade_date_id"
           >
             <div v-for="m_up_type in Member_Type" v-if="m_up.mud_member_type_id == m_up_type.mt_id">
-              Member Type Now : {{m_up_type.mt_name}}
+              ระดับสมาชิกตอนนี้ : {{m_up_type.mt_name}}
               <br />
-              End in : {{m_up.mud_date_end}}
+              หมดอายุ : {{m_up.mud_date_end}}
             </div>
             <br />
           </div>
 
           <div class="row">
             <div class="col-lg-6">
-              Member Type
-              <select v-model="E_member.m_type" class="form-control" required>
+              ระดับสมาชิก
+              <select v-model="E_member.m_type" class="form-control select" required>
                 <option
+                class="option"
                   v-for="(mt,index) in Member_Type"
                   :key="index"
                   :value="mt.mt_id"
@@ -92,13 +93,13 @@
               <br />
             </div>
             <div class="col-lg-6" v-if="E_member.m_type != 1">
-              Period of time {{upgrade_time}}
-              <select v-model="upgrade_time" class="form-control">
-                <option selected value>Choose Time</option>
-                <option v-for="u_time in 12" :value="u_time">{{u_time}} Month</option>
+              ระยะเวลาต่ออายุ {{upgrade_time}}
+              <select v-model="upgrade_time" class="form-control select">
+                <option class="option" selected value>Choose Time</option>
+                <option class="option" v-for="u_time in 12" :value="u_time">{{u_time}} Month</option>
               </select>
             </div>
-          </div>Confirm Password For Change Profile
+          </div>ยืนยันรหัสของแอดมิน เพื่อทำการเปลี่ยนแปลงผู้ใช้
           <input
             type="password"
             v-model="passwordCheck"
@@ -118,9 +119,9 @@
                 Last Edit : {{this_user_edit.m_update_date}}<br>
           Password : {{this_user_edit.m_password}}-->
           <div class="row">
-            <div class="col-lg-9 col-xs-12"></div>
-            <div class="col-lg-3 col-xs-12">
-              <button class="form-control btn-primary">Save</button>
+            <div class="col-lg-8 col-xs-12"></div>
+            <div class="col-lg-4 col-xs-12">
+              <button class="form-control btn-primary">ดำเนินการต่อ</button>
             </div>
           </div>
           <br />
@@ -244,19 +245,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

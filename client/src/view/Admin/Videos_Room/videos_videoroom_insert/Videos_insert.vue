@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <center>
-      <h4 class="header">Add Video</h4>
+      <h4 class="header">เพิ่มวีดีโอ</h4>
     </center>
     <div class="row">
       <div class="col-lg-3 col-xs-12"></div>
@@ -9,9 +9,9 @@
         <form @submit.prevent="submitAddvideos">
           <!-- <h5>Select Room</h5> -->
           <!-- {{ListRoom}} -->
-          <select class="form-control" v-model="selectRoom" required>
-            <option disabled selected value>เลือก ห้องวีดีโอ</option>
-            <option
+          <select class="form-control select" v-model="selectRoom" required>
+            <option class="option" disabled selected value>เลือก ห้องวีดีโอ</option>
+            <option class="option"
               v-for="(room,index) in ListRoom"
               :key="index"
               :value="room.vr_id"
@@ -19,7 +19,7 @@
           </select>
           <hr />
           <div v-for="(addV,index) in addVideos" :key="index">
-            <h5>ชื่อ วีดีโอ</h5>
+            <h5>ชื่อวีดีโอ</h5>
             <input
               v-model="addVideos[index].v_title"
               type="text"
@@ -28,7 +28,7 @@
               required
             />
             <br />
-            <h5>ลิงค์ วีดีโอ ( Embed )</h5>
+            <h5>ลิงค์วีดีโอ ( Embed )</h5>
             <input
               v-model="addVideos[index].v_link"
               type="text"
@@ -53,7 +53,7 @@
                   class="form-control btn-danger"
                   type="button"
                   @click="btn_remove(index)"
-                >Remove</button>
+                >ลบ</button>
               </div>
               <div class="col-lg-6 col-xs-6"></div>
             </div>
@@ -61,10 +61,10 @@
           </div>
           <div class="row">
             <div class="col-lg-6 col-xs-6">
-              <button class="form-control btn-success" type="button" @click="btn_addmore">Add More</button>
+              <button class="form-control btn-success" type="button" @click="btn_addmore">เพิ่ม</button>
             </div>
             <div class="col-lg-6 col-xs-6">
-              <button class="form-control btn-primary" type="submit">Save</button>
+              <button class="form-control btn-primary" type="submit">ดำเนินการต่อ</button>
             </div>
           </div>
         </form>
@@ -132,18 +132,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

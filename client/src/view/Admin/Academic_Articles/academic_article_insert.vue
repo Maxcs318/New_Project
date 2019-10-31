@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <h4 class="header">
-              <center>เพิ่ม บทความวิชาการ</center>
+              <center>เพิ่มบทความวิชาการ</center>
             </h4>
           </div>
         </div>
@@ -21,7 +21,7 @@
                 type="button"
                 class="form-control btn-success block-center col-lg-6"
                 @click="ChooseFilesImage"
-              >Choose Image</button>
+              >เลือกรูป</button>
               <input
                 id="chooseImage"
                 ref="filesimage"
@@ -40,12 +40,12 @@
               <br />
               <select
                 v-model="academic_article.aa_category"
-                class="form-control"
+                class="form-control select"
                 placeholder="ประเภทของบทความ"
                 required
               >
-                <option selected disabled value>เลือก ประเภทของบทความ</option>
-                <option
+                <option class="option" selected disabled value>ประเภทของบทความ</option>
+                <option class="option"
                   v-for="(aac,index) in academic_article_category"
                   :key="index"
                   :value="aac.aac_id"
@@ -86,7 +86,7 @@
                   <br />
                 </div>
                 <div class="col-lg-2">
-                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
                   <br />
                 </div>
               </div>
@@ -97,11 +97,11 @@
                     type="button"
                     class="form-control btn-primary col-lg-12"
                     @click="ChooseFiles"
-                  >Choose Files</button>
+                  >เลือกไฟล์</button>
                   <br />
                 </div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>
@@ -217,16 +217,15 @@ export default {
 </script>
 
 <style scoped>
-select,
-option {
+.select,
+.option {
   background-color: #1a2a3e;
   color: #e0e0e0;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
-
-select:focus {
+.select:focus {
   background-color: #1a2a3e;
   color: #e0e0e0;
 }

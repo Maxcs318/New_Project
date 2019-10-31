@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <h4 class="header">
-              <center>เพิ่ม ประเภท ของบทความวิชาการ</center>
+              <center>เพิ่มประเภท ของบทความวิชาการ</center>
             </h4>
           </div>
         </div>
@@ -21,7 +21,7 @@
                 type="button"
                 class="form-control btn-success block-center col-lg-6"
                 @click="ChooseFilesFirst"
-              >Choose Image</button>
+              >เลือกรูป</button>
               <input
                 id="chooseImage"
                 ref="filesfirst"
@@ -29,7 +29,7 @@
                 type="file"
                 @change="handleFilesFirst"
               />
-              <br />ชื่อ ประเภท ของบทความวิชาการ
+              <br />ชื่อประเภท ของบทความวิชาการ
               <input
                 type="text"
                 v-model="academic_article.aac_title"
@@ -50,7 +50,7 @@
               <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>

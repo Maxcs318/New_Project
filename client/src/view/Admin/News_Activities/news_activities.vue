@@ -10,12 +10,12 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-xs-12">
-        <table style="width:100%">
+        <table class="table" style="width:100%">
           <tr style="width:100%">
-            <th style="width:5%">ID</th>
-            <th style="width:35%">News Title</th>
-            <th style="width:20%">Create Date</th>
-            <th style="width:20%">Update Date</th>
+            <th style="width:5%">ลำดับ</th>
+            <th style="width:35%">หัวข้อข่าว</th>
+            <th style="width:20%">วันที่สร้าง</th>
+            <th style="width:20%">วันที่แก้ไข</th>
             <th style="width:10%"></th>
             <th style="width:10%"></th>
           </tr>
@@ -28,10 +28,10 @@
             <td>{{news.n_create_date}}</td>
             <td>{{news.n_update_date}}</td>
             <td>
-              <button class="form-control btn-warning" @click="editNews(news.n_id)">Edit</button>
+              <button class="form-control btn-warning" @click="editNews(news.n_id)">แก้ไข</button>
             </td>
             <td>
-              <button class="form-control btn-danger" @click="deleteNews(news.n_id)">Delete</button>
+              <button class="form-control btn-danger" @click="deleteNews(news.n_id)">ลบ</button>
             </td>
           </tr>
         </table>

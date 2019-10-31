@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <center>
-      <h4 class="header">Edit Product</h4>
+      <h4 class="header">แก้ไขสินค้า</h4>
     </center>
     <div class="row mt-5" v-if="thisProduct && the_user">
       <div class="col-lg-3 col-xs-12"></div>
@@ -16,7 +16,7 @@
           type="button"
           class="form-control btn-success col-lg-12"
           @click="ChooseFilesImage"
-        >Change Preview Image</button>
+        >เปลี่ยนรูป</button>
         <br />
         <form @submit.prevent="submitProduct">
           <input
@@ -79,11 +79,12 @@
               ประเภทสินค้า
               <select
                 v-model="productE.p_category"
-                class="form-control"
+                class="form-control select"
                 placeholder="ประเภทสินค้า"
                 required
               >
                 <option
+                class="option"
                   v-for="(pc,index) in product_category"
                   :key="index"
                   :value="pc.pc_id"
@@ -129,7 +130,7 @@
               <b>{{index+1}}.</b>
               {{files[index].name }}
               <!-- <b> Size </b>{{files[index].size}} byte -->
-              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">Remove</button>
+              <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
               <br />
             </div>
           </div>
@@ -138,13 +139,13 @@
             <div class="col-lg-6">
               <button
                 type="button"
-                class="form-control btn-success col-lg-12"
+                class="form-control btn-primary col-lg-12"
                 @click="ChooseFiles"
-              >Add Another Image</button>
+              >เพิ่มรูปภาพอื่น</button>
               <br />
             </div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-lg-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-lg-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>
@@ -284,15 +285,15 @@ export default {
 };
 </script>
 <style scoped>
-select,
-option {
+.select,
+.option {
   background-color: #1a2a3e;
   color: #e0e0e0;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
-select:focus {
+.select:focus {
   background-color: #1a2a3e;
   color: #e0e0e0;
 }

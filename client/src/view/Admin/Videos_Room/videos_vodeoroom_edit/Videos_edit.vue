@@ -1,23 +1,23 @@
 <template>
     <div class="container ">
-        <center><h4 class="header">Edit Video </h4></center>
+        <center><h4 class="header">แก้ไขวีดีโอ</h4></center>
         <div class="row mt-5" v-if="thisVideoNow && the_user">
             <div class="col-lg-3 col-xs-12"></div>
             <div class="col-lg-6 col-xs-12">
                 <form @submit.prevent="submitEditVideo">
-                    <h5>ชื่อ วีดีโอ</h5>
-                    <input v-model="thisvideo.v_title" type="text" placeholder="ชื่อ วีดีโอ" class="form-control">
+                    <h5>ชื่อวีดีโอ</h5>
+                    <input v-model="thisvideo.v_title" type="text" placeholder="ชื่อวีดีโอ" class="form-control">
                     <br>
                     <h5>รายละเอียด</h5>
                     <textarea v-model="thisvideo.v_description" class="form-control textarea" placeholder="รายละเอียด" rows="6" ></textarea>
                     <br>
-                    <h5>ลิ้งค์ วีดีโอ</h5>
-                    <input v-model="thisvideo.v_link" type="text" class="form-control">
+                    <h5>ลิ้งค์วีดีโอ</h5>
+                    <input v-model="thisvideo.v_link" type="text" class="form-control" placeholder="www.ลิ้งค์วีดีโอ.com">
                     <br>
                     <div class="row">
                         <div class="col-lg-6 col-xs-6"></div>
                         <div class="col-lg-6 col-xs-6">
-                            <button class="form-control btn-primary" type="submit"> Save. </button>
+                            <button class="form-control btn-primary" type="submit">ดำเนินการต่อ</button>
                         </div>
                     </div>
                 </form>

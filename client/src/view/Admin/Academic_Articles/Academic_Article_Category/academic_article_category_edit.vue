@@ -4,7 +4,7 @@
             <div class="container " v-if="the_user && Academic_Article_Category">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h4 class="header"><center>แก้ไข ประเภท ของบทความวิชาการ</center></h4>
+                        <h4 class="header"><center>แก้ไขประเภท ของบทความวิชาการ</center></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -16,10 +16,10 @@
                             <img class="admin-img" v-else :src="getImgUrl(academic_article.aac_image)" width="100%">
                             </center>
                             <br>
-                            <button type="button" class="form-control btn-success block-center col-lg-6" @click="ChooseFilesFirst"> Choose Image </button>
+                            <button type="button" class="form-control btn-success block-center col-lg-6" @click="ChooseFilesFirst">เลือกรูป</button>
                             <input id="chooseImage" ref="filesfirst" style="display: none;" type="file" @change="handleFilesFirst">
                             <br>
-                            ชื่อ ประเภท ของบทความวิชาการ
+                            ชื่อประเภท ของบทความวิชาการ
                             <input type="text" v-model="academic_article.aac_title" class="form-control" placeholder="ชื่อ ประเภท ของบทความวิชาการ" required>
                             <br>
                             รายละเอียด
@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-lg-6"></div>
                                 <div class="col-lg-6">
-                                    <button type="submit" class="form-control btn-primary col-12"> Save </button>
+                                    <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                                     <br>
                                 </div>
                             </div>

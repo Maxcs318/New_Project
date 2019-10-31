@@ -3,20 +3,20 @@
     <div class="row">
       <div class="col-lg-12 col-xs-12">
         <h4 class="header">
-          <center>Manage Member</center>
+          <center>การจัดการสมาชิก</center>
         </h4>
         <div class="row">
           <div class="col-lg-2"></div>
-          <div class="col-lg-3">
-            Select By : {{selected}}
-            <select v-model="selected" class="form-control">
-              <option selected value>ทั้งหมด</option>
-              <option v-for="sl in select" :value="sl.file">{{sl.file}}</option>
+          <div class="col-lg-4">
+            เรียงโดย : {{selected}}
+            <select v-model="selected" class="form-control select">
+              <option class="option" selected value>ทั้งหมด</option>
+              <option class="option" v-for="sl in select" :value="sl.file">{{sl.file}}</option>
             </select>
             <br />
           </div>
-          <div class="col-lg-5">
-            Search : {{search}}
+          <div class="col-lg-4">
+            ค้นหา : {{search}}
             <input
               type="text"
               class="form-control"
@@ -24,9 +24,9 @@
               v-model="search"
               v-if="this.selected!='member_type'"
             />
-            <select v-model="search" class="form-control" v-if="this.selected == 'member_type'">
-              <option selected value>Choose Type</option>
-              <option v-for="mt in Member_Type" :value="mt.mt_id">{{mt.mt_name}}</option>
+            <select v-model="search" class="form-control select" v-if="this.selected == 'member_type'">
+              <option class="option" selected value>เลือกประเภท</option>
+              <option class="option" v-for="mt in Member_Type" :value="mt.mt_id">{{mt.mt_name}}</option>
             </select>
             <br />
           </div>
@@ -34,15 +34,15 @@
             <center v-if="search!=''">Result : {{listFilter.length}}</center>
           </div>
         </div>
-        <table style="width:100%">
+        <table class="table" style="width:100%">
           <tr style="width:100%">
-            <th style="width:5%">ID</th>
-            <th style="width:15%">First Name</th>
-            <th style="width:15%">Last Name</th>
-            <th style="width:15%">First Name Eng</th>
-            <th style="width:15%">Last Name Eng</th>
-            <th style="width:10%">User Name</th>
-            <th style="width:15%">Member Type</th>
+            <th style="width:5%">ลำดับ</th>
+            <th style="width:15%">ชื่อจริง</th>
+            <th style="width:15%">นามสกุล</th>
+            <th style="width:15%">ชื่อจริง (Eng)</th>
+            <th style="width:15%">นามสกุล (Eng)</th>
+            <th style="width:10%">ชื่อผู้ใช้</th>
+            <th style="width:15%">ระดับสมาชิก</th>
             <th style="width:10%"></th>
           </tr>
           <tr
@@ -59,7 +59,7 @@
               <div v-for="mt in Member_Type" v-if="mt.mt_id == member.m_type">{{mt.mt_name}}</div>
             </td>
             <td>
-              <button class="form-control btn-warning" @click="editMember(member.m_id)">Edit</button>
+              <button class="form-control btn-warning" @click="editMember(member.m_id)">แก้ไข</button>
             </td>
           </tr>
         </table>
@@ -236,19 +236,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

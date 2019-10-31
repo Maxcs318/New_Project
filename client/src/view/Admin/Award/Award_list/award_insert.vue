@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <h3 class="header">
-      <center>Add Award Recipients</center>
+      <center>เพิ่มรายชื่อ ผู้ได้รับรางวัล</center>
     </h3>
     <div class="row">
       <div class="col-lg-3 col-xs-12"></div>
@@ -20,25 +20,25 @@
           <div class="row">
             <div class="col-lg-12 col-12">
               บริษัท
-              <select v-model="award_list.al_company_id" class="form-control" required>
-                <option selected disabled value>เลือก บริษัท</option>
-                <option v-for="comp in Company" :value="comp.c_id">{{ comp.c_title }}</option>
+              <select v-model="award_list.al_company_id" class="form-control select" required>
+                <option class="option" selected disabled value>เลือก บริษัท</option>
+                <option class="option" v-for="comp in Company" :value="comp.c_id">{{ comp.c_title }}</option>
               </select>
               <br />
             </div>
             <div class="col-lg-6 col-12">
               ประเภทรางวัล
-              <select v-model="award_list.al_award_type_id" class="form-control" required>
-                <option selected disabled value>เลือก ประเภทรางวัล</option>
-                <option v-for="at in Award_type" :value="at.at_id">{{ at.at_title }}</option>
+              <select v-model="award_list.al_award_type_id" class="form-control select" required>
+                <option class="option" selected disabled value>เลือก ประเภทรางวัล</option>
+                <option class="option" v-for="at in Award_type" :value="at.at_id">{{ at.at_title }}</option>
               </select>
               <br />
             </div>
             <div class="col-lg-6 col-12">
-              ปี
-              <select v-model="award_list.al_year_id" class="form-control" required>
-                <option selected disabled value>เลือก ปี</option>
-                <option v-for="ay in Award_year" :value="ay.ay_id">{{ ay.ay_title }}</option>
+              ปีที่รับรางวัล
+              <select v-model="award_list.al_year_id" class="form-control select" required>
+                <option class="option" selected disabled value>เลือก ปีที่รับรางวัล</option>
+                <option class="option" v-for="ay in Award_year" :value="ay.ay_id">{{ ay.ay_title }}</option>
               </select>
               <br />
             </div>
@@ -46,7 +46,7 @@
           <div class="row">
             <div class="col-lg-6"></div>
             <div class="col-lg-6">
-              <button type="submit" class="form-control btn-primary col-12">Save</button>
+              <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
               <br />
             </div>
           </div>
@@ -102,19 +102,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

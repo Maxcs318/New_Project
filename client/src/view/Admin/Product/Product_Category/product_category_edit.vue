@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <h4 class="header">
-              <center>แก้ไข ประเภท ของบทความวิชาการ</center>
+              <center>แก้ไข ประเภทบทความวิชาการ</center>
             </h4>
           </div>
         </div>
@@ -23,7 +23,7 @@
                   type="button"
                   class="form-control btn-success col-lg-6"
                   @click="ChooseFilesFirst"
-                >Choose Image</button>
+                >เลือกรูป</button>
               </center>
 
               <input
@@ -38,6 +38,7 @@
                 type="text"
                 v-model="productC.pc_title"
                 class="form-control"
+                placeholder="ชื่อ ประเภท ของบทความวิชาการ"
                 required
               />
               <br />รายละเอียด
@@ -53,7 +54,7 @@
               <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>

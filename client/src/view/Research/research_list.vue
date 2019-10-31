@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        <table style="width:100%">
+        <table class="table" style="width:100%">
           <tr style="width:100%">
             <th style="width:5%; text-align:center">#</th>
             <th style="width:55%">หัวข้องานวิจัย</th>

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <h4 class="header">
-              <center>เพิ่ม รูปภาพกิจกรรม</center>
+              <center>เพิ่มกิจกรรม</center>
             </h4>
           </div>
         </div>
@@ -21,7 +21,7 @@
                 type="button"
                 class="form-control btn-success block-center col-lg-6"
                 @click="ChooseFilesFirst"
-              >Choose Preview Image</button>
+              >เลือกรูป</button>
               <input
                 id="chooseImage"
                 ref="filesfirst"
@@ -55,7 +55,7 @@
                     type="button"
                     class="form-control btn-danger"
                     @click="RemoveRow(index)"
-                  >Remove</button>
+                  >ลบ</button>
                   <br />
                 </div>
               </div>
@@ -66,11 +66,11 @@
                     type="button"
                     class="form-control btn-primary col-lg-12"
                     @click="ChooseFiles"
-                  >Choose Another Image</button>
+                  >เพิ่มรูปอื่น</button>
                   <br />
                 </div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <h5 class="header">
-      <center>Admin Check Payments</center>
+      <center>ตรวจสอบการชำระเงิน</center>
     </h5>
     <br />
     <div class="row">
@@ -11,20 +11,20 @@
           type="button"
           class="form-control btn-primary"
           @click="check_delivery"
-        >Check Delivery</button>
+        >การจัดส่ง</button>
         <br />
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12 col-xs-12">
-        <table style="width:100%; text-align: center;">
+        <table class="table" style="width:100%; text-align: center;">
           <tr>
-            <th>No</th>
-            <th>Order ID</th>
-            <th>Code Order</th>
-            <th>Total Price</th>
-            <th>Status Order</th>
-            <th>Create Date</th>
+            <th>ลำดับ</th>
+            <th>ไอดีใบสั่งซ์้อ</th>
+            <th>รหัสใบสั่งซื้อ</th>
+            <th>ราคารวม</th>
+            <th>สถานะออเดอร์</th>
+            <th>วันที่สร้าง</th>
             <th></th>
             <th></th>
           </tr>
@@ -34,7 +34,7 @@
           >
             <td>{{ index+1+(page*data_in_page) }}</td>
             <td>{{order.o_id}}</td>
-            <td @click="check_this_order(order.o_code_order)">{{order.o_code_order}}</td>
+            <td>{{order.o_code_order}} <br> <b class="about-order" @click="check_this_order(order.o_code_order)">ดูเพิ่มเติม</b> </td>
             <td>{{order.o_total_price}}</td>
             <td>
               <div v-for=" os in Order_Status " v-if="os.os_id == order.o_status_id">{{os.os_title}}</div>
@@ -45,14 +45,14 @@
                 type="button"
                 class="form-control btn-primary"
                 @click="Confirm_Order(order.o_code_order)"
-              >Confirm</button>
+              >ยืนยัน</button>
             </td>
             <td>
               <button
                 type="button"
                 class="form-control btn-danger"
                 @click="No_Confirm_Order(order.o_code_order)"
-              >Discard</button>
+              >ละทิ้ง</button>
             </td>
           </tr>
         </table>

@@ -113,18 +113,20 @@ export default {
   text-align: center;
 }
 
-table {
+.table {
   margin: 24px auto;
 }
 
-th {
+.table th {
+  color: #fff;
   padding: 7px 0;
   font-weight: 600;
   font-size: 15px;
   line-height: 150%;
+  border-top: none;
   border-bottom: 3px solid #3f4d63;
 }
-td {
+.table td {
   color: #bdbdbd;
   border-bottom: 1px solid #3f4d63;
   padding: 7px 0;
@@ -172,17 +174,25 @@ input[type="password"]:focus {
   border-radius: 24px;
 }
 
-select,
-option {
+.select,
+.option {
   background-color: #1a2a3e;
-  color: #eecd02;
+  color: #e0e0e0;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
 
-select:focus {
+.select:focus {
   background-color: #1a2a3e;
+  color: #e0e0e0;
+}
+
+.about-order {
+  cursor: pointer;
   color: #eecd02;
+}
+.about-order:hover {
+  opacity: 0.7;
 }
 </style>

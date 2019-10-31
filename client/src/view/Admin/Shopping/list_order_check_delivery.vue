@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="the_user">
     <h5 class="header">
-      <center>Check Delivery by Admin</center>
+      <center>การจัดส่ง</center>
     </h5>
     <br />
     <div class="row">
@@ -11,20 +11,20 @@
           type="button"
           class="form-control btn-primary"
           @click="check_payment"
-        >Check Payment</button>
+        >ตรวจสอบการชำระเงิน</button>
         <br />
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12 col-xs-12">
-        <table style="width:100%; text-align: center;">
+        <table class="table" style="width:100%; text-align: center;">
           <tr>
-            <th>No</th>
-            <th>Order ID</th>
-            <th>Code Order</th>
-            <th>Total Price</th>
-            <th>Status Order</th>
-            <th>Create Date</th>
+            <th>ลำดับ</th>
+            <th>ไอดีใบสั่งซ์้อ</th>
+            <th>รหัสใบสั่งซื้อ</th>
+            <th>ราคารวม</th>
+            <th>สถานะออเดอร์</th>
+            <th>วันที่สร้าง</th>
             <th></th>
           </tr>
           <tr
@@ -44,7 +44,7 @@
                 type="button"
                 class="form-control btn-primary"
                 @click="Confirm_Order(order.o_code_order)"
-              >Confirm</button>
+              >ยืนยัน</button>
             </td>
           </tr>
         </table>

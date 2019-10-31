@@ -8,45 +8,45 @@
     <br />
     <div class="row">
       <div class="col-lg-3 col-xs-12">
-        <button class="form-control btn-primary" @click="company">Company</button>
+        <button class="form-control btn-primary" @click="company">บริษัท</button>
         <br />
       </div>
       <div class="col-lg-3 col-xs-12">
-        <button class="form-control btn-primary" @click="award_type">Award Type</button>
+        <button class="form-control btn-primary" @click="award_type">ประเภทรางวัล</button>
         <br />
       </div>
       <div class="col-lg-3 col-xs-12">
-        <button class="form-control btn-primary" @click="award_years">Award Years</button>
+        <button class="form-control btn-primary" @click="award_years">ปีที่รับรางวัล</button>
         <br />
       </div>
       <div class="col-lg-3 col-xs-12">
-        <button class="form-control btn-primary" @click="addaward">Add Award</button>
+        <button class="form-control btn-primary" @click="addaward">เพิ่มรางวัล</button>
         <br />
       </div>
     </div>
     <div class="row">
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
-        Search Name : {{search}}
+        ค้นหาชื่อ : {{search}}
         <input
           type="text"
           class="form-control"
-          placeholder="Search..."
+          placeholder="ค้นหา..."
           v-model="search"
         />
       </div>
       <div class="col-lg-3">
-        Award Type : {{selected}}
-        <select v-model="selected" class="form-control">
-          <option selected value>All</option>
-          <option v-for=" at in Award_type " :value="at.at_id">{{at.at_title}}</option>
+        ประเภทรางวัล: {{selected}}
+        <select v-model="selected" class="form-control select">
+          <option class="option" selected value>ทั้งหมด</option>
+          <option class="option" v-for=" at in Award_type " :value="at.at_id">{{at.at_title}}</option>
         </select>
         <br />
       </div>
       <div class="col-lg-2">
-        Award Year : {{year_show.ay_title}}
-        <select v-model="year_show" class="form-control">
-          <option v-for=" ay in year_preview " :value="ay">{{ay.ay_title}}</option>
+        ปีที่รับ : {{year_show.ay_title}}
+        <select v-model="year_show" class="form-control select">
+          <option class="option" v-for=" ay in year_preview " :value="ay">{{ay.ay_title}}</option>
         </select>
         <br />
       </div>
@@ -57,9 +57,9 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        <table style="width:100%">
+        <table class="table" style="width:100%">
           <tr style="width:100%">
-            <th style="width:5%">ID</th>
+            <th style="width:5%">ลำดับ</th>
             <th style="width:35%">รายชื่อ</th>
             <th style="width:20%">บริษัท</th>
             <th style="width:20%">ประเภทรางวัล</th>
@@ -85,7 +85,7 @@
               >{{at.at_title}}</div>
             </td>
             <td>
-              <button class="form-control btn-warning" @click="editAward_list(award.al_id)">Edit</button>
+              <button class="form-control btn-warning" @click="editAward_list(award.al_id)">แก้ไข</button>
             </td>
             <td>
               <button class="form-control btn-danger" @click="deleteAward_list(award.al_id)">Delete</button>
@@ -297,19 +297,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-select,
-option {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-  border: 1px solid #3f4d63;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-
-select:focus {
-  background-color: #1a2a3e;
-  color: #e0e0e0;
-}
-</style>

@@ -22,7 +22,7 @@
                   type="button"
                   class="form-control btn-success col-lg-6"
                   @click="ChooseFilesImage"
-                >Choose Image</button>
+                >เลือกรูป</button>
               </center>
               <input
                 id="chooseImage"
@@ -40,9 +40,10 @@
                 required
               />
               <br />
-              <select v-model="article.a_category" class="form-control" required>
-                <option selected disabled value>ประเภทของบทความ</option>
+              <select v-model="article.a_category" class="form-control select" required>
+                <option class="option" selected disabled value>ประเภทของบทความ</option>
                 <option
+                class="option"
                   v-for="(ac,index) in article_category"
                   :key="index"
                   :value="ac.ac_id"
@@ -83,7 +84,7 @@
                   <br />
                 </div>
                 <div class="col-lg-2">
-                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
                   <br />
                 </div>
               </div>
@@ -94,11 +95,11 @@
                     type="button"
                     class="form-control btn-primary col-lg-12"
                     @click="ChooseFiles"
-                  >Choose Files</button>
+                  >เลือกไฟล์</button>
                   <br />
                 </div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>
@@ -213,15 +214,15 @@ export default {
 };
 </script>
 <style scoped>
-select,
-option {
+.select,
+.option {
   background-color: #1a2a3e;
   color: #e0e0e0;
   border: 1px solid #3f4d63;
   box-sizing: border-box;
   border-radius: 5px;
 }
-select:focus {
+.select:focus {
   background-color: #1a2a3e;
   color: #e0e0e0;
 }

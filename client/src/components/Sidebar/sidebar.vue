@@ -6,7 +6,7 @@
         <li>
           <h6 href="#" @click="home">
             <!-- <i class="fas fa-home">&nbsp; Home</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/home.png'" /> Home
+            <img class="sidebar-logo" :src="path_files+'logo_img/home.png'" /> หน้าหลัก
           </h6>
         </li>
         <li>
@@ -42,7 +42,7 @@
         <li>
           <h6 href="#" @click="list_gallery">
             <!-- <i class="fas fa-images">&nbsp; Gallery list</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/gallery.png'" /> Gallery list
+            <img class="sidebar-logo" :src="path_files+'logo_img/gallery.png'" /> Event
           </h6>
         </li>
         <li>

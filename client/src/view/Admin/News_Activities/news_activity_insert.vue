@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <center>
-              <header class="header">เพิ่ม ข่าวสาร & กิจกรรม</header>
+              <header class="header">เพิ่ม ข่าวสารและกิจกรรม</header>
             </center>
           </div>
         </div>
@@ -75,7 +75,7 @@
                   <br />
                 </div>
                 <div class="col-lg-2">
-                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">X</button>
+                  <button type="button" class="form-control btn-danger" @click="RemoveRow(index)">ลบ</button>
                   <br />
                 </div>
               </div>
@@ -86,11 +86,11 @@
                     type="button"
                     class="form-control btn-primary col-lg-12"
                     @click="ChooseFiles"
-                  >Choose Files</button>
+                  >เลือกไฟล์</button>
                   <br />
                 </div>
                 <div class="col-lg-6">
-                  <button type="submit" class="form-control btn-primary col-12">Save</button>
+                  <button type="submit" class="form-control btn-primary col-12">ดำเนินการต่อ</button>
                   <br />
                 </div>
               </div>

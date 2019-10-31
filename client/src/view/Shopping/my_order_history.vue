@@ -13,7 +13,7 @@
             <div class="col-lg-12 col-xs-12">
                 <center><h5>My Order History</h5></center>
                 <br>
-                <table style="width:100%; text-align: center;">
+                <table class="table" style="width:100%; text-align: center;">
                     <tr>
                         <th> No </th>
                         <th> Code Order </th>

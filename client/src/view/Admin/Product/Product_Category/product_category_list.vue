@@ -4,17 +4,17 @@
         <div class="row">
             <div class="col-lg-9 col-xs-12"></div>
             <div class="col-lg-3 col-xs-12">
-                <button class="form-control btn-primary" @click="add_product_category">Add Product Category</button>
+                <button class="form-control btn-primary" @click="add_product_category">เพิ่มประเภทสินค้า</button>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <table style="width:100%" >
+                <table class="table" style="width:100%" >
                     <tr style="width:100%">
-                        <th style="width:5%">ID</th>
-                        <th style="width:35%">Product Category Title</th>
-                        <th style="width:20%">Create Date</th>
-                        <th style="width:20%">Update Date</th>
+                        <th style="width:5%">ลำดับ</th>
+                        <th style="width:35%">ชื่อประเภทสินค้า</th>
+                        <th style="width:20%">วันที่สร้าง</th>
+                        <th style="width:20%">วันที่แก้ไข</th>
                         <th style="width:10%">  </th>
                         <th style="width:10%">  </th>
                     </tr>
@@ -24,11 +24,11 @@
                         <td>{{product.pc_create_date}}</td>
                         <td>{{product.pc_update_date}}</td>
                         <td> 
-                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-warning" @click="editProduct_Category(product.pc_id)">Edit</button> 
+                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-warning" @click="editProduct_Category(product.pc_id)">แก้ไข</button> 
                             <button v-else class="form-control btn-dark">Don't edit</button> 
                         </td>
                         <td> 
-                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-danger"  @click="deleteProduct_Category(product.pc_id)">Delete</button> 
+                            <button v-if="product.pc_id != 1 && product.pc_id != 2" class="form-control btn-danger"  @click="deleteProduct_Category(product.pc_id)">ลบ</button> 
                             <button v-else class="form-control btn-dark"> Don't delete </button> 
                         </td>
                     </tr>

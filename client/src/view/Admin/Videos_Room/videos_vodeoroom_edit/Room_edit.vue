@@ -1,6 +1,6 @@
 <template>
     <div class="container ">
-        <center><h4 class="header">Edit Video Room</h4></center>
+        <center><h4 class="header">แก้ไขห้องวีดีโอ</h4></center>
         <div class="row mt-5" v-if="thisVideo_Room && the_user">
             <div class="col-lg-3 col-xs-12"></div>
             <div class="col-lg-6 col-xs-12">
@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-xs-6"></div>
                         <div class="col-lg-6 col-xs-6">
-                            <button class="form-control btn-primary" type="submit"> Save. </button>
+                            <button class="form-control btn-primary" type="submit">ดำเนินการต่อ</button>
                         </div>
                     </div>
                 </form>
