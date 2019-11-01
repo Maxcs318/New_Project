@@ -170,6 +170,14 @@ input[type="password"]:focus {
   margin-right: auto;
 }
 
+.event-img {
+  width: auto;
+  height: 170px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .btn-circle {
   border-radius: 24px;
 }
