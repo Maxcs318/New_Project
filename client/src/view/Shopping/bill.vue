@@ -3,8 +3,6 @@
         <div class="row">
             <div class="col-lg-12 col-xs-12">
                 <h5><center> Bill : {{this.$route.params.CodeOrder}} </center></h5>
-                <button class="form-control btn-primary" @click="show_bill"> Print Bill </button> 
-                <!-- {{Order_Status}} -->
             </div>
         </div>
         <div id="print" v-if="Order!=0 && Shipping_Address && Moneytransfer && Payment"
@@ -49,11 +47,11 @@
                     <div class="col-12">
                         <table style="width:100%;">
                             <tr>
-                                <th> # </th>
-                                <th> รายการ </th>
-                                <th> ราคา </th>
-                                <th> จำนวน </th>
-                                <th> เป็นเงิน </th>                            
+                                <th style="width:5%;"> # </th>
+                                <th style="width:50%;"> รายการ </th>
+                                <th style="width:15%;"> ราคา </th>
+                                <th style="width:15%;"> จำนวน </th>
+                                <th style="width:15%;"> เป็นเงิน </th>                            
                             </tr>
                             <tr v-for="(order_item,index) in Order_Items" :key="index">
                                 <td>{{index+1}}</td>

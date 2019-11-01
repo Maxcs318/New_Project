@@ -57,7 +57,7 @@
                     </div>
                 <br>
             </div>
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-lg-12 col-xs-12" v-if="Order && Order.o_status_id >=3">
                 <div class="row">
                     <div class="col-lg-9"></div>
                     <div class="col-lg-3">
