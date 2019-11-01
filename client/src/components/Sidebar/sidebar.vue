@@ -22,45 +22,9 @@
           </h6>
         </li>
         <li>
-          <h6 href="#" @click="product">
-            <!-- <i class="fab fa-product-hunt">&nbsp; Product</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/product.png'" /> Product
-          </h6>
-        </li>
-        <li>
-          <h6 href="#" @click="video_room">
-            <!-- <i class="fas fa-video">&nbsp; Video Room & Videos</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/video.png'" /> Video Room & Videos
-          </h6>
-        </li>
-        <li>
-          <h6 href="#" @click="list_order">
-            <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/check-order.png'" /> Check order
-          </h6>
-        </li>
-        <li>
-          <h6 href="#" @click="list_gallery">
-            <!-- <i class="fas fa-images">&nbsp; Gallery list</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/gallery.png'" /> Event
-          </h6>
-        </li>
-        <li>
           <h6 href="#" @click="academic_article">
             <!-- <i class="fas fa-scroll">&nbsp; Academic article</i> -->
             <img class="sidebar-logo" :src="path_files+'logo_img/academic-article.png'" /> Academic article
-          </h6>
-        </li>
-        <li>
-          <h6 href="#" @click="online_journal">
-            <!-- <i class="fas fa-blog">&nbsp; Online journal</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/online-journal.png'" /> Online journal
-          </h6>
-        </li>
-        <li>
-          <h6 href="#" @click="manage_members">
-            <!-- <i class="fas fa-users-cog">&nbsp; Manage members</i> -->
-            <img class="sidebar-logo" :src="path_files+'logo_img/member.png'" /> Manage members
           </h6>
         </li>
         <li>
@@ -70,9 +34,51 @@
           </h6>
         </li>
         <li>
+          <h6 href="#" @click="online_journal">
+            <!-- <i class="fas fa-blog">&nbsp; Online journal</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/online-journal.png'" /> Online journal
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="product">
+            <!-- <i class="fab fa-product-hunt">&nbsp; Product</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/product.png'" /> Product
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="list_order">
+            <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/check-order.png'" /> Check order
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="list_order">
+            <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/check.png'" /> Order Complete
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="video_room">
+            <!-- <i class="fas fa-video">&nbsp; Video Room & Videos</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/video.png'" /> Video Room & Videos
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="list_gallery">
+            <!-- <i class="fas fa-images">&nbsp; Gallery list</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/gallery.png'" /> Event
+          </h6>
+        </li>
+        <li>
           <h6 href="#" @click="award">
             <!-- <i class="fas fa-trophy">&nbsp; Award</i> -->
             <img class="sidebar-logo" :src="path_files+'logo_img/award.png'" /> Award
+          </h6>
+        </li>
+        <li>
+          <h6 href="#" @click="manage_members">
+            <!-- <i class="fas fa-users-cog">&nbsp; Manage members</i> -->
+            <img class="sidebar-logo" :src="path_files+'logo_img/member.png'" /> Manage members
           </h6>
         </li>
       </ul>
@@ -133,7 +139,7 @@ export default {
   font-weight: 100;
   background: #efefef;
   width: 270px;
-  height: 480px;
+  height: 520px;
   z-index: 100;
   padding-left: 20px;
   padding-right: 50px;
@@ -181,7 +187,7 @@ h6 {
   cursor: pointer;
 }
 
-.sidebar-logo{
+.sidebar-logo {
   margin: auto;
   margin-right: 14px;
   width: 10%;
