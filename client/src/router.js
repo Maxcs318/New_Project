@@ -44,6 +44,7 @@ import admin_ListRooms from "./view/Admin/Videos_Room/listRooms.vue"
 import admin_ListVideos from "./view/Admin/Videos_Room/listVideos.vue"
 
 import admin_ListOrder from "./view/Admin/Shopping/list_order.vue"
+import admin_ListOrder_delivered from "./view/Admin/Shopping/list_order_delivered.vue"
 import check_delivery from "./view/Admin/Shopping/list_order_check_delivery.vue" 
 import admin_Order from "./view/Admin/Shopping/order.vue" // detail order for check
 
@@ -175,6 +176,7 @@ export const router = new VueRouter({
 
         { path : "/AdminListOrder/:Page",name:'AdminListOrder',component : admin_ListOrder },
         { path : "/AdminListOrder_check_delivery/:Page",name:'AdminListOrder_check_delivery',component : check_delivery },
+        { path : "/AdminListOrder_delivered/:Page",name:'AdminListOrder_delivered',component : admin_ListOrder_delivered },
         { path : "/check_order/:CodeOrder",name:"check_order",component : admin_Order },
         { path : "/AdminListGallery/:Page",name:'AdminListGallery',component : admin_Gallery },
         { path : "/AdminAA/:Page",name:'AdminAA',component : admin_Academic_Articles },
