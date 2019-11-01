@@ -43,6 +43,20 @@
                     </div>
                 </div>
                 <br>
+                <!-- <div class="row">
+                    <div class="col-1"> # </div>
+                    <div class="col-5"> รายการ </div>
+                    <div class="col-2"> ราคา </div>
+                    <div class="col-2"> จำนวน </div>
+                    <div class="col-2"> เป็นเงิน </div>      
+                </div>
+                <div class="row" v-for="(order_item,index) in Order_Items" :key="index">
+                    <div class="col-1">{{index+1}}</div>
+                    <div class="col-5"> {{order_item.oi_product_id}} </div>
+                    <div class="col-2"> {{order_item.oi_product_price}} </div>
+                    <div class="col-2"> {{order_item.oi_quantity}} </div>
+                    <div class="col-2"> {{order_item.oi_total_price}} </div>
+                </div> -->
                 <div class="row">
                     <div class="col-12">
                         <table style="width:100%;">
@@ -224,7 +238,7 @@ export default {
 }
 </script>
 <style>
-    #print{
+    /* #print{
         font-family: Arial;
-    }
+    } */
 </style>
