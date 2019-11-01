@@ -3,29 +3,29 @@
         <div class="row">
             <div class="col-lg-8 col-xs-12"></div>
             <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-primary" @click="page_order_history"> Order History </button> <br>
+                <button type="button" class="form-control btn-primary" @click="page_order_history"> ประวัติใบสั่งซื้อ </button> <br>
             </div>
             <div class="col-lg-2 col-xs-12"> 
-                <button type="button" class="form-control btn-success" @click="page_cart"> Cart </button> <br>
+                <button type="button" class="form-control btn-success" @click="page_cart"> ตะกร้า </button> <br>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <center><h5>My Order</h5></center>
+                <center><h5 class="header">ใบสั่งซื้อของฉัน</h5></center>
                 <br>
                 <table class="table" style="width:100%; text-align: center;">
                     <tr>
-                        <th> No </th>
-                        <th> Code Order </th>
-                        <th> Total Price </th>
-                        <th> Status Order </th>
-                        <th> Create Date </th>
+                        <th> ลำดับ </th>
+                        <th> รหัสใบสั่งซื้อ </th>
+                        <th> ราคารวม </th>
+                        <th> สถานะใบสั่งซื้อ </th>
+                        <th> วันที่สร้าง </th>
                         <th></th>
                         <th></th>
                     </tr>
                     <tr v-for="(order,index) in Order " :key="index">
                         <td>{{index+1}}</td>
-                        <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
+                        <td>{{order.o_code_order}} <br> <b class="about-order" @click="seethisOrder(order.o_code_order)">ดูเพิ่มเติม</b> </td>
                         <td>{{order.o_total_price}}</td>
                         <td>
                             <div v-for=" os in Order_Status " v-if="os.os_id == order.o_status_id">
@@ -34,10 +34,10 @@
                         </td>
                         <td>{{order.o_create_date}}</td>
                         <td> 
-                            <button type="button" class="form-control btn-primary" @click="Pay_This(order.o_id,order.o_code_order)"> Pay </button> 
+                            <button type="button" class="form-control btn-primary" @click="Pay_This(order.o_id,order.o_code_order)"> ชำระเงิน </button> 
                         </td>
                         <td> 
-                            <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id,order.o_code_order)"> Delete </button> 
+                            <button type="button" class="form-control btn-danger" @click="Delete_Order(order.o_id,order.o_code_order)"> ละทิ้ง </button> 
                         </td>        
                     </tr>
                 </table> <br><br>

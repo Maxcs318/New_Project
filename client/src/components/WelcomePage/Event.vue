@@ -2,7 +2,7 @@
   <div>
     <div class="event">
       <div class="container">
-        <router-link to="/gallerylist" title="กิจกรรมทั้งหมดของ GAMA">
+        <router-link to="/gallerylist/1" title="กิจกรรมทั้งหมดของ GAMA">
           <h1>ภาพกิจกรรมของ GAMA</h1>
         </router-link>
         <div class="row">

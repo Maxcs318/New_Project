@@ -33,7 +33,7 @@
           >
             <td>{{ index+1+(page*data_in_page) }}</td>
             <td>{{order.o_id}}</td>
-            <td @click="seethisOrder(order.o_code_order)">{{order.o_code_order}}</td>
+            <td>{{order.o_code_order}} <br><b class="about-order" @click="seethisOrder(order.o_code_order)">ดูเพิ่มเติม</b> </td>
             <td>{{order.o_total_price}}</td>
             <td>
               <div v-for=" os in Order_Status " v-if="os.os_id == order.o_status_id">{{os.os_title}}</div>

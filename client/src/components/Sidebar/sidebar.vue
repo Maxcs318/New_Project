@@ -52,7 +52,7 @@
           </h6>
         </li>
         <li>
-          <h6 href="#" @click="list_order">
+          <h6 href="#" @click="order_complete">
             <!-- <i class="fas fa-tasks">&nbsp; Check order</i> -->
             <img class="sidebar-logo" :src="path_files+'logo_img/check.png'" /> Order Complete
           </h6>
@@ -123,6 +123,9 @@ export default {
     },
     award() {
       this.$router.push("/AdminAw/1");
+    },
+    order_complete() {
+      this.$router.push("/AdminListOrder_delivered/1");
     }
   },
   computed: {
