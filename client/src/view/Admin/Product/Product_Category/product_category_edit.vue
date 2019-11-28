@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <h4 class="header">
-              <center>แก้ไข ประเภทบทความวิชาการ</center>
+              <center>แก้ไข ประเภทสินค้า</center>
             </h4>
           </div>
         </div>

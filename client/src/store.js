@@ -872,7 +872,7 @@ const store = new Vuex.Store({
             axios.post(base_url +'News/insert_news',news)
             .then(response =>{
                 if(response.data != 'fail'){
-                    console.log('Response Data',response.data)
+                    // console.log('Response Data',response.data)
                     context.commit("Add_News",response.data[0])
                 }
             })

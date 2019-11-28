@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="the_user && year_preview">
+  <div class="container" v-if="year_preview">
     <h3>
       <center class="head1">GAMA AWARD {{year_show.ay_title}} WINNERS</center>
     </h3>
@@ -213,9 +213,6 @@ export default {
     },
     the_user() {
       var user = this.$store.getters.getThe_User;
-      // if( user.m_status != 'admin' ){
-      // this.$router.go(-1)
-      // }
       this.userstatus = user.m_status;
       return user;
     },

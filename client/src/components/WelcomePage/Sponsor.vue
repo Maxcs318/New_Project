@@ -55,9 +55,11 @@
           <div class="col-lg-2 col-6">
             <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
           </div>
+          <div class="col-lg-4 col-0"></div>
+          <div class="col-lg-4 col-0"></div>
 
           <div class="col-lg-2 col-6">
-            <img class="sponsor-img" :src="path_files+'sponsor_img/phyathai_2.png'" alt />
+            <img class="sponsor-img2" :src="path_files+'sponsor_img/phyathai_2.png'" alt />
           </div>
           <div class="col-lg-2 col-6">
             <img class="sponsor-img" :src="path_files+'sponsor_img/pro_active.jpg'" alt />
@@ -116,11 +118,13 @@ export default {
 }
 
 .sponsor-img2 {
-  width: auto;
-  height: 138px;
+  width: 158px;
+  height: auto;
   display: block;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 49px;
+
 }
 
 @media only screen and (max-width: 600px) {

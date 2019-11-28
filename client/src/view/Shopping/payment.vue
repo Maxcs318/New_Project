@@ -47,8 +47,7 @@
                             <button type="button" class="form-control btn-success col-lg-6" @click="ChooseFilesImage"> Choose Image Slip </button>
                             <input id="chooseImage" ref="filesimage" style="display: none;" type="file" @change="handleFilesImage">
                             <br>
-                    Transfer Date : {{money_transfer.mtf_date}}<br>
-
+                    <p v-if="date_now!=''"> Transfer Date : {{money_transfer.mtf_date}} </p>
                     <date-pick  
                                 size="large" v-model="money_transfer.mtf_date" 
                                 :pickTime="true" :format="'DD-MM-YYYY HH:mm'"
@@ -140,13 +139,19 @@ export default {
                     return od[i]
                 }
             }
-            return this.$router.go(-1)
+            // return this.$router.go(-1)
         },
         Payment(){
             return this.$store.getters.getPayments
         },
         Banking(){
             return this.$store.getters.getBanking
+        },
+        date_now(){
+            var today = new Date();
+            var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()+' '+today.getHours() + ":" + today.getMinutes();
+                this.money_transfer.mtf_date = date
+            return date
         }
     },
     created(){
