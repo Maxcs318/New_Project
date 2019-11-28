@@ -776,14 +776,14 @@ const store = new Vuex.Store({
             })
         },
         initDataAcademic_Article(context){
-            axios.get(base_url +"Academic_Article/get_all_academic_article")
+            axios.get(base_url +"Academic_article/get_all_academic_article")
             .then(response => {
                 // console.log(response)
                 context.commit("Academic_ArticleAll",response.data)
             })
         },
         initDataAcademic_Article_Category(context){
-            axios.get(base_url +"Academic_Article/get_all_academic_article_category")
+            axios.get(base_url +"Academic_article/get_all_academic_article_category")
             .then(response => {
                 // console.log(response)
                 context.commit("Academic_Article_Category",response.data)
