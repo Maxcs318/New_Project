@@ -1,6 +1,6 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
-    class Academic_Article extends CI_Controller
+    class Academic_article extends CI_Controller
     {
         // public $JSON_DATA;
         public function __construct()
