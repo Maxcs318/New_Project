@@ -2,42 +2,51 @@
   <div>
     <footer>
       <!-- <p class="footer-line"></p> -->
-      <br />
+      <br>
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-2 col-12">
-            <img class="footer-logo" :src="path_files+'footer_img/logo.jpg'" />
+            <img class="footer-logo" :src="path_files+'footer_img/logo.jpg'">
           </div>
           <div class="col-lg-8 col-12 address">
-            <br />
+            <br>
             <p>GAMA THAILAND</p>
-            <br />
-            <p>138 อาคารจูเวลเลอรี่ เซ็นเตอร์ ชั้น 12 ห้อง 138/32</p>
-            <br />
-            <p>ถ.นเรส ซ.บางรัก กทม.10500</p>
-            <br />
-            <p>Tel: 02-6315885 ต่อ 14 &nbsp; &nbsp; &nbsp;&nbsp; Fax: 02-6318908</p>
+            <br>
+            <p>388 อาคารอามีโก้ ชั้น 19 โซนบี/1</p>
+            <br>
+            <p>ถนนสี่พระยา แขวงมหาพฤฒาราม</p>
+            <br>
+            <p>เขตบางรัก กรุงเทพมหานครฯ</p>
+            <br>
+            <p
+              class="footer-address-telfax"
+            >Tel: 02-6318908 &nbsp;&nbsp;&nbsp;&nbsp; Fax: 02-6318908</p>
+            <div class="footer-address-telfax-mb-sm">
+              <p>Tel: 02-6318908</p>
+              <br>
+              <p>Fax: 02-6318908</p>
+            </div>
           </div>
 
           <div class="col-lg-2 social">
-            <img :src="path_files+'footer_img/facebook-logo.png'" alt />
-            <img :src="path_files+'footer_img/instagram-logo.png'" alt />
-            <img :src="path_files+'footer_img/youtube-logo.png'" alt />
-            <img :src="path_files+'footer_img/line-logo.png'" alt />
+            <img :src="path_files+'footer_img/facebook-logo.png'" alt>
+            <img :src="path_files+'footer_img/instagram-logo.png'" alt>
+            <img :src="path_files+'footer_img/youtube-logo.png'" alt>
+            <img :src="path_files+'footer_img/line-logo.png'" alt>
           </div>
 
           <div class="col-2 social-mb"></div>
           <div class="col-2 social-mb">
-            <img :src="path_files+'footer_img/facebook-logo.png'" alt />
+            <img :src="path_files+'footer_img/facebook-logo.png'" alt>
           </div>
           <div class="col-2 social-mb">
-            <img :src="path_files+'footer_img/instagram-logo.png'" alt />
+            <img :src="path_files+'footer_img/instagram-logo.png'" alt>
           </div>
           <div class="col-2 social-mb">
-            <img :src="path_files+'footer_img/youtube-logo.png'" alt />
+            <img :src="path_files+'footer_img/youtube-logo.png'" alt>
           </div>
           <div class="col-2 social-mb">
-            <img :src="path_files+'footer_img/line-logo.png'" alt />
+            <img :src="path_files+'footer_img/line-logo.png'" alt>
           </div>
           <div class="col-2 social-mb"></div>
         </div>
@@ -82,7 +91,7 @@ footer {
   margin-top: 12px;
 }
 
-footer .address p {
+footer .address {
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -110,6 +119,12 @@ footer .contact {
 .social-mb {
   display: none;
 }
+.footer-address-telfax {
+  display: block;
+}
+.footer-address-telfax-mb-sm {
+  display: none;
+}
 
 @media only screen and (max-width: 600px) {
   .footer-logo {
@@ -134,5 +149,16 @@ footer .contact {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+@media only screen and (max-width: 350px) {
+  .footer-address-telfax {
+    display: none;
+  }
+  .footer-address-telfax-mb-sm {
+    display: block;
+    text-align: center;
+  }
+
 }
 </style>

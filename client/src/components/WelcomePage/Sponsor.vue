@@ -27,7 +27,7 @@
           </div>
           <div class="col-lg-4 col-0"></div>
           <div class="col-lg-4 col-12">
-            <img class="sponsor-img2" :src="path_files+'sponsor_img/sponsor-plat5.png'" width="100%"/>
+            <img class="sponsor-img2" :src="path_files+'sponsor_img/sponsor-plat5.png'"/>
           </div>
           <!-- <div class="col-lg-2 col-6">
             <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat6.png'" alt />
@@ -55,6 +55,14 @@
           <div class="col-lg-2 col-6">
             <img class="sponsor-img" :src="path_files+'sponsor_img/sponsor-plat9.png'" alt />
           </div>
+
+          <div class="col-lg-2 col-6">
+            <img class="sponsor-img" :src="path_files+'sponsor_img/phyathai_2.png'" alt />
+          </div>
+          <div class="col-lg-2 col-6">
+            <img class="sponsor-img" :src="path_files+'sponsor_img/pro_active.jpg'" alt />
+          </div>
+
           <div class="col-lg-4 col-0"></div>
         </div>
       </div>
@@ -120,9 +128,9 @@ export default {
     width: 100%;
     height: auto;
   }
-  /* .sponsor-img2 {
+  .sponsor-img2 {
     width: 100%;
     height: auto;
-  } */
+  }
 }
 </style>
